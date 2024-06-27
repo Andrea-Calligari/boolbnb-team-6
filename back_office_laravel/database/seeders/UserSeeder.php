@@ -13,20 +13,20 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        User::create({
+        User::create([
             'name' => 'Ernesto',
-            'surnamename' => 'Casagrande',
+            'surname' => 'Casagrande',
             'email' => 'ernesto@bnb.com',
-            // 'city' => 'rome'
+            //  'city' => 'rome',
             'password' => Hash::make('admin'),
-        });
+        ]);
         
-        User::create({
+        User::create([ 
             'name' => 'Gianfranco',
             'surname' => 'Luppolo',
-            // 'city' => 'rome'
+            //  'city' => 'rome',
             'email' => 'gianfranco@bnb.com',
             'password' => Hash::make('admin'),
-        });
+        ]);
     }
 }
