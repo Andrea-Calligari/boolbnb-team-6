@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 //use App\Models\User;
 //use App\Models\Category;
+use App\Models\Promotion;
 use Illuminate\Database\Eloquent\Model;
 
 class Apartment extends Model
@@ -20,4 +21,8 @@ class Apartment extends Model
     //public function category(){
         //return $this->belongsTo(Category::class);
     //}
+
+    public function promotions(){
+        return $this->belongsToMany(Promotion::class)->withPivot('start_date', 'expiration_date');
+    }
 }
