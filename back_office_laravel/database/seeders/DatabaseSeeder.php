@@ -45,14 +45,13 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
-            UserSeeder::class,
-            ApartmentSeeder::class,
-            ServiceSeeder::class,
-            MessageSeeder::class,
             CategorySeeder::class,
+            UserSeeder::class,
+            PromotionSeeder::class,
+            ServiceSeeder::class,
+            ApartmentSeeder::class,
             ViewSeeder::class,
-
-           
+            MessageSeeder::class
         ]);
     }
 }
