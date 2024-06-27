@@ -49,16 +49,19 @@ export default {
         email: this.email,
         password: this.password
       }).then((res) => {
-        console.log('Result: ', res);
+        console.log(res.data);
       }).catch((err) => {
         console.log('error: ', err);
-      })
+      });
      
     },
 
     async logout(){
-      //await axios.get("http://localhost:8000/sanctum/csrf-cookie");
-      await axios.post("http://localhost:8000/api/logout");
+      await axios.post("http://localhost:8000/api/logout").then((res) => {
+        console.log(res.data);
+      }).catch((err) => {
+        console.log('error: ', err);
+      });
 
       
        
