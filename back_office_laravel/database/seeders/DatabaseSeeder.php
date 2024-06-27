@@ -48,11 +48,6 @@ class DatabaseSeeder extends Seeder
             ViewSeeder::class,
             MessageSeeder::class
         ]);
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
-
         $this->call([
             CategorySeeder::class,
             UserSeeder::class,

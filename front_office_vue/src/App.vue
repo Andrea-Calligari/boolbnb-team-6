@@ -2,6 +2,29 @@
   <AppHeader />
   <AppMain />
   <AppFooter />
+  <div class="container text-white">
+    <div class="login-card">
+      <h2>Login</h2>
+      <form @submit.prevent="onLogin">
+
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required v-model="email">
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required v-model="password">
+
+        <button type="submit">Login</button>
+
+      </form>
+      <p >{{ user }}</p>
+
+      <button @click="logout()">logout</button>
+
+      <button @click="userData()">user</button>
+      
+
+    </div>
+  </div>
 </template>
 
 <script>
@@ -20,6 +43,39 @@ export default {
     }
   },
   methods: {
+    async onLogin() {
+      await axios.get("http://localhost:8000/sanctum/csrf-cookie");
+      await axios.post("http://localhost:8000/api/login", {
+        email: this.email,
+        password: this.password
+      }).then((res) => {
+        console.log('Result: ', res);
+      }).catch((err) => {
+        console.log('error: ', err);
+      })
+     
+    },
+
+    async logout(){
+      //await axios.get("http://localhost:8000/sanctum/csrf-cookie");
+      await axios.post("http://localhost:8000/api/logout");
+
+      
+       
+    },
+
+    async userData(){
+
+      this.user = ''
+
+      await axios.get("http://localhost:8000/api/user")
+        .then((users) => {
+          this.user = users.data.name
+        })
+        .catch((err) => {
+          console.log('errori: ', err);
+        })
+    }
   },
   computed: {
   },
