@@ -16,17 +16,24 @@ return new class extends Migration
             $table->string('title', 255);
             $table->string('slug', 255);
             $table->text('description')->nullable();
-            $table->decimal('price', total: 6, places: 2);
+            $table->decimal('price', 6, 2);
             $table->tinyInteger('rooms_number');
             $table->tinyInteger('beds_number');
             $table->tinyInteger('baths_number');
-            $table->Integer('mtq');
+            $table->integer('mtq');
             $table->string('address', 255);
-            $table->decimal('latitude', total: 11, places: 6)->nullable();
-            $table->decimal('longitude', total: 11, places: 6)->nullable();
+            $table->decimal('latitude', 11, 6)->nullable();
+            $table->decimal('longitude', 11, 6)->nullable();
             $table->string('image', 255)->nullable();
             $table->boolean('visible');
             $table->timestamps();
+
+            $table->unsignedBigInteger('user_id')->after('id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
+            $table->unsignedBigInteger('category_id')->after('id')->nullable();
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('set null');
+
         });
     }
 
