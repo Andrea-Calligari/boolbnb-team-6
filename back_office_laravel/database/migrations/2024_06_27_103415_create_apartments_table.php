@@ -28,12 +28,8 @@ return new class extends Migration
             $table->boolean('visible');
             $table->timestamps();
 
-            $table->unsignedBigInteger('user_id')->after('id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-
-            $table->unsignedBigInteger('category_id')->after('id')->nullable();
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('set null');
-
         });
     }
 
