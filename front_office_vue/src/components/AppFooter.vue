@@ -1,6 +1,6 @@
 <template>
   <footer class="footer mt-3 py-3">
-    <p class="text-center text-white">Made by AntoCic</p>
+    <p class="text-center">Made by &copy; Us &hearts; </p>
   </footer>
 </template>
 
