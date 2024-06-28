@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ApartmentController;
 use App\Http\Controllers\Api\AuthenticatedSessionApi;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
@@ -45,6 +46,12 @@ Route::middleware('guest')->group(function () {
 
     Route::post('reset-password', [NewPasswordController::class, 'store'])
         ->name('password.store');
+
+
+    //Rotte crud appartamenti
+    Route::get('/apartments', [ApartmentController::class, 'index'])->name('apartments.index');
+
+    Route::get('/apartments/{slug}', [ApartmentController::class, 'show'])->name('apartments.show');
 });
 
 Route::middleware('auth')->group(function () {
@@ -72,4 +79,16 @@ Route::middleware('auth')->group(function () {
 
     Route::post('logout', [AuthenticatedSessionApi::class, 'destroy'])
         ->name('logout');
+
+        //Rotte crud appartamenti
+
+    Route::get('/apartments/create', [ApartmentController::class, 'create'])->name('apartment.create');
+
+    Route::post('/apartments', [ApartmentController::class, 'store'])->name('apartments.store');
+
+    Route::get('/apartments/{apartment}/edit', [ApartmentController::class, 'edit'])->name('apartments.edit');
+
+    Route::put('/apartments/{apartment}', [ApartmentController::class, 'update'])->name('apartments.update');
+
+    Route::delete('/apartments/{apartment}', [ApartmentController::class, 'destroy'])->name('apartments.destroy');
 });
