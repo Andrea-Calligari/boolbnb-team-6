@@ -34,6 +34,15 @@ export default {
         this.store.user = null;
         console.log(err.response.data.message);
       })
+    axios.get("http://localhost:8000/api/options")
+      .then((res) => {
+        this.store.options = res.data
+        
+        console.log(this.store.options);
+      })
+      .catch((err) => {
+        console.log(err.response.data.message);
+      })
   }
 }
 
