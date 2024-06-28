@@ -8,16 +8,19 @@
           </a>
         </div>
         <div class="col-auto">
-          <RouterLink to="/" class="btn me-2" :class="$route.fullPath === '/' ? 'btn-dark' : 'btn-outline-dark'">Home
+
+          <RouterLink to="/" class="me-2" :class="$route.fullPath === '/' ? 'opacity-50' : ''">
+            <CmpBtnLoad content="Home" />
           </RouterLink>
-          <button @click="logout()" v-if="this.store.user" class="btn"
-            :class="$route.fullPath === '/login' ? 'btn-dark' : 'btn-outline-danger'">
-            {{ this.store.user }} <span class="material-symbols-rounded">logout</span>
-          </button>
-          <RouterLink v-else to="/login" class="btn"
-            :class="$route.fullPath === '/login' ? 'btn-dark' : 'btn-outline-dark'">
-            {{ this.store.user === 0 ? 'loading..' : "Login" }}
+
+          <CmpBtnLoad @click="logout()" v-if="this.store.user" :content="this.store.user + ' ->'" :class="$route.fullPath === '/login' ? 'opacity-50' : ''" />
+          <RouterLink v-else to="/login"
+            :class="$route.fullPath === '/login' ? 'opacity-50' : ''">
+
+            <CmpBtnLoad :content="this.store.user === 0 ? 'loading..' : 'Login'" :class="this.store.user === 0 ? 'loading' : ''" />
+       
           </RouterLink>
+
         </div>
       </div>
     </div>
@@ -29,7 +32,9 @@ import { store } from '../store.js';
 import axios from 'axios'
 axios.defaults.withCredentials = true;
 axios.defaults.withXSRFToken = true;
+import CmpBtnLoad from './CmpBtnLoad.vue'
 export default {
+  components: { CmpBtnLoad },
   data() {
     return {
       store,
@@ -37,10 +42,9 @@ export default {
   },
   methods: {
     async logout() {
-      this.store.user = 0;
+      this.store.user = null;
       await axios.post("http://localhost:8000/api/logout").then((res) => {
         console.log(res.data);
-        this.store.user = null;
         this.$router.push('/');
       }).catch((err) => {
         console.log('error: ', err);

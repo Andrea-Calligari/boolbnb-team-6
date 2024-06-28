@@ -31,7 +31,7 @@ export default {
       })
       .catch((err) => {
         this.store.user = null;
-        console.log('errori: ', err);
+        console.log(err.response.data.message);
       })
   }
 }
