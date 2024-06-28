@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\ApartmentController;
 use App\Http\Controllers\Api\AuthenticatedSessionApi;
+use App\Http\Controllers\Api\OptionsController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
@@ -52,6 +53,11 @@ Route::middleware('guest')->group(function () {
     Route::get('/apartments', [ApartmentController::class, 'index'])->name('apartments.index');
 
     Route::get('/apartments/{slug}', [ApartmentController::class, 'show'])->name('apartments.show');
+
+    
+    //Rotta Options Database
+    Route::get('/options', [OptionsController::class, 'index'])->name('options.index');
+    
 });
 
 Route::middleware('auth')->group(function () {
@@ -80,7 +86,7 @@ Route::middleware('auth')->group(function () {
     Route::post('logout', [AuthenticatedSessionApi::class, 'destroy'])
         ->name('logout');
 
-        //Rotte crud appartamenti
+    //Rotte crud appartamenti
 
     Route::get('/apartments/create', [ApartmentController::class, 'create'])->name('apartment.create');
 
@@ -91,4 +97,5 @@ Route::middleware('auth')->group(function () {
     Route::put('/apartments/{apartment}', [ApartmentController::class, 'update'])->name('apartments.update');
 
     Route::delete('/apartments/{apartment}', [ApartmentController::class, 'destroy'])->name('apartments.destroy');
+
 });
