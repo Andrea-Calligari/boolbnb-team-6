@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('sender_email',255 );
             $table->text('text');
             $table->timestamps();
+
         });
     }
 
