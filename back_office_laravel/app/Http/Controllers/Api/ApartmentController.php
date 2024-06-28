@@ -33,7 +33,26 @@ class ApartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $form_data = $request->validated();
+
+        // $name = Str::slug($form_data['name']);
+        // $slug = $name;
+        // do {
+        //     $find = Project::where('slug', $slug)->first();
+        //     if ($find !== null) {
+        //         $slug = $name . '-' . rand(1,99);
+        //     }
+        // } while ($find !== null);
+
+        // $form_data['slug'] = $slug;
+
+        // $project = Project::create($form_data);
+
+        // if ($request->has('technologies')) {
+        //     $project->technologies()->attach($request->technologies);
+        // }
+
+        // return to_route('admin.projects.show', $project);
     }
 
     /**
