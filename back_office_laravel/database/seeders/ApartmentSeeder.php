@@ -41,7 +41,7 @@ class ApartmentSeeder extends Seeder
         $user_ids= User::all()->pluck('id')->all();
         $categories_ids= Category::all()->pluck('id')->all();
         $promotions_ids = Promotion::all()->pluck('id')->all();
-        $promo_durations = Promotion::all()->pluck('hours')->all();
+        $promo_durations = Promotion::all()->pluck('hours', 'id')->all();
 
         for($i = 0; $i < count($addresses); $i++){
 
@@ -56,7 +56,7 @@ class ApartmentSeeder extends Seeder
             $new_apartment->baths_number = $faker->numberBetween(1, 3);
             $new_apartment->mtq = $faker->numberBetween(10, 1000);
             $new_apartment->address = $addresses[$i];
-            $new_apartment->latitute = $latitudes[$i];
+            $new_apartment->latitude = $latitudes[$i];
             $new_apartment->longitude = $longitudes[$i];
             $new_apartment->image = 'https://picsum.photos/200/300';
             $new_apartment->visible = $faker->boolean();
@@ -65,7 +65,7 @@ class ApartmentSeeder extends Seeder
 
             $new_apartment->save();
 
-            $random_promotions_ids = $faker->randomElement($promotions_ids, null);
+            $random_promotions_ids = $faker->randomElements($promotions_ids, null);
 
             $promotions_with_timestamp = [];
 

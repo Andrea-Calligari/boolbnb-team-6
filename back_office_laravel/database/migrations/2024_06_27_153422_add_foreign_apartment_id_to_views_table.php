@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('views', function (Blueprint $table) {
             //vincolo
-            $table->unsignedBigInteger('apartment_id')->mullable();
+            $table->unsignedBigInteger('apartment_id')->nullable();
             //colonna
             $table->foreign('apartment_id')->references('id')->on('views')->onDelete('set null');
         });
