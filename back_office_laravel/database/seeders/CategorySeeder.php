@@ -1,24 +1,54 @@
 <?php
 
 namespace Database\Seeders;
+
 use App\Models\Category;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
+
 class CategorySeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(Faker $faker): void
-    {   
-        for($i = 0 ; $i < 7; $i++){
+    {
+        $categories = [
+            'Casa',
+            'Casetta',
+            'Villa',
+            'Villetta',
+            'Casa Indipendente',
+            'Casa Semi-indipendente',
+            'Casa/villetta A Schiera',
+            'Casa Unifamiliare',
+            'Appartamento',
+            'Attico',
+            'Fattoria',
+            'Cascina',
+            'Masseria',
+            'Casale',
+            'Baita',
+            'Palazzo',
+            'Palazzina',
+            'Condominio',
+            'Grattacielo',
+            'Castello',
+            'Trullo',
+            'Capanna',
+            'Tenda',
+            'Iglù/igloo',
+            'Camper',
+            'Roulotte'
+        ];
+        foreach($categories as $category){
 
-        $category = new Category();
-        $category->name = $faker->name();
-        $category->description = $faker->paragraph();
-        
-        $category->save();
+            $new_category = new Category();
+            $new_category->name = $category;
+            $new_category->description = $faker->paragraph();
+
+            $new_category->save();
         }
     }
 }
