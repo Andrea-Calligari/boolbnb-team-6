@@ -11,11 +11,14 @@ class CategorySeeder extends Seeder
      * Run the database seeds.
      */
     public function run(Faker $faker): void
-    {
+    {   
+        for($i = 0 ; $i < 7; $i++){
+
         $category = new Category();
         $category->name = $faker->name();
         $category->description = $faker->paragraph();
         
         $category->save();
+        }
     }
 }
