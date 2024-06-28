@@ -14,26 +14,26 @@ class MessageSeeder extends Seeder
      */
     public function run(Faker $faker): void
     {
-        $ernesto_name = User::where('name', 'Ernesto')->first();
-        $ernesto_surname = User::where('surname', 'Casagrande')->first();
-        $ernesto_email = User::where('email', 'ernesto@bnb.com')->first();
+        $ernesto = User::where('name', 'Ernesto')->where('surname','Casagrande')->where('email', 'ernesto@bnb.com')->first();
+      
 
-        $gianfranco_name = User::where('name', 'Gianfranco')->first();
-        $gianfranco_surname = User::where('surname', 'Luppolo')->first();
-        $gianfranco_email = User::where('email', 'gianfranco@bnb.com')->first();
+        $gianfranco = User::where('name', 'Gianfranco')->where('surname','Luppolo')->where('email', 'gianfranco@bnb.com')->first();
+        
 
         $message_one = new Message();
-        $message_one->name = $ernesto_name;
-        $message_one->surname = $ernesto_surname;
-        $message_one->email = $ernesto_email;
-        $message_one->text = $faker->words();
+        $message_one->name = $ernesto->name;
+        $message_one->surname = $ernesto->surname;
+        $message_one->sender_email = $ernesto->email;
+        $message_one->text = $faker->sentence(4);
         $message_one->save();
         
 
         $message_two = new Message();
-        $message_two->name = $gianfranco_name;
-        $message_two->surname = $gianfranco_surname;
-        $message_two->email = $gianfranco_email;
+        $message_two->name = $gianfranco->name;
+        $message_two->surname = $gianfranco->surname;
+        $message_two->sender_email = $gianfranco->email;
+        $message_two->text = $faker->sentence(4);
+
 
         $message_two->save();
 
