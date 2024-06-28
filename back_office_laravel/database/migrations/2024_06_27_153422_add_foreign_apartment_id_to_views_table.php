@@ -15,7 +15,7 @@ return new class extends Migration
             //vincolo
             $table->unsignedBigInteger('apartment_id')->nullable();
             //colonna
-            $table->foreign('apartment_id')->references('id')->on('views')->onDelete('set null');
+            $table->foreign('apartment_id')->references('id')->on('apartments')->onDelete('set null');
         });
     }
 

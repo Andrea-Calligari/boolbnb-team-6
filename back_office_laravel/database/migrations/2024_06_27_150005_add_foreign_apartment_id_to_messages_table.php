@@ -13,10 +13,8 @@ return new class extends Migration
     {
         Schema::table('messages', function (Blueprint $table) {
             //vincolo
-            $table->unsignedBigInteger('apartment_id')->nullable();
-
-            //colonna
-            $table->foreign('apartment_id')->references('id')->on('messages')->onDelete('set null');
+            $table->unsignedBigInteger('apartment_id')->after('id');
+            $table->foreign('apartment_id')->references('id')->on('apartments');
         });
     }
 
