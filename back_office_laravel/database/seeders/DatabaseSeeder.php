@@ -24,14 +24,5 @@ class DatabaseSeeder extends Seeder
             ViewSeeder::class,
             MessageSeeder::class
         ]);
-        $this->call([
-            CategorySeeder::class,
-            UserSeeder::class,
-            PromotionSeeder::class,
-            ServiceSeeder::class,
-            ApartmentSeeder::class,
-            ViewSeeder::class,
-            MessageSeeder::class
-        ]);
     }
 }
