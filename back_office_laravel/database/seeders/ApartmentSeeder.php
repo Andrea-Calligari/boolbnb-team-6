@@ -45,12 +45,26 @@ class ApartmentSeeder extends Seeder
         $promotions_ids = Promotion::all()->pluck('id')->all();
         $promo_durations = Promotion::all()->pluck('hours', 'id')->all();
 
+        $slug_list = [];
+
         for($i = 0; $i < count($addresses); $i++){
+
+            $title = $faker->sentence(3);
+            $slug = $title;
+            $n = 0;
+            do {
+                if (in_array($slug, $slug_list)) {
+                    $n++;
+                    $slug = $title . '-' . $n;
+                }
+            } while (in_array($slug, $slug_list));
+
+            $slug_list[] =$slug;
 
             $new_apartment = new Apartment();
 
-            $new_apartment->title = $faker->sentence(5);
-            $new_apartment->slug = Str::slug($new_apartment->title);
+            $new_apartment->title = $title;
+            $new_apartment->slug = Str::slug($slug);
             $new_apartment->description = $faker->sentence();
             $new_apartment->price = $faker->randomFloat(2, 1, 9999);
             $new_apartment->rooms_number = $faker->numberBetween(2, 10);
@@ -75,7 +89,7 @@ class ApartmentSeeder extends Seeder
             $promotions_with_timestamp = [];
 
             foreach ($random_promotions_ids as $random_promotions_id){
-                $start_date = $faker->dateTime();
+                $start_date = $faker->dateTimeThisYear();
                 $hours = $promo_durations[$random_promotions_id];
                 $expiration_date = (new Carbon($start_date))->addHours($hours);
 

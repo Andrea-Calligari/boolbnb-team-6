@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Apartment;
+use Faker\Generator as Faker;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\View;
@@ -11,12 +13,14 @@ class ViewSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    public function run(Faker $faker): void
     {
-        for ($i = 0; $i < 17; $i++) {
+        $apartments_ids = Apartment::pluck('id')->all();
 
+        for ($i = 0; $i < 50; $i++) {
             $view = new View();
-            $view->ip_address = '192.168.0.1';
+            $view->apartment_id = $faker->randomElement($apartments_ids);
+            $view->ip_address = $faker->ipv4();
             $view->save();
         }
     }
