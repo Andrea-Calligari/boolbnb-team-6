@@ -17,6 +17,10 @@
             <CmpBtnLoad content="Apartments" />
           </RouterLink>
 
+          <RouterLink to="/apartments/create" class="me-2" :class="$route.fullPath === '/apartments/create' ? 'opacity-50' : ''">
+            <CmpBtnLoad content="Create" />
+          </RouterLink>
+
           <CmpBtnLoad @click="logout()" v-if="this.store.user" :content="this.store.user + ' ->'" :class="$route.fullPath === '/login' ? 'opacity-50' : ''" />
           <RouterLink v-else to="/login"
             :class="$route.fullPath === '/login' ? 'opacity-50' : ''">
