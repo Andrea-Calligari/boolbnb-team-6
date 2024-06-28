@@ -10,8 +10,9 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Seeder;
 use App\Models\Category;
+use App\Models\Service;
 use App\Models\User;
-
+use Spatie\LaravelIgnition\Recorders\DumpRecorder\Dump;
 
 class ApartmentSeeder extends Seeder
 {
@@ -39,6 +40,7 @@ class ApartmentSeeder extends Seeder
 
 
         $user_ids= User::all()->pluck('id')->all();
+        $service_ids= Service::all()->pluck('id')->all();
         $categories_ids= Category::all()->pluck('id')->all();
         $promotions_ids = Promotion::all()->pluck('id')->all();
         $promo_durations = Promotion::all()->pluck('hours', 'id')->all();
@@ -64,6 +66,9 @@ class ApartmentSeeder extends Seeder
             $new_apartment->category_id = $faker->randomElement($categories_ids);
 
             $new_apartment->save();
+
+            $random_service_ids = $faker->randomElements($service_ids, null);
+            $new_apartment->services()->attach($random_service_ids);
 
             $random_promotions_ids = $faker->randomElements($promotions_ids, null);
 

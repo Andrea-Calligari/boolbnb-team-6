@@ -26,6 +26,10 @@ class Apartment extends Model
         return $this->belongsToMany(Promotion::class)->withPivot('start_date', 'expiration_date');
     }
 
+    public function services(){
+        return $this->belongsToMany(Service::class);
+    }
+
     public function messages(){
         return $this->hasMany(Message::class);
     }
