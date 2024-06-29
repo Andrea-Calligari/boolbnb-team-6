@@ -7,48 +7,65 @@
                 <input type="text" class="form-control" :class="classValidate(isVtitle)" id="title" name="title"
                     v-model="title" placeholder="Inserisci titolo">
                 <div v-if="classValidate(isVtitle) === 'is-invalid'" class="mt-0 text-danger">
-                    Il testo deve
+                    Il campo non può essere vuoto e non deve superare i 254 caratteri
                 </div>
             </div>
 
 
             <div class="mb-3">
                 <label for="description" class="form-label">Descrizione</label>
-                <input type="textarea" class="form-control" id="description" name="description"
-                    placeholder="Inserisci Descrizione">
+                <input type="textarea" class="form-control" :class="classValidate(isVdescription)" id="description"
+                    name="description" placeholder="Inserisci Descrizione">
+                <div v-if="classValidate(isVdescription) === 'is-invalid'" class="mt-0 text-danger">
+                    Il testo non deve superare i 1000 caratteri
+                </div>
             </div>
 
             <div class="mb-3">
                 <label for="price" class="form-label">Prezzo</label>
-                <input type="number" class="form-control" id="price" name="price" placeholder="Inserisci Prezzo">
+                <input type="number" class="form-control" :class="classValidate(isVprice)" step="0.01" id="price" name="price"
+                    placeholder="Inserisci Prezzo">
+                <div v-if="classValidate(isVprice) === 'is-invalid'" class="mt-0 text-danger">
+                    Il prezzo massimo è di 9999,99 e non può essere vuoto
+                </div>
 
             </div>
 
             <div class="mb-3">
                 <label for="rooms_number" class="form-label">N° Stanze</label>
-                <input type="number" class="form-control" id="rooms_number" name="rooms_number"
-                    placeholder="Inserisci N° Stanze">
-
+                <input type="number" class="form-control" :class="classValidate(isVroom)" id="rooms_number"
+                    name="rooms_number" placeholder="Inserisci N° Stanze">
+                <div v-if="classValidate(isVroom) === 'is-invalid'" class="mt-0 text-danger">
+                    l'inserzione deve avere almeno una stanza
+                </div>
             </div>
 
             <div class="mb-3">
                 <label for="beds_number" class="form-label">N° letti</label>
-                <input type="number" class="form-control" id="beds_number" name="beds_number"
-                    placeholder="Inserisci N° letti">
+                <input type="number" class="form-control" :class="classValidate(isVbed)" id="beds_number"
+                    name="beds_number" placeholder="Inserisci N° letti">
+                <div v-if="classValidate(isVbed) === 'is-invalid'" class="mt-0 text-danger">
+                    l'inserzione deve avere almeno un posto letto
+                </div>
 
             </div>
 
             <div class="mb-3">
                 <label for="baths_number" class="form-label">N˚ bagni</label>
-                <input type="number" class="form-control" id="baths_number" name="baths_number"
-                    placeholder="Inserisci N˚ bagni">
-
+                <input type="number" class="form-control" :class="classValidate(isVbath)" id="baths_number"
+                    name="baths_number" placeholder="Inserisci N˚ bagni">
+                <div v-if="classValidate(isVbath) === 'is-invalid'" class="mt-0 text-danger">
+                    l'inserzione deve avere almeno un bagno
+                </div>
             </div>
 
             <div class="mb-3">
                 <label for="mtq" class="form-label">Metri quadri</label>
-                <input type="number" class="form-control" step="0.01" id="mtq" name="mtq" v-model="mtq"
-                    placeholder="Inserisci Metri quadri">
+                <input type="number" class="form-control" :class="classValidate(isVmtq)"  id="mtq" name="mtq"
+                    v-model="mtq" placeholder="Inserisci Metri quadri">
+                <div v-if="classValidate(isVmtq) === 'is-invalid'" class="mt-0 text-danger">
+                    l'inserzione deve avere come metratura minima 3mtq
+                </div>
             </div>
 
             <div class="mb-3">
@@ -96,6 +113,19 @@ export default {
             isVaddress: null,
             mtq: '',
             position: null,
+            description: '',
+            isVdescription:null,
+            price: 0,
+            isVprice:null,
+            rooms:0,
+            isVroom:null,
+            beds:0,
+            isVbed:null,
+            baths:0,
+            isVbath:null,
+            mtq:0,
+            isVmtq:null,
+
         }
     },
     methods: {
