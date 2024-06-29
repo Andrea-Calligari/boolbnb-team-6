@@ -12,26 +12,30 @@ class Apartment extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'slug', 'description', 'price', 'rooms_number', 'beds_number', 'baths_number', 'mtq', 'address', 'latitude', 'longitude', 'image', 'visible','user_id','category'];
+    protected $fillable = ['title', 'slug', 'description', 'price', 'rooms_number', 'beds_number', 'baths_number', 'mtq', 'address', 'latitude', 'longitude', 'image', 'visible', 'user_id', 'category_id'];
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function category(){
+    public function category()
+    {
         return $this->belongsTo(Category::class);
     }
 
-    public function promotions(){
+    public function promotions()
+    {
         return $this->belongsToMany(Promotion::class)->withPivot('start_date', 'expiration_date');
     }
 
-    public function services(){
+    public function services()
+    {
         return $this->belongsToMany(Service::class);
     }
 
-    public function messages(){
+    public function messages()
+    {
         return $this->hasMany(Message::class);
     }
-
 }

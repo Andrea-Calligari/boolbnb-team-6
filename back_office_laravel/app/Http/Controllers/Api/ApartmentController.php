@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Apartment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ApartmentController extends Controller
 {
@@ -34,29 +35,29 @@ class ApartmentController extends Controller
     public function store(Request $request)
     {
         $form_data = $request->all();
-        return response()->json(
-            compact('form_data')
-        );
         
+        // 'title', 'slug', 'description', 'price', 'rooms_number', 'beds_number', 'baths_number', 'mtq', 'address', 'latitude', 'longitude', 'image', 'visible', 'user_id', 'category_id'
 
-        // $name = Str::slug($form_data['name']);
-        // $slug = $name;
-        // do {
-        //     $find = Project::where('slug', $slug)->first();
-        //     if ($find !== null) {
-        //         $slug = $name . '-' . rand(1,99);
-        //     }
-        // } while ($find !== null);
+        $title = Str::slug($form_data['title']);
+        $slug = $title;
+        do {
+            $find = Apartment::where('slug', $slug)->first();
+            if ($find !== null) {
+                $slug = $title . '-' . rand(1,99);
+            }
+        } while ($find !== null);
 
-        // $form_data['slug'] = $slug;
+        $form_data['slug'] = $slug;
 
-        // $project = Project::create($form_data);
+        $apartment = Apartment::create($form_data);
 
-        // if ($request->has('technologies')) {
-        //     $project->technologies()->attach($request->technologies);
-        // }
+        if ($request->has('services_ids')) {
+            $apartment->services()->attach($request->services_ids);
+        }
 
-        // return to_route('admin.projects.show', $project);
+        return response()->json(
+            compact('apartment')
+        );
     }
 
     /**

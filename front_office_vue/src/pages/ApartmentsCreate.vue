@@ -141,15 +141,15 @@ export default {
             position: null,
             description: '',
             isVdescription:null,
-            price: 0,
+            price: 1,
             isVprice:null,
-            rooms:0,
+            rooms:1,
             isVrooms:null,
-            beds:0,
+            beds:1,
             isVbeds:null,
-            baths:0,
+            baths:1,
             isVbaths:null,
-            mtq:0,
+            mtq:1,
             isVmtq:null,
             visible: '1',
             isVvisible:null,
@@ -218,26 +218,24 @@ export default {
                  //this.store.user = 0;
                  //await axios.get("http://localhost:8000/sanctum/csrf-cookie");
                  await axios.post("http://localhost:8000/api/apartments",{
-                    user_id:this.store.user.id,
                     title:this.title,
                     description:this.description,
                     price:this.price,
-                    rooms:this.rooms,
-                    beds:this.beds,
-                    baths:this.baths,
+                    rooms_number:this.rooms,
+                    beds_number:this.beds,
+                    baths_number:this.baths,
                     mtq:this.mtq,
                     address:this.address,
-                    visible:this.visible,
-                    image:this.image,
-                    services:this.services,
-                    category:this.category,
                     latitude: this.position.lat,
                     longitude: this.position.lon,
-
-
-
+                    image:this.image,
+                    visible:this.visible,
+                    user_id:this.store.user.id,
+                    category_id:this.category,
+                    services_ids:this.services,
                  }).then((res) => {
-                    console.log(res.data);
+                    const apartmentSlug = res.data.apartment.slug;
+                    this.$router.push({name:'apartment', params:{slug:apartmentSlug}});
                  }).catch((err) => {
                     console.log(err.response.data.message);
                  });
