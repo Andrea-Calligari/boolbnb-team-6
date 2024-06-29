@@ -24,6 +24,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+//Rotta Options Database
+Route::get('/options', [OptionsController::class, 'index'])->name('options.index');
 
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
@@ -53,11 +55,6 @@ Route::middleware('guest')->group(function () {
     Route::get('/apartments', [ApartmentController::class, 'index'])->name('apartments.index');
 
     Route::get('/apartments/{slug}', [ApartmentController::class, 'show'])->name('apartments.show');
-
-    
-    //Rotta Options Database
-    Route::get('/options', [OptionsController::class, 'index'])->name('options.index');
-    
 });
 
 Route::middleware('auth')->group(function () {
@@ -97,5 +94,4 @@ Route::middleware('auth')->group(function () {
     Route::put('/apartments/{apartment}', [ApartmentController::class, 'update'])->name('apartments.update');
 
     Route::delete('/apartments/{apartment}', [ApartmentController::class, 'destroy'])->name('apartments.destroy');
-
 });

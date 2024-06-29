@@ -42,7 +42,7 @@ export default {
             this.userData();
             this.$router.push('/');
          }).catch((err) => {
-            console.log('error: ', err);
+            console.log(err.response.data.message);
          });
 
       },
@@ -54,7 +54,7 @@ export default {
                this.store.user = res.data.name
             })
             .catch((err) => {
-               console.log('errori: ', err);
+               console.log(err.response.data.message);
             })
       }
    },
