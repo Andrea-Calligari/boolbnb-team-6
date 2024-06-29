@@ -33,18 +33,18 @@
 
             <div class="mb-3">
                 <label for="rooms_number" class="form-label">N° Stanze</label>
-                <input type="number" class="form-control" :class="classValidate(isVroom)" id="rooms_number"
+                <input type="number" class="form-control" :class="classValidate(isVrooms)" id="rooms_number"
                     name="rooms_number" placeholder="Inserisci N° Stanze">
-                <div v-if="classValidate(isVroom) === 'is-invalid'" class="mt-0 text-danger">
+                <div v-if="classValidate(isVrooms) === 'is-invalid'" class="mt-0 text-danger">
                     l'inserzione deve avere almeno una stanza
                 </div>
             </div>
 
             <div class="mb-3">
                 <label for="beds_number" class="form-label">N° letti</label>
-                <input type="number" class="form-control" :class="classValidate(isVbed)" id="beds_number"
+                <input type="number" class="form-control" :class="classValidate(isVbeds)" id="beds_number"
                     name="beds_number" placeholder="Inserisci N° letti">
-                <div v-if="classValidate(isVbed) === 'is-invalid'" class="mt-0 text-danger">
+                <div v-if="classValidate(isVbeds) === 'is-invalid'" class="mt-0 text-danger">
                     l'inserzione deve avere almeno un posto letto
                 </div>
 
@@ -52,9 +52,9 @@
 
             <div class="mb-3">
                 <label for="baths_number" class="form-label">N˚ bagni</label>
-                <input type="number" class="form-control" :class="classValidate(isVbath)" id="baths_number"
+                <input type="number" class="form-control" :class="classValidate(isVbaths)" id="baths_number"
                     name="baths_number" placeholder="Inserisci N˚ bagni">
-                <div v-if="classValidate(isVbath) === 'is-invalid'" class="mt-0 text-danger">
+                <div v-if="classValidate(isVbaths) === 'is-invalid'" class="mt-0 text-danger">
                     l'inserzione deve avere almeno un bagno
                 </div>
             </div>
@@ -85,9 +85,8 @@
 
             <div class="mb-3">
                 <label for="visible" class="form-label">Visibile</label>
-                <select name="visible" id="visible">
-                    <option value="">Scegli se rendere visibile il tuo annuncio</option>
-                    <option value="1">si</option>
+                <select name="visible" v-model="visible" id="visible">
+                    <option selected value="1">si</option>
                     <option value="0">no</option>
                 </select>
             </div>
@@ -118,13 +117,15 @@ export default {
             price: 0,
             isVprice:null,
             rooms:0,
-            isVroom:null,
+            isVrooms:null,
             beds:0,
-            isVbed:null,
+            isVbeds:null,
             baths:0,
-            isVbath:null,
+            isVbaths:null,
             mtq:0,
             isVmtq:null,
+            visible: '1',
+            isVvisible:null,
 
         }
     },
@@ -141,8 +142,16 @@ export default {
             }
         },
         isFormValidated() {
-            this.isVtitle = this.title.length <= 254 && this.title.length >= 3 ? true : false;
-            this.isVaddress = this.address.length <= 254 && this.address.length >= 3 ? true : false;
+            this.isVtitle = this.store.validateString(this.title)
+            this.isVdescription = this.store.validateString(this.description,0,1000)
+            this.isVprice = this.store.validateDecimal(this.price)
+            this.isVrooms = this.store.validateInteger(this.rooms)
+            this.isVbeds = this.store.validateInteger(this.beds)
+            this.isVbaths = this.store.validateInteger(this.baths)
+            this.isVmtq = this.store.validateInteger(this.mtq,1,99999)
+            this.isVaddress = this.store.validateString(this.address)
+            // validate image 
+            this.isVvisible = this.store.validateBoolean(this.visible)
 
             if (this.isVtitle && this.isVaddress) {
                 return true
