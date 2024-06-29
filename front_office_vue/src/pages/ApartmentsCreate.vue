@@ -14,8 +14,8 @@
 
             <div class="mb-3">
                 <label for="description" class="form-label">Descrizione</label>
-                <input type="textarea" class="form-control" :class="classValidate(isVdescription)" id="description"
-                    name="description" placeholder="Inserisci Descrizione">
+                <textarea class="form-control" v-model="description" rows="3" :class="classValidate(isVdescription)" id="description"
+                    name="description" placeholder="Inserisci Descrizione"></textarea>
                 <div v-if="classValidate(isVdescription) === 'is-invalid'" class="mt-0 text-danger">
                     Il testo non deve superare i 1000 caratteri
                 </div>
@@ -23,7 +23,7 @@
 
             <div class="mb-3">
                 <label for="price" class="form-label">Prezzo</label>
-                <input type="number" class="form-control" :class="classValidate(isVprice)" step="0.01" id="price" name="price"
+                <input type="number" class="form-control" v-model="price" :class="classValidate(isVprice)" step="0.01" id="price" name="price"
                     placeholder="Inserisci Prezzo">
                 <div v-if="classValidate(isVprice) === 'is-invalid'" class="mt-0 text-danger">
                     Il prezzo massimo è di 9999,99 e non può essere vuoto
@@ -33,7 +33,7 @@
 
             <div class="mb-3">
                 <label for="rooms_number" class="form-label">N° Stanze</label>
-                <input type="number" class="form-control" :class="classValidate(isVrooms)" id="rooms_number"
+                <input type="number" class="form-control" v-model="rooms" :class="classValidate(isVrooms)" id="rooms_number"
                     name="rooms_number" placeholder="Inserisci N° Stanze">
                 <div v-if="classValidate(isVrooms) === 'is-invalid'" class="mt-0 text-danger">
                     l'inserzione deve avere almeno una stanza
@@ -42,7 +42,7 @@
 
             <div class="mb-3">
                 <label for="beds_number" class="form-label">N° letti</label>
-                <input type="number" class="form-control" :class="classValidate(isVbeds)" id="beds_number"
+                <input type="number" class="form-control" v-model="beds" :class="classValidate(isVbeds)" id="beds_number"
                     name="beds_number" placeholder="Inserisci N° letti">
                 <div v-if="classValidate(isVbeds) === 'is-invalid'" class="mt-0 text-danger">
                     l'inserzione deve avere almeno un posto letto
@@ -52,7 +52,7 @@
 
             <div class="mb-3">
                 <label for="baths_number" class="form-label">N˚ bagni</label>
-                <input type="number" class="form-control" :class="classValidate(isVbaths)" id="baths_number"
+                <input type="number" class="form-control" v-model="baths" :class="classValidate(isVbaths)" id="baths_number"
                     name="baths_number" placeholder="Inserisci N˚ bagni">
                 <div v-if="classValidate(isVbaths) === 'is-invalid'" class="mt-0 text-danger">
                     l'inserzione deve avere almeno un bagno
@@ -142,6 +142,7 @@ export default {
             }
         },
         isFormValidated() {
+            
             this.isVtitle = this.store.validateString(this.title)
             this.isVdescription = this.store.validateString(this.description,0,1000)
             this.isVprice = this.store.validateDecimal(this.price)
@@ -153,7 +154,17 @@ export default {
             // validate image 
             this.isVvisible = this.store.validateBoolean(this.visible)
 
-            if (this.isVtitle && this.isVaddress) {
+            if (
+                this.isVtitle &&
+                this.isVdescription &&
+                this.isVprice &&
+                this.isVrooms &&
+                this.isVbeds &&
+                this.isVbaths &&
+                this.isVmtq &&
+                this.isVaddress &&
+                this.isVvisible 
+            ) {
                 return true
             } else {
                 return false
@@ -170,6 +181,8 @@ export default {
                     });
 
                 console.log(this.position);
+
+                console.log('FINALMENTE sei arrivato qua');
 
                 //  this.store.user = 0;
                 //  await axios.get("http://localhost:8000/sanctum/csrf-cookie");
