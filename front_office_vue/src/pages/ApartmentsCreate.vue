@@ -73,7 +73,7 @@
                 <input type="text" class="form-control" :class="classValidate(isVaddress)" id="address" name="address"
                     v-model="address" placeholder="Inserisci indirizzo">
                 <div v-if="classValidate(isVaddress) === 'is-invalid'" class="mt-0 text-danger">
-                    Il testo deve injekdnwkfnjmknwe
+                    Il campo indirizzo non può essere vuoto e non può superare i 254 caratteri
                 </div>
             </div>
 

@@ -27,6 +27,11 @@ use Illuminate\Support\Facades\Route;
 //Rotta Options Database
 Route::get('/options', [OptionsController::class, 'index'])->name('options.index');
 
+//Rotte crud appartamenti
+Route::get('/apartments', [ApartmentController::class, 'index'])->name('apartments.index');
+
+Route::get('/apartments/{slug}', [ApartmentController::class, 'show'])->name('apartments.show');
+
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
         ->name('register');
@@ -49,12 +54,6 @@ Route::middleware('guest')->group(function () {
 
     Route::post('reset-password', [NewPasswordController::class, 'store'])
         ->name('password.store');
-
-
-    //Rotte crud appartamenti
-    Route::get('/apartments', [ApartmentController::class, 'index'])->name('apartments.index');
-
-    Route::get('/apartments/{slug}', [ApartmentController::class, 'show'])->name('apartments.show');
 });
 
 Route::middleware('auth')->group(function () {
