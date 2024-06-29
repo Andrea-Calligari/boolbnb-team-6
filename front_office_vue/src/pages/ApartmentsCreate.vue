@@ -77,12 +77,37 @@
                 </div>
             </div>
 
-            <div class="mb-3">
+            <!-- <div class="mb-3">
                 <label for="image" class="form-label">Immagini</label>
                 <input class="form-control" type="file" name="image" id="image" multiple>
+            </div> -->
+
+            <div class="mb-3">
+                <label for="image" class="form-label">Immagini</label>
+                <input type="text" class="form-control" :class="classValidate(isVimage)" id="image" name="image"
+                    v-model="image" placeholder="Inserisci titolo">
+                <div v-if="classValidate(isVimage) === 'is-invalid'" class="mt-0 text-danger">
+                    Il campo non può essere vuoto e non deve superare i 254 caratteri
+                </div>
             </div>
 
+            <div class="mb-3">
+                <label for="category" class="form-label">categorie</label>
+                <select name="category" v-model="category" id="category">
+                    <option v-for="cateGory in store.options.categories" :key="cateGory.id"  :value="cateGory.id">{{ cateGory.name }}</option>
+                    
+                </select>
+            </div>
 
+            <div class="mb-3">
+                <template v-for="serVice in store.options.services">
+                    <input type="checkbox" :id="serVice.name" :value="serVice.id" v-model="services">
+                    <label :for="serVice.name">{{ serVice.name }}</label>
+                </template>
+            </div>
+
+            
+            
             <div class="mb-3">
                 <label for="visible" class="form-label">Visibile</label>
                 <select name="visible" v-model="visible" id="visible">
@@ -90,6 +115,8 @@
                     <option value="0">no</option>
                 </select>
             </div>
+
+
 
             <button type="submit" class="btn btn-primary">Submit</button>
 
@@ -126,6 +153,10 @@ export default {
             isVmtq:null,
             visible: '1',
             isVvisible:null,
+            image:'https://picsum.photos/200/300',
+            isVimage:null,
+            category:1,
+            services:[]
 
         }
     },
@@ -184,13 +215,32 @@ export default {
 
                 console.log('FINALMENTE sei arrivato qua');
 
-                //  this.store.user = 0;
-                //  await axios.get("http://localhost:8000/sanctum/csrf-cookie");
-                //  await axios.post("http://localhost:8000/api/apartments").then((res) => {
-                //     console.log(res.data);
-                //  }).catch((err) => {
-                //     console.log(err.response.data.message);
-                //  });
+                 //this.store.user = 0;
+                 //await axios.get("http://localhost:8000/sanctum/csrf-cookie");
+                 await axios.post("http://localhost:8000/api/apartments",{
+                    user_id:this.store.user.id,
+                    title:this.title,
+                    description:this.description,
+                    price:this.price,
+                    rooms:this.rooms,
+                    beds:this.beds,
+                    baths:this.baths,
+                    mtq:this.mtq,
+                    address:this.address,
+                    visible:this.visible,
+                    image:this.image,
+                    services:this.services,
+                    category:this.category,
+                    latitude: this.position.lat,
+                    longitude: this.position.lon,
+
+
+
+                 }).then((res) => {
+                    console.log(res.data);
+                 }).catch((err) => {
+                    console.log(err.response.data.message);
+                 });
             }
         },
     },

@@ -21,6 +21,9 @@ export const store = reactive({
                 })
         }
     },
+
+    options:{},
+
     validateString(text, min = 3, max = 254) {
         return text.length <= max && text.length >= min ? true : false;
     },

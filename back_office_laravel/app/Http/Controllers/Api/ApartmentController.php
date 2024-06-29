@@ -31,12 +31,13 @@ class ApartmentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store()
+    public function store(Request $request)
     {
-        return response()->json([
-            'creato' => true,
-        ]);
-        // $form_data = $request->validated();
+        $form_data = $request->all();
+        return response()->json(
+            compact('form_data')
+        );
+        
 
         // $name = Str::slug($form_data['name']);
         // $slug = $name;
