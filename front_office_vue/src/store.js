@@ -21,6 +21,16 @@ export const store = reactive({
                 })
         }
     },
+    
+    loading: {
+        state: true,
+        on() {
+            this.state = true;
+        },
+        off() {
+            this.state = false;
+        }
+    },
 
     options:{},
 
