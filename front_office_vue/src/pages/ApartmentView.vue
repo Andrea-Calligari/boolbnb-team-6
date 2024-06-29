@@ -1,9 +1,28 @@
 <template>
     <div class="container" v-if="apartment">
-        <h1>{{ apartment.title }}</h1>
-        <p>{{ apartment.address }}</p>
+        <div class="row">
+            <div class="col">
+                <div class="card">
+            <img :src="apartment.image" class="card-img-top" style="height: 40vh;" :alt="apartment.title + ' img'">
+            <div class="card-body">
+                <h2 class="card-title mb-0">{{ apartment.title }}</h2>
+                <p class="card-text"><small class="text-body-secondary">{{ apartment.category.name }}</small></p>
+                <p class="card-text mb-0">Servizi: </p>
+                <span class="badge text-bg-light me-2 " v-for="service in apartment.services">{{service.name}}</span>
+                <p class="card-text mt-3 mb-0">Descrizione: </p>
+                <p class="card-text">{{apartment.description }}</p>
+                <p class="card-text">{{'Stanze: '+ apartment.rooms_number }}</p>
+                <p class="card-text">{{ 'Bagni: '+ apartment.baths_number }}</p>
+                <p class="card-text">{{ 'Posti letto: '+ apartment.beds_number }}</p>
+                <p class="card-text">{{ `Propietario: ${apartment.user.name} ${apartment.user.surname}` }}</p>
+                <p class="card-text text-end"><small class="text-body-secondary">{{ apartment.address }}</small></p>
+            </div>
+        </div>
+            </div>
+        </div>
+        
     </div>
-    
+
 </template>
 
 <script>
@@ -17,7 +36,7 @@ export default {
     },
     data() {
         return {
-            
+
             apartment: null
         }
     },
@@ -27,9 +46,9 @@ export default {
             console.log(res.data.results[0]);
             this.apartment = res.data.results[0];
         }).catch((err) => {
-            console.log(err)    
+            console.log(err)
         })
-        
+
     }
 }
 </script>
