@@ -25,7 +25,7 @@ class StoreApartmentRequest extends FormRequest
 
             'title' => 'required|string',
             'description' => 'nullable|max:1000',
-            'price' => 'decimal:2,4',
+            'price' => 'decimal:6,2',
             'rooms_number' => 'integer|numeric|max_digits:255',
             'beds_number' => 'integer|numeric|max_digits:255',
             'baths_number' => 'integer|numeric|max_digits:255',
