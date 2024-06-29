@@ -30,7 +30,7 @@ class AuthenticatedSessionApi extends Controller
         $request->session()->regenerate();
 
         return response()->json([
-            'logged' => true,
+            'msg' => 'logged',
         ]);
     }
 
@@ -46,7 +46,7 @@ class AuthenticatedSessionApi extends Controller
         $request->session()->regenerateToken();
 
         return response()->json([
-            'logged' => false,
+            'msg' => 'logout',
         ]);
     }
 }

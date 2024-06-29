@@ -22,28 +22,18 @@ class ApartmentController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
         $form_data = $request->all();
-        
-        // 'title', 'slug', 'description', 'price', 'rooms_number', 'beds_number', 'baths_number', 'mtq', 'address', 'latitude', 'longitude', 'image', 'visible', 'user_id', 'category_id'
 
         $title = Str::slug($form_data['title']);
         $slug = $title;
         do {
             $find = Apartment::where('slug', $slug)->first();
             if ($find !== null) {
-                $slug = $title . '-' . rand(1,99);
+                $slug = $title . '-' . rand(1, 99);
             }
         } while ($find !== null);
 
@@ -65,39 +55,56 @@ class ApartmentController extends Controller
      */
     public function show(string $slug)
     {
-        $apartment = Apartment::where('slug',$slug)->get();
+        $apartment = Apartment::where('slug', $slug)->get();
         //dump($apartment);
-        $apartment->load('user','category','promotions','services','messages');
+        $apartment->load('user', 'category', 'promotions', 'services');
         return response()->json([
             'results' => $apartment
         ]);
-
-        
-        
-
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Apartment $apartment)
-    {
-        //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Apartment $apartment)
+    public function update(Request $request, string $slug)
     {
-        //
+        $form_data = $request->all();
+
+        $apartment = Apartment::where('slug', $slug)->get();
+
+        $title = Str::slug($form_data['title']);
+        $slug = $title;
+        do {
+            $find = Apartment::where('slug', $slug)->whereNot('id', $apartment->id)->first();
+            if ($find !== null) {
+                $slug = $title . '-' . rand(1, 99);
+            }
+        } while ($find !== null);
+
+        $form_data['slug'] = $slug;
+
+        $apartment->update($form_data);
+
+        if ($request->has('services_ids')) {
+            $apartment->services()->sync($request->services_ids);
+        } else {
+            $apartment->services()->detach();
+        }
+
+        return response()->json(
+            compact('apartment')
+        );
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Apartment $apartment)
+    public function destroy(string $slug)
     {
-        //
+        $apartment = Apartment::where('slug', $slug)->get();
+        $apartment->delete();
+        return response()->json([
+            'msg'=>'deleted',
+        ]);
     }
 }
