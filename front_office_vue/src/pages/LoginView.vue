@@ -32,31 +32,19 @@ export default {
    },
    methods: {
       async onLogin() {
-         this.store.user = 0;
+         this.store.user.id = 0;
          await axios.get("http://localhost:8000/sanctum/csrf-cookie");
          await axios.post("http://localhost:8000/api/login", {
             email: this.email,
             password: this.password
          }).then((res) => {
             console.log(res.data);
-            this.userData();
+            this.store.user.getUser();
             this.$router.push('/');
          }).catch((err) => {
-            console.log(err.response.data.message);
+            console.log(err.response.data);
          });
-
       },
-
-      async userData() {
-         this.store.user = null;
-         await axios.get("http://localhost:8000/api/user")
-            .then((res) => {
-               this.store.user = res.data.name
-            })
-            .catch((err) => {
-               console.log(err.response.data.message);
-            })
-      }
    },
    computed: {
    },
