@@ -11,7 +11,7 @@ class StoreApartmentRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,23 @@ class StoreApartmentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+
+            'title' => 'required|string',
+            'description' => 'nullable|max:1000',
+            'price' => 'decimal:2,4',
+            'rooms_number' => 'integer|numeric|max_digits:10',
+            'beds_number' => 'integer|numeric|max_digits:10',
+            'baths_number' => 'integer|numeric|max_digits:10',
+            'mtq' => 'integer',
+            'address' => 'string',
+            'latitude' => 'decimal:11,6',
+            'longitude' => 'decimal:11,6',
+            'image' => 'string',
+            'visible' => 'boolean',
+            'user_id' => 'exists:users,id',
+            'category_id' => 'exists:users,id',
+            'services_id' => 'nullable|exists:users,id',
+            'promotions_id' => 'nullable|exists:users,id',
         ];
     }
 }
