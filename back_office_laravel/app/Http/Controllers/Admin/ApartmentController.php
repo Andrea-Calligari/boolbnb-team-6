@@ -5,10 +5,13 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Apartment;
 //use App\Models\User;
-//use App\Models\Category;
+use App\Models\Category;
+use App\Models\Promotion;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreApartmentRequest;
 use App\Http\Requests\UpdateApartmentRequest;
+use Illuminate\Support\Str;
 
 class ApartmentController extends Controller
 {
@@ -27,7 +30,11 @@ class ApartmentController extends Controller
      */
     public function create()
     {
-        //
+        $promotions = Promotion::orderBy('title', 'asc')->get();
+        $categories = Category::orderBy('name', 'asc')->get();
+        $services = Service::orderBy('name', 'asc')->get();
+
+        return view('admin.apartments.create', compact('promotions', 'categories', ' services'));
     }
 
     /**
@@ -35,7 +42,32 @@ class ApartmentController extends Controller
      */
     public function store(StoreApartmentRequest $request)
     {
-        //
+        $form_data = $request->validated();
+        $form_data = $request->all();
+        $base_slug = Str::slug($form_data['title']);
+        $slug = $base_slug;
+        $n = 0 ;
+
+        do{
+            $find = Apartment::where('slug', $slug)->first();
+            if($find !== null){
+                $n++;
+                $slug = $base_slug . '-' . $n;
+            }
+        }while($find !== null);
+
+        $form_data['slug'] = $slug;
+        $apartment = Apartment::create($form_data);
+        if($request->has('promotions') ){
+            $apartment->promotions()->attach($request->promotion);
+        } 
+        if($request->has('services') ){
+            $apartment->services()->attach($request->services);
+        }
+        return to_route('admin.apartments.show',$apartment);
+
+
+
     }
 
     /**
@@ -43,7 +75,8 @@ class ApartmentController extends Controller
      */
     public function show(Apartment $apartment)
     {
-        
+        $apartment->load(['category', 'promotions' ,'services', ]);
+        return view('admin.apartments.show', compact('apartment'));
     }
 
     /**

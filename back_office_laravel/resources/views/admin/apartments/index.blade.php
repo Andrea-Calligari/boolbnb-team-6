@@ -5,7 +5,9 @@
     <div class="container">
         <ul class="list-unstyled ">
             @foreach($apartments as $apartment)
-                    <li class="">{{$apartment->title}}</li>
+                    <li class="">
+                        <a href="{{route('admin.apartments.show', $apartment)}}">{{$apartment->title}}</a>
+                    </li>
 
             @endforeach
         </ul>
