@@ -90,7 +90,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/apartments/{apartment}/edit', [ApartmentController::class, 'edit'])->name('apartments.edit');
 
-    Route::put('/apartments/{apartment}', [ApartmentController::class, 'update'])->name('apartments.update');
+    Route::put('/apartments/{slug}', [ApartmentController::class, 'update'])->name('apartments.update');
 
     Route::delete('/apartments/{apartment}', [ApartmentController::class, 'destroy'])->name('apartments.destroy');
 });

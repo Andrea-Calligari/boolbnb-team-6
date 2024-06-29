@@ -70,7 +70,7 @@ class ApartmentController extends Controller
     {
         $form_data = $request->all();
 
-        $apartment = Apartment::where('slug', $slug)->get();
+        $apartment = Apartment::where('slug', $slug)->first();
 
         $title = Str::slug($form_data['title']);
         $slug = $title;
