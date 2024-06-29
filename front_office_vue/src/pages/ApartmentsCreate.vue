@@ -1,12 +1,6 @@
 <template>
     <div class="container">
-        <form>
-
-            <div class="mb-3">
-                <label for="title" class="form-label">titolo</label>
-                <input type="text" class="form-control" id="title" name="title" placeholder="Inserisci titolo">
-
-            </div>
+        <form action="http://localhost:8000/api/apartments" method="POST">
 
             <div class="mb-3">
                 <label for="title" class="form-label">titolo</label>
