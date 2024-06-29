@@ -25,23 +25,16 @@ export default {
   computed: {
   },
   mounted() {
-    this.store.user = 0;
-    axios.get("http://localhost:8000/api/user")
-      .then((res) => {
-        this.store.user = res.data.name
-      })
-      .catch((err) => {
-        this.store.user = null;
-        console.log(err.response.data.message);
-      })
+    this.store.user.id = 0;
+
+    this.store.user.getUser();
+
     axios.get("http://localhost:8000/api/options")
       .then((res) => {
         this.store.options = res.data
-        
-        console.log(this.store.options);
       })
       .catch((err) => {
-        console.log(err.response.data.message);
+        console.log(err.response.data);
       })
   }
 }
