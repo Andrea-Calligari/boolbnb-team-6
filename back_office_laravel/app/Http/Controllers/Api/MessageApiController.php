@@ -15,12 +15,12 @@ class MessageApiController extends Controller
      */
     public function index()
     {
-        $apartments = Apartment::where('user_id', Auth::id())->get('id');
+        $apartments = Apartment::where('user_id', Auth::id())->with('messages')->get();
         
-        $messages=[];
+         $messages = [];
         
-        foreach($apartments as $message_id){
-            $message = Message::where('apartment_id',$message_id->id)->get();
+        foreach($apartments as $apartment){
+            $message = $apartment->messages;
             array_push($messages,$message);
         }
         
