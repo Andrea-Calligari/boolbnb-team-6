@@ -244,7 +244,7 @@ export default {
                     const apartmentSlug = res.data.apartment.slug;
                     this.$router.push({ name: 'apartment', params: { slug: apartmentSlug } });
                 }).catch((err) => {
-                    console.log(err.response.data.message);
+                    console.log(err.response.data);
                 });
             }
         },
