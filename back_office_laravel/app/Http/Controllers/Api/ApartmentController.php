@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Apartment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class ApartmentController extends Controller
@@ -101,10 +102,15 @@ class ApartmentController extends Controller
      */
     public function destroy(string $slug)
     {
-        $apartment = Apartment::where('slug', $slug)->get();
-        $apartment->delete();
+        $apartment = Apartment::where('slug', $slug)->delete();
+        $response='';
+        if($apartment){
+            $response = 'deleted';
+        }else{
+            $response = 'apartment to delete not found';
+        }
         return response()->json([
-            'msg'=>'deleted',
+            'msg'=>$response
         ]);
     }
 }

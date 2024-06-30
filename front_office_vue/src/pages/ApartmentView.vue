@@ -10,8 +10,8 @@
                         <p class="card-text"><small class="text-body-secondary">{{ apartment.category.name }}</small>
                         </p>
                         <p class="card-text mb-0">Servizi: </p>
-                        <span class="badge text-bg-light me-2 "
-                            v-for="service in apartment.services">{{ service.name }}</span>
+                        <span class="badge text-bg-light me-2 " v-for="service in apartment.services">{{ service.name
+                            }}</span>
                         <p class="card-text mt-3 mb-0">Descrizione: </p>
                         <p class="card-text">{{ apartment.description }}</p>
                         <p class="card-text">{{ 'Stanze: ' + apartment.rooms_number }}</p>
@@ -21,8 +21,13 @@
                         <p class="card-text text-end"><small class="text-body-secondary">{{ apartment.address }}</small>
                         </p>
                     </div>
-                    <RouterLink :to="{name:'edit', params:{slug:apartment.slug}}" class="btn btn-primary">Modifica</RouterLink>
-                    <button @click="onDelete" class="btn btn-danger">Delete</button>
+                    <RouterLink :to="{ name: 'edit', params: { slug: apartment.slug } }" class="btn btn-primary">Modifica
+                    </RouterLink>
+                   
+                        
+                        <button @click="onDelete()" class="btn btn-danger">Delete</button>
+                   
+                    
                 </div>
             </div>
         </div>
@@ -33,6 +38,8 @@
 
 <script>
 import axios from 'axios';
+axios.defaults.withCredentials = true;
+axios.defaults.withXSRFToken = true;
 export default {
     props: {
         slug: {
@@ -43,15 +50,20 @@ export default {
     data() {
         return {
 
-            apartment: null
+            apartment: null,
+           
         }
     },
 
     methods: {
-        onDelete() {
-            axios.delete(`http://127.0.0.1:8000/api/apartments/${this.slug}`).then((res)=>{
-                console.log(res)
+         async onDelete() {
+          await axios.delete(`http://localhost:8000/api/apartments/${this.slug}`).then((res) => {
+                console.log(res.data)
+            }).catch((err) => {
+                console.log(err)
             })
+       
+        
         }
     },
     mounted() {

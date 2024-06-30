@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::table('messages', function (Blueprint $table) {
             //vincolo
             $table->unsignedBigInteger('apartment_id')->after('id');
-            $table->foreign('apartment_id')->references('id')->on('apartments');
+            $table->foreign('apartment_id')->references('id')->on('apartments')->cascadeOnDelete();
         });
     }
 
