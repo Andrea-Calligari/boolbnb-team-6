@@ -1,7 +1,7 @@
 <?php
 
 namespace Database\Seeders;
-
+use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 use App\Models\Message;
 use App\Models\Apartment;
@@ -20,12 +20,28 @@ class MessageSeeder extends Seeder
 
         $random_apartments_ids = $faker->randomElements($apartments_ids, null);
 
+        $slug_list = [];
+
         foreach($random_apartments_ids as $ids){
+
+            $text = $faker->sentence(4);
+            $slug = $text;
+            $n = 0;
+            do {
+                if (in_array($slug, $slug_list)) {
+                    $n++;
+                    $slug = $text . '-' . $n;
+                }
+            } while (in_array($slug, $slug_list));
+
+            $slug_list[] =$slug;
+
             $message_one = new Message();
             $message_one->name = $faker->firstName(null);
             $message_one->surname = $faker->lastName();
             $message_one->sender_email = $faker->email();
-            $message_one->text = $faker->sentence(4);
+            $message_one->text = $text;
+            $message_one->slug = Str::slug($slug);
             $message_one->apartment_id = $ids;
             $message_one->save();
         }

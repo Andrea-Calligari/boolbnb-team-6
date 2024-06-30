@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('surname', 150);
             $table->string('sender_email',255 );
             $table->text('text');
+            $table->string('slug', 255);
             $table->timestamps();
 
         });
