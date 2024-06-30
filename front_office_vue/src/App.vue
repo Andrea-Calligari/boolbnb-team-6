@@ -41,6 +41,7 @@ export default {
       })
       .catch((err) => {
         console.log(err.response.data);
+        this.store.loading.off();
       })
   }
 }

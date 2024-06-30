@@ -1,6 +1,6 @@
 <template>
-  <div class="vh-100 vw-100 bg-dark position-absolute top-0 start-0" style="z-index: 999;">
-    <div class="position-absolute top-50 start-50 translate-middle">
+  <div class="vh-100 vw-100 bg-dark_ms position-absolute top-0 start-0 " style="z-index: 999;">
+    <div class="position-absolute top-50 start-50 translate-middle text-loading">
       <div role="img" class="wheel-and-hamster">
         <div class="wheel"></div>
         <div class="hamster">
@@ -17,7 +17,7 @@
             <div class="hamster__tail"></div>
           </div>
         </div>
-        <div class="spoke"></div>
+        <div class="spoke "></div>
       </div>
     </div>
 
@@ -30,12 +30,23 @@
 
 
 <style lang="scss" scoped>
+.bg-dark_ms{
+background-color: rgba(0, 0, 0, 0.8);
+}
+
 .wheel-and-hamster {
   --dur: 1s;
   position: relative;
   width: 12em;
   height: 12em;
   font-size: 14px;
+}
+
+.text-loading::after {
+  content: "Caricamento...";
+  text-align: center;
+  font-size: 2em;
+  color: white;
 }
 
 .wheel,
