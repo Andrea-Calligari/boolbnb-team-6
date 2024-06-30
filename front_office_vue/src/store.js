@@ -47,4 +47,6 @@ export const store = reactive({
         return number <= max && number >= min ? true : false;
     },
 
+  
+
 })

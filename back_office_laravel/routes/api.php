@@ -92,5 +92,5 @@ Route::middleware('auth')->group(function () {
 
     Route::put('/apartments/{slug}', [ApartmentController::class, 'update'])->name('apartments.update');
 
-    Route::delete('/apartments/{apartment}', [ApartmentController::class, 'destroy'])->name('apartments.destroy');
+    Route::delete('/apartments/{slug}', [ApartmentController::class, 'destroy'])->name('apartments.destroy');
 });
