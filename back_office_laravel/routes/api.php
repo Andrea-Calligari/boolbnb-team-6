@@ -1,7 +1,8 @@
 <?php
 
 use App\Http\Controllers\Api\ApartmentController;
-use App\Http\Controllers\Api\AuthenticatedSessionApi;
+use App\Http\Controllers\Api\AuthenticatedSessionApiController;
+use App\Http\Controllers\Api\RegisteredUserApiController;
 use App\Http\Controllers\Api\OptionsController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
@@ -33,15 +34,10 @@ Route::get('/apartments', [ApartmentController::class, 'index'])->name('apartmen
 Route::get('/apartments/{slug}', [ApartmentController::class, 'show'])->name('apartments.show');
 
 Route::middleware('guest')->group(function () {
-    Route::get('register', [RegisteredUserController::class, 'create'])
-        ->name('register');
 
-    Route::post('register', [RegisteredUserController::class, 'store']);
+    Route::post('register', [RegisteredUserApiController::class, 'store']);
 
-    Route::get('login', [AuthenticatedSessionApi::class, 'create'])
-        ->name('login');
-
-    Route::post('login', [AuthenticatedSessionApi::class, 'store']);
+    Route::post('login', [AuthenticatedSessionApiController::class, 'store']);
 
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
         ->name('password.request');
@@ -79,7 +75,7 @@ Route::middleware('auth')->group(function () {
 
     Route::put('password', [PasswordController::class, 'update'])->name('password.update');
 
-    Route::post('logout', [AuthenticatedSessionApi::class, 'destroy'])
+    Route::post('logout', [AuthenticatedSessionApiController::class, 'destroy'])
         ->name('logout');
 
     //Rotte crud appartamenti

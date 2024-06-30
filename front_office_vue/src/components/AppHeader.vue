@@ -22,6 +22,11 @@
             <CmpBtnLoad  content="Create" />
           </RouterLink>
 
+          <RouterLink v-if="!store.user.id" to="/register" class="me-2"
+            :class="$route.fullPath === '/register' ? 'opacity-50' : ''">
+            <CmpBtnLoad  content="Register" />
+          </RouterLink>
+
           <CmpBtnLoad @click="logout()" v-if="store.user.id" :content="store.user.name+ ' ' + store.user.surname + ' ->'"
             :class="$route.fullPath === '/login' ? 'opacity-50' : ''" />
           <RouterLink v-else to="/login" :class="$route.fullPath === '/login' ? 'opacity-50' : ''">
