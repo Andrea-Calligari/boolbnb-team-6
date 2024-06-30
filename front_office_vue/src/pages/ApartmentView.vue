@@ -21,13 +21,14 @@
                         <p class="card-text text-end"><small class="text-body-secondary">{{ apartment.address }}</small>
                         </p>
                     </div>
-                    <RouterLink :to="{ name: 'edit', params: { slug: apartment.slug } }" class="btn btn-primary">Modifica
+                    <RouterLink :to="{ name: 'edit', params: { slug: apartment.slug } }" class="btn btn-primary">
+                        Modifica
                     </RouterLink>
-                   
-                        
-                        <button @click="onDelete()" class="btn btn-danger">Delete</button>
-                   
-                    
+
+
+                    <button @click="onDelete()" class="btn btn-danger">Delete</button>
+
+
                 </div>
             </div>
         </div>
@@ -51,19 +52,19 @@ export default {
         return {
 
             apartment: null,
-           
+
         }
     },
 
     methods: {
-         async onDelete() {
-          await axios.delete(`http://localhost:8000/api/apartments/${this.slug}`).then((res) => {
-                console.log(res.data)
+        async onDelete() {
+            await axios.delete(`http://localhost:8000/api/apartments/${this.slug}`).then((res) => {
+                this.$router.push({ name: 'apartments'});
             }).catch((err) => {
                 console.log(err)
             })
-       
-        
+
+
         }
     },
     mounted() {

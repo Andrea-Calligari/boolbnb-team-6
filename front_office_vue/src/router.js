@@ -18,7 +18,7 @@ export default createRouter({
     { path: '/dashboard', name:'dashboard', component: DashboardView },
     { path: '/apartments', name:'apartments', component: ApartmentsView },
     { path: '/apartment/:slug', name:'apartment', component: ApartmentView, props:true },
-    { path: '/apartments/create', name:'create', component: ApartmentsCreate },
-    { path: '/apartment/:slug/edit', name:'edit', component: ApatmentEdit, props:true}
+    { path: '/apartments/create', name:'apartments.create', component: ApartmentsCreate },
+    { path: '/apartment/:slug/edit', name:'apartments.edit', component: ApatmentEdit, props:true}
   ],
 })
