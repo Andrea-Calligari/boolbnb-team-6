@@ -21,7 +21,7 @@
                         <p class="card-text text-end"><small class="text-body-secondary">{{ apartment.address }}</small>
                         </p>
                     </div>
-                    <RouterLink :to="{ name: 'edit', params: { slug: apartment.slug } }" class="btn btn-primary">
+                    <RouterLink :to="{ name: 'apartments.edit', params: { slug: apartment.slug } }" class="btn btn-primary">
                         Modifica
                     </RouterLink>
 
@@ -61,7 +61,7 @@ export default {
             await axios.delete(`http://localhost:8000/api/apartments/${this.slug}`).then((res) => {
                 this.$router.push({ name: 'apartments'});
             }).catch((err) => {
-                console.log(err)
+                console.log(err.response.data)
             })
 
 
