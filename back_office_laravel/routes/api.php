@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\ApartmentController;
 use App\Http\Controllers\Api\AuthenticatedSessionApiController;
+use App\Http\Controllers\Api\MessageApiController;
 use App\Http\Controllers\Api\RegisteredUserApiController;
 use App\Http\Controllers\Api\OptionsController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
@@ -89,4 +90,8 @@ Route::middleware('auth')->group(function () {
     Route::put('/apartments/{slug}', [ApartmentController::class, 'update'])->name('apartments.update');
 
     Route::delete('/apartments/{slug}', [ApartmentController::class, 'destroy'])->name('apartments.destroy');
+
+    //Rotte crud messaggi
+
+    Route::get('/messages', [MessageApiController::class, 'index'])->name('messages.index');
 });
