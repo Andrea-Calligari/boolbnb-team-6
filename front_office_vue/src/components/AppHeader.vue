@@ -17,6 +17,11 @@
             <CmpBtnLoad content="Apartments" />
           </RouterLink>
 
+          <RouterLink v-if="store.user.id" :to="{ name: 'dashboard'}" class="me-2"
+            :class="$route.fullPath === '/dashboard' ? 'opacity-50' : ''">
+            <CmpBtnLoad  content="Dashboard" />
+          </RouterLink>
+
           <RouterLink v-if="store.user.id" to="/apartments/create" class="me-2"
             :class="$route.fullPath === '/apartments/create' ? 'opacity-50' : ''">
             <CmpBtnLoad  content="Create" />
