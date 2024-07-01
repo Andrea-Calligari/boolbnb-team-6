@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col">
                 <div class="card">
-                    <img :src="apartment.image" class="card-img-top" style="height: 40vh;"
+                    <img :src="'http://localhost:8000/'+apartment.image" class="card-img-top" style="height: 40vh;"
                         :alt="apartment.title + ' img'">
                     <div class="card-body">
                         <h2 class="card-title mb-0">{{ apartment.title }}</h2>

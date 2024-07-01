@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <form @submit.prevent="onCreate">
+        <form @submit.prevent="onCreate" enctype="multipart/form-data">
 
             <div class="mb-3">
                 <label for="title" class="form-label">titolo</label>
@@ -77,19 +77,19 @@
                 </div>
             </div>
 
-            <!-- <div class="mb-3">
-                <label for="image" class="form-label">Immagini</label>
-                <input class="form-control" type="file" name="image" id="image" multiple>
-            </div> -->
-
             <div class="mb-3">
+                <label for="image" class="form-label">Immagini</label>
+                <input class="form-control" type="file" name="image" value="" id="image" multiple>
+            </div>
+
+            <!-- <div class="mb-3">
                 <label for="image" class="form-label">Immagini</label>
                 <input type="text" class="form-control" :class="classValidate(isVimage)" id="image" name="image"
                     v-model="image" placeholder="Inserisci titolo">
                 <div v-if="classValidate(isVimage) === 'is-invalid'" class="mt-0 text-danger">
                     Il campo non può essere vuoto e non deve superare i 254 caratteri
                 </div>
-            </div>
+            </div> -->
 
             <div class="mb-3">
                 <label for="category" class="form-label">categorie</label>
@@ -154,7 +154,7 @@ export default {
             isVmtq: null,
             visible: '1',
             isVvisible: null,
-            image: 'https://picsum.photos/200/300',
+            image: [],
             isVimage: null,
             category: 1,
             services: []
@@ -162,6 +162,11 @@ export default {
         }
     },
     methods: {
+        // handleImageUpload(event) {
+        //     // Gestisci l'upload dell'immagine qui
+        //     // Assegna il percorso dell'immagine alla variabile imagePath
+        //     this.imagePath = event.target.value;
+        // },
         classValidate(e) {
             if (e === null) {
                 return ''
@@ -202,7 +207,9 @@ export default {
                 return false
             }
         },
-        async onCreate() {
+        async onCreate(e) {
+            // console.dir(e.target.elements["image"].value);
+           
             if (this.isFormValidated()) {
 
                 this.position = await fetch(`https://api.tomtom.com/search/2/geocode/${encodeURI(this.address)}.json?key=orDHPznfE908Jeu45AKVaFSiSMAebYfQ`)
@@ -214,10 +221,6 @@ export default {
 
                 console.log(this.position);
 
-                console.log('FINALMENTE sei arrivato qua');
-
-                //this.store.user = 0;
-                //await axios.get("http://localhost:8000/sanctum/csrf-cookie");
                 await axios.post("http://localhost:8000/api/apartments", {
                     title: this.title,
                     description: this.description,
@@ -229,11 +232,15 @@ export default {
                     address: this.address,
                     latitude: this.position.lat,
                     longitude: this.position.lon,
-                    image: this.image,
                     visible: this.visible,
                     user_id: this.store.user.id,
                     category_id: this.category,
                     services_ids: this.services,
+                    image: e.target.elements["image"].files
+                }, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
                 }).then((res) => {
                     const apartmentSlug = res.data.apartment.slug;
                     this.$router.push({ name: 'apartment', params: { slug: apartmentSlug } });

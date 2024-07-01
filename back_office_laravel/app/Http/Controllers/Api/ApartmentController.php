@@ -41,6 +41,25 @@ class ApartmentController extends Controller
 
         $form_data['slug'] = $slug;
 
+        if ($request->has('image')) {
+            //imposti l'array vuoto
+            $form_data['image'] = '';
+
+            foreach ($request->file('image') as $file) {
+                //definisci l'estensione del file
+                $extension = $file->getClientOriginalExtension();
+                //definisci il nome del file
+                $filename = time() . '-' . uniqid() . '.' . $extension;
+                //definisci il percorso
+                $path = 'uploads/apartment/';
+                //sposti il file nel percorso
+                $file->move($path, $filename);
+                //aggiungi il file all'array
+                $form_data['image'] = $form_data['image'] . $path . $filename . ',';
+            }
+            $form_data['image'] = rtrim($form_data['image'], ",");
+        }
+
         $apartment = Apartment::create($form_data);
 
         if ($request->has('services_ids')) {
