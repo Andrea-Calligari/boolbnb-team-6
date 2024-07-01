@@ -99,4 +99,7 @@ Route::middleware('auth')->group(function () {
     //Rotte crud messaggi
 
     Route::get('/messages', [MessageApiController::class, 'index'])->name('messages.index');
+
+    Route::get('userapartments', [AuthenticatedSessionApiController::class, 'getApartments']);
+
 });

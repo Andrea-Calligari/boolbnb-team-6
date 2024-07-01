@@ -24,6 +24,15 @@ class AuthenticatedSessionApiController extends Controller
         return response()->json(compact('user', 'apartments'));
     }
 
+    public function getApartments()
+    {
+        
+        
+        $apartments = Apartment::where('user_id', Auth::id())->with('messages', 'category', 'promotions', 'services')->get();
+
+        return response()->json(compact('apartments'));
+    }
+
     /**
      * Destroy an authenticated session.
      */
