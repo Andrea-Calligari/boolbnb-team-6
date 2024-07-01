@@ -1,5 +1,5 @@
 <template>
-  <div :class="store.loading.state ? 'vh-100 overflow-hidden' : ''">
+  <div :class="store.loading.state ? 'vh-100 overflow-hidden' : 'd-contents'">
     <CmpLoading v-if="store.loading.state" />
     <AppHeader />
     <AppMain />
