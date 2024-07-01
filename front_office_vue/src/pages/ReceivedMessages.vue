@@ -1,30 +1,19 @@
 <template>
-    <div v-for="(message, i) in messages">
-        <div v-if="message[0] !== undefined">
-            <p>DA:{{ message[0].name }} {{ message[0].surname }} per l'annuncio
-
-                <span v-for="apartment in apartments">
-                    <span v-if="apartment.id === message[0].apartment_id">{{ apartment.title }}</span>
-                </span>
-            </p>
-
-        </div>
-
-    </div>
+    
 
     <div class="accordion" id="accordionExample">
         <div class="accordion-item" v-for="(message, i) in messages">
             <div v-if="message[0] !== undefined">
                 <h2 class="accordion-header">
                     <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        :data-bs-target="`#collapse${i}`" aria-expanded="true" :aria-controls="`collapse${i}`">
                         Da: {{ message[0].name }} {{ message[0].surname }} per l'annuncio 
                         <span v-for="apartment in apartments">
                             <span v-if="apartment.id === message[0].apartment_id"> {{ apartment.title }}</span>
                         </span>
                     </button>
                 </h2>
-                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                <div :id="`collapse${i}`" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
                         <p>email: {{ message[0].sender_email }}</p>
                        <p>messaggio: {{ message[0].text }}</p>
@@ -35,6 +24,7 @@
         </div>
 
     </div>
+   
 </template>
 
 <script>
