@@ -3,12 +3,13 @@ import axios from 'axios';
 
 export const store = reactive({
     user: {
-        apartments:[],
+        apartments: [],
         id: 0,
         getUser() {
             this.id = 0;
             axios.get("http://localhost:8000/api/user")
                 .then((res) => {
+
                     this.fillUser(res.data)
                 })
                 .catch((err) => {
@@ -26,18 +27,18 @@ export const store = reactive({
 
             this.apartments = data.apartments;
         },
-        getApartments(){
-            axios.get("http://localhost:8000/api/userapartments").then((res)=>{
+        getApartments() {
+            axios.get("http://localhost:8000/api/userapartments").then((res) => {
                 this.apartments = res.data.apartments
                 console.log(this.apartments)
-            }).catch((err) =>{
+            }).catch((err) => {
                 console.log(err)
             })
         }
     },
 
     loading: {
-        state: true,
+        state: false,
         on() {
             this.state = true;
         },
@@ -48,6 +49,34 @@ export const store = reactive({
 
     options: {},
 
+
+    // fetchApi: {
+    //     urlBackend: "http://localhost:8000/api/",
+    //     async get(path) {
+    //         store.loading.on();
+    //         await axios.get(this.urlBackend + path)
+    //             .then((res) => {
+    //                 store.loading.off();
+    //                 return (res.data)
+    //             })
+    //             .catch((err) => {
+    //                 store.loading.off();
+    //                 return console.log(err.response.data);
+    //             })
+    //     },
+    //     async post(path, params = {}) {
+    //         store.loading.on();
+    //         await axios.get(this.urlBackend + path, params)
+    //             .then((res) => {
+    //                 store.loading.off();
+    //                 return (res.data)
+    //             })
+    //             .catch((err) => {
+    //                 store.loading.off();
+    //                 return console.log(err.response.data);
+    //             })
+    //     },
+    // },
     validateString(text, min = 3, max = 254) {
         return text.length <= max && text.length >= min ? true : false;
     },

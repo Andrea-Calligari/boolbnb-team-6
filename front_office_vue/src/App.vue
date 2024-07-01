@@ -30,18 +30,26 @@ export default {
   },
   mounted() {
     this.store.user.id = 0;
-    this.store.loading.on();
+    // this.store.loading.on();
 
     this.store.user.getUser();
+
+    // this.store.fetchApi.get('options')
+    //   .then((res) => {
+    //     console.log(res);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   })
 
     axios.get("http://localhost:8000/api/options")
       .then((res) => {
         this.store.options = res.data
-        this.store.loading.off();
+        // this.store.loading.off();
       })
       .catch((err) => {
         console.log(err.response.data);
-        this.store.loading.off();
+        // this.store.loading.off();
       })
   }
 }
