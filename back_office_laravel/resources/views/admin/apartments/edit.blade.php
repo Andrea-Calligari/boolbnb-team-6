@@ -88,8 +88,8 @@
             </div>
 
             <div class="mb-3">
-                <label for="image" class="form-label">Cover photo</label>
-                <input class="form-control" type="file" name="image" id="image">
+                <label for="image[]" class="form-label">Pictures</label>
+                <input class="form-control" type="file" name="image[]" id="image[]" multiple>
             </div>
 
             <div class="my-3">

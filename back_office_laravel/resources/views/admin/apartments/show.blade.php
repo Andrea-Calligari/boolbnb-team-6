@@ -26,7 +26,11 @@
                     <p>{{ $apartment->visible }}</p>
                     <div>{{ $apartment->category->name }}</div>
                     <div class="buttons d-flex gap-2 justify-content-center align-itmes-center mt-3">
-                        <button class="btn btn-outline-danger">Trash</button>
+                        <form action="{{route('admin.apartments.destroy', $apartment)}}" method="POST">
+                            @method('DELETE')
+                            @csrf
+                            <button type="submit" class="btn btn-outline-danger" onclick="return confirm('Are you sure you want to delete this apartment?')">Delete</button>
+                        </form>
                         <a class="btn btn-outline-warning" href="{{ route('admin.apartments.edit', $apartment) }}">Edit</a>
                     </div>
 

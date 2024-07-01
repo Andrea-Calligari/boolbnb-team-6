@@ -135,24 +135,27 @@ class ApartmentController extends Controller
         $form_data = $request->all();
 
         if ($request->has('image')) {
-            //definisci il file
-            $file = $request->file('image');
-            //definisci l'estensione del file
-            $extension = $file->getClientOriginalExtension();
-            //definisci il nome del file
-            $filename = time() . '.' . $extension;
-            //definisci il percorso
-            $path = 'uploads/apartment/';
-            //sposti il file nel percorso
-            $file->move($path, $filename);
+            //imposti l'array vuoto
+            $form_data['image'] = '';
 
-            //cancelli file image precedente se esiste
-            if (File::exists($apartment->image)) {
-                File::delete($apartment->image);
+            foreach ($request->file('image') as $file) {
+                //definisci l'estensione del file
+                $extension = $file->getClientOriginalExtension();
+                //definisci il nome del file
+                $filename = time() . '-' . uniqid() . '.' . $extension;
+                //definisci il percorso
+                $path = 'uploads/apartment/';
+                //sposti il file nel percorso
+                $file->move($path, $filename);
+                //aggiungi il file all'array
+                $form_data['image'] = $form_data['image'] . $path . $filename . ',';
+
+                //cancelli file image precedente se esiste
+                if (File::exists($apartment->image)) {
+                    File::delete($apartment->image);
+                }
             }
-
-            //definisci l'attributo image in form_data
-            $form_data['image'] = $path . $filename;
+            $form_data['image'] = rtrim($form_data['image'], ",");
         }
 
         $apartment->fill($form_data);
@@ -170,6 +173,7 @@ class ApartmentController extends Controller
      */
     public function destroy(Apartment $apartment)
     {
-        //
+        $apartment->delete();
+        return to_route('admin.apartments.index');
     }
 }
