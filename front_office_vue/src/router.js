@@ -11,6 +11,7 @@ import DashboardView from './pages/DashboardView.vue'
 import ProfileUpdate from './pages/ProfileUpdate.vue'
 import ReceivedMessages from './pages/ReceivedMessages.vue'
 
+
 export default createRouter({
   history: createWebHistory(),
   routes: [
@@ -24,5 +25,6 @@ export default createRouter({
     { path: '/apartment/:slug/edit', name:'apartments.edit', component: ApatmentEdit, props:true},
     { path: '/dashboard/profileupdate', name:'profileupdate',component: ProfileUpdate },
     { path: '/dashboard/receivedmessages', name:'receivedmessages',component: ReceivedMessages },
+    
   ],
 })
