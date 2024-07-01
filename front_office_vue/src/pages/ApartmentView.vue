@@ -43,17 +43,69 @@
                                 aria-label="Close"></button>
                         </div>
                         <div class="offcanvas-body">
-                            <form action="">
-                                <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                                    <input type="email" class="form-control" id="exampleFormControlInput1"
-                                        placeholder="name@example.com">
+                            <form @submit.prevent="onSend">
+
+                                <div class="mb-4 row">
+                                    <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
+
+                                    <div class="col-md-6">
+                                        <input id="name" type="text" class="form-control" v-model="name"
+                                            :class="classValidate(isVname)" required autocomplete="name" autofocus>
+
+                                        <div v-if="classValidate(isVname) === 'is-invalid'" class="mt-0 text-danger">
+                                            Il campo non può essere vuoto e non deve superare i 254 caratteri
+                                        </div>
+
+                                    </div>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+
+                                <div class="mb-4 row">
+                                    <label for="surname" class="col-md-4 col-form-label text-md-right">Surname</label>
+
+                                    <div class="col-md-6">
+                                        <input id="surname" type="text" class="form-control" v-model="surname"
+                                            :class="classValidate(isVsurname)" required autocomplete="surname"
+                                            autofocus>
+
+
+                                        <div v-if="classValidate(isVsurname) === 'is-invalid'" class="mt-0 text-danger">
+                                            Il campo non può essere vuoto e non deve superare i 254 caratteri
+                                        </div>
+                                    </div>
                                 </div>
-                                <button class="btn btn-primary">Invia</button>
+
+                                <div class="mb-4 row">
+                                    <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail
+                                        Address</label>
+
+                                    <div class="col-md-6">
+                                        <input id="email" type="email" class="form-control" v-model="email"
+                                            :class="classValidate(isVemail)" required autocomplete="email">
+
+                                        <div v-if="classValidate(isVemail) === 'is-invalid'" class="mt-0 text-danger">
+                                            Il campo non può essere vuoto e non deve superare i 254 caratteri
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="text" class="form-label">Testo messaggio</label>
+                                    <textarea class="form-control" v-model="text" rows="3"
+                                        :class="classValidate(isVtext)" id="text" name="text"
+                                        placeholder="Inserisci messaggio"></textarea>
+                                    <div v-if="classValidate(isVtext) === 'is-invalid'" class="mt-0 text-danger">
+                                        Il testo non deve superare i 1000 caratteri
+                                    </div>
+                                </div>
+
+
+                                <div class="mb-4 row mb-0">
+                                    <div class="col-md-6 offset-md-4">
+                                        <button type="submit" class="btn btn-primary">
+                                            invia
+                                        </button>
+                                    </div>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -68,6 +120,7 @@
 </template>
 
 <script>
+import { store } from '../store';
 import axios from 'axios';
 axios.defaults.withCredentials = true;
 axios.defaults.withXSRFToken = true;
@@ -80,9 +133,16 @@ export default {
     },
     data() {
         return {
-
             apartment: null,
-
+            name: '',
+            isVname: null,
+            surname: '',
+            isVsurname: null,
+            email: '',
+            isVemail: null,
+            store,
+            text: '',
+            isVtext: null,
         }
     },
 
@@ -94,6 +154,32 @@ export default {
                 console.log(err.response.data)
             })
 
+
+        },
+
+        classValidate(e) {
+            if (e === null) {
+                return ''
+            }
+            if (e === true) {
+                return 'is-valid'
+            }
+            if (e === false) {
+                return 'is-invalid'
+            }
+        },
+
+        async onSend() {
+            await axios.post("http://localhost:8000/api/messages", {
+                name: this.name,
+                surname: this.surname,
+                sender_email: this.email,
+                apartment_id: this.apartment.id,
+                text: this.text
+
+            }).then((res)=>{
+                console.log(res)
+            })
 
         }
     },
