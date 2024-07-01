@@ -1,10 +1,9 @@
 <template>
     <div class="container mt-4">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center flex-column">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">Update Profile</div>
-
                     <div class="card-body">
                         <form @submit.prevent="onUpdate">
 
@@ -60,6 +59,22 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Delete Profile</div>
+                    <div class="card-body">
+                        <form @submit.prevent="onDelete">
+                            <div class="mb-4 row mb-0">
+                                <div class="col-md-6 offset-md-4">
+                                    <button type="submit" class="btn btn-danger">
+                                        Delete
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -81,7 +96,7 @@ export default {
             isVsurname: null,
             email: '',
             isVemail: null,
-            
+
         }
     },
     methods: {
@@ -123,6 +138,22 @@ export default {
                     email: this.email
                 }).then((res) => {
                     this.store.user.getUser();
+                    this.store.loading.off();
+                    this.$router.push('/');
+                    console.log(res.data)
+                }).catch((err) => {
+                    this.store.loading.off();
+                    console.log(err.response.data);
+                });
+            }
+        },
+        async onDelete() {
+            if (this.isFormValidated()) {
+                this.store.loading.on();
+                this.store.user.id = 0;
+                await axios.get("http://localhost:8000/sanctum/csrf-cookie");
+                await axios.delete("http://localhost:8000/api/profile").then((res) => {
+                    this.store.user.id = 0;
                     this.store.loading.off();
                     this.$router.push('/');
                     console.log(res.data)
