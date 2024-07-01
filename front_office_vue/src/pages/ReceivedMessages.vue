@@ -1,8 +1,13 @@
 <template>
-    <div v-if="messages === []">
-        <div v-for="message in messages">
-            {{ message.text }}
+    <div v-for="(message, i) in messages" :slug="message.slug">
+        <div v-if="message[0] !== undefined">
+            <p>DA:{{ message[0].name }} {{ message[0].surname }} per l'annuncio
+                <span v-for="apartment in apartments">
+                    <span v-if="apartment.id === message[0].apartment_id">{{ apartment.title }}</span>
+                </span> 
+            </p>
         </div>
+        
     </div>
 </template>
 
@@ -13,24 +18,28 @@ export default {
     data() {
         return {
             store,
-            messages: []
+            messages: [],
+            apartments: null
         }
     },
     methods: {
-        fetchMessage() {
-            axios.get('http://localhost:8000/api/messages').then((res) => {
-                for (let i = 0; i < res.data.results.messages.length; i++) {
 
-                    this.messages.push(res.data.results.messages[i][0])
-                }
-
-                //console.log(this.messages)
-            })
-        }
 
     },
     mounted() {
-        this.fetchMessage()
+
+        axios.get('http://localhost:8000/api/messages').then((res) => {
+            for (let i = 0; i < res.data.results.apartments.length; i++) {
+
+                this.messages.push(res.data.results.apartments[i].messages)
+
+            }
+
+            this.apartments = res.data.results.apartments
+
+            console.log(res.data.results.apartments)
+        })
+
     }
 
 }

@@ -25,6 +25,14 @@ export const store = reactive({
             this.admin = data.user.admin;
 
             this.apartments = data.apartments;
+        },
+        getApartments(){
+            axios.get("http://localhost:8000/api/userapartments").then((res)=>{
+                this.apartments = res.data.apartments
+                console.log(this.apartments)
+            }).catch((err) =>{
+                console.log(err)
+            })
         }
     },
 

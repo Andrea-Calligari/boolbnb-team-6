@@ -16,20 +16,39 @@ class MessageApiController extends Controller
     public function index()
     {
         $apartments = Apartment::where('user_id', Auth::id())->with('messages')->get();
-        
-         $messages = [];
-        
-        foreach($apartments as $apartment){
-            $message = $apartment->messages;
-            array_push($messages,$message);
-        }
-        
-        
+
+
+
+
+        // $apartment_messages = [];
+        // $messages = [];
+
+        // foreach ($apartments as $apartment) {
+
+        //     array_push($apartment_messages,$apartment->messages);
+            
+            
+            
+        // }
+        // foreach($apartment_messages as $message){
+            
+        //     $i = 0;
+
+        //     if (empty($message)) {
+        //         $i++;
+        //     }else{
+        //         array_push($messages, $message);
+        //     }
+
+            
+            
+        // }
+
+
         return response()->json([
-            'results'=>compact('messages'),
+            'results' => compact('apartments'),
             //'results'=>$id
         ]);
-        
     }
 
     /**
@@ -46,14 +65,18 @@ class MessageApiController extends Controller
     public function store(Request $request)
     {
         //
+
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Message $message)
+    public function show(string $slug)
     {
-        //
+        $message = Message::where('slug', $slug)->get();
+        return response()->json([
+            'results' => $message
+        ]);
     }
 
     /**
