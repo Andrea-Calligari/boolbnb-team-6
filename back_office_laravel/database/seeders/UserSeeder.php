@@ -20,6 +20,7 @@ class UserSeeder extends Seeder
             'surname' => 'Gioia',
             'email' => 'test@example.com',
             'password' => 'password',
+            'image' => 'uploads/user/Netflix_avatar.png',
             'admin' => true
         ]);
 
@@ -29,6 +30,7 @@ class UserSeeder extends Seeder
             'email' => 'ernesto@bnb.com',
             //  'city' => 'rome',
             'password' => Hash::make('admin'),
+            'image' => 'uploads/user/Netflix_avatar.png'
         ]);
 
         User::create([
@@ -37,6 +39,7 @@ class UserSeeder extends Seeder
             //  'city' => 'rome',
             'email' => 'gianfranco@bnb.com',
             'password' => Hash::make('admin'),
+            'image' => 'uploads/user/Netflix_avatar.png'
         ]);
 
         for ($i = 0; $i < 5; $i++) {
@@ -46,6 +49,7 @@ class UserSeeder extends Seeder
                 //  'city' => 'rome',
                 'email' => $faker->email(),
                 'password' => Hash::make('admin'),
+                'image' => 'uploads/user/Netflix_avatar.png'
             ]);
         }
     }

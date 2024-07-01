@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('image', 500)->default('uploads/user/Netflix_avatar.png')->nullable();
             $table->boolean('admin')->default(false);
             $table->rememberToken();
             $table->timestamps();

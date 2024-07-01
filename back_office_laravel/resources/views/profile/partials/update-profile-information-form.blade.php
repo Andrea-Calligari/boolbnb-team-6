@@ -13,7 +13,7 @@
         @csrf
     </form>
 
-    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
+    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
         @csrf
         @method('patch')
 
@@ -23,6 +23,16 @@
             @error('name')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $errors->get('name')}}</strong>
+            </span>
+            @enderror
+        </div>
+
+        <div class="mb-2">
+            <label for="image">Profile Picture</label>
+            <input class="form-control" type="file" name="image" id="image" autocomplete="image" value="{{old('image', $user->image)}}" required autofocus>
+            @error('image')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $errors->get('image')}}</strong>
             </span>
             @enderror
         </div>
