@@ -21,12 +21,42 @@
                         <p class="card-text text-end"><small class="text-body-secondary">{{ apartment.address }}</small>
                         </p>
                     </div>
-                    <RouterLink :to="{ name: 'apartments.edit', params: { slug: apartment.slug } }" class="btn btn-primary">
+                    <RouterLink :to="{ name: 'apartments.edit', params: { slug: apartment.slug } }"
+                        class="btn btn-primary">
                         Modifica
                     </RouterLink>
 
 
                     <button @click="onDelete()" class="btn btn-danger">Delete</button>
+
+                    <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
+                        aria-controls="offcanvasExample">
+                        Chiedi Informazioni
+                    </a>
+
+
+                    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
+                        aria-labelledby="offcanvasExampleLabel">
+                        <div class="offcanvas-header">
+                            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <form action="">
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                                    <input type="email" class="form-control" id="exampleFormControlInput1"
+                                        placeholder="name@example.com">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                </div>
+                                <button class="btn btn-primary">Invia</button>
+                            </form>
+                        </div>
+                    </div>
 
 
                 </div>
@@ -59,7 +89,7 @@ export default {
     methods: {
         async onDelete() {
             await axios.delete(`http://localhost:8000/api/apartments/${this.slug}`).then((res) => {
-                this.$router.push({ name: 'apartments'});
+                this.$router.push({ name: 'apartments' });
             }).catch((err) => {
                 console.log(err.response.data)
             })

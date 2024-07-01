@@ -13,7 +13,7 @@
                         </span>
                     </button>
                 </h2>
-                <div :id="`collapse${i}`" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                <div :id="`collapse${i}`" class="accordion-collapse collapse" :class="i === 0 ? 'show': ''" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
                         <p>email: {{ message[0].sender_email }}</p>
                        <p>messaggio: {{ message[0].text }}</p>
