@@ -40,7 +40,9 @@ export default {
             password: this.password
          }).then((res) => {
             console.log(res.data);
-            this.store.user.getUser();
+
+            this.store.user.fillUser(res.data)
+
             this.store.loading.off();
             this.$router.push('/');
          }).catch((err) => {
