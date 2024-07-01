@@ -14,6 +14,10 @@ class Apartment extends Model
 
     protected $fillable = ['title', 'slug', 'description', 'price', 'rooms_number', 'beds_number', 'baths_number', 'mtq', 'address', 'latitude', 'longitude', 'image', 'visible', 'user_id', 'category_id'];
 
+    protected $casts = [
+        'image' => 'array',
+    ];
+    
     public function user()
     {
         return $this->belongsTo(User::class);

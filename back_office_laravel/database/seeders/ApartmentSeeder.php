@@ -74,7 +74,7 @@ class ApartmentSeeder extends Seeder
             $new_apartment->address = $addresses[$i];
             $new_apartment->latitude = $latitudes[$i];
             $new_apartment->longitude = $longitudes[$i];
-            $new_apartment->image = 'https://picsum.photos/200/300';
+            $new_apartment->image = ['https://picsum.photos/200/300', 'https://picsum.photos/200/300', 'https://picsum.photos/200/300'];
             $new_apartment->visible = $faker->boolean();
             $new_apartment->user_id = $faker->randomElement($user_ids);
             $new_apartment->category_id = $faker->randomElement($categories_ids);

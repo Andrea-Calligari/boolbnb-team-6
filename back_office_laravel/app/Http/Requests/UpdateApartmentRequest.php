@@ -32,7 +32,7 @@ class UpdateApartmentRequest extends FormRequest
             //'baths_number' => 'required|numeric|integer|max:255',
             //'mtq' => 'required|numeric|integer|max:150',
             //'address' => 'required|string|max:255',
-            //'image' => 'nullable|mimes:png,jpg,jpeg|max:2048',
+            //'image.*' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             //'visible' => 'boolean',
             //'category_id' => 'required|exists:categories,id',
             //'services' => 'nullable|array',

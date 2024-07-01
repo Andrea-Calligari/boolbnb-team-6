@@ -5,7 +5,11 @@
         <div class="card text-center">
             <div class="card-header">
                 <div class="card-img-top">
-                    <img src="{{asset($apartment->image)}}" alt="Apartment-image" class="w-50">
+                    @foreach($apartment->image as $image)
+                    <div class="apartment-image">
+                        <img src="{{ asset($image) }}" alt="Apartment Image" class="w-50">
+                    </div>
+                @endforeach
                 </div>
                <h1>{{$apartment->title}}</h1>
                <h4>{{$apartment->slug}}</h4>

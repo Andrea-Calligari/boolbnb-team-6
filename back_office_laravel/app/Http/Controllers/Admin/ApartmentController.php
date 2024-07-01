@@ -72,20 +72,24 @@ class ApartmentController extends Controller
         //definire visible come false per default
         $form_data['visible'] = $request->input('visible', false);
 
-        if($request->has('image')){
-            //definisci il file
-            $file = $request->file('image');
-            //definisci l'estensione del file
-            $extension = $file->getClientOriginalExtension();
-            //definisci il nome del file
-            $filename = time().'.'.$extension;
-            //definisci il percorso
-            $path = 'uploads/apartment/';
-            //sposti il file nel percorso
-            $file->move($path, $filename);
+        if ($request->has('image')) {
+            //imposti l'array vuoto
+            $images = [];
 
-            //definisci l'attributo image in form_data
-            $form_data['image'] = $path . $filename;
+            foreach ($request->file('image') as $file) {
+                //definisci l'estensione del file
+                $extension = $file->getClientOriginalExtension();
+                //definisci il nome del file
+                $filename = time() . '-' . uniqid() . '.' . $extension;
+                //definisci il percorso
+                $path = 'uploads/apartment/';
+                //sposti il file nel percorso
+                $file->move($path, $filename);
+                //aggiungi il file all'array
+                $images[] = $path . $filename;
+            }
+            // converti l'array in un json
+            $form_data['image'] = json_encode($images);
         }
 
         $new_apartment = Apartment::create($form_data);
@@ -106,6 +110,8 @@ class ApartmentController extends Controller
      */
     public function show(Apartment $apartment)
     {
+        dd($apartment->image);
+        //$images = json_decode($apartment->image, true);
         $apartment->load(['category', 'promotions' ,'services' ]);
         return view('admin.apartments.show', compact('apartment'));
     }

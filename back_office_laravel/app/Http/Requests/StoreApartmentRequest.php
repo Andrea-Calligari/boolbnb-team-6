@@ -22,21 +22,21 @@ class StoreApartmentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string|max:255',
-            'description' => 'nullable|string|max:1000',
-            'price' => 'required|numeric|min:0|max:9999.99',
-            'rooms_number' => 'required|numeric|integer|max:255',
-            'beds_number' => 'required|numeric|integer|max:255',
-            'baths_number' => 'required|numeric|integer|max:255',
-            'mtq' => 'required|numeric|integer|max:150',
-            'address' => 'required|string|max:255',
-            'image' => 'nullable|mimes:png,jpg,jpeg|max:2048',
-            'visible' => 'boolean',
-            'category_id' => 'required|exists:categories,id',
-            'services' => 'nullable|array',
-            'services.*' => 'exists:services,id',
-            'promotions' => 'nullable|array',
-            'promotions.*' => 'exists:promotions,id'
+           // 'title' => 'required|string|max:255',
+           // 'description' => 'nullable|string|max:1000',
+           // 'price' => 'required|numeric|min:0|max:9999.99',
+           // 'rooms_number' => 'required|numeric|integer|max:255',
+           // 'beds_number' => 'required|numeric|integer|max:255',
+           // 'baths_number' => 'required|numeric|integer|max:255',
+           // 'mtq' => 'required|numeric|integer|max:150',
+           // 'address' => 'required|string|max:255',
+           // 'image.*' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+           // 'visible' => 'boolean',
+           // 'category_id' => 'required|exists:categories,id',
+           // 'services' => 'nullable|array',
+           // 'services.*' => 'exists:services,id',
+           // 'promotions' => 'nullable|array',
+           // 'promotions.*' => 'exists:promotions,id'
 
         ];
     }
