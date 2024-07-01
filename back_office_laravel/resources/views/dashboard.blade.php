@@ -18,6 +18,8 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+
+                    <a class="btn btn-primary" href="{{route('admin.apartments.create')}}">Add a new apartment</a>
                 </div>
             </div>
         </div>
