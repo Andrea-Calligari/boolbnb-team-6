@@ -10,6 +10,8 @@ import RegisterView from './pages/RegisterView.vue'
 import DashboardView from './pages/DashboardView.vue'
 import ProfileUpdate from './pages/ProfileUpdate.vue'
 import ReceivedMessages from './pages/ReceivedMessages.vue'
+import UserApartments from './pages/UserApartments.vue'
+
 
 export default createRouter({
   history: createWebHistory(),
@@ -22,7 +24,9 @@ export default createRouter({
     { path: '/apartment/:slug', name:'apartment', component: ApartmentView, props:true },
     { path: '/apartments/create', name:'apartments.create', component: ApartmentsCreate },
     { path: '/apartment/:slug/edit', name:'apartments.edit', component: ApatmentEdit, props:true},
+    { path: '/dashboard/userapartments', name:'userapartments', component: UserApartments },
     { path: '/dashboard/profileupdate', name:'profileupdate',component: ProfileUpdate },
     { path: '/dashboard/receivedmessages', name:'receivedmessages',component: ReceivedMessages },
+    
   ],
 })
