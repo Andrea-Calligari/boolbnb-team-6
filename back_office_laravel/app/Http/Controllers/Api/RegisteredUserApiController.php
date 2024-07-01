@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Apartment;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -31,7 +32,8 @@ class RegisteredUserApiController extends Controller
         event(new Registered($user));
 
         Auth::login($user);
+        // $apartments = Apartment::where('user_id', Auth::id())->with('messages', 'category', 'promotions', 'services')->get();
 
-        return response()->json(compact('user'));
+        return response()->json(compact('user','apartments'));
     }
 }

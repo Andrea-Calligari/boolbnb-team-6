@@ -3,25 +3,31 @@ import axios from 'axios';
 
 export const store = reactive({
     user: {
+        apartments:[],
         id: 0,
         getUser() {
             this.id = 0;
             axios.get("http://localhost:8000/api/user")
                 .then((res) => {
-                    this.id = res.data.id;
-                    this.name = res.data.name;
-                    this.surname = res.data.surname;
-                    this.email = res.data.email;
-                    this.email_verified_at = res.data.email_verified_at;
-                    this.admin = res.data.admin;
+                    this.fillUser(res.data)
                 })
                 .catch((err) => {
                     this.id = null;
                     console.log(err.response.data);
                 })
+        },
+        fillUser(data) {
+            this.id = data.user.id;
+            this.name = data.user.name;
+            this.surname = data.user.surname;
+            this.email = data.user.email;
+            this.email_verified_at = data.user.email_verified_at;
+            this.admin = data.user.admin;
+
+            this.apartments = data.apartments;
         }
     },
-    
+
     loading: {
         state: true,
         on() {
@@ -32,12 +38,12 @@ export const store = reactive({
         }
     },
 
-    options:{},
+    options: {},
 
     validateString(text, min = 3, max = 254) {
         return text.length <= max && text.length >= min ? true : false;
     },
-    validateInteger(number, min = 1, max = 254) { 
+    validateInteger(number, min = 1, max = 254) {
         return number <= max && number >= min && number % 1 == 0 ? true : false;
     },
     validateBoolean(bool) {
@@ -47,6 +53,6 @@ export const store = reactive({
         return number <= max && number >= min ? true : false;
     },
 
-  
+
 
 })

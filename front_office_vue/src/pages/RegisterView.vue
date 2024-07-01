@@ -160,7 +160,6 @@ export default {
                password: this.password,
                password_confirmation: this.password_confirmation
             }).then((res) => {
-               console.log(res.data);
                this.store.user.getUser();
                this.store.loading.off();
                this.$router.push('/');
