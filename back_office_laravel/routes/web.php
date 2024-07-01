@@ -27,8 +27,7 @@ Route::middleware(['auth','verified'])
 ->name('admin.')
 ->prefix('admin')
 ->group(function (){
-
-Route::resource('apartments', ApartmentController::class);
+    Route::resource('apartments', ApartmentController::class);
 });
 
 Route::middleware('auth')->group(function () {

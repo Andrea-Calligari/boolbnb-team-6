@@ -5,7 +5,7 @@
         <div class="card text-center">
             <div class="card-header">
                 <div class="card-img-top">
-                    <img src="{{$apartment->image}}" alt="Apartment-image">
+                    <img src="{{asset($apartment->image)}}" alt="Apartment-image" class="w-50">
                 </div>
                <h1>{{$apartment->title}}</h1>
                <h4>{{$apartment->slug}}</h4>
@@ -22,7 +22,7 @@
                <div>{{$apartment->category->name}}</div>
                <div class="buttons d-flex gap-2 justify-content-center align-itmes-center mt-3">
                 <button class="btn btn-outline-danger">Trash</button>
-                <button class="btn btn-outline-warning">Edit</button>
+                <a class="btn btn-outline-warning" href="{{ route('admin.apartments.edit', $apartment) }}">Edit</a>
                </div>
                 
             </div>

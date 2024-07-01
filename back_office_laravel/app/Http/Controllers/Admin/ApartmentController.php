@@ -12,6 +12,10 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreApartmentRequest;
 use App\Http\Requests\UpdateApartmentRequest;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 class ApartmentController extends Controller
 {
@@ -34,7 +38,7 @@ class ApartmentController extends Controller
         $categories = Category::orderBy('name', 'asc')->get();
         $services = Service::orderBy('name', 'asc')->get();
 
-        return view('admin.apartments.create', compact('promotions', 'categories', ' services'));
+        return view('admin.apartments.create', compact('promotions', 'categories', 'services'));
     }
 
     /**
@@ -42,8 +46,12 @@ class ApartmentController extends Controller
      */
     public function store(StoreApartmentRequest $request)
     {
+        //dd($request);
         $form_data = $request->validated();
+
         $form_data = $request->all();
+        
+        //definire lo slug
         $base_slug = Str::slug($form_data['title']);
         $slug = $base_slug;
         $n = 0 ;
@@ -57,16 +65,39 @@ class ApartmentController extends Controller
         }while($find !== null);
 
         $form_data['slug'] = $slug;
-        $apartment = Apartment::create($form_data);
+
+        //definire user_id dell'utente loggato
+        $form_data['user_id'] = Auth::id();
+
+        //definire visible come false per default
+        $form_data['visible'] = $request->input('visible', false);
+
+        if($request->has('image')){
+            //definisci il file
+            $file = $request->file('image');
+            //definisci l'estensione del file
+            $extension = $file->getClientOriginalExtension();
+            //definisci il nome del file
+            $filename = time().'.'.$extension;
+            //definisci il percorso
+            $path = 'uploads/apartment/';
+            //sposti il file nel percorso
+            $file->move($path, $filename);
+
+            //definisci l'attributo image in form_data
+            $form_data['image'] = $path . $filename;
+        }
+
+        $new_apartment = Apartment::create($form_data);
+
         if($request->has('promotions') ){
-            $apartment->promotions()->attach($request->promotion);
+            $new_apartment->promotions()->attach($request->input('promotions'));
         } 
         if($request->has('services') ){
-            $apartment->services()->attach($request->services);
+            $new_apartment->services()->attach($request->input('services'));
         }
-        return to_route('admin.apartments.show',$apartment);
 
-
+        return redirect()->route('admin.apartments.show', $new_apartment);
 
     }
 
@@ -75,7 +106,7 @@ class ApartmentController extends Controller
      */
     public function show(Apartment $apartment)
     {
-        $apartment->load(['category', 'promotions' ,'services', ]);
+        $apartment->load(['category', 'promotions' ,'services' ]);
         return view('admin.apartments.show', compact('apartment'));
     }
 
@@ -84,7 +115,11 @@ class ApartmentController extends Controller
      */
     public function edit(Apartment $apartment)
     {
-        //
+        $promotions = Promotion::orderBy('title', 'asc')->get();
+        $categories = Category::orderBy('name', 'asc')->get();
+        $services = Service::orderBy('name', 'asc')->get();
+
+        return view('admin.apartments.edit', compact('apartment','promotions', 'categories', 'services'));
     }
 
     /**
@@ -92,7 +127,38 @@ class ApartmentController extends Controller
      */
     public function update(UpdateApartmentRequest $request, Apartment $apartment)
     {
-        //
+        $form_data = $request->validated();
+        $form_data = $request->all();
+
+        if($request->has('image')){
+            //definisci il file
+            $file = $request->file('image');
+            //definisci l'estensione del file
+            $extension = $file->getClientOriginalExtension();
+            //definisci il nome del file
+            $filename = time().'.'.$extension;
+            //definisci il percorso
+            $path = 'uploads/apartment/';
+            //sposti il file nel percorso
+            $file->move($path, $filename);
+
+            //cancelli file image precedente se esiste
+            if(File::exists($apartment->image)){
+                File::delete($apartment->image);
+            }
+
+            //definisci l'attributo image in form_data
+            $form_data['image'] = $path . $filename;
+        }
+
+        $apartment->fill($form_data);
+        $apartment->save();
+
+        if($request->has('promotions')){
+            $apartment->visible = 1;
+        }
+
+        return to_route('admin.apartments.show', $apartment);
     }
 
     /**
