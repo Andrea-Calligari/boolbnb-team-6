@@ -36,6 +36,8 @@ Route::get('/apartments', [ApartmentController::class, 'index'])->name('apartmen
 
 Route::get('/apartments/{slug}', [ApartmentController::class, 'show'])->name('apartments.show');
 
+Route::post('/messages', [MessageApiController::class, 'store'])->name('messages.store');
+
 Route::middleware('guest')->group(function () {
 
     Route::post('register', [RegisteredUserApiController::class, 'store']);
@@ -99,6 +101,8 @@ Route::middleware('auth')->group(function () {
     //Rotte crud messaggi
 
     Route::get('/messages', [MessageApiController::class, 'index'])->name('messages.index');
+
+    
 
     Route::get('userapartments', [AuthenticatedSessionApiController::class, 'getApartments']);
 
