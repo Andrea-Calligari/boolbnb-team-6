@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Http\Controllers\Controller;
 
 use App\Models\Apartment;
@@ -26,7 +27,7 @@ class ApartmentController extends Controller
     {
         $apartments = Apartment::all();
 
-        return view('admin.apartments.index',compact('apartments'));
+        return view('admin.apartments.index', compact('apartments'));
     }
 
     /**
@@ -50,19 +51,19 @@ class ApartmentController extends Controller
         $form_data = $request->validated();
 
         $form_data = $request->all();
-        
+
         //definire lo slug
         $base_slug = Str::slug($form_data['title']);
         $slug = $base_slug;
-        $n = 0 ;
+        $n = 0;
 
-        do{
+        do {
             $find = Apartment::where('slug', $slug)->first();
-            if($find !== null){
+            if ($find !== null) {
                 $n++;
                 $slug = $base_slug . '-' . $n;
             }
-        }while($find !== null);
+        } while ($find !== null);
 
         $form_data['slug'] = $slug;
 
@@ -74,7 +75,7 @@ class ApartmentController extends Controller
 
         if ($request->has('image')) {
             //imposti l'array vuoto
-            $images = [];
+            $form_data['image'] = '';
 
             foreach ($request->file('image') as $file) {
                 //definisci l'estensione del file
@@ -86,23 +87,21 @@ class ApartmentController extends Controller
                 //sposti il file nel percorso
                 $file->move($path, $filename);
                 //aggiungi il file all'array
-                $images[] = $path . $filename;
+                $form_data['image'] = $form_data['image'] . $path . $filename . ',';
             }
-            // converti l'array in un json
-            $form_data['image'] = json_encode($images);
+            $form_data['image'] = rtrim($form_data['image'], ",");
         }
 
         $new_apartment = Apartment::create($form_data);
 
-        if($request->has('promotions') ){
+        if ($request->has('promotions')) {
             $new_apartment->promotions()->attach($request->input('promotions'));
-        } 
-        if($request->has('services') ){
+        }
+        if ($request->has('services')) {
             $new_apartment->services()->attach($request->input('services'));
         }
 
         return redirect()->route('admin.apartments.show', $new_apartment);
-
     }
 
     /**
@@ -110,9 +109,8 @@ class ApartmentController extends Controller
      */
     public function show(Apartment $apartment)
     {
-        dd($apartment->image);
         //$images = json_decode($apartment->image, true);
-        $apartment->load(['category', 'promotions' ,'services' ]);
+        $apartment->load(['category', 'promotions', 'services']);
         return view('admin.apartments.show', compact('apartment'));
     }
 
@@ -125,7 +123,7 @@ class ApartmentController extends Controller
         $categories = Category::orderBy('name', 'asc')->get();
         $services = Service::orderBy('name', 'asc')->get();
 
-        return view('admin.apartments.edit', compact('apartment','promotions', 'categories', 'services'));
+        return view('admin.apartments.edit', compact('apartment', 'promotions', 'categories', 'services'));
     }
 
     /**
@@ -136,20 +134,20 @@ class ApartmentController extends Controller
         $form_data = $request->validated();
         $form_data = $request->all();
 
-        if($request->has('image')){
+        if ($request->has('image')) {
             //definisci il file
             $file = $request->file('image');
             //definisci l'estensione del file
             $extension = $file->getClientOriginalExtension();
             //definisci il nome del file
-            $filename = time().'.'.$extension;
+            $filename = time() . '.' . $extension;
             //definisci il percorso
             $path = 'uploads/apartment/';
             //sposti il file nel percorso
             $file->move($path, $filename);
 
             //cancelli file image precedente se esiste
-            if(File::exists($apartment->image)){
+            if (File::exists($apartment->image)) {
                 File::delete($apartment->image);
             }
 
@@ -160,7 +158,7 @@ class ApartmentController extends Controller
         $apartment->fill($form_data);
         $apartment->save();
 
-        if($request->has('promotions')){
+        if ($request->has('promotions')) {
             $apartment->visible = 1;
         }
 

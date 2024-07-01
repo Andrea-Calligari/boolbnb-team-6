@@ -22,7 +22,7 @@ class ApartmentSeeder extends Seeder
     public function run(Faker $faker): void
     {
         $addresses = [
-            'Via Turno 34, Roma Capitale, 00181, Lazio, Italia', 
+            'Via Turno 34, Roma Capitale, 00181, Lazio, Italia',
             'Via Benedetto Croce 79, Roma Capitale, 00142, Lazio, Italia',
             'Via Radicofani 172, Roma Capitale, 00138, Lazio, Italia',
             'Via Galeazzo Alessi 261, Torpignattara, Roma Capitale, 00176, Lazio, Italia',
@@ -39,15 +39,16 @@ class ApartmentSeeder extends Seeder
         $longitudes = [12.5266453, 12.4850382, 12.5135297, 12.5415728, 12.4909213, 12.5824914, 12.5538213, 12.4915978, 12.4261153, 12.5687969];
 
 
-        $user_ids= User::all()->pluck('id')->all();
-        $service_ids= Service::all()->pluck('id')->all();
-        $categories_ids= Category::all()->pluck('id')->all();
+        $user_ids = User::all()->pluck('id')->all();
+        $service_ids = Service::all()->pluck('id')->all();
+        $categories_ids = Category::all()->pluck('id')->all();
         $promotions_ids = Promotion::all()->pluck('id')->all();
         $promo_durations = Promotion::all()->pluck('hours', 'id')->all();
 
         $slug_list = [];
+        $pathImg = 'uploads/apartment/img_default/';
 
-        for($i = 0; $i < count($addresses); $i++){
+        for ($i = 0; $i < count($addresses); $i++) {
 
             $title = $faker->sentence(3);
             $slug = $title;
@@ -59,7 +60,7 @@ class ApartmentSeeder extends Seeder
                 }
             } while (in_array($slug, $slug_list));
 
-            $slug_list[] =$slug;
+            $slug_list[] = $slug;
 
             $new_apartment = new Apartment();
 
@@ -74,7 +75,7 @@ class ApartmentSeeder extends Seeder
             $new_apartment->address = $addresses[$i];
             $new_apartment->latitude = $latitudes[$i];
             $new_apartment->longitude = $longitudes[$i];
-            $new_apartment->image = ['https://picsum.photos/200/300', 'https://picsum.photos/200/300', 'https://picsum.photos/200/300'];
+            $new_apartment->image = $pathImg . rand(1, 7) .'.jpg,'.$pathImg . rand(1, 7) .'.jpg,'.$pathImg . rand(1, 7) .'.jpg';
             $new_apartment->visible = $faker->boolean();
             $new_apartment->user_id = $faker->randomElement($user_ids);
             $new_apartment->category_id = $faker->randomElement($categories_ids);
@@ -88,7 +89,7 @@ class ApartmentSeeder extends Seeder
 
             $promotions_with_timestamp = [];
 
-            foreach ($random_promotions_ids as $random_promotions_id){
+            foreach ($random_promotions_ids as $random_promotions_id) {
                 $start_date = $faker->dateTimeThisYear();
                 $hours = $promo_durations[$random_promotions_id];
                 $expiration_date = (new Carbon($start_date))->addHours($hours);
@@ -100,7 +101,6 @@ class ApartmentSeeder extends Seeder
             }
 
             $new_apartment->promotions()->attach($promotions_with_timestamp);
-
         };
     }
 }

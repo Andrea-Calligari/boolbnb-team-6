@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('address', 255);
             $table->decimal('latitude', 11, 6)->nullable();
             $table->decimal('longitude', 11, 6)->nullable();
-            $table->json('image')->nullable()->change();
+            $table->string('image', 500)->nullable();
             $table->boolean('visible')->default(0);
             $table->timestamps();
 
