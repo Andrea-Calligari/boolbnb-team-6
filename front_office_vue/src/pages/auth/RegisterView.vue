@@ -9,7 +9,7 @@
                   <form @submit.prevent="onRegister">
 
                      <div class="mb-4 row">
-                        <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
+                        <label for="name" class="col-md-4 col-form-label text-md-right">Nome *</label>
 
                         <div class="col-md-6">
                            <input id="name" type="text" class="form-control" v-model="name"
@@ -23,7 +23,7 @@
                      </div>
 
                      <div class="mb-4 row">
-                        <label for="surname" class="col-md-4 col-form-label text-md-right">Surname</label>
+                        <label for="surname" class="col-md-4 col-form-label text-md-right">Cognome *</label>
 
                         <div class="col-md-6">
                            <input id="surname" type="text" class="form-control" v-model="surname"
@@ -37,7 +37,7 @@
                      </div>
 
                      <div class="mb-4 row">
-                        <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
+                        <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address *</label>
 
                         <div class="col-md-6">
                            <input id="email" type="email" class="form-control" v-model="email"
@@ -50,7 +50,7 @@
                      </div>
 
                      <div class="mb-4 row">
-                        <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+                        <label for="password" class="col-md-4 col-form-label text-md-right">Password *</label>
 
                         <div class="col-md-6">
                            <input id="password" type="password" class="form-control" v-model="password"
@@ -64,7 +64,7 @@
 
                      <div class="mb-4 row">
                         <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Confirm
-                           Password</label>
+                           Password *</label>
 
                         <div class="col-md-6">
                            <input id="password-confirm" type="password" class="form-control"

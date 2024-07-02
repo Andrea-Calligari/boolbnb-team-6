@@ -15,8 +15,9 @@
 
             <div class="mb-3">
                 <label for="description" class="form-label">Descrizione</label>
-                <textarea class="form-control" v-model="description" rows="3" :class="store.validate.isV(isVdescription)"
-                    id="description" name="description" placeholder="Inserisci Descrizione"></textarea>
+                <textarea class="form-control" v-model="description" rows="3"
+                    :class="store.validate.isV(isVdescription)" id="description" name="description"
+                    placeholder="Inserisci Descrizione"></textarea>
                 <div v-if="store.validate.isV(isVdescription) === 'is-invalid'" class="mt-0 text-danger">
                     Il testo non deve superare i 1000 caratteri
                 </div>
@@ -24,8 +25,8 @@
 
             <div class="mb-3">
                 <label for="price" class="form-label">Prezzo</label>
-                <input type="number" class="form-control" v-model="price" :class="store.validate.isV(isVprice)" step="0.01"
-                    id="price" name="price" placeholder="Inserisci Prezzo">
+                <input type="number" class="form-control" v-model="price" :class="store.validate.isV(isVprice)"
+                    step="0.01" id="price" name="price" placeholder="Inserisci Prezzo">
                 <div v-if="store.validate.isV(isVprice) === 'is-invalid'" class="mt-0 text-danger">
                     Il prezzo massimo è di 9999,99 e non può essere vuoto
                 </div>
@@ -71,8 +72,8 @@
 
             <div class="mb-3">
                 <label for="address" class="form-label">indirizzo</label>
-                <input type="text" class="form-control" :class="store.validate.isV(isVaddress)" id="address" name="address"
-                    v-model="address" placeholder="Inserisci indirizzo">
+                <input type="text" class="form-control" :class="store.validate.isV(isVaddress)" id="address"
+                    name="address" v-model="address" placeholder="Inserisci indirizzo">
                 <div v-if="store.validate.isV(isVaddress) === 'is-invalid'" class="mt-0 text-danger">
                     Il campo indirizzo non può essere vuoto e non può superare i 254 caratteri
                 </div>
@@ -202,28 +203,8 @@ export default {
                 return false
             }
         },
-        // redirect(){
-        //     let redirect = document.getElementById('redirect')
-        //     redirect.click()
-
-
-        // },
         async onEdit() {
             if (this.isFormValidated()) {
-
-                // this.position = await fetch(`https://api.tomtom.com/search/2/geocode/${encodeURI(this.address)}.json?key=orDHPznfE908Jeu45AKVaFSiSMAebYfQ`)
-                //     .then((response) => response.json())
-                //     .then((data) => { return data.results[0].position })
-                //     .catch(function (error) {
-                //         reject(error);
-                //     });
-
-                // console.log(this.position);
-
-                // console.log('FINALMENTE sei arrivato qua');
-
-                //this.store.user = 0;
-                //await axios.get("http://localhost:8000/sanctum/csrf-cookie");
                 await axios.put(`http://localhost:8000/api/apartments/${this.slug}`, {
                     title: this.title,
                     description: this.description,
@@ -248,7 +229,7 @@ export default {
                         this.$router.push({ name: 'apartments.show', params: { slug: apartmentSlug } })
                     }
 
-                    
+
                 }).catch((err) => {
                     console.log(err);
                 });
@@ -284,10 +265,6 @@ export default {
             for (let i = 0; i < results.services.length; i++) {
                 this.services.push(results.services[i].id)
             }
-            //this.user_id = 
-
-            //console.log(this.services);
-            //this.apartment = res.data.results[0];
         }).catch((err) => {
             console.log(err)
         })

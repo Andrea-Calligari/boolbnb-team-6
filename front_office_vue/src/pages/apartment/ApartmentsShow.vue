@@ -4,8 +4,8 @@
             <div class="col">
                 <div class="card">
                     <template v-for="image in apartment.image.split(',')">
-                    <img :src="image ?'http://localhost:8000/'+image : 'http://localhost:8000/uploads/apartment/null.png' " class="card-img-top" style="height: 40vh;"
-                        :alt="apartment.title + ' img'">
+                        <img :src="image ? 'http://localhost:8000/' + image : 'http://localhost:8000/uploads/apartment/null.png'"
+                            class="card-img-top" style="height: 40vh;" :alt="apartment.title + ' img'">
                     </template>
                     <div class="card-body">
                         <h2 class="card-title mb-0">{{ apartment.title }}</h2>
@@ -23,16 +23,17 @@
                         <p class="card-text text-end"><small class="text-body-secondary">{{ apartment.address }}</small>
                         </p>
                     </div>
-                    <RouterLink  v-if="apartment.user_id === store.user.id" :to="{ name: 'apartments.edit', params: { slug: apartment.slug } }"
-                        class="btn btn-primary">
+                    <RouterLink v-if="apartment.user_id === store.user.id"
+                        :to="{ name: 'apartments.edit', params: { slug: apartment.slug } }" class="btn btn-primary">
                         Modifica
                     </RouterLink>
 
 
-                    <button v-if="apartment.user_id === store.user.id" @click="onDelete()" class="btn btn-danger">Delete</button>
+                    <button v-if="apartment.user_id === store.user.id" @click="onDelete()"
+                        class="btn btn-danger">Delete</button>
 
-                    <a v-if="apartment.user_id !== store.user.id" class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
-                        aria-controls="offcanvasExample">
+                    <a v-if="apartment.user_id !== store.user.id" class="btn btn-primary" data-bs-toggle="offcanvas"
+                        href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
                         Chiedi Informazioni
                     </a>
 
@@ -52,9 +53,10 @@
 
                                     <div class="col-md-6">
                                         <input id="name" type="text" class="form-control" v-model="name"
-                                            :class="store.validate.isV(isVname)" required autocomplete="name" autofocus>
+                                            :class="store.validate.isV(isVname)" autocomplete="name" autofocus>
 
-                                        <div v-if="store.validate.isV(isVname) === 'is-invalid'" class="mt-0 text-danger">
+                                        <div v-if="store.validate.isV(isVname) === 'is-invalid'"
+                                            class="mt-0 text-danger">
                                             Il campo non può essere vuoto e non deve superare i 254 caratteri
                                         </div>
 
@@ -66,11 +68,11 @@
 
                                     <div class="col-md-6">
                                         <input id="surname" type="text" class="form-control" v-model="surname"
-                                            :class="store.validate.isV(isVsurname)" required autocomplete="surname"
-                                            autofocus>
+                                            :class="store.validate.isV(isVsurname)" autocomplete="surname" autofocus>
 
 
-                                        <div v-if="store.validate.isV(isVsurname) === 'is-invalid'" class="mt-0 text-danger">
+                                        <div v-if="store.validate.isV(isVsurname) === 'is-invalid'"
+                                            class="mt-0 text-danger">
                                             Il campo non può essere vuoto e non deve superare i 254 caratteri
                                         </div>
                                     </div>
@@ -78,20 +80,21 @@
 
                                 <div class="mb-4 row">
                                     <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail
-                                        Address</label>
+                                        Address *</label>
 
                                     <div class="col-md-6">
                                         <input id="email" type="email" class="form-control" v-model="email"
                                             :class="store.validate.isV(isVemail)" required autocomplete="email">
 
-                                        <div v-if="store.validate.isV(isVemail) === 'is-invalid'" class="mt-0 text-danger">
+                                        <div v-if="store.validate.isV(isVemail) === 'is-invalid'"
+                                            class="mt-0 text-danger">
                                             Il campo non può essere vuoto e non deve superare i 254 caratteri
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="text" class="form-label">Testo messaggio</label>
+                                    <label for="text" class="form-label">Testo messaggio *</label>
                                     <textarea class="form-control" v-model="text" rows="3"
                                         :class="store.validate.isV(isVtext)" id="text" name="text"
                                         placeholder="Inserisci messaggio"></textarea>
@@ -158,20 +161,41 @@ export default {
 
 
         },
-        
+
+        isFormValidated() {
+
+            this.isVname = this.store.validate._string(this.name, 0)
+            this.isVsurname = this.store.validate._string(this.surname, 0)
+            this.isVemail = this.store.validate._string(this.email)
+            this.isVtext = this.store.validate._string(this.text, 3, 1000)
+
+            if (
+                this.isVname &&
+                this.isVsurname &&
+                this.isVemail &&
+                this.isVtext
+            ) {
+                return true
+            } else {
+                return false
+            }
+        },
+
         async onSend() {
-            await axios.post("http://localhost:8000/api/messages", {
-                name: this.name,
-                surname: this.surname,
-                sender_email: this.email,
-                apartment_id: this.apartment.id,
-                text: this.text
+            if (this.isFormValidated()) {
+                await axios.post("http://localhost:8000/api/messages", {
+                    name: this.name,
+                    surname: this.surname,
+                    sender_email: this.email,
+                    apartment_id: this.apartment.id,
+                    text: this.text
 
-            }).then((res)=>{
-                console.log(res)
-            })
+                }).then((res) => {
+                    console.log(res)
+                })
+            }
+        },
 
-        }
     },
     mounted() {
         console.log(this.$route.params.slug);
