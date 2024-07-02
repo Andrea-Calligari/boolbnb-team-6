@@ -101,7 +101,7 @@
 </template>
 
 <script>
-import { store } from '../store.js';
+import { store } from '../../store.js';
 import axios from 'axios'
 axios.defaults.withCredentials = true;
 axios.defaults.withXSRFToken = true;
@@ -119,7 +119,7 @@ export default {
          password_confirmation: '',
          isVpassword_confirmation: null,
          store,
-         image:null
+         image: null
       }
    },
    methods: {
@@ -166,14 +166,14 @@ export default {
                password: this.password,
                password_confirmation: this.password_confirmation,
                image: e.target.elements["image"].files[0]
-                }, {
-                    headers: {
-                        'Content-Type': 'multipart/form-data'
-                    }
+            }, {
+               headers: {
+                  'Content-Type': 'multipart/form-data'
+               }
             }).then((res) => {
                this.store.user.getUser();
                this.store.loading.off();
-               this.$router.push({ name: 'home' });
+               this.$router.push({ name: 'dashboard' });
             }).catch((err) => {
                this.store.loading.off();
                console.log(err.response.data);

@@ -82,7 +82,7 @@
 </template>
 
 <script>
-import { store } from '../store.js';
+import { store } from '../../store.js';
 import axios from 'axios'
 axios.defaults.withCredentials = true;
 axios.defaults.withXSRFToken = true;

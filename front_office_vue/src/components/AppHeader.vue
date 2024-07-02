@@ -13,30 +13,31 @@
             <CmpBtnLoad content="Home" />
           </RouterLink>
 
-          <RouterLink :to="{ name: 'apartments.index' }" class="me-2" :class="$route.fullPath === '/apartments' ? 'opacity-50' : ''">
+          <RouterLink :to="{ name: 'apartments.index' }" class="me-2"
+            :class="$route.fullPath === '/apartments' ? 'opacity-50' : ''">
             <CmpBtnLoad content="Apartments" />
           </RouterLink>
 
-          <RouterLink v-if="store.user.id" :to="{ name: 'dashboard'}" class="me-2"
+          <RouterLink v-if="store.user.id" :to="{ name: 'dashboard' }" class="me-2"
             :class="$route.fullPath === '/dashboard' ? 'opacity-50' : ''">
-            <CmpBtnLoad  content="Dashboard" />
+            <CmpBtnLoad content="Dashboard" />
           </RouterLink>
 
           <RouterLink v-if="store.user.id" :to="{ name: 'apartments.create' }" class="me-2"
             :class="$route.fullPath === '/apartments/create' ? 'opacity-50' : ''">
-            <CmpBtnLoad  content="Create" />
+            <CmpBtnLoad content="Create" />
           </RouterLink>
 
-          <RouterLink v-if="!store.user.id" to="/register" class="me-2"
+          <RouterLink v-if="!store.user.id" :to="{ name: 'register' }" class="me-2"
             :class="$route.fullPath === '/register' ? 'opacity-50' : ''">
-            <CmpBtnLoad  content="Register" />
+            <CmpBtnLoad content="Register" />
           </RouterLink>
-          
-          <CmpBtnLoad @click="logout()" v-if="store.user.id" :content="store.user.name+ ' ' + store.user.surname + ' ->'"
-            :class="$route.fullPath === '/login' ? 'opacity-50' : ''" :image="store.user.image" />
-            
-          
-          <RouterLink v-else to="/login" :class="$route.fullPath === '/login' ? 'opacity-50' : ''">
+
+          <CmpBtnLoad @click="logout()" v-if="store.user.id" :content="store.user.name + ' ' + store.user.surname"
+            :image="store.user.image" />
+
+
+          <RouterLink v-else :to="{ name: 'login' }" :class="$route.fullPath === '/login' ? 'opacity-50' : ''">
 
             <CmpBtnLoad :content="store.user.id === 0 ? 'loading..' : 'Login'"
               :class="store.user.id === 0 ? 'loading' : ''" />

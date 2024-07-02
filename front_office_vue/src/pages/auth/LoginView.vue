@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { store } from '../store.js';
+import { store } from '../../store.js';
 import axios from 'axios'
 axios.defaults.withCredentials = true;
 axios.defaults.withXSRFToken = true;
@@ -44,7 +44,7 @@ export default {
             this.store.user.fillUser(res.data)
 
             this.store.loading.off();
-            this.$router.push({ name: 'home' });
+            this.$router.push({ name: 'dashboard' });
          }).catch((err) => {
             this.store.loading.off();
             console.log(err.response.data);
