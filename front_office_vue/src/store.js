@@ -13,18 +13,19 @@ export const store = reactive({
     user: {
         apartments: [],
         id: 0,
-        getUser() {
+        async getUser() {
             this.id = 0;
             store.loading.on();
-            axios.get(`${store.urlBackend}user`)
+            return await axios.get(`${store.urlBackend}user`)
                 .then((res) => {
                     store.loading.off();
                     this.fillUser(res.data)
+                    return {'msg':'logged'}
                 })
                 .catch((err) => {
                     this.id = null;
                     store.loading.off();
-                    console.log(err.response.data);
+                    return err.response.data;
                 })
         },
         fillUser(data) {

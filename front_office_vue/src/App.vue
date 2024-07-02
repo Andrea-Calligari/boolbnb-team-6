@@ -32,15 +32,45 @@ export default {
     this.store.user.id = 0;
     // this.store.loading.on();
 
-    this.store.user.getUser();
+    this.store.user.getUser().then((res) => {
+      console.log(res)
+      if (this.store.user.id) {
+        if (this.$route.fullPath === '/register') {
+          this.$router.push({ name: 'dashboard' });
+        }
+      } else {
+        const ArrPath = this.$route.fullPath.split("/");
+        
+        if (ArrPath[1]) {
 
-    // this.store.fetchApi.get('options')
-    //   .then((res) => {
-    //     console.log(res);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   })
+          if (ArrPath[1] === 'dashboard' || ArrPath[1] === 'apartments') {
+            this.$router.push({ name: 'home' });
+          }
+
+        }
+      }
+
+
+
+
+
+    });
+
+    // isDashboard() {
+    //   const ArrPath = this.$route.fullPath.split("/");
+    //   if (ArrPath[1]) {
+    //     if (ArrPath[1] === 'dashboard') {
+    //       return true
+    //     } else {
+    //       return false
+    //     }
+    //   } else {
+    //     return false
+    //   }
+
+    // }
+
+
 
     axios.get("http://localhost:8000/api/options")
       .then((res) => {

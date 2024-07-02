@@ -51,8 +51,8 @@ class RegisteredUserApiController extends Controller
         event(new Registered($user));
 
         Auth::login($user);
-        // $apartments = Apartment::where('user_id', Auth::id())->with('messages', 'category', 'promotions', 'services')->get();
+        
 
-        return response()->json(compact('user','apartments'));
+        return response()->json(compact('user'));
     }
 }

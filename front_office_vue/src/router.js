@@ -22,7 +22,7 @@ export default createRouter({
     // ---- auth
     { path: '/login', name: 'login', component: LoginView },
     // ---- apartments
-    { path: '/apartments', name: 'apartments.index', component: ApartmentsIndex },
+    { path: '/apartment', name: 'apartments.index', component: ApartmentsIndex },
     { path: '/apartment/:slug', name: 'apartments.show', component: ApartmentsShow, props: true },
 
     // ####################################
@@ -34,7 +34,7 @@ export default createRouter({
     // rotte per utenti loggati
     // ---- apartments
     { path: '/apartments/create', name: 'apartments.create', component: ApartmentsCreate },
-    { path: '/apartment/:slug/edit', name: 'apartments.edit', component: ApatmentsEdit, props: true },
+    { path: '/apartments/:slug/edit', name: 'apartments.edit', component: ApatmentsEdit, props: true },
     // ---- dashboard
     { path: '/dashboard', name: 'dashboard', component: DashboardHome },
     { path: '/dashboard/userapartments', name: 'dashboard.userapartments', component: UserApartments },
