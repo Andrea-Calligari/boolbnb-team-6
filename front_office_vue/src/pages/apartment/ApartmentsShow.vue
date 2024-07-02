@@ -52,9 +52,9 @@
 
                                     <div class="col-md-6">
                                         <input id="name" type="text" class="form-control" v-model="name"
-                                            :class="classValidate(isVname)" required autocomplete="name" autofocus>
+                                            :class="store.validate.isV(isVname)" required autocomplete="name" autofocus>
 
-                                        <div v-if="classValidate(isVname) === 'is-invalid'" class="mt-0 text-danger">
+                                        <div v-if="store.validate.isV(isVname) === 'is-invalid'" class="mt-0 text-danger">
                                             Il campo non può essere vuoto e non deve superare i 254 caratteri
                                         </div>
 
@@ -66,11 +66,11 @@
 
                                     <div class="col-md-6">
                                         <input id="surname" type="text" class="form-control" v-model="surname"
-                                            :class="classValidate(isVsurname)" required autocomplete="surname"
+                                            :class="store.validate.isV(isVsurname)" required autocomplete="surname"
                                             autofocus>
 
 
-                                        <div v-if="classValidate(isVsurname) === 'is-invalid'" class="mt-0 text-danger">
+                                        <div v-if="store.validate.isV(isVsurname) === 'is-invalid'" class="mt-0 text-danger">
                                             Il campo non può essere vuoto e non deve superare i 254 caratteri
                                         </div>
                                     </div>
@@ -82,9 +82,9 @@
 
                                     <div class="col-md-6">
                                         <input id="email" type="email" class="form-control" v-model="email"
-                                            :class="classValidate(isVemail)" required autocomplete="email">
+                                            :class="store.validate.isV(isVemail)" required autocomplete="email">
 
-                                        <div v-if="classValidate(isVemail) === 'is-invalid'" class="mt-0 text-danger">
+                                        <div v-if="store.validate.isV(isVemail) === 'is-invalid'" class="mt-0 text-danger">
                                             Il campo non può essere vuoto e non deve superare i 254 caratteri
                                         </div>
                                     </div>
@@ -93,9 +93,9 @@
                                 <div class="mb-3">
                                     <label for="text" class="form-label">Testo messaggio</label>
                                     <textarea class="form-control" v-model="text" rows="3"
-                                        :class="classValidate(isVtext)" id="text" name="text"
+                                        :class="store.validate.isV(isVtext)" id="text" name="text"
                                         placeholder="Inserisci messaggio"></textarea>
-                                    <div v-if="classValidate(isVtext) === 'is-invalid'" class="mt-0 text-danger">
+                                    <div v-if="store.validate.isV(isVtext) === 'is-invalid'" class="mt-0 text-danger">
                                         Il testo non deve superare i 1000 caratteri
                                     </div>
                                 </div>
@@ -158,19 +158,7 @@ export default {
 
 
         },
-
-        classValidate(e) {
-            if (e === null) {
-                return ''
-            }
-            if (e === true) {
-                return 'is-valid'
-            }
-            if (e === false) {
-                return 'is-invalid'
-            }
-        },
-
+        
         async onSend() {
             await axios.post("http://localhost:8000/api/messages", {
                 name: this.name,

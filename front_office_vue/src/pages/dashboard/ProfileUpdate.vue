@@ -12,9 +12,9 @@
 
                                 <div class="col-md-6">
                                     <input id="name" type="text" class="form-control" v-model="name"
-                                        :class="classValidate(isVname)" required autocomplete="name" autofocus>
+                                        :class="store.validate.isV(isVname)" required autocomplete="name" autofocus>
 
-                                    <div v-if="classValidate(isVname) === 'is-invalid'" class="mt-0 text-danger">
+                                    <div v-if="store.validate.isV(isVname) === 'is-invalid'" class="mt-0 text-danger">
                                         Il campo non può essere vuoto e non deve superare i 254 caratteri
                                     </div>
 
@@ -26,10 +26,10 @@
 
                                 <div class="col-md-6">
                                     <input id="surname" type="text" class="form-control" v-model="surname"
-                                        :class="classValidate(isVsurname)" required autocomplete="surname" autofocus>
+                                        :class="store.validate.isV(isVsurname)" required autocomplete="surname" autofocus>
 
 
-                                    <div v-if="classValidate(isVsurname) === 'is-invalid'" class="mt-0 text-danger">
+                                    <div v-if="store.validate.isV(isVsurname) === 'is-invalid'" class="mt-0 text-danger">
                                         Il campo non può essere vuoto e non deve superare i 254 caratteri
                                     </div>
                                 </div>
@@ -40,9 +40,9 @@
 
                                 <div class="col-md-6">
                                     <input id="email" type="email" class="form-control" v-model="email"
-                                        :class="classValidate(isVemail)" required autocomplete="email">
+                                        :class="store.validate.isV(isVemail)" required autocomplete="email">
 
-                                    <div v-if="classValidate(isVemail) === 'is-invalid'" class="mt-0 text-danger">
+                                    <div v-if="store.validate.isV(isVemail) === 'is-invalid'" class="mt-0 text-danger">
                                         Il campo non può essere vuoto e non deve superare i 254 caratteri
                                     </div>
                                 </div>
@@ -100,22 +100,11 @@ export default {
         }
     },
     methods: {
-        classValidate(e) {
-            if (e === null) {
-                return ''
-            }
-            if (e === true) {
-                return 'is-valid'
-            }
-            if (e === false) {
-                return 'is-invalid'
-            }
-        },
         isFormValidated() {
 
-            this.isVname = this.store.validateString(this.name);
-            this.isVsurname = this.store.validateString(this.surname);
-            this.isVemail = this.store.validateString(this.email);
+            this.isVname = this.store.validate._string(this.name);
+            this.isVsurname = this.store.validate._string(this.surname);
+            this.isVemail = this.store.validate._string(this.email);
 
             if (
                 this.isVname &&
