@@ -1,5 +1,5 @@
 <template>
-    
+
     <main v-if="!isDashboard()" class="main">
         <RouterView />
     </main>
@@ -15,9 +15,9 @@
 </template>
 
 <script>
- import AppAsideDashboard from './AppAsideDashboard.vue'
+import AppAsideDashboard from './AppAsideDashboard.vue'
 export default {
-    components:{AppAsideDashboard},
+    components: { AppAsideDashboard },
     methods: {
         isDashboard() {
             const ArrPath = this.$route.fullPath.split("/");
@@ -40,9 +40,5 @@ export default {
 <style lang="scss" scoped>
 main {
     flex-grow: 1;
-
-    // &:has(aside) {
-    //     display: flex;
-    // }
 }
 </style>

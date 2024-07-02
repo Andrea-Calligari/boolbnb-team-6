@@ -33,8 +33,8 @@
             <CmpBtnLoad content="Register" />
           </RouterLink>
 
-          <CmpBtnLoad @click="logout()" v-if="store.user.id" :content="store.user.name + ' ' + store.user.surname"
-            :image="store.user.image" />
+          <CmpBtnLoad @click="store.user.logout()" v-if="store.user.id"
+            :content="store.user.name + ' ' + store.user.surname" :image="store.user.image" />
 
 
           <RouterLink v-else :to="{ name: 'login' }" :class="$route.fullPath === '/login' ? 'opacity-50' : ''">
@@ -53,8 +53,6 @@
 <script>
 import { store } from '../store.js';
 import axios from 'axios'
-axios.defaults.withCredentials = true;
-axios.defaults.withXSRFToken = true;
 import CmpBtnLoad from './CmpBtnLoad.vue'
 export default {
   components: { CmpBtnLoad },
@@ -63,21 +61,6 @@ export default {
       store,
     }
   },
-  methods: {
-    async logout() {
-      this.store.user.id = null;
-      await axios.post("http://localhost:8000/api/logout").then((res) => {
-        console.log(res.data);
-        this.$router.push({ name: 'home' });
-      }).catch((err) => {
-        console.log('error: ', err);
-      });
-    },
-  },
-  computed: {
-  },
-  mounted() {
-  }
 }
 </script>
 

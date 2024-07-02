@@ -1,5 +1,7 @@
 import { reactive } from 'vue'
 import axios from 'axios';
+axios.defaults.withCredentials = true;
+axios.defaults.withXSRFToken = true;
 
 export const store = reactive({
     // url backend per le chiamate Api 
@@ -13,12 +15,15 @@ export const store = reactive({
         id: 0,
         getUser() {
             this.id = 0;
+            store.loading.on();
             axios.get(`${store.urlBackend}user`)
                 .then((res) => {
+                    store.loading.off();
                     this.fillUser(res.data)
                 })
                 .catch((err) => {
                     this.id = null;
+                    store.loading.off();
                     console.log(err.response.data);
                 })
         },
@@ -32,15 +37,30 @@ export const store = reactive({
             this.admin = data.user.admin;
 
             this.apartments = data.apartments;
+            store.loading.off();
         },
-        getApartments() {
-            axios.get(`${store.urlBackend}userapartments`).then((res) => {
+        async getApartments() {
+            return await axios.get(`${store.urlBackend}userapartments`).then((res) => {
                 this.apartments = res.data.apartments
                 console.log(this.apartments)
+                return { msg: 'loaded apartments' }
             }).catch((err) => {
                 console.log(err)
             })
-        }
+        },
+        logout() {
+            this.id = null;
+            store.loading.on();
+            // ridirect to home
+            axios.post(`${store.urlBackend}logout`).then((res) => {
+                console.log(res.data);
+                store.loading.off();
+                window.location.href = window.location.origin
+            }).catch((err) => {
+                store.loading.off();
+                console.log('error: ', err);
+            });
+        },
     },
 
     // contine principalmente metodi per ottenere tutti o alcuni appartamenti
@@ -48,11 +68,14 @@ export const store = reactive({
     apartment: {
         current: null,
         async getAll() {
+            store.loading.on();
             return await axios.get(`${store.urlBackend}apartments`)
                 .then((res) => {
+                    store.loading.off();
                     return res.data.apartments
                 })
                 .catch((err) => {
+                    store.loading.off();
                     console.log(err.response.data);
                     return err.response.data
                 })
