@@ -2,121 +2,145 @@
     <div class="container" v-if="apartment">
         <div class="row">
             <div class="col">
-                <div class="card">
-                    <template v-for="image in apartment.image.split(',')">
-                        <img :src="image ? 'http://localhost:8000/' + image : 'http://localhost:8000/uploads/apartment/null.png'"
-                            class="card-img-top" style="height: 40vh;" :alt="apartment.title + ' img'">
-                    </template>
-                    <div class="card-body">
-                        <h2 class="card-title mb-0">{{ apartment.title }}</h2>
-                        <p class="card-text"><small class="text-body-secondary">{{ apartment.category.name }}</small>
-                        </p>
-                        <p class="card-text mb-0">Servizi: </p>
-                        <span class="badge text-bg-light me-2 " v-for="service in apartment.services">{{ service.name
-                            }}</span>
-                        <p class="card-text mt-3 mb-0">Descrizione: </p>
-                        <p class="card-text">{{ apartment.description }}</p>
-                        <p class="card-text">{{ 'Stanze: ' + apartment.rooms_number }}</p>
-                        <p class="card-text">{{ 'Bagni: ' + apartment.baths_number }}</p>
-                        <p class="card-text">{{ 'Posti letto: ' + apartment.beds_number }}</p>
-                        <p class="card-text">{{ `Propietario: ${apartment.user.name} ${apartment.user.surname}` }}</p>
-                        <p class="card-text text-end"><small class="text-body-secondary">{{ apartment.address }}</small>
-                        </p>
+
+                <div id="carouselExampleIndicators" class="carousel slide">
+
+                    <div class="carousel-indicators">
+
+                        <button v-for="(image, i) in apartment.image.split(',')" type="button"
+                            data-bs-target="#carouselExampleIndicators" :data-bs-slide-to="i" class="active"
+                            :aria-current="i === 0" :aria-label="'Slide ' + i"></button>
+
                     </div>
-                    <RouterLink v-if="apartment.user_id === store.user.id"
-                        :to="{ name: 'apartments.edit', params: { slug: apartment.slug } }" class="btn btn-primary">
-                        Modifica
-                    </RouterLink>
+                    <div class="carousel-inner">
 
-
-                    <button v-if="apartment.user_id === store.user.id" @click="onDelete()"
-                        class="btn btn-danger">Delete</button>
-
-                    <a v-if="apartment.user_id !== store.user.id" class="btn btn-primary" data-bs-toggle="offcanvas"
-                        href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-                        Chiedi Informazioni
-                    </a>
-
-
-                    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
-                        aria-labelledby="offcanvasExampleLabel">
-                        <div class="offcanvas-header">
-                            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
-                                aria-label="Close"></button>
+                        <div v-for="(image, i) in apartment.image.split(',')" class="carousel-item"
+                            :class="i === 0 ? 'active' : ''">
+                            <img :src="image ? 'http://localhost:8000/' + image : 'http://localhost:8000/uploads/apartment/null.png'"
+                                class="d-block w-100" :alt="apartment.title + ' img ' + i">
                         </div>
-                        <div class="offcanvas-body">
-                            <form @submit.prevent="onSend">
 
-                                <div class="mb-4 row">
-                                    <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
-
-                                    <div class="col-md-6">
-                                        <input id="name" type="text" class="form-control" v-model="name"
-                                            :class="store.validate.isV(isVname)" autocomplete="name" autofocus>
-
-                                        <div v-if="store.validate.isV(isVname) === 'is-invalid'"
-                                            class="mt-0 text-danger">
-                                            Il campo non può essere vuoto e non deve superare i 254 caratteri
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                                <div class="mb-4 row">
-                                    <label for="surname" class="col-md-4 col-form-label text-md-right">Surname</label>
-
-                                    <div class="col-md-6">
-                                        <input id="surname" type="text" class="form-control" v-model="surname"
-                                            :class="store.validate.isV(isVsurname)" autocomplete="surname" autofocus>
-
-
-                                        <div v-if="store.validate.isV(isVsurname) === 'is-invalid'"
-                                            class="mt-0 text-danger">
-                                            Il campo non può essere vuoto e non deve superare i 254 caratteri
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="mb-4 row">
-                                    <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail
-                                        Address *</label>
-
-                                    <div class="col-md-6">
-                                        <input id="email" type="email" class="form-control" v-model="email"
-                                            :class="store.validate.isV(isVemail)" required autocomplete="email">
-
-                                        <div v-if="store.validate.isV(isVemail) === 'is-invalid'"
-                                            class="mt-0 text-danger">
-                                            Il campo non può essere vuoto e non deve superare i 254 caratteri
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="text" class="form-label">Testo messaggio *</label>
-                                    <textarea class="form-control" v-model="text" rows="3"
-                                        :class="store.validate.isV(isVtext)" id="text" name="text"
-                                        placeholder="Inserisci messaggio"></textarea>
-                                    <div v-if="store.validate.isV(isVtext) === 'is-invalid'" class="mt-0 text-danger">
-                                        Il testo non deve superare i 1000 caratteri
-                                    </div>
-                                </div>
-
-
-                                <div class="mb-4 row mb-0">
-                                    <div class="col-md-6 offset-md-4">
-                                        <button type="submit" class="btn btn-primary">
-                                            invia
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
                     </div>
-
-
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
+
+                <div class="card-body">
+                    <h2 class="card-title mb-0">{{ apartment.title }}</h2>
+                    <p class="card-text"><small class="text-body-secondary">{{ apartment.category.name }}</small>
+                    </p>
+                    <p class="card-text mb-0">Servizi: </p>
+                    <span class="badge text-bg-light me-2 " v-for="service in apartment.services">{{ service.name
+                        }}</span>
+                    <p class="card-text mt-3 mb-0">Descrizione: </p>
+                    <p class="card-text">{{ apartment.description }}</p>
+                    <p class="card-text">{{ 'Stanze: ' + apartment.rooms_number }}</p>
+                    <p class="card-text">{{ 'Bagni: ' + apartment.baths_number }}</p>
+                    <p class="card-text">{{ 'Posti letto: ' + apartment.beds_number }}</p>
+                    <p class="card-text">{{ `Propietario: ${apartment.user.name} ${apartment.user.surname}` }}</p>
+                    <p class="card-text text-end"><small class="text-body-secondary">{{ apartment.address }}</small>
+                    </p>
+                </div>
+
+
+
+                <RouterLink v-if="apartment.user_id === store.user.id"
+                    :to="{ name: 'apartments.edit', params: { slug: apartment.slug } }" class="btn btn-primary">
+                    Modifica
+                </RouterLink>
+
+
+                <button v-if="apartment.user_id === store.user.id" @click="onDelete()"
+                    class="btn btn-danger">Delete</button>
+
+                <a v-if="apartment.user_id !== store.user.id" class="btn btn-primary" data-bs-toggle="offcanvas"
+                    href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                    Chiedi Informazioni
+                </a>
+
+
+                <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
+                    aria-labelledby="offcanvasExampleLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <form @submit.prevent="onSend">
+
+                            <div class="mb-4 row">
+                                <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
+
+                                <div class="col-md-6">
+                                    <input id="name" type="text" class="form-control" v-model="name"
+                                        :class="store.validate.isV(isVname)" autocomplete="name" autofocus>
+
+                                    <div v-if="store.validate.isV(isVname) === 'is-invalid'" class="mt-0 text-danger">
+                                        Il campo non può essere vuoto e non deve superare i 254 caratteri
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="mb-4 row">
+                                <label for="surname" class="col-md-4 col-form-label text-md-right">Surname</label>
+
+                                <div class="col-md-6">
+                                    <input id="surname" type="text" class="form-control" v-model="surname"
+                                        :class="store.validate.isV(isVsurname)" autocomplete="surname" autofocus>
+
+
+                                    <div v-if="store.validate.isV(isVsurname) === 'is-invalid'"
+                                        class="mt-0 text-danger">
+                                        Il campo non può essere vuoto e non deve superare i 254 caratteri
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-4 row">
+                                <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail
+                                    Address *</label>
+
+                                <div class="col-md-6">
+                                    <input id="email" type="email" class="form-control" v-model="email"
+                                        :class="store.validate.isV(isVemail)" required autocomplete="email">
+
+                                    <div v-if="store.validate.isV(isVemail) === 'is-invalid'" class="mt-0 text-danger">
+                                        Il campo non può essere vuoto e non deve superare i 254 caratteri
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="text" class="form-label">Testo messaggio *</label>
+                                <textarea class="form-control" v-model="text" rows="3"
+                                    :class="store.validate.isV(isVtext)" id="text" name="text"
+                                    placeholder="Inserisci messaggio"></textarea>
+                                <div v-if="store.validate.isV(isVtext) === 'is-invalid'" class="mt-0 text-danger">
+                                    Il testo non deve superare i 1000 caratteri
+                                </div>
+                            </div>
+
+
+                            <div class="mb-4 row mb-0">
+                                <div class="col-md-6 offset-md-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        invia
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
             </div>
         </div>
 
