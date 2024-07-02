@@ -2,14 +2,15 @@ import { reactive } from 'vue'
 import axios from 'axios';
 
 export const store = reactive({
+    urlBackend: "http://localhost:8000/api/",
+
     user: {
         apartments: [],
         id: 0,
         getUser() {
             this.id = 0;
-            axios.get("http://localhost:8000/api/user")
+            axios.get(`${store.urlBackend}user`)
                 .then((res) => {
-
                     this.fillUser(res.data)
                 })
                 .catch((err) => {
@@ -28,7 +29,7 @@ export const store = reactive({
             this.apartments = data.apartments;
         },
         getApartments() {
-            axios.get("http://localhost:8000/api/userapartments").then((res) => {
+            axios.get(`${store.urlBackend}userapartments`).then((res) => {
                 this.apartments = res.data.apartments
                 console.log(this.apartments)
             }).catch((err) => {
@@ -36,6 +37,8 @@ export const store = reactive({
             })
         }
     },
+
+    options: {},
 
     loading: {
         state: false,
@@ -47,36 +50,20 @@ export const store = reactive({
         }
     },
 
-    options: {},
+    apartment: {
+        current: null,
+        async getAll() {
+            return await axios.get(`${store.urlBackend}apartments`)
+                .then((res) => {
+                    return res.data.apartments
+                })
+                .catch((err) => {
+                    console.log(err.response.data);
+                    return err.response.data
+                })
+        }
+    },
 
-
-    // fetchApi: {
-    //     urlBackend: "http://localhost:8000/api/",
-    //     async get(path) {
-    //         store.loading.on();
-    //         await axios.get(this.urlBackend + path)
-    //             .then((res) => {
-    //                 store.loading.off();
-    //                 return (res.data)
-    //             })
-    //             .catch((err) => {
-    //                 store.loading.off();
-    //                 return console.log(err.response.data);
-    //             })
-    //     },
-    //     async post(path, params = {}) {
-    //         store.loading.on();
-    //         await axios.get(this.urlBackend + path, params)
-    //             .then((res) => {
-    //                 store.loading.off();
-    //                 return (res.data)
-    //             })
-    //             .catch((err) => {
-    //                 store.loading.off();
-    //                 return console.log(err.response.data);
-    //             })
-    //     },
-    // },
     validateString(text, min = 3, max = 254) {
         return text.length <= max && text.length >= min ? true : false;
     },
