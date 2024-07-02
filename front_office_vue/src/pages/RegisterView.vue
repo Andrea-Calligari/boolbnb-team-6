@@ -173,7 +173,7 @@ export default {
             }).then((res) => {
                this.store.user.getUser();
                this.store.loading.off();
-               this.$router.push('/');
+               this.$router.push({ name: 'home' });
             }).catch((err) => {
                this.store.loading.off();
                console.log(err.response.data);

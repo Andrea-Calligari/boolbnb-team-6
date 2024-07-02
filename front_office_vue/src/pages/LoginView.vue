@@ -44,7 +44,7 @@ export default {
             this.store.user.fillUser(res.data)
 
             this.store.loading.off();
-            this.$router.push('/');
+            this.$router.push({ name: 'home' });
          }).catch((err) => {
             this.store.loading.off();
             console.log(err.response.data);

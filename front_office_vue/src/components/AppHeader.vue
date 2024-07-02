@@ -9,11 +9,11 @@
         </div>
         <div class="col-auto">
 
-          <RouterLink to="/" class="me-2" :class="$route.fullPath === '/' ? 'opacity-50' : ''">
+          <RouterLink :to="{ name: 'home' }" class="me-2" :class="$route.fullPath === '/' ? 'opacity-50' : ''">
             <CmpBtnLoad content="Home" />
           </RouterLink>
 
-          <RouterLink to="/apartments" class="me-2" :class="$route.fullPath === '/apartments' ? 'opacity-50' : ''">
+          <RouterLink :to="{ name: 'apartments.index' }" class="me-2" :class="$route.fullPath === '/apartments' ? 'opacity-50' : ''">
             <CmpBtnLoad content="Apartments" />
           </RouterLink>
 
@@ -22,7 +22,7 @@
             <CmpBtnLoad  content="Dashboard" />
           </RouterLink>
 
-          <RouterLink v-if="store.user.id" to="/apartments/create" class="me-2"
+          <RouterLink v-if="store.user.id" :to="{ name: 'apartments.create' }" class="me-2"
             :class="$route.fullPath === '/apartments/create' ? 'opacity-50' : ''">
             <CmpBtnLoad  content="Create" />
           </RouterLink>
@@ -67,7 +67,7 @@ export default {
       this.store.user.id = null;
       await axios.post("http://localhost:8000/api/logout").then((res) => {
         console.log(res.data);
-        this.$router.push('/');
+        this.$router.push({ name: 'home' });
       }).catch((err) => {
         console.log('error: ', err);
       });

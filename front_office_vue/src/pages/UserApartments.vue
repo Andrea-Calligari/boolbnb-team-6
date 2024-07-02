@@ -7,7 +7,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ apartment.title }}</h5>
                         <p class="card-text">{{ apartment.description }}</p>
-                        <RouterLink :to="{ name: 'apartment', params: { slug: apartment.slug } }" class="btn btn-primary">
+                        <RouterLink :to="{ name: 'apartments.show', params: { slug: apartment.slug } }" class="btn btn-primary">
                             Mostra più dettagli</RouterLink>
                     </div>
                 </div>

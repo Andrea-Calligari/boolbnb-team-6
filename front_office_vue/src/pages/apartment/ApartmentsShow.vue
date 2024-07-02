@@ -122,7 +122,7 @@
 </template>
 
 <script>
-import { store } from '../store';
+import { store } from '../../store';
 import axios from 'axios';
 axios.defaults.withCredentials = true;
 axios.defaults.withXSRFToken = true;
@@ -151,7 +151,7 @@ export default {
     methods: {
         async onDelete() {
             await axios.delete(`http://localhost:8000/api/apartments/${this.slug}`).then((res) => {
-                this.$router.push({ name: 'apartments' });
+                this.$router.push({ name: 'apartments.index' });
             }).catch((err) => {
                 console.log(err.response.data)
             })

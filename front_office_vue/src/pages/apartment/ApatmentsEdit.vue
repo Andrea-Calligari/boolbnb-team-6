@@ -130,7 +130,7 @@
 </template>
 
 <script>
-import { store } from '../store.js';
+import { store } from '../../store.js';
 import axios from 'axios'
 axios.defaults.withCredentials = true;
 axios.defaults.withXSRFToken = true;
@@ -256,7 +256,7 @@ export default {
                         console.log(res.data.msg)
                     } else {
                         const apartmentSlug = res.data.apartment.slug;
-                        this.$router.push({ name: 'apartment', params: { slug: apartmentSlug } })
+                        this.$router.push({ name: 'apartments.show', params: { slug: apartmentSlug } })
                     }
 
                     
