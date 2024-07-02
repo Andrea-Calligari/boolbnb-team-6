@@ -89,9 +89,12 @@ class ApartmentController extends Controller
      */
     public function update(Request $request, string $slug)
     {
+        
         $form_data = $request->all();
-
+        if($form_data['user_id'] === Auth::id()){
         $apartment = Apartment::where('slug', $slug)->first();
+        
+        
 
         $title = Str::slug($form_data['title']);
         $slug = $title;
@@ -111,10 +114,17 @@ class ApartmentController extends Controller
         } else {
             $apartment->services()->detach();
         }
+        
 
-        return response()->json(
-            compact('apartment')
-        );
+            return response()->json(
+                compact('apartment')
+            );
+        }else{
+            return response()->json([
+                'msg'=>'non sei autorizzato'
+            ]);
+        }
+        
     }
 
     /**

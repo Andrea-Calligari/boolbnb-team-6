@@ -23,15 +23,15 @@
                         <p class="card-text text-end"><small class="text-body-secondary">{{ apartment.address }}</small>
                         </p>
                     </div>
-                    <RouterLink :to="{ name: 'apartments.edit', params: { slug: apartment.slug } }"
+                    <RouterLink  v-if="apartment.user_id === store.user.id" :to="{ name: 'apartments.edit', params: { slug: apartment.slug } }"
                         class="btn btn-primary">
                         Modifica
                     </RouterLink>
 
 
-                    <button @click="onDelete()" class="btn btn-danger">Delete</button>
+                    <button v-if="apartment.user_id === store.user.id" @click="onDelete()" class="btn btn-danger">Delete</button>
 
-                    <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
+                    <a v-if="apartment.user_id !== store.user.id" class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
                         aria-controls="offcanvasExample">
                         Chiedi Informazioni
                     </a>
