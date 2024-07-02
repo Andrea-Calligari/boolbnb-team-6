@@ -18,9 +18,7 @@ class ApartmentController extends Controller
     {
         $apartments = Apartment::all();
       
-        return response()->json([
-            $apartments,
-        ]);
+        return response()->json(compact('apartments'));
     }
 
     /**
