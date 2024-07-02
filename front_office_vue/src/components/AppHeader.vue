@@ -18,11 +18,6 @@
             <CmpBtnLoad content="Apartments" />
           </RouterLink>
 
-          <RouterLink v-if="store.user.id" :to="{ name: 'dashboard' }" class="me-2"
-            :class="$route.fullPath === '/dashboard' ? 'opacity-50' : ''">
-            <CmpBtnLoad content="Dashboard" />
-          </RouterLink>
-
           <RouterLink v-if="store.user.id" :to="{ name: 'apartments.create' }" class="me-2"
             :class="$route.fullPath === '/apartments/create' ? 'opacity-50' : ''">
             <CmpBtnLoad content="Create" />
@@ -33,9 +28,9 @@
             <CmpBtnLoad content="Register" />
           </RouterLink>
 
-          <CmpBtnLoad @click="store.user.logout()" v-if="store.user.id"
-            :content="store.user.name + ' ' + store.user.surname" :image="store.user.image" />
-
+          <RouterLink v-if="store.user.id" :to="{ name: 'dashboard' }">
+            <CmpBtnLoad :content="store.user.name + ' ' + store.user.surname" :image="store.user.image" />
+          </RouterLink>
 
           <RouterLink v-else :to="{ name: 'login' }" :class="$route.fullPath === '/login' ? 'opacity-50' : ''">
 
@@ -44,6 +39,11 @@
 
           </RouterLink>
 
+          <button @click="store.user.logout()" v-if="store.user.id" class="btn btn-outline-danger p-1 ms-2 mb-2" >
+            <span class="material-symbols-rounded">
+              logout
+            </span>
+          </button>
         </div>
       </div>
     </div>
