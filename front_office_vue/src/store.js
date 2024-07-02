@@ -23,6 +23,7 @@ export const store = reactive({
             this.name = data.user.name;
             this.surname = data.user.surname;
             this.email = data.user.email;
+            this.image = data.user.image;
             this.email_verified_at = data.user.email_verified_at;
             this.admin = data.user.admin;
 

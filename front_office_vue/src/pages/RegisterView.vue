@@ -78,6 +78,11 @@
                         </div>
                      </div>
 
+                     <div class="mb-3">
+                        <label for="image" class="form-label">Immagini</label>
+                        <input class="form-control" type="file" name="image" value="" id="image">
+                     </div>
+
                      <div class="mb-4 row mb-0">
                         <div class="col-md-6 offset-md-4">
                            <button type="submit" class="btn btn-primary">
@@ -114,6 +119,7 @@ export default {
          password_confirmation: '',
          isVpassword_confirmation: null,
          store,
+         image:null
       }
    },
    methods: {
@@ -148,7 +154,7 @@ export default {
             return false;
          }
       },
-      async onRegister() {
+      async onRegister(e) {
          if (this.isFormValidated()) {
             this.store.loading.on();
             this.store.user.id = 0;
@@ -158,7 +164,12 @@ export default {
                surname: this.surname,
                email: this.email,
                password: this.password,
-               password_confirmation: this.password_confirmation
+               password_confirmation: this.password_confirmation,
+               image: e.target.elements["image"].files[0]
+                }, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
             }).then((res) => {
                this.store.user.getUser();
                this.store.loading.off();

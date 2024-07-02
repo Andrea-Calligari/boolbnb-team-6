@@ -31,9 +31,11 @@
             :class="$route.fullPath === '/register' ? 'opacity-50' : ''">
             <CmpBtnLoad  content="Register" />
           </RouterLink>
-
+          
           <CmpBtnLoad @click="logout()" v-if="store.user.id" :content="store.user.name+ ' ' + store.user.surname + ' ->'"
-            :class="$route.fullPath === '/login' ? 'opacity-50' : ''" />
+            :class="$route.fullPath === '/login' ? 'opacity-50' : ''" :image="store.user.image" />
+            
+          
           <RouterLink v-else to="/login" :class="$route.fullPath === '/login' ? 'opacity-50' : ''">
 
             <CmpBtnLoad :content="store.user.id === 0 ? 'loading..' : 'Login'"

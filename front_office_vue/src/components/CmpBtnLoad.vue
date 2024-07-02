@@ -1,12 +1,13 @@
 <template>
   <button>
+    <img v-if="image" :src="'http://localhost:8000/'+image" height="30" width="30" alt="">
     {{content}}
   </button>
 </template>
 
 <script>
 export default {
-  props: ['content'],
+  props: ['content','image'],
 }
 </script>
 
