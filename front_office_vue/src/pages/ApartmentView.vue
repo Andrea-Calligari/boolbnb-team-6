@@ -3,8 +3,10 @@
         <div class="row">
             <div class="col">
                 <div class="card">
-                    <img :src="'http://localhost:8000/'+apartment.image" class="card-img-top" style="height: 40vh;"
+                    <template v-for="image in apartment.image.split(',')">
+                    <img :src="image ?'http://localhost:8000/'+image : 'http://localhost:8000/uploads/apartment/null.png' " class="card-img-top" style="height: 40vh;"
                         :alt="apartment.title + ' img'">
+                    </template>
                     <div class="card-body">
                         <h2 class="card-title mb-0">{{ apartment.title }}</h2>
                         <p class="card-text"><small class="text-body-secondary">{{ apartment.category.name }}</small>
