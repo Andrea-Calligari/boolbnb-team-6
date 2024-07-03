@@ -30,6 +30,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+// ####################################
+// rotte per tutti 
 //Rotta Options Database
 Route::get('/options', [OptionsController::class, 'index'])->name('options.index');
 
@@ -40,6 +42,8 @@ Route::get('/apartments/{slug}', [ApartmentController::class, 'show'])->name('ap
 
 Route::post('/messages', [MessageApiController::class, 'store'])->name('messages.store');
 
+// ####################################
+// rotte per utenti non loggati 
 Route::middleware('guest')->group(function () {
 
     Route::post('register', [RegisteredUserApiController::class, 'store']);
@@ -59,6 +63,8 @@ Route::middleware('guest')->group(function () {
         ->name('password.store');
 });
 
+// ####################################
+// rotte per utenti loggati 
 Route::middleware('auth')->group(function () {
     Route::get('/user', function (Request $request) {
         $user = Auth::user();
@@ -99,7 +105,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/apartments/{slug}', [ApartmentController::class, 'update'])->name('apartments.update');
 
     Route::delete('/apartments/{slug}', [ApartmentController::class, 'destroy'])->name('apartments.destroy');
-    
+
     Route::get('userapartments', [AuthenticatedSessionApiController::class, 'getApartments']);
 
     //Rotte crud messaggi
@@ -107,11 +113,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/messages', [MessageApiController::class, 'index'])->name('messages.index');
 
     Route::patch('/profile', [ProfileApiController::class, 'update'])->name('profile.update');
-    
+
     Route::delete('/profile', [ProfileApiController::class, 'destroy'])->name('profile.destroy');
-
-    
-
-    
-
 });
