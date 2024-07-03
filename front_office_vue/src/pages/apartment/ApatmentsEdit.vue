@@ -72,8 +72,13 @@
 
             <div class="mb-3">
                 <label for="address" class="form-label">indirizzo</label>
-                <input type="text" class="form-control" :class="store.validate.isV(isVaddress)" id="address"
-                    name="address" v-model="address" placeholder="Inserisci indirizzo">
+                <input type="text" @keyup="store.address.searchAddresses(address)" class="form-control"
+                    :class="store.validate.isV(isVaddress)" id="address" name="address" v-model="address"
+                    placeholder="Inserisci indirizzo" list="position">
+                <datalist id="position">
+                    <option v-for="position in store.address.listAddresses">{{ position.address.freeformAddress }}
+                    </option>
+                </datalist>
                 <div v-if="store.validate.isV(isVaddress) === 'is-invalid'" class="mt-0 text-danger">
                     Il campo indirizzo non può essere vuoto e non può superare i 254 caratteri
                 </div>
@@ -197,6 +202,15 @@ export default {
         },
         async onEdit(e) {
             if (this.isFormValidated()) {
+
+                this.position = await fetch(`https://api.tomtom.com/search/2/geocode/${encodeURI(this.address)}.json?key=orDHPznfE908Jeu45AKVaFSiSMAebYfQ`)
+                    .then((response) => response.json())
+                    .then((data) => { return data.results[0].position })
+                    .catch(function (error) {
+                        reject(error);
+                    });
+
+                console.log(this.position);
               
                 await axios.post(`http://localhost:8000/api/apartments/${this.slug}`, {
                     title: this.title,
