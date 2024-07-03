@@ -14,8 +14,9 @@
 
             <div class="mb-3">
                 <label for="description" class="form-label">Descrizione</label>
-                <textarea class="form-control" v-model="description" rows="3" :class="store.validate.isV(isVdescription)"
-                    id="description" name="description" placeholder="Inserisci Descrizione"></textarea>
+                <textarea class="form-control" v-model="description" rows="3"
+                    :class="store.validate.isV(isVdescription)" id="description" name="description"
+                    placeholder="Inserisci Descrizione"></textarea>
                 <div v-if="store.validate.isV(isVdescription) === 'is-invalid'" class="mt-0 text-danger">
                     Il testo non deve superare i 1000 caratteri
                 </div>
@@ -23,8 +24,8 @@
 
             <div class="mb-3">
                 <label for="price" class="form-label">Prezzo</label>
-                <input type="number" class="form-control" v-model="price" :class="store.validate.isV(isVprice)" step="0.01"
-                    id="price" name="price" placeholder="Inserisci Prezzo">
+                <input type="number" class="form-control" v-model="price" :class="store.validate.isV(isVprice)"
+                    step="0.01" id="price" name="price" placeholder="Inserisci Prezzo">
                 <div v-if="store.validate.isV(isVprice) === 'is-invalid'" class="mt-0 text-danger">
                     Il prezzo massimo è di 9999,99 e non può essere vuoto
                 </div>
@@ -62,7 +63,11 @@
             <div class="mb-3">
                 <label for="mtq" class="form-label">Metri quadri</label>
                 <input type="number" class="form-control" :class="store.validate.isV(isVmtq)" id="mtq" name="mtq"
-                    v-model="mtq" placeholder="Inserisci Metri quadri">
+                    v-model="mtq" placeholder="Inserisci Metri quadri" list="position">
+                <datalist id="position">
+                    <option v-for="position in store.address.listAddresses">{{ position.address.freeformAddress }}
+                    </option>
+                </datalist>
                 <div v-if="store.validate.isV(isVmtq) === 'is-invalid'" class="mt-0 text-danger">
                     l'inserzione deve avere come metratura minima 3mtq
                 </div>
@@ -70,8 +75,13 @@
 
             <div class="mb-3">
                 <label for="address" class="form-label">indirizzo</label>
-                <input type="text" class="form-control" :class="store.validate.isV(isVaddress)" id="address" name="address"
-                    v-model="address" placeholder="Inserisci indirizzo">
+                <input type="text" @keyup="store.address.searchAddresses(address)" class="form-control"
+                    :class="store.validate.isV(isVaddress)" id="address" name="address" v-model="address"
+                    placeholder="Inserisci indirizzo" list="position">
+                <datalist id="position">
+                    <option v-for="position in store.address.listAddresses">{{ position.address.freeformAddress }}
+                    </option>
+                </datalist>
                 <div v-if="store.validate.isV(isVaddress) === 'is-invalid'" class="mt-0 text-danger">
                     Il campo indirizzo non può essere vuoto e non può superare i 254 caratteri
                 </div>
@@ -193,7 +203,7 @@ export default {
         },
         async onCreate(e) {
             // console.dir(e.target.elements["image"].value);
-           
+
             if (this.isFormValidated()) {
 
                 this.position = await fetch(`https://api.tomtom.com/search/2/geocode/${encodeURI(this.address)}.json?key=orDHPznfE908Jeu45AKVaFSiSMAebYfQ`)

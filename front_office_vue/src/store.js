@@ -67,6 +67,7 @@ export const store = reactive({
         listAddresses:[],
         async searchAddresses(text) {
             console.log(text);
+            //this.listAddresses = []
             this.position = await fetch(`https://api.tomtom.com/search/2/search/${encodeURI(text)}.json?key=orDHPznfE908Jeu45AKVaFSiSMAebYfQ`)
               .then((response) => response.json())
               .then((data) => {
