@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\ApartmentController;
+use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\AuthenticatedSessionApiController;
 use App\Http\Controllers\Api\MessageApiController;
 use App\Http\Controllers\Api\RegisteredUserApiController;
@@ -116,3 +117,10 @@ Route::middleware('auth')->group(function () {
 
     Route::delete('/profile', [ProfileApiController::class, 'destroy'])->name('profile.destroy');
 });
+
+//rotte crud categories
+
+Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
+Route::get('/categories/{category}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
+Route::post('/categories/update', [CategoryController::class, 'update'])->name('categories.update');

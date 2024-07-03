@@ -13,6 +13,10 @@
             <CmpBtnLoad content="Home" />
           </RouterLink>
 
+          <RouterLink :to="{ name: 'categories.index' }" class="me-2">
+            <CmpBtnLoad content="Categories" />
+          </RouterLink>
+
           <RouterLink :to="{ name: 'apartments.index' }" class="me-2"
             :class="$route.fullPath === '/apartments' ? 'opacity-50' : ''">
             <CmpBtnLoad content="Apartments" />
@@ -39,7 +43,7 @@
 
           </RouterLink>
 
-          <button @click="store.user.logout()" v-if="store.user.id" class="btn btn-outline-danger p-1 ms-2 mb-2" >
+          <button @click="store.user.logout()" v-if="store.user.id" class="btn btn-outline-danger p-1 ms-2 mb-2">
             <span class="material-symbols-rounded">
               logout
             </span>

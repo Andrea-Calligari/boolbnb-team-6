@@ -11,6 +11,9 @@ import DashboardHome from './pages/dashboard/DashboardHome.vue'
 import ProfileUpdate from './pages/dashboard/ProfileUpdate.vue'
 import ReceivedMessages from './pages/dashboard/ReceivedMessages.vue'
 import UserApartments from './pages/dashboard/UserApartments.vue'
+import CategoriesIndex from './pages/category/CategoriesIndex.vue'
+import CategoriesCreate from './pages/category/CategoriesCreate.vue'
+import CategoriesEdit from './pages/category/CategoriesEdit.vue'
 
 
 export default createRouter({
@@ -35,6 +38,10 @@ export default createRouter({
     // ---- apartments
     { path: '/apartments/create', name: 'apartments.create', component: ApartmentsCreate },
     { path: '/apartments/:slug/edit', name: 'apartments.edit', component: ApatmentsEdit, props: true },
+    // ---- categories
+    { path: '/categories', name: 'categories.index', component: CategoriesIndex },
+    { path: '/categories/create', name: 'categories.create', component: CategoriesCreate },
+    { path: '/categories/:id/edit', name: 'categories.edit', component: CategoriesEdit, props: true },
     // ---- dashboard
     { path: '/dashboard', name: 'dashboard', component: DashboardHome },
     { path: '/dashboard/userapartments', name: 'dashboard.userapartments', component: UserApartments },

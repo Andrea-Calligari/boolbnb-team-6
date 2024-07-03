@@ -20,7 +20,7 @@ export const store = reactive({
                 .then((res) => {
                     store.loading.off();
                     this.fillUser(res.data)
-                    return {'msg':'logged'}
+                    return { 'msg': 'logged' }
                 })
                 .catch((err) => {
                     this.id = null;
@@ -74,6 +74,23 @@ export const store = reactive({
                 .then((res) => {
                     store.loading.off();
                     return res.data.apartments
+                })
+                .catch((err) => {
+                    store.loading.off();
+                    console.log(err.response.data);
+                    return err.response.data
+                })
+        }
+    },
+
+    category: {
+        current: null,
+        async getAll() {
+            store.loading.on();
+            return await axios.get(`${store.urlBackend}categories`)
+                .then((res) => {
+                    store.loading.off();
+                    return res.data.categories
                 })
                 .catch((err) => {
                     store.loading.off();
