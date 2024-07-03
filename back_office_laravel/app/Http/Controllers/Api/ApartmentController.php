@@ -89,7 +89,7 @@ class ApartmentController extends Controller
     {
 
         $form_data = $request->all();
-       
+
         if ($form_data['user_id'] == Auth::id()) {
             $apartment = Apartment::where('slug', $slug)->first();
 
@@ -122,10 +122,10 @@ class ApartmentController extends Controller
                     //aggiungi il file all'array
                     $form_data['image'] = $form_data['image'] . $path . $filename . ',';
                 }
-                $form_data['image'] = $form_data['oldImage'].','.$form_data['image']; 
+                $form_data['image'] = $form_data['oldImage'] . ',' . $form_data['image'];
                 $form_data['image'] = rtrim($form_data['image'], ",");
-            }else{
-                $form_data['image']=$form_data['oldImage'];
+            } else {
+                $form_data['image'] = $form_data['oldImage'];
             }
 
             $apartment->update($form_data);
@@ -162,5 +162,21 @@ class ApartmentController extends Controller
         return response()->json([
             'msg' => $response
         ]);
+    }
+
+    public function search(Request $request)
+    {
+        $form_data = $request->all();
+        if ($request->has('lon') && $request->has('lat')) {
+            $apartments = Apartment::where('latitude', '<', $form_data['lat'] + 0.1818)
+                ->where('latitude', '>', $form_data['lat'] - 0.1818)
+                ->where('longitude', '<', $form_data['lon'] + 0.177)
+                ->where('longitude', '>', $form_data['lon'] - 0.177)
+                ->get();
+
+            return response()->json(compact('apartments'));
+        } else {
+            return response()->json(['msg' => 'bad request']);
+        }
     }
 }

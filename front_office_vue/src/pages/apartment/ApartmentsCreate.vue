@@ -81,16 +81,7 @@
                 <label for="image" class="form-label">Immagini</label>
                 <input class="form-control" type="file" name="image" value="" id="image" multiple>
             </div>
-
-            <!-- <div class="mb-3">
-                <label for="image" class="form-label">Immagini</label>
-                <input type="text" class="form-control" :class="store.validate.isV(isVimage)" id="image" name="image"
-                    v-model="image" placeholder="Inserisci titolo">
-                <div v-if="store.validate.isV(isVimage) === 'is-invalid'" class="mt-0 text-danger">
-                    Il campo non può essere vuoto e non deve superare i 254 caratteri
-                </div>
-            </div> -->
-
+            
             <div class="mb-3">
                 <label for="category" class="form-label">categorie</label>
                 <select name="category" v-model="category" id="category">
