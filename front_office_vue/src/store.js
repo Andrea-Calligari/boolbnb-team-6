@@ -63,6 +63,23 @@ export const store = reactive({
             });
         },
     },
+    address:{
+        listAddresses:[],
+        async searchAddresses(text) {
+            console.log(text);
+            this.position = await fetch(`https://api.tomtom.com/search/2/search/${encodeURI(text)}.json?key=orDHPznfE908Jeu45AKVaFSiSMAebYfQ`)
+              .then((response) => response.json())
+              .then((data) => {
+                console.log(data.results);
+      
+                this.listAddresses = data.results
+              })
+              .catch(function (error) {
+                reject(error);
+              });
+      
+          }
+    },
 
     // contine principalmente metodi per ottenere tutti o alcuni appartamenti
     // e anche ,l'utimo appartamento mostrato nella apartments.show (.current)
