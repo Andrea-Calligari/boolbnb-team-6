@@ -103,7 +103,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/apartments/{apartment}/edit', [ApartmentController::class, 'edit'])->name('apartments.edit');
 
-    Route::put('/apartments/{slug}', [ApartmentController::class, 'update'])->name('apartments.update');
+    Route::post('/apartments/{slug}', [ApartmentController::class, 'update'])->name('apartments.update');
 
     Route::delete('/apartments/{slug}', [ApartmentController::class, 'destroy'])->name('apartments.destroy');
 
