@@ -17,7 +17,7 @@ class ApartmentController extends Controller
     public function index()
     {
         $apartments = Apartment::all();
-      
+
         return response()->json(compact('apartments'));
     }
 
@@ -87,42 +87,61 @@ class ApartmentController extends Controller
      */
     public function update(Request $request, string $slug)
     {
-        
+
         $form_data = $request->all();
-        if($form_data['user_id'] === Auth::id()){
-        $apartment = Apartment::where('slug', $slug)->first();
-        
-        
+       
+        if ($form_data['user_id'] == Auth::id()) {
+            $apartment = Apartment::where('slug', $slug)->first();
 
-        $title = Str::slug($form_data['title']);
-        $slug = $title;
-        do {
-            $find = Apartment::where('slug', $slug)->whereNot('id', $apartment->id)->first();
-            if ($find !== null) {
-                $slug = $title . '-' . rand(1, 99);
+
+
+            $title = Str::slug($form_data['title']);
+            $slug = $title;
+            do {
+                $find = Apartment::where('slug', $slug)->whereNot('id', $apartment->id)->first();
+                if ($find !== null) {
+                    $slug = $title . '-' . rand(1, 99);
+                }
+            } while ($find !== null);
+
+            $form_data['slug'] = $slug;
+
+            if ($request->has('image')) {
+                //imposti l'array vuoto
+                $form_data['image'] = '';
+
+                foreach ($request->file('image') as $file) {
+                    //definisci l'estensione del file
+                    $extension = $file->getClientOriginalExtension();
+                    //definisci il nome del file
+                    $filename = time() . '-' . uniqid() . '.' . $extension;
+                    //definisci il percorso
+                    $path = 'uploads/apartment/';
+                    //sposti il file nel percorso
+                    $file->move($path, $filename);
+                    //aggiungi il file all'array
+                    $form_data['image'] = $form_data['image'] . $path . $filename . ',';
+                }
+                $form_data['image'] = rtrim($form_data['image'], ",");
             }
-        } while ($find !== null);
 
-        $form_data['slug'] = $slug;
+            $apartment->update($form_data);
 
-        $apartment->update($form_data);
+            if ($request->has('services_ids')) {
+                $apartment->services()->sync($request->services_ids);
+            } else {
+                $apartment->services()->detach();
+            }
 
-        if ($request->has('services_ids')) {
-            $apartment->services()->sync($request->services_ids);
-        } else {
-            $apartment->services()->detach();
-        }
-        
 
             return response()->json(
                 compact('apartment')
             );
-        }else{
+        } else {
             return response()->json([
-                'msg'=>'non sei autorizzato'
+                'msg' => 'non sei autorizzato'
             ]);
         }
-        
     }
 
     /**
@@ -131,14 +150,14 @@ class ApartmentController extends Controller
     public function destroy(string $slug)
     {
         $apartment = Apartment::where('slug', $slug)->delete();
-        $response='';
-        if($apartment){
+        $response = '';
+        if ($apartment) {
             $response = 'deleted';
-        }else{
+        } else {
             $response = 'apartment to delete not found';
         }
         return response()->json([
-            'msg'=>$response
+            'msg' => $response
         ]);
     }
 }

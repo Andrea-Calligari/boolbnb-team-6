@@ -79,18 +79,9 @@
                 </div>
             </div>
 
-            <!-- <div class="mb-3">
-                <label for="image" class="form-label">Immagini</label>
-                <input class="form-control" type="file" name="image" id="image" multiple>
-            </div> -->
-
             <div class="mb-3">
                 <label for="image" class="form-label">Immagini</label>
-                <input type="text" class="form-control" :class="store.validate.isV(isVimage)" id="image" name="image"
-                    v-model="image" placeholder="Inserisci titolo">
-                <div v-if="store.validate.isV(isVimage) === 'is-invalid'" class="mt-0 text-danger">
-                    Il campo non può essere vuoto e non deve superare i 254 caratteri
-                </div>
+                <input class="form-control" type="file" name="image" value="" id="image" multiple>
             </div>
 
             <div class="mb-3">
@@ -203,9 +194,10 @@ export default {
                 return false
             }
         },
-        async onEdit() {
+        async onEdit(e) {
             if (this.isFormValidated()) {
-                await axios.put(`http://localhost:8000/api/apartments/${this.slug}`, {
+
+                await axios.post(`http://localhost:8000/api/apartments/${this.slug}`, {
                     title: this.title,
                     description: this.description,
                     price: this.price,
@@ -216,25 +208,25 @@ export default {
                     address: this.address,
                     latitude: this.position.lat,
                     longitude: this.position.lon,
-                    image: this.image,
                     visible: this.visible,
-                    user_id: this.user_id,
+                    user_id: this.store.user.id,
                     category_id: this.category,
                     services_ids: this.services,
-                }).then((res) => {
-                    if (res.data.msg) {
-                        console.log(res.data.msg)
-                    } else {
-                        const apartmentSlug = res.data.apartment.slug;
-                        this.$router.push({ name: 'apartments.show', params: { slug: apartmentSlug } })
+                    image: e.target.elements["image"].files
+                }, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
                     }
-
-
+                }).then((res) => {
+                    console.log(res);
+                    const apartmentSlug = res.data.apartment.slug;
+                    this.$router.push({ name: 'apartments.show', params: { slug: apartmentSlug } });
                 }).catch((err) => {
-                    console.log(err);
+                    console.log(err.response.data.message);
                 });
             }
         },
+       
     },
     computed: {
     },
@@ -260,7 +252,7 @@ export default {
             this.beds = results.beds_number
             this.baths = results.baths_number
             this.visible = results.visible
-            this.image = results.image
+            // this.image = results.image
             this.category = results.category_id
             for (let i = 0; i < results.services.length; i++) {
                 this.services.push(results.services[i].id)
