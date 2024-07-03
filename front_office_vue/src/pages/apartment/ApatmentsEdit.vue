@@ -101,6 +101,7 @@
                 </div>
             </div>
 
+            <img v-for="(img,i) in image" :src="'http://localhost:8000/' + img" @click="removeImage(i)" width="50" alt="">
 
 
             <div class="mb-3">
@@ -156,11 +157,11 @@ export default {
             isVmtq: null,
             visible: '1',
             isVvisible: null,
-            image: 'https://picsum.photos/200/300',
+            image: [],
             isVimage: null,
             category: 1,
             services: [],
-            user_id: 0
+            user_id: 0,
 
         }
     },
@@ -196,7 +197,7 @@ export default {
         },
         async onEdit(e) {
             if (this.isFormValidated()) {
-
+              
                 await axios.post(`http://localhost:8000/api/apartments/${this.slug}`, {
                     title: this.title,
                     description: this.description,
@@ -212,7 +213,9 @@ export default {
                     user_id: this.store.user.id,
                     category_id: this.category,
                     services_ids: this.services,
-                    image: e.target.elements["image"].files
+                    image: e.target.elements["image"].files,
+                    oldImage: this.image.join(',')
+
                 }, {
                     headers: {
                         'Content-Type': 'multipart/form-data'
@@ -226,6 +229,15 @@ export default {
                 });
             }
         },
+
+        removeImage(i){
+            // const ciao = [...this.image]
+            // console.log(typeof(ciao))
+            // const img2 = this.image.toSpliced(i,1)
+            // console.log(img2)
+            this.image = this.image.toSpliced(i,1)
+        }
+
        
     },
     computed: {
@@ -252,7 +264,7 @@ export default {
             this.beds = results.beds_number
             this.baths = results.baths_number
             this.visible = results.visible
-            // this.image = results.image
+            this.image = results.image.split(',')
             this.category = results.category_id
             for (let i = 0; i < results.services.length; i++) {
                 this.services.push(results.services[i].id)

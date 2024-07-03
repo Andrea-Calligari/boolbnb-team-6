@@ -122,7 +122,10 @@ class ApartmentController extends Controller
                     //aggiungi il file all'array
                     $form_data['image'] = $form_data['image'] . $path . $filename . ',';
                 }
+                $form_data['image'] = $form_data['oldImage'].','.$form_data['image']; 
                 $form_data['image'] = rtrim($form_data['image'], ",");
+            }else{
+                $form_data['image']=$form_data['oldImage'];
             }
 
             $apartment->update($form_data);
