@@ -130,7 +130,7 @@ export default {
                 this.store.loading.on();
                 //this.store.user.id = 0;
                 await axios.get("http://localhost:8000/sanctum/csrf-cookie");
-                await axios.patch("http://localhost:8000/api/profile", {
+                await axios.post("http://localhost:8000/api/profile", {
                     name: this.name,
                     surname: this.surname,
                     email: this.email,
