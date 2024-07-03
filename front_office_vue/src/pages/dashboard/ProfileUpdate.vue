@@ -26,10 +26,12 @@
 
                                 <div class="col-md-6">
                                     <input id="surname" type="text" class="form-control" v-model="surname"
-                                        :class="store.validate.isV(isVsurname)" required autocomplete="surname" autofocus>
+                                        :class="store.validate.isV(isVsurname)" required autocomplete="surname"
+                                        autofocus>
 
 
-                                    <div v-if="store.validate.isV(isVsurname) === 'is-invalid'" class="mt-0 text-danger">
+                                    <div v-if="store.validate.isV(isVsurname) === 'is-invalid'"
+                                        class="mt-0 text-danger">
                                         Il campo non può essere vuoto e non deve superare i 254 caratteri
                                     </div>
                                 </div>
@@ -46,6 +48,12 @@
                                         Il campo non può essere vuoto e non deve superare i 254 caratteri
                                     </div>
                                 </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="image" class="form-label">Immagini</label>
+                                <input class="form-control" type="file" name="image" value="" id="image"
+                                    autocomplete="image">
                             </div>
 
                             <div class="mb-4 row mb-0">
@@ -96,6 +104,7 @@ export default {
             isVsurname: null,
             email: '',
             isVemail: null,
+            image: null,
 
         }
     },
@@ -116,15 +125,21 @@ export default {
                 return false;
             }
         },
-        async onUpdate() {
+        async onUpdate(e) {
             if (this.isFormValidated()) {
                 this.store.loading.on();
-                this.store.user.id = 0;
+                //this.store.user.id = 0;
                 await axios.get("http://localhost:8000/sanctum/csrf-cookie");
                 await axios.patch("http://localhost:8000/api/profile", {
                     name: this.name,
                     surname: this.surname,
-                    email: this.email
+                    email: this.email,
+                    image: e.target.elements["image"].files[0]
+                }, {
+                    headers: {
+                        
+                        'Content-Type': 'multipart/form-data'
+                    }
                 }).then((res) => {
                     this.store.user.getUser();
                     this.store.loading.off();
@@ -163,7 +178,12 @@ export default {
                 this.name = this.store.user.name;
                 this.surname = this.store.user.surname;
                 this.email = this.store.user.email;
+                this.image = this.store.user.image
                 store.loading.off();
+                console.log(this.name)
+                console.log(this.surname)
+                console.log(this.email)
+                console.log(this.image)
             })
             .catch((err) => {
                 store.loading.off();
