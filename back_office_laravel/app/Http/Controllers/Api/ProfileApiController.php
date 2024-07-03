@@ -26,28 +26,28 @@ class ProfileApiController extends Controller
             $request->user()->email_verified_at = null;
         }
 
-        // $filename = null;
-        // $path = 'uploads/user/';
+        $filename = null;
+        $path = 'uploads/user/';
 
-        // if($request->hasFile('image')){
-        //     //definisci il file
-        //     $file = $request->file('image');
-        //     //definisci l'estensione del file
-        //     $extension = $file->getClientOriginalExtension();
-        //     //definisci il nome del file
-        //     $filename = time().'.'.$extension;
+        if($request->hasFile('image')){
+            //definisci il file
+            $file = $request->file('image');
+            //definisci l'estensione del file
+            $extension = $file->getClientOriginalExtension();
+            //definisci il nome del file
+            $filename = time().'.'.$extension;
     
-        //     //sposti il file nel percorso
-        //     $file->move(public_path($path), $filename);
+            //sposti il file nel percorso
+            $file->move(public_path($path), $filename);
 
-        //     //cancelli file image precedente se esiste
-        //     if(File::exists($request->user()->image)){
-        //         File::delete($request->user()->image);
-        //     }
+            //cancelli file image precedente se esiste
+            if(File::exists($request->user()->image)){
+                File::delete($request->user()->image);
+            }
 
-        //     //definisci l'attributo image
-        //     $request->user()->image = $path . $filename;
-        // }
+            //definisci l'attributo image
+            $request->user()->image = $path . $filename;
+        }
 
         $request->user()->save();
 

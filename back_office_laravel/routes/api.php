@@ -112,7 +112,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/messages', [MessageApiController::class, 'index'])->name('messages.index');
 
-    Route::patch('/profile', [ProfileApiController::class, 'update'])->name('profile.update');
+    Route::post('/profile', [ProfileApiController::class, 'update'])->name('profile.update');
 
     Route::delete('/profile', [ProfileApiController::class, 'destroy'])->name('profile.destroy');
 });
