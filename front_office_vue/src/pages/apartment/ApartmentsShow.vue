@@ -6,19 +6,20 @@
                 <div id="carouselExampleIndicators" class="carousel slide">
 
                     <div class="carousel-indicators">
-
-                        <button v-for="(image, i) in apartment.image.split(',')" type="button"
-                            data-bs-target="#carouselExampleIndicators" :data-bs-slide-to="i" class="active"
-                            :aria-current="i === 0" :aria-label="'Slide ' + i"></button>
-
+                        <template v-if="apartment.image !== null">
+                            <button v-for="(image, i) in apartment.image.split(',')" type="button"
+                                data-bs-target="#carouselExampleIndicators" :data-bs-slide-to="i" class="active"
+                                :aria-current="i === 0" :aria-label="'Slide ' + i"></button>
+                        </template>
                     </div>
                     <div class="carousel-inner">
-
-                        <div v-for="(image, i) in apartment.image.split(',')" class="carousel-item"
-                            :class="i === 0 ? 'active' : ''">
-                            <img :src="image ? 'http://localhost:8000/' + image : 'http://localhost:8000/uploads/apartment/null.png'"
-                                class="d-block w-100" :alt="apartment.title + ' img ' + i">
-                        </div>
+                        <template v-if="apartment.image !== null">
+                            <div v-for="(image, i) in apartment.image.split(',')" class="carousel-item"
+                                :class="i === 0 ? 'active' : ''">
+                                <img :src="image ? 'http://localhost:8000/' + image : 'http://localhost:8000/uploads/apartment/null.png'"
+                                    class="d-block w-100" :alt="apartment.title + ' img ' + i">
+                            </div>
+                        </template>
 
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
