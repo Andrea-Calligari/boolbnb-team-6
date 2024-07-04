@@ -134,6 +134,25 @@ export const store = reactive({
         }
     },
 
+    search:{
+        address:'Piazza di spagna, 31, Roma',
+        async getSearch(radius= 20, rooms_number= 1, beds_number= 1,service_ids= []) {
+            const position = await fetch(`https://api.tomtom.com/search/2/geocode/${encodeURI(this.address)}.json?key=orDHPznfE908Jeu45AKVaFSiSMAebYfQ`)
+                .then((response) => response.json())
+                .then((data) => { return data.results[0].position })
+                .catch(function (error) {
+                    reject(error);
+                });
+            return await axios.get(`http://localhost:8000/api/apartments/search?lat=${position.lat}&lon=${position.lon}&radius=${radius}&rooms_number=${rooms_number}&beds_number=${beds_number}&service_ids=${service_ids}`).then((res) => {
+                console.log(res);
+                return res.data.apartments
+            })
+
+
+        }
+
+    },
+
     // oggetto per validare input 
     // il metodo isV(e) gestisce le classi nel template
     // gli altri (ex. _string) validano i campi controllando lunghezza o numero del value dell'input
