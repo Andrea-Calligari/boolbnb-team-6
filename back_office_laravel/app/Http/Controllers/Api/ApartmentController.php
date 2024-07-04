@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Apartment;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -167,16 +168,98 @@ class ApartmentController extends Controller
     public function search(Request $request)
     {
         $form_data = $request->all();
-        if ($request->has('lon') && $request->has('lat')) {
-            $apartments = Apartment::where('latitude', '<', $form_data['lat'] + 0.1818)
-                ->where('latitude', '>', $form_data['lat'] - 0.1818)
-                ->where('longitude', '<', $form_data['lon'] + 0.177)
-                ->where('longitude', '>', $form_data['lon'] - 0.177)
+
+        if ($request->has('lon') && $request->has('lat') && $request->has('radius') && $request->has('rooms_number') && $request->has('beds_number') && $request->has('service_ids')) {
+
+            $lat1 = $form_data['lat'];
+            $lon1 = $form_data['lon'];
+            $radius = intval($form_data['radius']);
+            $rooms_number = intval($form_data['rooms_number']);
+            $beds_number = intval($form_data['beds_number']);
+            $service_ids = $form_data['service_ids'];
+            $apartments = Apartment::where('latitude', '<', $lat1 + (0.008995 * $radius))
+                ->where('latitude', '>', $lat1 - (0.008995 * $radius))
+                ->where('longitude', '<', $lon1 + (0.011690 * $radius))
+                ->where('longitude', '>', $lon1 - (0.011690 * $radius))
+                ->where('rooms_number', '>=', $rooms_number)
+                ->where('beds_number', '>=', $beds_number)
+                ->with('services')
+
                 ->get();
+
+
+            $apartments = filterApartments($apartments, 14);
+            // $apartments = sortApartments($apartments, $lat1, $lon1);
 
             return response()->json(compact('apartments'));
         } else {
             return response()->json(['msg' => 'bad request']);
         }
     }
+}
+
+
+function filterApartments($apartments, $services)
+{
+    $apartmentFitered = [];
+    foreach ($apartments as $apartment) {
+        if (checkServices($apartment['services'], $services) ) {
+            $apartmentFitered[] = $apartment;
+        }
+    };
+
+    return $apartmentFitered;
+}
+function checkServices($services, $serviceToCheck)
+{
+    foreach ($services as $service) {
+        if ($service['id'] === $serviceToCheck) {
+            return true;
+        }
+    };
+    return false;
+}
+
+
+
+function sortApartments($apartments, $lat1, $lon1)
+{
+    foreach ($apartments as &$apartment) {
+        $apartment['distance'] = getDistance($lat1, $lon1, $apartment['latitude'], $apartment['longitude']);
+    };
+
+    $toSortApartments = [];
+    foreach ($apartments as $apartment) {
+        $toSortApartments[] = $apartment['distance'];
+    };
+    asort($toSortApartments);
+    $sortedApartments = [];
+    foreach ($toSortApartments as $i => $apartment) {
+        $sortedApartments[] = $apartments[$i];
+    };
+
+    return $sortedApartments;
+}
+
+function getDistance($lat1, $lon1, $lat2, $lon2)
+{
+    $R = 6371.0;
+
+    // Converti le coordinate in radianti
+    $lat1_rad = deg2rad($lat1);
+    $lon1_rad = deg2rad($lon1);
+    $lat2_rad = deg2rad($lat2);
+    $lon2_rad = deg2rad($lon2);
+
+    // Differenze delle coordinate
+    $dlat = $lat2_rad - $lat1_rad;
+    $dlon = $lon2_rad - $lon1_rad;
+
+    // Formula dell'haversine
+    $a = sin($dlat / 2) ** 2 + cos($lat1_rad) * cos($lat2_rad) * sin($dlon / 2) ** 2;
+    $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
+
+    // Distanza
+    $distanza = $R * $c;
+    return $distanza;
 }
