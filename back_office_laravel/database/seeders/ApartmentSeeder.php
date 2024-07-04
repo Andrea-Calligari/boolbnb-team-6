@@ -1075,9 +1075,24 @@ class ApartmentSeeder extends Seeder
             $promotions_with_timestamp = [];
 
             foreach ($random_promotions_ids as $random_promotions_id) {
+
                 $start_date = $faker->dateTimeThisYear();
-                $hours = $promo_durations[$random_promotions_id];
-                $expiration_date = (new Carbon($start_date))->addHours($hours);
+
+                //vedi se promotions with timestamps è vuoto o no
+                if(count($promotions_with_timestamps)){
+                    //se non è vuoto lo cicli
+                    foreach ($promotions_with_timestamps as $promotion_with_timestamp){
+                        //se start date è tra start date e expiration date precedenti
+                        if($promotion_with_timestamp['start_date']->between($start_date, $expiration_date)){
+                            //allora start date = expiration date + 1 secondo
+                            $promotion_with_timestamp['start_date'] = $expiration_date->addSecond();
+                        } else {
+                            //altrimenti vai avanti creando expiration date
+                            $hours = $promo_durations[$random_promotions_id];
+                            $expiration_date = (new Carbon($start_date))->addHours($hours);
+                        }
+                    }
+                }
 
                 $promotions_with_timestamp[$random_promotions_id] = [
                     'start_date' => $start_date,
