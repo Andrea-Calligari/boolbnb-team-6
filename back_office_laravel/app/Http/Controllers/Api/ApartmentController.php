@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\Api;
-
+use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
 use App\Models\Apartment;
 use App\Models\Service;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -205,6 +206,42 @@ class ApartmentController extends Controller
             return response()->json(['msg' => 'bad request']);
         }
     }
+   public function homePage(){
+    // prenderci tutti gli appartamenti con promozioni visible = 1
+    $now = Carbon::now();
+    $apartments = Apartment::with('promotions')->where('visible', 1)->get();
+    $apartmentPivot = [];
+
+    // $resultPivot = $apartments[0]['promotions'][0]['pivot']; 
+    // $start_date = $apartments[0]['promotions'][0]['pivot']['start_date'];
+    // $expiration_date = $apartments[0]['promotions'][0]['pivot']['expiration_date'];
+    // $isCurrent = $now->between($start_date, $expiration_date);
+    
+    foreach($apartments as $apartment){
+        foreach($apartment['promotions'] as $promotion){
+           $start_date =  $promotion['pivot']['start_date'];
+           $expiration_date = $promotion['pivot']['expiration_date'];
+           if($now->between($start_date, $expiration_date))
+             $apartmentPivot[] = $apartment;
+        }
+    }
+    
+        
+    
+    
+    //filtrare tutti gli appartamenti dove la data di inizio e fine sono coerenti 
+  
+    
+    
+    // $apartment['promotions']['pivot']['start_date'];
+
+    
+    
+    return response()->json(compact('apartmentPivot'));
+
+    // filtrare appartamenti per le promotions ancora in corso
+    // response in json 
+    }
 }
 
 function sortApartments($apartments, $lat1, $lon1)
@@ -279,3 +316,4 @@ function getDistance($lat1, $lon1, $lat2, $lon2)
     $distanza = $R * $c;
     return $distanza;
 }
+

@@ -35,6 +35,7 @@ use Illuminate\Support\Facades\Route;
 // rotte per tutti 
 //Rotta Options Database
 Route::get('/options', [OptionsController::class, 'index'])->name('options.index');
+Route::get('/homepage',[ApartmentController::class, 'homePage'])->name('apartments.homepage');
 
 //Rotte crud appartamenti
 Route::get('/apartments', [ApartmentController::class, 'index'])->name('apartments.index');
@@ -64,6 +65,8 @@ Route::middleware('guest')->group(function () {
 
     Route::post('reset-password', [NewPasswordController::class, 'store'])
         ->name('password.store');
+
+   
 });
 
 // ####################################
