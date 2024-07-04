@@ -49,6 +49,13 @@
                     <p class="card-text">{{ `Propietario: ${apartment.user.name} ${apartment.user.surname}` }}</p>
                     <p class="card-text text-end"><small class="text-body-secondary">{{ apartment.address }}</small>
                     </p>
+
+                    <div class="m-3">
+                        <iframe style="width: 100%; height: 500px;" frameborder="0" scrolling="no" marginheight="0"
+                            marginwidth="0"
+                            :src="`https://maps.google.com/maps?q=${apartment.latitude},${apartment.longitude}&hl=it&z=14&amp;output=embed`">
+                        </iframe>
+                    </div>
                 </div>
 
 
@@ -129,7 +136,6 @@
                                     Il testo non deve superare i 1000 caratteri
                                 </div>
                             </div>
-
 
                             <div class="mb-4 row mb-0">
                                 <div class="col-md-6 offset-md-4">

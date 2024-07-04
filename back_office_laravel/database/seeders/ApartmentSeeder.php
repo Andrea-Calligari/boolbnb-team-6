@@ -24,1005 +24,1006 @@ class ApartmentSeeder extends Seeder
 
         $arrAddress = [
 
-            ['address' => 'Via Roma, 7, Viterbo', 'lat' => '41.8724', 'lon' => '12.52727'],
+            ['address' => 'Via di Santa Maria Ausiliatrice 99, 00181 Roma', 'lat' => '41.872478', 'lon' => '12.527176'],
 
-            ['address' => 'Piazza di Spagna, 93, Roma', 'lat' => '42.41722', 'lon' => '12.10548'],
+            ['address' => 'Via Roma 7, 01100 Viterbo', 'lat' => '42.417229', 'lon' => '12.105445'],
 
-            ['address' => 'Via Aldo Moro, 42, Rieti', 'lat' => '41.90629', 'lon' => '12.48141'],
+            ['address' => 'Piazza di Spagna 93, 00187 Roma', 'lat' => '41.906330', 'lon' => '12.481470'],
 
-            ['address' => 'Via Nazionale, 98, Latina', 'lat' => '42.41966', 'lon' => '12.86063'],
+            ['address' => 'Viale Aldo Moro 42, 02100 Rieti', 'lat' => '42.419590', 'lon' => '12.860620'],
 
-            ['address' => 'Corso Cavour, 89, Rieti', 'lat' => '41.58232', 'lon' => '12.97363'],
+            ['address' => 'Via Nazionale 107, 04010 Norma', 'lat' => '41.582355', 'lon' => '12.973577'],
 
-            ['address' => 'Via di Santa Maria, 36, Rieti', 'lat' => '42.71853', 'lon' => '12.11075'],
+            ['address' => 'Via della Costituente 2, 05018 Orvieto', 'lat' => '42.718639', 'lon' => '12.110722'],
 
-            ['address' => 'Via Roma, 29, Viterbo', 'lat' => '42.21661', 'lon' => '12.66406'],
+            ['address' => 'Via Santa Maria 89, 02034 Montopoli di Sabina', 'lat' => '42.216591', 'lon' => '12.664132'],
 
-            ['address' => 'Corso Cavour, 85, Latina', 'lat' => '42.41747', 'lon' => '12.10571'],
+            ['address' => 'Via Roma 29, 01100 Viterbo', 'lat' => '42.417492', 'lon' => '12.105656'],
 
-            ['address' => 'Via Nazionale, 72, Roma', 'lat' => '42.71848', 'lon' => '12.11048'],
+            ['address' => 'Corso Cavour 85, 05018 Orvieto', 'lat' => '42.718449', 'lon' => '12.110478'],
 
-            ['address' => 'Via di Santa Maria, 25, Viterbo', 'lat' => '41.89918', 'lon' => '12.49114'],
+            ['address' => 'Via Nazionale 72, 00184 Roma', 'lat' => '41.899288', 'lon' => '12.491017'],
 
-            ['address' => 'Piazza di Spagna, 58, Roma', 'lat' => '45.35518', 'lon' => '10.14442'],
+            ['address' => 'Via Santa Maria Crocifissa di Rosa 25, 25025 Manerbio', 'lat' => '45.355156', 'lon' => '10.144387'],
 
-            ['address' => 'Corso Cavour, 23, Frosinone', 'lat' => '41.90526', 'lon' => '12.48254'],
+            ['address' => 'Via Borgognona 14, 00187 Roma', 'lat' => '41.905167', 'lon' => '12.482369'],
 
-            ['address' => 'Via Aldo Moro, 95, Viterbo', 'lat' => '41.72614', 'lon' => '13.3441'],
+            ['address' => 'Corso Cavour 25, 03011 Alatri', 'lat' => '41.726105', 'lon' => '13.344176'],
 
-            ['address' => 'Corso Cavour, 25, Latina', 'lat' => '42.56056', 'lon' => '11.83302'],
+            ['address' => 'Via Aldo Moro 95, 01018 Valentano', 'lat' => '42.560596', 'lon' => '11.832822'],
 
-            ['address' => 'Piazza di Spagna, 90, Frosinone', 'lat' => '41.21452', 'lon' => '13.56916'],
+            ['address' => 'Corso Cavour 25, 04024 Gaeta', 'lat' => '41.214615', 'lon' => '13.569106'],
 
-            ['address' => 'Via Nazionale, 92, Viterbo', 'lat' => '41.90621', 'lon' => '12.48151'],
+            ['address' => 'Piazza di Spagna 90, 00187 Roma', 'lat' => '41.906250', 'lon' => '12.481565'],
 
-            ['address' => 'Via Nazionale, 61, Rieti', 'lat' => '39.43917', 'lon' => '9.57633'],
+            ['address' => 'Via Nazionale 92, 09040 Villaputzu', 'lat' => '39.439213', 'lon' => '9.576353'],
 
-            ['address' => 'Via Aldo Moro, 91, Viterbo', 'lat' => '42.41911', 'lon' => '13.07977'],
+            ['address' => 'Via Nazionale 61, 02013 Antrodoco', 'lat' => '42.419174', 'lon' => '13.079870'],
 
-            ['address' => 'Via di Santa Maria, 56, Rieti', 'lat' => '42.56054', 'lon' => '11.83344'],
+            ['address' => 'Via Aldo Moro 85, 01018 Valentano', 'lat' => '42.560715', 'lon' => '11.833376'],
 
-            ['address' => 'Via Nazionale, 15, Roma', 'lat' => '42.21583', 'lon' => '12.66485'],
+            ['address' => 'Via Santa Maria 89, 02034 Montopoli di Sabina', 'lat' => '42.216591', 'lon' => '12.664132'],
 
-            ['address' => 'Piazza di Spagna, 58, Rieti', 'lat' => '41.90129', 'lon' => '12.49436'],
+            ['address' => 'Via Nazionale 15, 00184 Roma', 'lat' => '41.901390', 'lon' => '12.494250'],
 
-            ['address' => 'Via Roma, 26, Rieti', 'lat' => '41.90526', 'lon' => '12.48254'],
+            ['address' => 'Via Borgognona 14, 00187 Roma', 'lat' => '41.905167', 'lon' => '12.482369'],
 
-            ['address' => 'Via Aldo Moro, 6, Roma', 'lat' => '42.40041', 'lon' => '12.86087'],
+            ['address' => 'Via Roma 26, 02100 Rieti', 'lat' => '42.400406', 'lon' => '12.860918'],
 
-            ['address' => 'Via Aldo Moro, 17, Rieti', 'lat' => '42.11289', 'lon' => '12.36828'],
+            ['address' => 'Via Aldo Moro 6, 00063 Campagnano di Roma', 'lat' => '42.113033', 'lon' => '12.368223'],
 
-            ['address' => 'Via di Santa Maria, 81, Rieti', 'lat' => '42.20257', 'lon' => '13.26604'],
+            ['address' => 'Viale Aldo Moro 17, 02021 Borgorose', 'lat' => '42.202560', 'lon' => '13.266003'],
 
-            ['address' => 'Via di Santa Maria, 12, Rieti', 'lat' => '42.21416', 'lon' => '12.66242'],
+            ['address' => 'Via Santa Maria 71, 02034 Montopoli di Sabina', 'lat' => '42.215019', 'lon' => '12.664727'],
 
-            ['address' => 'Via di Santa Maria, 29, Rieti', 'lat' => '42.23238', 'lon' => '12.74121'],
+            ['address' => 'Via Santa Maria 12, 02031 Castelnuovo di Farfa', 'lat' => '42.232361', 'lon' => '12.741213'],
 
-            ['address' => 'Via di Santa Maria, 83, Frosinone', 'lat' => '42.22266', 'lon' => '12.6676'],
+            ['address' => 'Via Santa Maria 29, 02034 Montopoli di Sabina', 'lat' => '42.222691', 'lon' => '12.667336'],
 
-            ['address' => 'Via Roma, 61, Latina', 'lat' => '41.7046', 'lon' => '13.80747'],
+            ['address' => 'Via Santa Maria 114, 03046 San Donato Val di Comino', 'lat' => '41.704594', 'lon' => '13.807475'],
 
-            ['address' => 'Corso Cavour, 72, Viterbo', 'lat' => '41.62049', 'lon' => '13.83565'],
+            ['address' => 'Via Roma 61, 03040 Villa Latina', 'lat' => '41.620178', 'lon' => '13.835725'],
 
-            ['address' => 'Via Nazionale, 81, Rieti', 'lat' => '42.5388', 'lon' => '12.0319'],
+            ['address' => 'Corso Cavour 87, 01027 Montefiascone', 'lat' => '42.538784', 'lon' => '12.031928'],
 
-            ['address' => 'Piazza di Spagna, 37, Rieti', 'lat' => '42.41937', 'lon' => '13.0795'],
+            ['address' => 'Via Nazionale 81, 02013 Antrodoco', 'lat' => '42.419426', 'lon' => '13.079596'],
 
-            ['address' => 'Via Aldo Moro, 66, Frosinone', 'lat' => '41.90532', 'lon' => '12.4828'],
+            ['address' => 'Piazza di Spagna 37, 00187 Roma', 'lat' => '41.905243', 'lon' => '12.482717'],
 
-            ['address' => 'Via Roma, 4, Rieti', 'lat' => '41.64521', 'lon' => '13.34718'],
+            ['address' => 'Via Aldo Moro 66, 03100 Frosinone', 'lat' => '41.645046', 'lon' => '13.347527'],
 
-            ['address' => 'Piazza di Spagna, 81, Viterbo', 'lat' => '42.24435', 'lon' => '12.69087'],
+            ['address' => 'Via Roma 4, 02034 Montopoli di Sabina', 'lat' => '42.244366', 'lon' => '12.690817'],
 
-            ['address' => 'Via Roma, 54, Latina', 'lat' => '41.90596', 'lon' => '12.48181'],
+            ['address' => 'Piazza di Spagna 81, 00187 Roma', 'lat' => '41.906002', 'lon' => '12.481872'],
 
-            ['address' => 'Via Roma, 65, Latina', 'lat' => '41.61946', 'lon' => '13.83266'],
+            ['address' => 'Via Roma 54, 03040 Villa Latina', 'lat' => '41.619465', 'lon' => '13.832684'],
 
-            ['address' => 'Via Aldo Moro, 53, Frosinone', 'lat' => '41.62023', 'lon' => '13.8357'],
+            ['address' => 'Via Roma 65, 03040 Villa Latina', 'lat' => '41.620178', 'lon' => '13.835714'],
 
-            ['address' => 'Via Aldo Moro, 80, Latina', 'lat' => '41.64554', 'lon' => '13.3483'],
+            ['address' => 'Via Aldo Moro 59, 03100 Frosinone', 'lat' => '41.645309', 'lon' => '13.348230'],
 
-            ['address' => 'Via Nazionale, 93, Rieti', 'lat' => '41.58707', 'lon' => '12.6476'],
+            ['address' => 'Via Aldo Moro 80, 04011 Aprilia', 'lat' => '41.586903', 'lon' => '12.647496'],
 
-            ['address' => 'Via di Santa Maria, 56, Latina', 'lat' => '42.41992', 'lon' => '13.07905'],
+            ['address' => 'Via Nazionale 149, 02013 Antrodoco', 'lat' => '42.419952', 'lon' => '13.079096'],
 
-            ['address' => 'Via Roma, 75, Frosinone', 'lat' => '43.93056', 'lon' => '10.89935'],
+            ['address' => 'Via Francesco Cilea 41, 51100 Pistoia', 'lat' => '43.930374', 'lon' => '10.899625'],
 
-            ['address' => 'Corso Cavour, 57, Frosinone', 'lat' => '41.64557', 'lon' => '13.35264'],
+            ['address' => 'Viale Roma 75, 03100 Frosinone', 'lat' => '41.645550', 'lon' => '13.352779'],
 
-            ['address' => 'Via Roma, 89, Rieti', 'lat' => '41.72629', 'lon' => '13.34488'],
+            ['address' => 'Corso Cavour 57, 03011 Alatri', 'lat' => '41.726242', 'lon' => '13.344902'],
 
-            ['address' => 'Piazza di Spagna, 2, Latina', 'lat' => '42.40204', 'lon' => '12.86121'],
+            ['address' => 'Via Roma 83, 02100 Rieti', 'lat' => '42.402016', 'lon' => '12.861151'],
 
-            ['address' => 'Via Aldo Moro, 47, Latina', 'lat' => '43.07694', 'lon' => '11.6794'],
+            ['address' => 'Via della Chiochina 1, 53026 Pienza', 'lat' => '43.076958', 'lon' => '11.679416'],
 
-            ['address' => 'Corso Cavour, 31, Rieti', 'lat' => '41.59157', 'lon' => '12.64364'],
+            ['address' => 'Via Aldo Moro 47, 04011 Aprilia', 'lat' => '41.591549', 'lon' => '12.643730'],
 
-            ['address' => 'Via Roma, 48, Rieti', 'lat' => '41.94231', 'lon' => '14.63486'],
+            ['address' => 'Corso Cavour 31, 66050 Dogliola', 'lat' => '41.942429', 'lon' => '14.634944'],
 
-            ['address' => 'Corso Cavour, 46, Roma', 'lat' => '42.25757', 'lon' => '12.68416'],
+            ['address' => 'Via Ferruti 48, 02047 Poggio Mirteto', 'lat' => '42.257526', 'lon' => '12.684284'],
 
-            ['address' => 'Corso Cavour, 64, Rieti', 'lat' => '42.95459', 'lon' => '12.70542'],
+            ['address' => 'Corso Cavour 46, 06034 Foligno', 'lat' => '42.954605', 'lon' => '12.705452'],
 
-            ['address' => 'Via di Santa Maria, 10, Latina', 'lat' => '42.95428', 'lon' => '12.70567'],
+            ['address' => 'Corso Cavour 64, 06034 Foligno', 'lat' => '42.954296', 'lon' => '12.705711'],
 
-            ['address' => 'Via di Santa Maria, 98, Viterbo', 'lat' => '41.52565', 'lon' => '12.817'],
+            ['address' => 'Via Santa Maria Goretti 10, 04012 Cisterna di Latina', 'lat' => '41.525604', 'lon' => '12.816985'],
 
-            ['address' => 'Via Roma, 1, Roma', 'lat' => '41.87275', 'lon' => '12.52742'],
+            ['address' => 'Via di Santa Maria Ausiliatrice 98, 00181 Roma', 'lat' => '41.872688', 'lon' => '12.527497'],
 
-            ['address' => 'Piazza di Spagna, 8, Frosinone', 'lat' => '37.32877', 'lon' => '13.55116'],
+            ['address' => 'Via Roma 1 1, 92100 Agrigento', 'lat' => '37.328785', 'lon' => '13.551110'],
 
-            ['address' => 'Via di Santa Maria, 31, Latina', 'lat' => '41.90669', 'lon' => '12.48178'],
+            ['address' => 'Piazza di Spagna 8, 00187 Roma', 'lat' => '41.906647', 'lon' => '12.481802'],
 
-            ['address' => 'Corso Cavour, 1, Rieti', 'lat' => '41.34491', 'lon' => '13.43336'],
+            ['address' => 'Via di Santa Maria della Rosa 20, 04022 Fondi', 'lat' => '41.345551', 'lon' => '13.433856'],
 
-            ['address' => 'Via Nazionale, 43, Frosinone', 'lat' => '41.94203', 'lon' => '14.6358'],
+            ['address' => 'Vico Primo Corso Cavour, 66050 Dogliola', 'lat' => '41.942032', 'lon' => '14.635800'],
 
-            ['address' => 'Via di Santa Maria, 41, Latina', 'lat' => '41.53859', 'lon' => '13.27905'],
+            ['address' => 'Via Nazionale 43, 03020 Giuliano di Roma', 'lat' => '41.538620', 'lon' => '13.279108'],
 
-            ['address' => 'Via Aldo Moro, 35, Frosinone', 'lat' => '41.53131', 'lon' => '12.79526'],
+            ['address' => 'Via Santa Maria Goretti 41, 04012 Cisterna di Latina', 'lat' => '41.531387', 'lon' => '12.795297'],
 
-            ['address' => 'Via Roma, 81, Viterbo', 'lat' => '41.64582', 'lon' => '13.34827'],
+            ['address' => 'Via Aldo Moro 35, 03100 Frosinone', 'lat' => '41.645866', 'lon' => '13.348084'],
 
-            ['address' => 'Piazza di Spagna, 96, Roma', 'lat' => '42.37923', 'lon' => '12.28386'],
+            ['address' => 'Via Roma 81, 01039 Vignanello', 'lat' => '42.379185', 'lon' => '12.283867'],
 
-            ['address' => 'Via Aldo Moro, 1, Viterbo', 'lat' => '41.90637', 'lon' => '12.48132'],
+            ['address' => 'Piazza di Spagna 96, 00187 Roma', 'lat' => '41.906410', 'lon' => '12.481374'],
 
-            ['address' => 'Via Roma, 15, Frosinone', 'lat' => '42.42702', 'lon' => '12.09931'],
+            ['address' => 'Via Aldo Moro 1, 01100 Viterbo', 'lat' => '42.426956', 'lon' => '12.099323'],
 
-            ['address' => 'Via di Santa Maria, 12, Latina', 'lat' => '41.6425', 'lon' => '13.35055'],
+            ['address' => 'Viale Roma 3, 03100 Frosinone', 'lat' => '41.642681', 'lon' => '13.351679'],
 
-            ['address' => 'Via Roma, 36, Latina', 'lat' => '43.92793', 'lon' => '10.89914'],
+            ['address' => 'Via di Santa Maria Maggiore 12, 51100 Pistoia', 'lat' => '43.927929', 'lon' => '10.899100'],
 
-            ['address' => 'Corso Cavour, 85, Latina', 'lat' => '41.61967', 'lon' => '13.83162'],
+            ['address' => 'Via Roma 36, 03040 Villa Latina', 'lat' => '41.619709', 'lon' => '13.831610'],
 
-            ['address' => 'Via Nazionale, 98, Viterbo', 'lat' => '42.71848', 'lon' => '12.11048'],
+            ['address' => 'Corso Cavour 85, 05018 Orvieto', 'lat' => '42.718449', 'lon' => '12.110478'],
 
-            ['address' => 'Corso Cavour, 99, Frosinone', 'lat' => '38.1212', 'lon' => '15.12837'],
+            ['address' => 'Via Nazionale Vigliatore (173 - 81), 98050 Terme Vigliatore', 'lat' => '38.121201', 'lon' => '15.128368'],
 
-            ['address' => 'Via Aldo Moro, 66, Viterbo', 'lat' => '42.95417', 'lon' => '12.70588'],
+            ['address' => 'Via Giuseppe Piermarini 2, 06034 Foligno', 'lat' => '42.954254', 'lon' => '12.705935'],
 
-            ['address' => 'Piazza di Spagna, 91, Roma', 'lat' => '42.54378', 'lon' => '11.76331'],
+            ['address' => 'Via Aldo Moro 66, 01010 Ischia di Castro', 'lat' => '42.543797', 'lon' => '11.763354'],
 
-            ['address' => 'Via Roma, 8, Viterbo', 'lat' => '41.90626', 'lon' => '12.48155'],
+            ['address' => 'Piazza di Spagna 90, 00187 Roma', 'lat' => '41.906250', 'lon' => '12.481565'],
 
-            ['address' => 'Via Nazionale, 13, Rieti', 'lat' => '42.41725', 'lon' => '12.10541'],
+            ['address' => 'Via dei Magazzini 1, 01100 Viterbo', 'lat' => '42.417233', 'lon' => '12.105402'],
 
-            ['address' => 'Via Nazionale, 39, Roma', 'lat' => '42.41803', 'lon' => '13.08023'],
+            ['address' => 'Via Nazionale 13, 02013 Antrodoco', 'lat' => '42.418037', 'lon' => '13.080329'],
 
-            ['address' => 'Via di Santa Maria, 32, Rieti', 'lat' => '41.90032', 'lon' => '12.49286'],
+            ['address' => 'Via Nazionale 39, 00184 Roma', 'lat' => '41.900410', 'lon' => '12.492757'],
 
-            ['address' => 'Corso Cavour, 86, Frosinone', 'lat' => '42.21656', 'lon' => '12.66362'],
+            ['address' => 'Via Santa Maria 32, 02034 Montopoli di Sabina', 'lat' => '42.216858', 'lon' => '12.663843'],
 
-            ['address' => 'Corso Cavour, 99, Frosinone', 'lat' => '41.72636', 'lon' => '13.34546'],
+            ['address' => 'Corso Cavour 71A, 03011 Alatri', 'lat' => '41.726395', 'lon' => '13.345427'],
 
-            ['address' => 'Piazza di Spagna, 10, Frosinone', 'lat' => '42.95417', 'lon' => '12.70588'],
+            ['address' => 'Via Giuseppe Piermarini 2, 06034 Foligno', 'lat' => '42.954254', 'lon' => '12.705935'],
 
-            ['address' => 'Via di Santa Maria, 4, Viterbo', 'lat' => '43.07704', 'lon' => '11.67949'],
+            ['address' => 'Via dell\'Angelo 4, 53026 Pienza', 'lat' => '43.077030', 'lon' => '11.679569'],
 
-            ['address' => 'Via Roma, 49, Rieti', 'lat' => '37.59039', 'lon' => '14.97439'],
+            ['address' => 'Via Santa Maria di Licodia 4, 95032 Belpasso', 'lat' => '37.590355', 'lon' => '14.974352'],
 
-            ['address' => 'Via Aldo Moro, 80, Latina', 'lat' => '42.40114', 'lon' => '12.86104'],
+            ['address' => 'Via Roma 49, 02100 Rieti', 'lat' => '42.401142', 'lon' => '12.861031'],
 
-            ['address' => 'Corso Cavour, 26, Latina', 'lat' => '41.58707', 'lon' => '12.6476'],
+            ['address' => 'Via Aldo Moro 80, 04011 Aprilia', 'lat' => '41.586903', 'lon' => '12.647496'],
 
-            ['address' => 'Via Nazionale, 69, Latina', 'lat' => '41.21469', 'lon' => '13.56902'],
+            ['address' => 'Corso Cavour 26, 04024 Gaeta', 'lat' => '41.214603', 'lon' => '13.569068'],
 
-            ['address' => 'Via Aldo Moro, 37, Frosinone', 'lat' => '41.58268', 'lon' => '12.97348'],
+            ['address' => 'Via Nazionale 69, 04010 Norma', 'lat' => '41.582672', 'lon' => '12.973419'],
 
-            ['address' => 'Via di Santa Maria, 96, Roma', 'lat' => '41.6458', 'lon' => '13.34823'],
+            ['address' => 'Via Aldo Moro 37, 03100 Frosinone', 'lat' => '41.645836', 'lon' => '13.348070'],
 
-            ['address' => 'Via Aldo Moro, 97, Rieti', 'lat' => '41.87277', 'lon' => '12.52746'],
+            ['address' => 'Via di Santa Maria Ausiliatrice 96, 00181 Roma', 'lat' => '41.872711', 'lon' => '12.527532'],
 
-            ['address' => 'Via Aldo Moro, 92, Rieti', 'lat' => '42.19658', 'lon' => '12.99635'],
+            ['address' => 'Via Aldo Moro 69, 02020 Ascrea', 'lat' => '42.196640', 'lon' => '12.996367'],
 
-            ['address' => 'Corso Cavour, 40, Frosinone', 'lat' => '42.40612', 'lon' => '13.06075'],
+            ['address' => 'Via Aldo Moro 92, 02010 Borgo Velino', 'lat' => '42.406246', 'lon' => '13.060653'],
 
-            ['address' => 'Via Roma, 55, Roma', 'lat' => '41.72616', 'lon' => '13.34462'],
+            ['address' => 'Corso Cavour 45, 03011 Alatri', 'lat' => '41.726162', 'lon' => '13.344617'],
 
-            ['address' => 'Via Aldo Moro, 66, Frosinone', 'lat' => '42.88871', 'lon' => '13.90751'],
+            ['address' => 'Via Roma 35, 64014 Martinsicuro', 'lat' => '42.888660', 'lon' => '13.907531'],
 
-            ['address' => 'Via Nazionale, 8, Frosinone', 'lat' => '41.64521', 'lon' => '13.34718'],
+            ['address' => 'Via Aldo Moro 66, 03100 Frosinone', 'lat' => '41.645046', 'lon' => '13.347527'],
 
-            ['address' => 'Via Aldo Moro, 30, Latina', 'lat' => '41.53914', 'lon' => '13.27886'],
+            ['address' => 'Via Cairoli 13, 03020 Giuliano di Roma', 'lat' => '41.539310', 'lon' => '13.278781'],
 
-            ['address' => 'Piazza di Spagna, 9, Rieti', 'lat' => '41.40205', 'lon' => '13.04752'],
+            ['address' => 'Via Aldo Moro 30, 04014 Pontinia', 'lat' => '41.402012', 'lon' => '13.047571'],
 
-            ['address' => 'Corso Cavour, 69, Latina', 'lat' => '43.07707', 'lon' => '11.67945'],
+            ['address' => 'Via Guglielmo Marconi 27, 53026 Pienza', 'lat' => '43.077099', 'lon' => '11.679328'],
 
-            ['address' => 'Via Nazionale, 13, Roma', 'lat' => '41.21421', 'lon' => '13.56715'],
+            ['address' => 'Corso Cavour 69, 04024 Gaeta', 'lat' => '41.214298', 'lon' => '13.567157'],
 
-            ['address' => 'Via Nazionale, 10, Frosinone', 'lat' => '41.90135', 'lon' => '12.49442'],
+            ['address' => 'Via Nazionale 13, 00184 Roma', 'lat' => '41.901440', 'lon' => '12.494326'],
 
-            ['address' => 'Via Roma, 19, Latina', 'lat' => '41.53912', 'lon' => '13.27889'],
+            ['address' => 'Via Cairoli 13, 03020 Giuliano di Roma', 'lat' => '41.539310', 'lon' => '13.278781'],
 
-            ['address' => 'Via Aldo Moro, 11, Roma', 'lat' => '41.62013', 'lon' => '13.83389'],
+            ['address' => 'Via Roma 19, 03040 Villa Latina', 'lat' => '41.619972', 'lon' => '13.833918'],
 
-            ['address' => 'Piazza di Spagna, 16, Viterbo', 'lat' => '41.69946', 'lon' => '12.69447'],
+            ['address' => 'Via Aldo Moro 11, 00045 Genzano di Roma', 'lat' => '41.699154', 'lon' => '12.694050'],
 
-            ['address' => 'Via Nazionale, 47, Rieti', 'lat' => '41.90643', 'lon' => '12.48213'],
+            ['address' => 'Piazza di Spagna 15, 00187 Roma', 'lat' => '41.906429', 'lon' => '12.482052'],
 
-            ['address' => 'Corso Cavour, 48, Roma', 'lat' => '42.41879', 'lon' => '13.08009'],
+            ['address' => 'Via Nazionale 47, 02013 Antrodoco', 'lat' => '42.418800', 'lon' => '13.080221'],
 
-            ['address' => 'Via di Santa Maria, 41, Viterbo', 'lat' => '39.68899', 'lon' => '9.25054'],
+            ['address' => 'Corso Cavour 48, 09061 Orroli', 'lat' => '39.688999', 'lon' => '9.250608'],
 
-            ['address' => 'Via Roma, 17, Rieti', 'lat' => '37.66385', 'lon' => '15.10883'],
+            ['address' => 'Via Armando Diaz 39, 95019 Zafferana Etnea', 'lat' => '37.663715', 'lon' => '15.108871'],
 
-            ['address' => 'Via Nazionale, 69, Rieti', 'lat' => '42.40045', 'lon' => '12.86095'],
+            ['address' => 'Via Roma 17, 02100 Rieti', 'lat' => '42.400452', 'lon' => '12.860925'],
 
-            ['address' => 'Via Roma, 49, Rieti', 'lat' => '42.41984', 'lon' => '13.07912'],
+            ['address' => 'Via Nazionale 143, 02013 Antrodoco', 'lat' => '42.419857', 'lon' => '13.079162'],
 
-            ['address' => 'Corso Cavour, 51, Viterbo', 'lat' => '42.40114', 'lon' => '12.86104'],
+            ['address' => 'Via Roma 49, 02100 Rieti', 'lat' => '42.401142', 'lon' => '12.861031'],
 
-            ['address' => 'Via di Santa Maria, 49, Viterbo', 'lat' => '42.53928', 'lon' => '12.03249'],
+            ['address' => 'Corso Cavour 51, 01027 Montefiascone', 'lat' => '42.539230', 'lon' => '12.032552'],
 
-            ['address' => 'Via Aldo Moro, 42, Latina', 'lat' => '41.86117', 'lon' => '12.70601'],
+            ['address' => 'Via di Valle Santa Maria 49, 00132 Roma', 'lat' => '41.861229', 'lon' => '12.706124'],
 
-            ['address' => 'Via Roma, 96, Latina', 'lat' => '41.58585', 'lon' => '12.64851'],
+            ['address' => 'Via Aldo Moro 42, 04011 Aprilia', 'lat' => '41.585903', 'lon' => '12.648298'],
 
-            ['address' => 'Via Aldo Moro, 33, Frosinone', 'lat' => '41.62005', 'lon' => '13.83536'],
+            ['address' => 'Via Roma 96, 03040 Villa Latina', 'lat' => '41.620132', 'lon' => '13.835345'],
 
-            ['address' => 'Via Roma, 35, Rieti', 'lat' => '41.64585', 'lon' => '13.3483'],
+            ['address' => 'Via Aldo Moro 33, 03100 Frosinone', 'lat' => '41.645901', 'lon' => '13.348100'],
 
-            ['address' => 'Via di Santa Maria, 88, Frosinone', 'lat' => '42.4008', 'lon' => '12.861'],
+            ['address' => 'Via Roma 35, 02100 Rieti', 'lat' => '42.400803', 'lon' => '12.860978'],
 
-            ['address' => 'Piazza di Spagna, 80, Frosinone', 'lat' => '41.7047', 'lon' => '13.80763'],
+            ['address' => 'Via Santa Maria 88, 03046 San Donato Val di Comino', 'lat' => '41.704727', 'lon' => '13.807604'],
 
-            ['address' => 'Via Nazionale, 89, Rieti', 'lat' => '41.90594', 'lon' => '12.48183'],
+            ['address' => 'Piazza di Spagna 80, 00187 Roma', 'lat' => '41.905983', 'lon' => '12.481896'],
 
-            ['address' => 'Via Roma, 80, Viterbo', 'lat' => '42.41942', 'lon' => '13.07941'],
+            ['address' => 'Via Nazionale 89, 02013 Antrodoco', 'lat' => '42.419491', 'lon' => '13.079527'],
 
-            ['address' => 'Via Roma, 78, Roma', 'lat' => '42.31913', 'lon' => '12.0575'],
+            ['address' => 'Via Roma 80, 01019 Vetralla', 'lat' => '42.319176', 'lon' => '12.057525'],
 
-            ['address' => 'Via Nazionale, 15, Rieti', 'lat' => '41.39095', 'lon' => '13.86934'],
+            ['address' => 'Via Roma 58, 03040 Sant\'Ambrogio sul Garigliano', 'lat' => '41.390930', 'lon' => '13.869257'],
 
-            ['address' => 'Piazza di Spagna, 76, Latina', 'lat' => '42.38805', 'lon' => '12.9486'],
+            ['address' => 'Via Nazionale 15, 02015 Cittaducale', 'lat' => '42.388096', 'lon' => '12.948563'],
 
-            ['address' => 'Corso Cavour, 41, Viterbo', 'lat' => '41.90568', 'lon' => '12.48232'],
+            ['address' => 'Piazza di Spagna 28, 00187 Roma', 'lat' => '41.905678', 'lon' => '12.482317'],
 
-            ['address' => 'Via di Santa Maria, 7, Viterbo', 'lat' => '42.64513', 'lon' => '11.98591'],
+            ['address' => 'Corso Cavour 41, 01023 Bolsena', 'lat' => '42.645168', 'lon' => '11.985942'],
 
-            ['address' => 'Via Nazionale, 37, Viterbo', 'lat' => '43.92784', 'lon' => '10.89905'],
+            ['address' => 'Via di Santa Maria Maggiore 7, 51100 Pistoia', 'lat' => '43.927845', 'lon' => '10.899106'],
 
-            ['address' => 'Via Nazionale, 89, Rieti', 'lat' => '42.63637', 'lon' => '12.11236'],
+            ['address' => 'Via Nazionale 37, 01020 Lubriano', 'lat' => '42.636356', 'lon' => '12.112356'],
 
-            ['address' => 'Via Nazionale, 73, Roma', 'lat' => '42.41942', 'lon' => '13.07941'],
+            ['address' => 'Via Nazionale 89, 02013 Antrodoco', 'lat' => '42.419491', 'lon' => '13.079527'],
 
-            ['address' => 'Piazza di Spagna, 54, Rieti', 'lat' => '41.89915', 'lon' => '12.4911'],
+            ['address' => 'Via Nazionale 73, 00184 Roma', 'lat' => '41.899261', 'lon' => '12.490979'],
 
-            ['address' => 'Piazza di Spagna, 13, Latina', 'lat' => '41.90478', 'lon' => '12.48284'],
+            ['address' => 'Piazza di Spagna 54, 00187 Roma', 'lat' => '41.904800', 'lon' => '12.482906'],
 
-            ['address' => 'Via Roma, 58, Viterbo', 'lat' => '37.18517', 'lon' => '13.77034'],
+            ['address' => 'Via Tito, 92020 Palma di Montechiaro', 'lat' => '37.185169', 'lon' => '13.770342'],
 
-            ['address' => 'Via di Santa Maria, 10, Latina', 'lat' => '42.31929', 'lon' => '12.05702'],
+            ['address' => 'Via Roma 58, 01019 Vetralla', 'lat' => '42.319332', 'lon' => '12.057043'],
 
-            ['address' => 'Piazza di Spagna, 23, Frosinone', 'lat' => '41.52565', 'lon' => '12.817'],
+            ['address' => 'Via Santa Maria Goretti 10, 04012 Cisterna di Latina', 'lat' => '41.525604', 'lon' => '12.816985'],
 
-            ['address' => 'Via di Santa Maria, 1, Viterbo', 'lat' => '41.90606', 'lon' => '12.48236'],
+            ['address' => 'Piazza di Spagna 23, 00187 Roma', 'lat' => '41.906040', 'lon' => '12.482230'],
 
-            ['address' => 'Corso Cavour, 55, Frosinone', 'lat' => '42.41405', 'lon' => '12.11043'],
+            ['address' => 'Via San Biele 2, 01100 Viterbo', 'lat' => '42.413898', 'lon' => '12.110427'],
 
-            ['address' => 'Via di Santa Maria, 68, Viterbo', 'lat' => '41.72627', 'lon' => '13.34483'],
+            ['address' => 'Corso Cavour 52, 03011 Alatri', 'lat' => '41.726227', 'lon' => '13.344853'],
 
-            ['address' => 'Via di Santa Maria, 29, Frosinone', 'lat' => '41.93156', 'lon' => '12.51995'],
+            ['address' => 'Via di Santa Maria Goretti 68, 00199 Roma', 'lat' => '41.931488', 'lon' => '12.519988'],
 
-            ['address' => 'Via Aldo Moro, 71, Frosinone', 'lat' => '41.45832', 'lon' => '13.66555'],
+            ['address' => 'Via Santa Maria di Porta 29, 03037 Pontecorvo', 'lat' => '41.458412', 'lon' => '13.665561'],
 
-            ['address' => 'Via Roma, 36, Frosinone', 'lat' => '41.64553', 'lon' => '13.34819'],
+            ['address' => 'Via Aldo Moro 71, 03100 Frosinone', 'lat' => '41.645592', 'lon' => '13.347963'],
 
-            ['address' => 'Via di Santa Maria, 62, Frosinone', 'lat' => '41.64422', 'lon' => '13.35201'],
+            ['address' => 'Viale Roma 22, 03100 Frosinone', 'lat' => '41.644054', 'lon' => '13.352398'],
 
-            ['address' => 'Via Aldo Moro, 12, Latina', 'lat' => '41.46766', 'lon' => '13.87654'],
+            ['address' => 'Via Santa Maria di Trocchio 62, 03044 Cervaro', 'lat' => '41.467625', 'lon' => '13.876559'],
 
-            ['address' => 'Via Aldo Moro, 1, Latina', 'lat' => '41.30219', 'lon' => '14.2533'],
+            ['address' => 'Via Aldo Moro 2, 81010 Baia e Latina', 'lat' => '41.302330', 'lon' => '14.253257'],
 
-            ['address' => 'Via Roma, 100, Viterbo', 'lat' => '41.60057', 'lon' => '12.84491'],
+            ['address' => 'Via Aldo Moro 1, 04012 Cisterna di Latina', 'lat' => '41.600689', 'lon' => '12.845016'],
 
-            ['address' => 'Via di Santa Maria, 40, Viterbo', 'lat' => '42.54841', 'lon' => '11.91047'],
+            ['address' => 'Via Roma 100, 01010 Capodimonte', 'lat' => '42.548485', 'lon' => '11.910381'],
 
-            ['address' => 'Via di Santa Maria, 43, Frosinone', 'lat' => '41.87347', 'lon' => '12.52861'],
+            ['address' => 'Via di Santa Maria Ausiliatrice 40, 00181 Roma', 'lat' => '41.873409', 'lon' => '12.528679'],
 
-            ['address' => 'Piazza di Spagna, 7, Roma', 'lat' => '41.46885', 'lon' => '13.88035'],
+            ['address' => 'Via Santa Maria di Trocchio 43, 03044 Cervaro', 'lat' => '41.468815', 'lon' => '13.880370'],
 
-            ['address' => 'Via di Santa Maria, 24, Rieti', 'lat' => '41.90668', 'lon' => '12.48174'],
+            ['address' => 'Piazza di Spagna 7, 00187 Roma', 'lat' => '41.906635', 'lon' => '12.481756'],
 
-            ['address' => 'Corso Cavour, 58, Rieti', 'lat' => '42.2167', 'lon' => '12.6635'],
+            ['address' => 'Via Santa Maria 24, 02034 Montopoli di Sabina', 'lat' => '42.216930', 'lon' => '12.663671'],
 
-            ['address' => 'Corso Cavour, 16, Latina', 'lat' => '42.78058', 'lon' => '12.40767'],
+            ['address' => 'Corso Cavour 58, 06059 Todi', 'lat' => '42.780613', 'lon' => '12.407709'],
 
-            ['address' => 'Corso Cavour, 15, Roma', 'lat' => '41.21486', 'lon' => '13.56968'],
+            ['address' => 'Corso Cavour 16, 04024 Gaeta', 'lat' => '41.214802', 'lon' => '13.569711'],
 
-            ['address' => 'Via Roma, 19, Viterbo', 'lat' => '41.97523', 'lon' => '12.86816'],
+            ['address' => 'Corso Cavour 15, 00024 Castel Madama', 'lat' => '41.975231', 'lon' => '12.868145'],
 
-            ['address' => 'Corso Cavour, 47, Rieti', 'lat' => '42.41738', 'lon' => '12.10562'],
+            ['address' => 'Via Roma 19, 01100 Viterbo', 'lat' => '42.417393', 'lon' => '12.105581'],
 
-            ['address' => 'Corso Cavour, 82, Frosinone', 'lat' => '41.02995', 'lon' => '15.96959'],
+            ['address' => 'Corso Cavour 118, 85020 Montemilone', 'lat' => '41.029785', 'lon' => '15.969482'],
 
-            ['address' => 'Piazza di Spagna, 22, Roma', 'lat' => '41.72634', 'lon' => '13.34542'],
+            ['address' => 'Corso Cavour 74, 03011 Alatri', 'lat' => '41.726387', 'lon' => '13.345410'],
 
-            ['address' => 'Piazza di Spagna, 87, Rieti', 'lat' => '41.90612', 'lon' => '12.48233'],
+            ['address' => 'Piazza di Spagna 22, 00187 Roma', 'lat' => '41.906094', 'lon' => '12.482209'],
 
-            ['address' => 'Via Roma, 46, Viterbo', 'lat' => '41.90616', 'lon' => '12.48157'],
+            ['address' => 'Piazza di Spagna 87, 00187 Roma', 'lat' => '41.906197', 'lon' => '12.481630'],
 
-            ['address' => 'Via Nazionale, 99, Rieti', 'lat' => '42.33377', 'lon' => '12.29844'],
+            ['address' => 'Via Roma 46, 01034 Fabrica di Roma', 'lat' => '42.333820', 'lon' => '12.298492'],
 
-            ['address' => 'Via Nazionale, 16, Viterbo', 'lat' => '42.4195', 'lon' => '13.07931'],
+            ['address' => 'Via Nazionale 99, 02013 Antrodoco', 'lat' => '42.419575', 'lon' => '13.079436'],
 
-            ['address' => 'Via Roma, 43, Viterbo', 'lat' => '42.69127', 'lon' => '11.81644'],
+            ['address' => 'Via Nazionale 16, 01010 Onano', 'lat' => '42.691235', 'lon' => '11.816306'],
 
-            ['address' => 'Via di Santa Maria, 93, Viterbo', 'lat' => '42.41765', 'lon' => '12.10593'],
+            ['address' => 'Via Aurelio Saffi 1, 01100 Viterbo', 'lat' => '42.417538', 'lon' => '12.105912'],
 
-            ['address' => 'Via Aldo Moro, 53, Roma', 'lat' => '41.87254', 'lon' => '12.52736'],
+            ['address' => 'Via Eurialo 51, 00181 Roma', 'lat' => '41.872456', 'lon' => '12.527410'],
 
-            ['address' => 'Via Nazionale, 52, Latina', 'lat' => '41.86625', 'lon' => '12.82835'],
+            ['address' => 'Viale Aldo Moro 53, 00010 Gallicano nel Lazio', 'lat' => '41.866337', 'lon' => '12.828458'],
 
-            ['address' => 'Via Nazionale, 14, Viterbo', 'lat' => '41.58245', 'lon' => '12.97355'],
+            ['address' => 'Via Nazionale 97, 04010 Norma', 'lat' => '41.582432', 'lon' => '12.973495'],
 
-            ['address' => 'Piazza di Spagna, 35, Rieti', 'lat' => '42.6913', 'lon' => '11.81643'],
+            ['address' => 'Via Nazionale 14, 01010 Onano', 'lat' => '42.691273', 'lon' => '11.816290'],
 
-            ['address' => 'Corso Cavour, 67, Rieti', 'lat' => '41.90536', 'lon' => '12.48275'],
+            ['address' => 'Piazza di Spagna 35, 00187 Roma', 'lat' => '41.905262', 'lon' => '12.482682'],
 
-            ['address' => 'Via di Santa Maria, 85, Viterbo', 'lat' => '43.10674', 'lon' => '12.3911'],
+            ['address' => 'Corso Cavour 67, 06121 Perugia', 'lat' => '43.106770', 'lon' => '12.391179'],
 
-            ['address' => 'Via di Santa Maria, 55, Frosinone', 'lat' => '41.8726', 'lon' => '12.52761'],
+            ['address' => 'Via di Santa Maria Ausiliatrice 85, 00181 Roma', 'lat' => '41.872692', 'lon' => '12.527503'],
 
-            ['address' => 'Via di Santa Maria, 15, Frosinone', 'lat' => '41.70473', 'lon' => '13.80849'],
+            ['address' => 'Via Santa Maria 55, 03046 San Donato Val di Comino', 'lat' => '41.704990', 'lon' => '13.808061'],
 
-            ['address' => 'Via Roma, 49, Viterbo', 'lat' => '41.45835', 'lon' => '13.66586'],
+            ['address' => 'Via Santa Maria di Porta 15, 03037 Pontecorvo', 'lat' => '41.458401', 'lon' => '13.665854'],
 
-            ['address' => 'Corso Cavour, 11, Rieti', 'lat' => '42.41769', 'lon' => '12.106'],
+            ['address' => 'Piazza delle Erbe 19, 01100 Viterbo', 'lat' => '42.417706', 'lon' => '12.106044'],
 
-            ['address' => 'Corso Cavour, 45, Latina', 'lat' => '41.94212', 'lon' => '14.63557'],
+            ['address' => 'Corso Cavour 11, 66050 Dogliola', 'lat' => '41.942223', 'lon' => '14.635601'],
 
-            ['address' => 'Corso Cavour, 82, Latina', 'lat' => '41.21429', 'lon' => '13.56792'],
+            ['address' => 'Corso Cavour 45, 04024 Gaeta', 'lat' => '41.214329', 'lon' => '13.567907'],
 
-            ['address' => 'Via Aldo Moro, 97, Rieti', 'lat' => '41.21434', 'lon' => '13.56722'],
+            ['address' => 'Corso Cavour 82, 04024 Gaeta', 'lat' => '41.214294', 'lon' => '13.567214'],
 
-            ['address' => 'Via Nazionale, 6, Latina', 'lat' => '42.19658', 'lon' => '12.99635'],
+            ['address' => 'Via Aldo Moro 69, 02020 Ascrea', 'lat' => '42.196640', 'lon' => '12.996367'],
 
-            ['address' => 'Corso Cavour, 3, Viterbo', 'lat' => '41.5836', 'lon' => '12.97299'],
+            ['address' => 'Via delle Mura Castellane 11, 04010 Norma', 'lat' => '41.583591', 'lon' => '12.973353'],
 
-            ['address' => 'Via Roma, 3, Viterbo', 'lat' => '42.64482', 'lon' => '11.98681'],
+            ['address' => 'Corso Cavour 3, 01023 Bolsena', 'lat' => '42.644863', 'lon' => '11.986843'],
 
-            ['address' => 'Via Nazionale, 49, Viterbo', 'lat' => '42.41714', 'lon' => '12.10542'],
+            ['address' => 'Via Roma 3, 01100 Viterbo', 'lat' => '42.417156', 'lon' => '12.105379'],
 
-            ['address' => 'Via Roma, 3, Viterbo', 'lat' => '42.63633', 'lon' => '12.11282'],
+            ['address' => 'Via Nazionale 49, 01020 Lubriano', 'lat' => '42.636299', 'lon' => '12.112809'],
 
-            ['address' => 'Corso Cavour, 43, Frosinone', 'lat' => '42.41714', 'lon' => '12.10542'],
+            ['address' => 'Via Roma 3, 01100 Viterbo', 'lat' => '42.417156', 'lon' => '12.105379'],
 
-            ['address' => 'Via di Santa Maria, 16, Rieti', 'lat' => '41.72619', 'lon' => '13.34456'],
+            ['address' => 'Corso Cavour 43, 03011 Alatri', 'lat' => '41.726154', 'lon' => '13.344566'],
 
-            ['address' => 'Via Roma, 47, Roma', 'lat' => '42.23242', 'lon' => '12.7411'],
+            ['address' => 'Via Santa Maria 16, 02031 Castelnuovo di Farfa', 'lat' => '42.232361', 'lon' => '12.741099'],
 
-            ['address' => 'Corso Cavour, 76, Rieti', 'lat' => '42.32196', 'lon' => '14.04549'],
+            ['address' => 'Via Roma 47, 65020 Rosciano', 'lat' => '42.321903', 'lon' => '14.045527'],
 
-            ['address' => 'Via di Santa Maria, 77, Rieti', 'lat' => '42.95407', 'lon' => '12.70584'],
+            ['address' => 'Corso Cavour 76, 06034 Foligno', 'lat' => '42.954090', 'lon' => '12.705876'],
 
-            ['address' => 'Via Nazionale, 12, Viterbo', 'lat' => '42.21454', 'lon' => '12.66408'],
+            ['address' => 'Via Santa Maria 71, 02034 Montopoli di Sabina', 'lat' => '42.215019', 'lon' => '12.664727'],
 
-            ['address' => 'Corso Cavour, 73, Rieti', 'lat' => '42.53847', 'lon' => '12.0298'],
+            ['address' => 'Via Nazionale 12, 01027 Montefiascone', 'lat' => '42.538528', 'lon' => '12.029819'],
 
-            ['address' => 'Via di Santa Maria, 70, Frosinone', 'lat' => '42.78073', 'lon' => '12.40756'],
+            ['address' => 'Corso Cavour 73, 06059 Todi', 'lat' => '42.780720', 'lon' => '12.407547'],
 
-            ['address' => 'Via Aldo Moro, 51, Viterbo', 'lat' => '41.46223', 'lon' => '13.88092'],
+            ['address' => 'Via Santa Maria di Trocchio 70, 03044 Cervaro', 'lat' => '41.462181', 'lon' => '13.880853'],
 
-            ['address' => 'Via Aldo Moro, 7, Frosinone', 'lat' => '42.56129', 'lon' => '11.8323'],
+            ['address' => 'Via Aldo Moro 51, 01018 Valentano', 'lat' => '42.561180', 'lon' => '11.832198'],
 
-            ['address' => 'Via di Santa Maria, 38, Roma', 'lat' => '41.64627', 'lon' => '13.34841'],
+            ['address' => 'Via Aldo Moro 5, 03100 Frosinone', 'lat' => '41.646320', 'lon' => '13.348293'],
 
-            ['address' => 'Piazza di Spagna, 43, Frosinone', 'lat' => '41.93175', 'lon' => '12.52062'],
+            ['address' => 'Via di Santa Maria Goretti 38, 00199 Roma', 'lat' => '41.931679', 'lon' => '12.520656'],
 
-            ['address' => 'Via Roma, 8, Viterbo', 'lat' => '41.90484', 'lon' => '12.48336'],
+            ['address' => 'Piazza di Spagna 43, 00187 Roma', 'lat' => '41.904789', 'lon' => '12.483276'],
 
-            ['address' => 'Corso Cavour, 38, Roma', 'lat' => '42.41725', 'lon' => '12.10541'],
+            ['address' => 'Via dei Magazzini 1, 01100 Viterbo', 'lat' => '42.417233', 'lon' => '12.105402'],
 
-            ['address' => 'Corso Cavour, 8, Frosinone', 'lat' => '41.97501', 'lon' => '12.86727'],
+            ['address' => 'Vicolo del Mattatoio 6A, 00024 Castel Madama', 'lat' => '41.974903', 'lon' => '12.867366'],
 
-            ['address' => 'Corso Cavour, 100, Latina', 'lat' => '41.72604', 'lon' => '13.3438'],
+            ['address' => 'Corso Cavour 8, 03011 Alatri', 'lat' => '41.726051', 'lon' => '13.343798'],
 
-            ['address' => 'Corso Cavour, 79, Roma', 'lat' => '41.21446', 'lon' => '13.56672'],
+            ['address' => 'Corso Cavour 100, 04024 Gaeta', 'lat' => '41.214390', 'lon' => '13.566684'],
 
-            ['address' => 'Piazza di Spagna, 86, Viterbo', 'lat' => '42.71848', 'lon' => '12.11024'],
+            ['address' => 'Corso Cavour 79, 05018 Orvieto', 'lat' => '42.718468', 'lon' => '12.110236'],
 
-            ['address' => 'Via Aldo Moro, 24, Latina', 'lat' => '41.90613', 'lon' => '12.48159'],
+            ['address' => 'Piazza di Spagna 86, 00187 Roma', 'lat' => '41.906178', 'lon' => '12.481655'],
 
-            ['address' => 'Piazza di Spagna, 60, Latina', 'lat' => '41.40273', 'lon' => '13.04845'],
+            ['address' => 'Via Aldo Moro 24, 04014 Pontinia', 'lat' => '41.402699', 'lon' => '13.048488'],
 
-            ['address' => 'Piazza di Spagna, 1, Viterbo', 'lat' => '41.90532', 'lon' => '12.48251'],
+            ['address' => 'Piazza di Spagna 60, 00187 Roma', 'lat' => '41.905334', 'lon' => '12.482557'],
 
-            ['address' => 'Via Aldo Moro, 67, Frosinone', 'lat' => '43.07697', 'lon' => '11.67935'],
+            ['address' => 'Via della Chiochina 1, 53026 Pienza', 'lat' => '43.076984', 'lon' => '11.679361'],
 
-            ['address' => 'Corso Cavour, 15, Roma', 'lat' => '41.64553', 'lon' => '13.34828'],
+            ['address' => 'Via Aldo Moro 59, 03100 Frosinone', 'lat' => '41.645309', 'lon' => '13.348230'],
 
-            ['address' => 'Via di Santa Maria, 79, Roma', 'lat' => '41.97523', 'lon' => '12.86816'],
+            ['address' => 'Corso Cavour 15, 00024 Castel Madama', 'lat' => '41.975231', 'lon' => '12.868145'],
 
-            ['address' => 'Piazza di Spagna, 98, Roma', 'lat' => '41.87266', 'lon' => '12.52772'],
+            ['address' => 'Via di Santa Maria Ausiliatrice 79, 00181 Roma', 'lat' => '41.872757', 'lon' => '12.527604'],
 
-            ['address' => 'Via Nazionale, 16, Roma', 'lat' => '41.90642', 'lon' => '12.48126'],
+            ['address' => 'Piazza di Spagna 98, 00187 Roma', 'lat' => '41.906460', 'lon' => '12.481316'],
 
-            ['address' => 'Via Nazionale, 99, Roma', 'lat' => '41.90127', 'lon' => '12.49433'],
+            ['address' => 'Via Nazionale 16, 00184 Roma', 'lat' => '41.901371', 'lon' => '12.494219'],
 
-            ['address' => 'Piazza di Spagna, 25, Viterbo', 'lat' => '41.53817', 'lon' => '13.27967'],
+            ['address' => 'Circonvallazione Aldo Moro 20, 03020 Giuliano di Roma', 'lat' => '41.538033', 'lon' => '13.279638'],
 
-            ['address' => 'Via Aldo Moro, 99, Viterbo', 'lat' => '41.90601', 'lon' => '12.48239'],
+            ['address' => 'Piazza di Spagna 25, 00187 Roma', 'lat' => '41.905991', 'lon' => '12.482246'],
 
-            ['address' => 'Via Roma, 8, Roma', 'lat' => '42.5604', 'lon' => '11.83281'],
+            ['address' => 'Via Aldo Moro 101, 01018 Valentano', 'lat' => '42.560593', 'lon' => '11.832821'],
 
-            ['address' => 'Piazza di Spagna, 74, Frosinone', 'lat' => '39.87051', 'lon' => '9.23403'],
+            ['address' => 'Via Roma 8, 09065 Seulo', 'lat' => '39.870579', 'lon' => '9.234085'],
 
-            ['address' => 'Piazza di Spagna, 57, Rieti', 'lat' => '41.90566', 'lon' => '12.48218'],
+            ['address' => 'Piazza di Spagna 74, 00187 Roma', 'lat' => '41.905685', 'lon' => '12.482233'],
 
-            ['address' => 'Piazza di Spagna, 83, Rieti', 'lat' => '41.90499', 'lon' => '12.48271'],
+            ['address' => 'Piazza di Spagna 57, 00187 Roma', 'lat' => '41.905018', 'lon' => '12.482794'],
 
-            ['address' => 'Via Roma, 48, Latina', 'lat' => '41.90599', 'lon' => '12.48176'],
+            ['address' => 'Piazza di Spagna 83, 00187 Roma', 'lat' => '41.906036', 'lon' => '12.481824'],
 
-            ['address' => 'Via Nazionale, 32, Frosinone', 'lat' => '41.61978', 'lon' => '13.83257'],
+            ['address' => 'Via Roma 48, 03040 Villa Latina', 'lat' => '41.619823', 'lon' => '13.832561'],
 
-            ['address' => 'Via Nazionale, 64, Roma', 'lat' => '41.67809', 'lon' => '13.57578'],
+            ['address' => 'Via Nazionale 32, 03036 Isola del Liri', 'lat' => '41.678085', 'lon' => '13.575752'],
 
-            ['address' => 'Piazza di Spagna, 97, Frosinone', 'lat' => '41.8994', 'lon' => '12.49148'],
+            ['address' => 'Via Nazionale 64, 00184 Roma', 'lat' => '41.899506', 'lon' => '12.491362'],
 
-            ['address' => 'Via Aldo Moro, 32, Latina', 'lat' => '41.9064', 'lon' => '12.48129'],
+            ['address' => 'Piazza di Spagna 97, 00187 Roma', 'lat' => '41.906433', 'lon' => '12.481345'],
 
-            ['address' => 'Corso Cavour, 14, Rieti', 'lat' => '41.47534', 'lon' => '13.17286'],
+            ['address' => 'Via San Lorenzo, 04015 Priverno', 'lat' => '41.475224', 'lon' => '13.172733'],
 
-            ['address' => 'Via Aldo Moro, 45, Latina', 'lat' => '39.69201', 'lon' => '9.24934'],
+            ['address' => 'Corso Cavour 14, 09061 Orroli', 'lat' => '39.692066', 'lon' => '9.249412'],
 
-            ['address' => 'Via di Santa Maria, 9, Roma', 'lat' => '41.58909', 'lon' => '12.64491'],
+            ['address' => 'Via Aldo Moro 45, 04011 Aprilia', 'lat' => '41.589123', 'lon' => '12.644984'],
 
-            ['address' => 'Via Roma, 4, Viterbo', 'lat' => '41.87371', 'lon' => '12.52937'],
+            ['address' => 'Via di Santa Maria Ausiliatrice 9, 00181 Roma', 'lat' => '41.873795', 'lon' => '12.529262'],
 
-            ['address' => 'Via Nazionale, 3, Roma', 'lat' => '42.41716', 'lon' => '12.10533'],
+            ['address' => 'Via Roma 4, 01100 Viterbo', 'lat' => '42.417145', 'lon' => '12.105371'],
 
-            ['address' => 'Via di Santa Maria, 1, Viterbo', 'lat' => '44.52607', 'lon' => '10.86621'],
+            ['address' => 'Piazza Roma, 41053 Maranello', 'lat' => '44.526066', 'lon' => '10.866208'],
 
-            ['address' => 'Corso Cavour, 27, Viterbo', 'lat' => '42.41405', 'lon' => '12.11043'],
+            ['address' => 'Via San Biele 2, 01100 Viterbo', 'lat' => '42.413898', 'lon' => '12.110427'],
 
-            ['address' => 'Via Roma, 34, Viterbo', 'lat' => '42.53954', 'lon' => '12.03291'],
+            ['address' => 'Corso Cavour 27, 01027 Montefiascone', 'lat' => '42.539516', 'lon' => '12.032942'],
 
-            ['address' => 'Via di Santa Maria, 11, Viterbo', 'lat' => '42.41762', 'lon' => '12.10582'],
+            ['address' => 'Via Roma 34, 01100 Viterbo', 'lat' => '42.417633', 'lon' => '12.105810'],
 
-            ['address' => 'Piazza di Spagna, 11, Frosinone', 'lat' => '43.92795', 'lon' => '10.89855'],
+            ['address' => 'Via di Santa Maria Maggiore 11, 51100 Pistoia', 'lat' => '43.927971', 'lon' => '10.899097'],
 
-            ['address' => 'Corso Cavour, 21, Rieti', 'lat' => '43.07713', 'lon' => '11.67951'],
+            ['address' => 'Via dell\'Angelo 4, 53026 Pienza', 'lat' => '43.077030', 'lon' => '11.679569'],
 
-            ['address' => 'Via Aldo Moro, 65, Viterbo', 'lat' => '45.73602', 'lon' => '8.57297'],
+            ['address' => 'Corso Cavour 21, 28040 Dormelletto', 'lat' => '45.735943', 'lon' => '8.572776'],
 
-            ['address' => 'Via Nazionale, 21, Frosinone', 'lat' => '42.56102', 'lon' => '11.83264'],
+            ['address' => 'Via Aldo Moro 71, 01018 Valentano', 'lat' => '42.560913', 'lon' => '11.832766'],
 
-            ['address' => 'Via di Santa Maria, 60, Latina', 'lat' => '41.67643', 'lon' => '13.57653'],
+            ['address' => 'Via Caprera 5, 03036 Isola del Liri', 'lat' => '41.676178', 'lon' => '13.577259'],
 
-            ['address' => 'Piazza di Spagna, 88, Rieti', 'lat' => '43.93083', 'lon' => '10.89943'],
+            ['address' => 'Via di Santa Maria Maggiore 60, 51100 Pistoia', 'lat' => '43.930836', 'lon' => '10.899359'],
 
-            ['address' => 'Piazza di Spagna, 17, Roma', 'lat' => '41.90618', 'lon' => '12.48154'],
+            ['address' => 'Piazza di Spagna 88, 00187 Roma', 'lat' => '41.906219', 'lon' => '12.481605'],
 
-            ['address' => 'Corso Cavour, 10, Frosinone', 'lat' => '41.90568', 'lon' => '12.48232'],
+            ['address' => 'Piazza di Spagna 28, 00187 Roma', 'lat' => '41.905678', 'lon' => '12.482317'],
 
-            ['address' => 'Via Nazionale, 47, Viterbo', 'lat' => '41.72605', 'lon' => '13.34385'],
+            ['address' => 'Corso Cavour 10, 03011 Alatri', 'lat' => '41.726059', 'lon' => '13.343845'],
 
-            ['address' => 'Corso Cavour, 75, Frosinone', 'lat' => '42.63633', 'lon' => '12.11272'],
+            ['address' => 'Via Nazionale 47, 01020 Lubriano', 'lat' => '42.636311', 'lon' => '12.112717'],
 
-            ['address' => 'Piazza di Spagna, 27, Viterbo', 'lat' => '41.72647', 'lon' => '13.34551'],
+            ['address' => 'Vicolo Tiberio 1, 03011 Alatri', 'lat' => '41.726509', 'lon' => '13.345533'],
 
-            ['address' => 'Via Roma, 47, Roma', 'lat' => '41.9057', 'lon' => '12.48255'],
+            ['address' => 'Piazza di Spagna 27, 00187 Roma', 'lat' => '41.905697', 'lon' => '12.482317'],
 
-            ['address' => 'Via Aldo Moro, 33, Frosinone', 'lat' => '42.32196', 'lon' => '14.04549'],
+            ['address' => 'Via Roma 47, 65020 Rosciano', 'lat' => '42.321903', 'lon' => '14.045527'],
 
-            ['address' => 'Corso Cavour, 7, Latina', 'lat' => '41.64585', 'lon' => '13.3483'],
+            ['address' => 'Via Aldo Moro 33, 03100 Frosinone', 'lat' => '41.645901', 'lon' => '13.348100'],
 
-            ['address' => 'Corso Cavour, 39, Viterbo', 'lat' => '41.2148', 'lon' => '13.57002'],
+            ['address' => 'Corso Cavour 7, 04024 Gaeta', 'lat' => '41.214882', 'lon' => '13.569972'],
 
-            ['address' => 'Via Nazionale, 98, Roma', 'lat' => '42.53938', 'lon' => '12.0327'],
+            ['address' => 'Corso Cavour 39, 01027 Montefiascone', 'lat' => '42.539360', 'lon' => '12.032726'],
 
-            ['address' => 'Via Aldo Moro, 49, Rieti', 'lat' => '38.1212', 'lon' => '15.12837'],
+            ['address' => 'Via Nazionale Vigliatore (173 - 81), 98050 Terme Vigliatore', 'lat' => '38.121201', 'lon' => '15.128368'],
 
-            ['address' => 'Via Nazionale, 77, Viterbo', 'lat' => '42.19718', 'lon' => '12.99587'],
+            ['address' => 'Via Roma 19, 02020 Ascrea', 'lat' => '42.197178', 'lon' => '12.995940'],
 
-            ['address' => 'Via Roma, 30, Frosinone', 'lat' => '43.25696', 'lon' => '13.4175'],
+            ['address' => 'Piazza Ludovico Ciccolini 3, 62100 Macerata', 'lat' => '43.256992', 'lon' => '13.417399'],
 
-            ['address' => 'Piazza di Spagna, 94, Latina', 'lat' => '41.64408', 'lon' => '13.35245'],
+            ['address' => 'Viale Roma 22, 03100 Frosinone', 'lat' => '41.644054', 'lon' => '13.352398'],
 
-            ['address' => 'Via Nazionale, 67, Latina', 'lat' => '41.90632', 'lon' => '12.48138'],
+            ['address' => 'Piazza di Spagna 94, 00187 Roma', 'lat' => '41.906357', 'lon' => '12.481441'],
 
-            ['address' => 'Piazza di Spagna, 69, Latina', 'lat' => '41.58273', 'lon' => '12.97348'],
+            ['address' => 'Via dell\'Orso 2, 04010 Norma', 'lat' => '41.582767', 'lon' => '12.973537'],
 
-            ['address' => 'Via Roma, 48, Rieti', 'lat' => '41.90552', 'lon' => '12.48233'],
+            ['address' => 'Piazza di Spagna 69, 00187 Roma', 'lat' => '41.905544', 'lon' => '12.482375'],
 
-            ['address' => 'Via Roma, 12, Latina', 'lat' => '42.25757', 'lon' => '12.68416'],
+            ['address' => 'Via Ferruti 48, 02047 Poggio Mirteto', 'lat' => '42.257526', 'lon' => '12.684284'],
 
-            ['address' => 'Via di Santa Maria, 42, Viterbo', 'lat' => '41.61947', 'lon' => '13.83005'],
+            ['address' => 'Via Roma 12, 03040 Villa Latina', 'lat' => '41.619507', 'lon' => '13.830045'],
 
-            ['address' => 'Via di Santa Maria, 84, Frosinone', 'lat' => '43.92984', 'lon' => '10.89909'],
+            ['address' => 'Via di Santa Maria Maggiore 42, 51100 Pistoia', 'lat' => '43.929832', 'lon' => '10.899032'],
 
-            ['address' => 'Via Roma, 90, Latina', 'lat' => '41.70491', 'lon' => '13.80803'],
+            ['address' => 'Via Santa Maria 55, 03046 San Donato Val di Comino', 'lat' => '41.704990', 'lon' => '13.808061'],
 
-            ['address' => 'Via Nazionale, 47, Frosinone', 'lat' => '41.59408', 'lon' => '12.82172'],
+            ['address' => 'Via Roma 90, 04012 Cisterna di Latina', 'lat' => '41.593987', 'lon' => '12.821740'],
 
-            ['address' => 'Via di Santa Maria, 100, Latina', 'lat' => '41.53854', 'lon' => '13.27914'],
+            ['address' => 'Via Nazionale 47, 03020 Giuliano di Roma', 'lat' => '41.538555', 'lon' => '13.279174'],
 
-            ['address' => 'Corso Cavour, 94, Rieti', 'lat' => '41.87274', 'lon' => '12.5274'],
+            ['address' => 'Via di Santa Maria Ausiliatrice 100, 00181 Roma', 'lat' => '41.872677', 'lon' => '12.527478'],
 
-            ['address' => 'Piazza di Spagna, 60, Frosinone', 'lat' => '42.9538', 'lon' => '12.70604'],
+            ['address' => 'Corso Cavour 100, 06034 Foligno', 'lat' => '42.953728', 'lon' => '12.706166'],
 
-            ['address' => 'Via di Santa Maria, 100, Roma', 'lat' => '41.90532', 'lon' => '12.48251'],
+            ['address' => 'Piazza di Spagna 60, 00187 Roma', 'lat' => '41.905334', 'lon' => '12.482557'],
 
-            ['address' => 'Corso Cavour, 21, Rieti', 'lat' => '41.87274', 'lon' => '12.5274'],
+            ['address' => 'Via di Santa Maria Ausiliatrice 100, 00181 Roma', 'lat' => '41.872677', 'lon' => '12.527478'],
 
-            ['address' => 'Corso Cavour, 19, Rieti', 'lat' => '45.73602', 'lon' => '8.57297'],
+            ['address' => 'Corso Cavour 21, 28040 Dormelletto', 'lat' => '45.735943', 'lon' => '8.572776'],
 
-            ['address' => 'Via Aldo Moro, 13, Latina', 'lat' => '41.94215', 'lon' => '14.63539'],
+            ['address' => 'Corso Cavour 19, 66050 Dogliola', 'lat' => '41.942257', 'lon' => '14.635442'],
 
-            ['address' => 'Piazza di Spagna, 27, Frosinone', 'lat' => '41.30125', 'lon' => '14.25418'],
+            ['address' => 'Via Aldo Moro 13, 81010 Baia e Latina', 'lat' => '41.301216', 'lon' => '14.254115'],
 
-            ['address' => 'Piazza di Spagna, 82, Frosinone', 'lat' => '41.9057', 'lon' => '12.48255'],
+            ['address' => 'Piazza di Spagna 27, 00187 Roma', 'lat' => '41.905697', 'lon' => '12.482317'],
 
-            ['address' => 'Via di Santa Maria, 60, Viterbo', 'lat' => '41.90598', 'lon' => '12.48179'],
+            ['address' => 'Piazza di Spagna 82, 00187 Roma', 'lat' => '41.906021', 'lon' => '12.481848'],
 
-            ['address' => 'Via Aldo Moro, 61, Rieti', 'lat' => '43.93083', 'lon' => '10.89943'],
+            ['address' => 'Via di Santa Maria Maggiore 60, 51100 Pistoia', 'lat' => '43.930836', 'lon' => '10.899359'],
 
-            ['address' => 'Corso Cavour, 91, Roma', 'lat' => '42.40666', 'lon' => '13.06109'],
+            ['address' => 'Via Aldo Moro 61, 02010 Borgo Velino', 'lat' => '42.406452', 'lon' => '13.061222'],
 
-            ['address' => 'Via Aldo Moro, 23, Viterbo', 'lat' => '42.71855', 'lon' => '12.11081'],
+            ['address' => 'Corso Cavour 91, 05018 Orvieto', 'lat' => '42.718510', 'lon' => '12.110832'],
 
-            ['address' => 'Via Roma, 75, Latina', 'lat' => '42.34813', 'lon' => '12.34985'],
+            ['address' => 'Via Aldo Moro 23, 01030 Corchiano', 'lat' => '42.348110', 'lon' => '12.349845'],
 
-            ['address' => 'Via di Santa Maria, 2, Frosinone', 'lat' => '41.62028', 'lon' => '13.83613'],
+            ['address' => 'Via Ponte Confine 1, 03040 Villa Latina', 'lat' => '41.621841', 'lon' => '13.834064'],
 
-            ['address' => 'Via Aldo Moro, 84, Roma', 'lat' => '41.46311', 'lon' => '13.87846'],
+            ['address' => 'Via Santa Maria di Trocchio 1, 03044 Cervaro', 'lat' => '41.463062', 'lon' => '13.878496'],
 
-            ['address' => 'Via di Santa Maria, 90, Frosinone', 'lat' => '41.76493', 'lon' => '12.60856'],
+            ['address' => 'Via Aldo Moro 84, 00047 Marino', 'lat' => '41.764851', 'lon' => '12.608558'],
 
-            ['address' => 'Via Nazionale, 3, Roma', 'lat' => '41.70461', 'lon' => '13.80746'],
+            ['address' => 'Via Santa Maria 114, 03046 San Donato Val di Comino', 'lat' => '41.704594', 'lon' => '13.807475'],
 
-            ['address' => 'Via Roma, 72, Viterbo', 'lat' => '44.52607', 'lon' => '10.86621'],
+            ['address' => 'Piazza Roma, 41053 Maranello', 'lat' => '44.526066', 'lon' => '10.866208'],
 
-            ['address' => 'Via Aldo Moro, 9, Roma', 'lat' => '42.67433', 'lon' => '11.86864'],
+            ['address' => 'Via Roma 72, 01025 Grotte di Castro', 'lat' => '42.674366', 'lon' => '11.868627'],
 
-            ['address' => 'Via di Santa Maria, 5, Frosinone', 'lat' => '42.11308', 'lon' => '12.36836'],
+            ['address' => 'Via Aldo Moro 9, 00063 Campagnano di Roma', 'lat' => '42.113064', 'lon' => '12.368367'],
 
-            ['address' => 'Corso Cavour, 31, Latina', 'lat' => '41.4584', 'lon' => '13.66635'],
+            ['address' => 'Via Santa Maria di Porta 5, 03037 Pontecorvo', 'lat' => '41.458488', 'lon' => '13.666299'],
 
-            ['address' => 'Via Aldo Moro, 1, Rieti', 'lat' => '41.21436', 'lon' => '13.56873'],
+            ['address' => 'Via Cagliari 1, 04024 Gaeta', 'lat' => '41.214233', 'lon' => '13.568686'],
 
-            ['address' => 'Via Aldo Moro, 6, Viterbo', 'lat' => '42.41959', 'lon' => '12.85959'],
+            ['address' => 'Viale Aldo Moro 1, 02100 Rieti', 'lat' => '42.419647', 'lon' => '12.859591'],
 
-            ['address' => 'Via Aldo Moro, 77, Latina', 'lat' => '42.42693', 'lon' => '12.10014'],
+            ['address' => 'Via Alessandro Polidori 49, 01100 Viterbo', 'lat' => '42.426735', 'lon' => '12.100173'],
 
-            ['address' => 'Via di Santa Maria, 90, Roma', 'lat' => '41.40477', 'lon' => '13.05044'],
+            ['address' => 'Via Aldo Moro 77, 04014 Pontinia', 'lat' => '41.404640', 'lon' => '13.050243'],
 
-            ['address' => 'Via Nazionale, 100, Latina', 'lat' => '41.87283', 'lon' => '12.52755'],
+            ['address' => 'Via di Santa Maria Ausiliatrice 90, 00181 Roma', 'lat' => '41.872768', 'lon' => '12.527620'],
 
-            ['address' => 'Via Nazionale, 73, Rieti', 'lat' => '41.58231', 'lon' => '12.97363'],
+            ['address' => 'Via Garibaldi 1, 04010 Norma', 'lat' => '41.582291', 'lon' => '12.973608'],
 
-            ['address' => 'Piazza di Spagna, 74, Roma', 'lat' => '42.41924', 'lon' => '13.07961'],
+            ['address' => 'Via Nazionale 73, 02013 Antrodoco', 'lat' => '42.419308', 'lon' => '13.079726'],
 
-            ['address' => 'Via di Santa Maria, 37, Roma', 'lat' => '41.90566', 'lon' => '12.48218'],
+            ['address' => 'Piazza di Spagna 74, 00187 Roma', 'lat' => '41.905685', 'lon' => '12.482233'],
 
-            ['address' => 'Piazza di Spagna, 20, Rieti', 'lat' => '41.87334', 'lon' => '12.52879'],
+            ['address' => 'Via di Santa Maria Ausiliatrice 37, 00181 Roma', 'lat' => '41.873417', 'lon' => '12.528695'],
 
-            ['address' => 'Via Roma, 60, Viterbo', 'lat' => '41.9062', 'lon' => '12.48229'],
+            ['address' => 'Piazza di Spagna 20, 00187 Roma', 'lat' => '41.906178', 'lon' => '12.482176'],
 
-            ['address' => 'Via Aldo Moro, 15, Viterbo', 'lat' => '42.34537', 'lon' => '12.35479'],
+            ['address' => 'Via Roma 60, 01030 Corchiano', 'lat' => '42.345337', 'lon' => '12.354790'],
 
-            ['address' => 'Via Nazionale, 6, Rieti', 'lat' => '42.22179', 'lon' => '12.18294'],
+            ['address' => 'Via Aldo Moro 15, 01030 Bassano Romano', 'lat' => '42.221821', 'lon' => '12.182959'],
 
-            ['address' => 'Via Nazionale, 27, Roma', 'lat' => '42.38844', 'lon' => '12.94923'],
+            ['address' => 'Via Nazionale 6, 02015 Cittaducale', 'lat' => '42.388405', 'lon' => '12.949256'],
 
-            ['address' => 'Via Nazionale, 55, Frosinone', 'lat' => '41.90071', 'lon' => '12.49344'],
+            ['address' => 'Via Nazionale 27, 00184 Roma', 'lat' => '41.900795', 'lon' => '12.493333'],
 
-            ['address' => 'Piazza di Spagna, 64, Viterbo', 'lat' => '41.53844', 'lon' => '13.27919'],
+            ['address' => 'Via Nazionale 55, 03020 Giuliano di Roma', 'lat' => '41.538475', 'lon' => '13.279253'],
 
-            ['address' => 'Corso Cavour, 94, Frosinone', 'lat' => '41.90541', 'lon' => '12.48243'],
+            ['address' => 'Piazza di Spagna 64, 00187 Roma', 'lat' => '41.905434', 'lon' => '12.482483'],
 
-            ['address' => 'Via Aldo Moro, 60, Frosinone', 'lat' => '41.72638', 'lon' => '13.34554'],
+            ['address' => 'Corso Cavour 78, 03011 Alatri', 'lat' => '41.726418', 'lon' => '13.345505'],
 
-            ['address' => 'Via Roma, 30, Rieti', 'lat' => '41.64507', 'lon' => '13.34707'],
+            ['address' => 'Via Aldo Moro 60, 03100 Frosinone', 'lat' => '41.644909', 'lon' => '13.347414'],
 
-            ['address' => 'Via Aldo Moro, 49, Rieti', 'lat' => '42.40047', 'lon' => '12.86089'],
+            ['address' => 'Via Roma 30, 02100 Rieti', 'lat' => '42.400463', 'lon' => '12.860927'],
 
-            ['address' => 'Via Aldo Moro, 42, Roma', 'lat' => '42.19718', 'lon' => '12.99587'],
+            ['address' => 'Via Roma 19, 02020 Ascrea', 'lat' => '42.197178', 'lon' => '12.995940'],
 
-            ['address' => 'Corso Cavour, 75, Latina', 'lat' => '41.74161', 'lon' => '12.64698'],
+            ['address' => 'Viale Aldo Moro 42, 00073 Castel Gandolfo', 'lat' => '41.741665', 'lon' => '12.647015'],
 
-            ['address' => 'Via Nazionale, 96, Rieti', 'lat' => '41.12375', 'lon' => '16.87209'],
+            ['address' => 'Corso Cavour 75, 70121 Bari', 'lat' => '41.123760', 'lon' => '16.872217'],
 
-            ['address' => 'Via Roma, 10, Rieti', 'lat' => '42.42019', 'lon' => '13.079'],
+            ['address' => 'Via Nazionale 153, 02013 Antrodoco', 'lat' => '42.420036', 'lon' => '13.079036'],
 
-            ['address' => 'Piazza di Spagna, 9, Viterbo', 'lat' => '42.40017', 'lon' => '12.86084'],
+            ['address' => 'Largo Giuseppe Fiordeponti 2, 02100 Rieti', 'lat' => '42.400162', 'lon' => '12.860842'],
 
-            ['address' => 'Piazza di Spagna, 77, Latina', 'lat' => '43.07707', 'lon' => '11.67945'],
+            ['address' => 'Via Guglielmo Marconi 27, 53026 Pienza', 'lat' => '43.077099', 'lon' => '11.679328'],
 
-            ['address' => 'Via di Santa Maria, 68, Latina', 'lat' => '41.90576', 'lon' => '12.48201'],
+            ['address' => 'Via dei Condotti 4, 00187 Roma', 'lat' => '41.905724', 'lon' => '12.482038'],
 
-            ['address' => 'Via Nazionale, 98, Rieti', 'lat' => '41.93156', 'lon' => '12.51995'],
+            ['address' => 'Via di Santa Maria Goretti 68, 00199 Roma', 'lat' => '41.931488', 'lon' => '12.519988'],
 
-            ['address' => 'Via Roma, 47, Rieti', 'lat' => '42.4202', 'lon' => '13.07899'],
+            ['address' => 'Via Nazionale 153, 02013 Antrodoco', 'lat' => '42.420036', 'lon' => '13.079036'],
 
-            ['address' => 'Via di Santa Maria, 92, Latina', 'lat' => '42.29379', 'lon' => '12.69104'],
+            ['address' => 'Strada Provinciale Via Roma 49, 02040 Poggio Catino', 'lat' => '42.293751', 'lon' => '12.691044'],
 
-            ['address' => 'Piazza di Spagna, 78, Latina', 'lat' => '41.87281', 'lon' => '12.52751'],
+            ['address' => 'Via di Santa Maria Ausiliatrice 92, 00181 Roma', 'lat' => '41.872749', 'lon' => '12.527589'],
 
-            ['address' => 'Via Aldo Moro, 23, Frosinone', 'lat' => '41.90584', 'lon' => '12.48194'],
+            ['address' => 'Piazza di Spagna 78, 00187 Roma', 'lat' => '41.905895', 'lon' => '12.482011'],
 
-            ['address' => 'Corso Cavour, 38, Viterbo', 'lat' => '41.64602', 'lon' => '13.34828'],
+            ['address' => 'Via Aldo Moro 23, 03100 Frosinone', 'lat' => '41.646053', 'lon' => '13.348166'],
 
-            ['address' => 'Via Nazionale, 41, Latina', 'lat' => '42.5395', 'lon' => '12.03266'],
+            ['address' => 'Corso Cavour 38, 01027 Montefiascone', 'lat' => '42.539406', 'lon' => '12.032790'],
 
-            ['address' => 'Via Roma, 61, Frosinone', 'lat' => '41.58308', 'lon' => '12.9734'],
+            ['address' => 'Via Nazionale 41, 04010 Norma', 'lat' => '41.583076', 'lon' => '12.973350'],
 
-            ['address' => 'Via Nazionale, 94, Rieti', 'lat' => '41.6453', 'lon' => '13.35266'],
+            ['address' => 'Viale Roma 61, 03100 Frosinone', 'lat' => '41.645294', 'lon' => '13.352720'],
 
-            ['address' => 'Via Aldo Moro, 74, Frosinone', 'lat' => '42.42017', 'lon' => '13.07901'],
+            ['address' => 'Via Nazionale 153, 02013 Antrodoco', 'lat' => '42.420036', 'lon' => '13.079036'],
 
-            ['address' => 'Via Nazionale, 79, Viterbo', 'lat' => '41.64512', 'lon' => '13.34744'],
+            ['address' => 'Via Aldo Moro 70, 03100 Frosinone', 'lat' => '41.645069', 'lon' => '13.347548'],
 
-            ['address' => 'Via di Santa Maria, 14, Latina', 'lat' => '39.11275', 'lon' => '8.67303'],
+            ['address' => 'Via Nazionale 67, 09010 Villaperuccio', 'lat' => '39.112751', 'lon' => '8.672996'],
 
-            ['address' => 'Piazza di Spagna, 99, Viterbo', 'lat' => '41.34605', 'lon' => '13.4348'],
+            ['address' => 'Via di Santa Maria della Rosa 14, 04022 Fondi', 'lat' => '41.346008', 'lon' => '13.434841'],
 
-            ['address' => 'Via Nazionale, 56, Rieti', 'lat' => '41.90644', 'lon' => '12.48124'],
+            ['address' => 'Piazza di Spagna 99, 00187 Roma', 'lat' => '41.906479', 'lon' => '12.481293'],
 
-            ['address' => 'Corso Cavour, 100, Frosinone', 'lat' => '42.37915', 'lon' => '13.01523'],
+            ['address' => 'Seconda Via Nazionale 56, 02010 Castel Sant\'Angelo', 'lat' => '42.379120', 'lon' => '13.015258'],
 
-            ['address' => 'Via di Santa Maria, 97, Roma', 'lat' => '42.95371', 'lon' => '12.70612'],
+            ['address' => 'Corso Cavour 100, 06034 Foligno', 'lat' => '42.953728', 'lon' => '12.706166'],
 
-            ['address' => 'Via Aldo Moro, 78, Viterbo', 'lat' => '41.87242', 'lon' => '12.5273'],
+            ['address' => 'Via di Santa Maria Ausiliatrice 97, 00181 Roma', 'lat' => '41.872501', 'lon' => '12.527208'],
 
-            ['address' => 'Via Aldo Moro, 25, Latina', 'lat' => '42.23866', 'lon' => '12.34178'],
+            ['address' => 'Via Aldo Moro 78, 01036 Nepi', 'lat' => '42.238686', 'lon' => '12.341833'],
 
-            ['address' => 'Via di Santa Maria, 63, Latina', 'lat' => '41.60086', 'lon' => '12.84419'],
+            ['address' => 'Via Aldo Moro 25, 04012 Cisterna di Latina', 'lat' => '41.600956', 'lon' => '12.844339'],
 
-            ['address' => 'Via Nazionale, 94, Rieti', 'lat' => '41.87285', 'lon' => '12.52803'],
+            ['address' => 'Via di Santa Maria Ausiliatrice 63, 00181 Roma', 'lat' => '41.872959', 'lon' => '12.527910'],
 
-            ['address' => 'Via Aldo Moro, 96, Viterbo', 'lat' => '42.42017', 'lon' => '13.07901'],
+            ['address' => 'Via Nazionale 153, 02013 Antrodoco', 'lat' => '42.420036', 'lon' => '13.079036'],
 
-            ['address' => 'Via Nazionale, 52, Roma', 'lat' => '42.23804', 'lon' => '12.34241'],
+            ['address' => 'Via Aldo Moro 96, 01036 Nepi', 'lat' => '42.238071', 'lon' => '12.342475'],
 
-            ['address' => 'Corso Cavour, 99, Frosinone', 'lat' => '41.8998', 'lon' => '12.49209'],
+            ['address' => 'Via Nazionale 52, 00184 Roma', 'lat' => '41.899899', 'lon' => '12.491968'],
 
-            ['address' => 'Via di Santa Maria, 94, Viterbo', 'lat' => '42.95417', 'lon' => '12.70588'],
+            ['address' => 'Via Giuseppe Piermarini 2, 06034 Foligno', 'lat' => '42.954254', 'lon' => '12.705935'],
 
-            ['address' => 'Via Roma, 66, Latina', 'lat' => '41.70488', 'lon' => '13.80727'],
+            ['address' => 'Via Santa Maria 94, 03046 San Donato Val di Comino', 'lat' => '41.704884', 'lon' => '13.807309'],
 
-            ['address' => 'Via di Santa Maria, 16, Roma', 'lat' => '41.61987', 'lon' => '13.83337'],
+            ['address' => 'Via Roma 66, 03040 Villa Latina', 'lat' => '41.619911', 'lon' => '13.833361'],
 
-            ['address' => 'Corso Cavour, 51, Latina', 'lat' => '41.87377', 'lon' => '12.52906'],
+            ['address' => 'Via di Santa Maria Ausiliatrice 16, 00181 Roma', 'lat' => '41.873707', 'lon' => '12.529130'],
 
-            ['address' => 'Corso Cavour, 62, Viterbo', 'lat' => '39.68828', 'lon' => '9.25171'],
+            ['address' => 'Corso Cavour 51, 09061 Orroli', 'lat' => '39.688225', 'lon' => '9.251711'],
 
-            ['address' => 'Via Nazionale, 27, Viterbo', 'lat' => '42.64531', 'lon' => '11.98572'],
+            ['address' => 'Corso Cavour 62, 01023 Bolsena', 'lat' => '42.645271', 'lon' => '11.985692'],
 
-            ['address' => 'Via Aldo Moro, 3, Frosinone', 'lat' => '42.69117', 'lon' => '11.8163'],
+            ['address' => 'Via Nazionale 25, 01010 Onano', 'lat' => '42.691181', 'lon' => '11.816330'],
 
-            ['address' => 'Via Aldo Moro, 24, Viterbo', 'lat' => '41.6463', 'lon' => '13.34842'],
+            ['address' => 'Via Aldo Moro 3, 03100 Frosinone', 'lat' => '41.646339', 'lon' => '13.348303'],
 
-            ['address' => 'Piazza di Spagna, 35, Roma', 'lat' => '42.3096', 'lon' => '12.07753'],
+            ['address' => 'Via Aldo Moro 24, 01019 Vetralla', 'lat' => '42.309528', 'lon' => '12.077470'],
 
-            ['address' => 'Corso Cavour, 33, Frosinone', 'lat' => '41.90536', 'lon' => '12.48275'],
+            ['address' => 'Piazza di Spagna 35, 00187 Roma', 'lat' => '41.905262', 'lon' => '12.482682'],
 
-            ['address' => 'Via Roma, 50, Roma', 'lat' => '41.72615', 'lon' => '13.34436'],
+            ['address' => 'Corso Cavour 33, 03011 Alatri', 'lat' => '41.726128', 'lon' => '13.344361'],
 
-            ['address' => 'Via di Santa Maria, 93, Latina', 'lat' => '45.24297', 'lon' => '10.96936'],
+            ['address' => 'Via Roma 50, 37060 Erbè', 'lat' => '45.243080', 'lon' => '10.969337'],
 
-            ['address' => 'Via Nazionale, 14, Rieti', 'lat' => '41.87254', 'lon' => '12.52736'],
+            ['address' => 'Via Eurialo 51, 00181 Roma', 'lat' => '41.872456', 'lon' => '12.527410'],
 
-            ['address' => 'Piazza di Spagna, 10, Frosinone', 'lat' => '42.38813', 'lon' => '12.94852'],
+            ['address' => 'Via Nazionale 14, 02015 Cittaducale', 'lat' => '42.388092', 'lon' => '12.948555'],
 
-            ['address' => 'Via di Santa Maria, 37, Latina', 'lat' => '43.07704', 'lon' => '11.67949'],
+            ['address' => 'Via dell\'Angelo 4, 53026 Pienza', 'lat' => '43.077030', 'lon' => '11.679569'],
 
-            ['address' => 'Via Nazionale, 61, Viterbo', 'lat' => '41.5301', 'lon' => '12.79997'],
+            ['address' => 'Via Santa Maria Goretti 35, 04012 Cisterna di Latina', 'lat' => '41.529915', 'lon' => '12.800830'],
 
-            ['address' => 'Via Roma, 94, Rieti', 'lat' => '42.6363', 'lon' => '12.11309'],
+            ['address' => 'Vicolo Romanelli 3, 01020 Lubriano', 'lat' => '42.636299', 'lon' => '12.113095'],
 
-            ['address' => 'Via di Santa Maria, 18, Latina', 'lat' => '42.40194', 'lon' => '12.86112'],
+            ['address' => 'Via del Duomo 14, 02100 Rieti', 'lat' => '42.401920', 'lon' => '12.861036'],
 
-            ['address' => 'Via Aldo Moro, 46, Latina', 'lat' => '41.52455', 'lon' => '12.82105'],
+            ['address' => 'Via Torre Astura 59, 04012 Cisterna di Latina', 'lat' => '41.525158', 'lon' => '12.821619'],
 
-            ['address' => 'Via Nazionale, 10, Rieti', 'lat' => '41.58593', 'lon' => '12.64841'],
+            ['address' => 'Via Aldo Moro 46, 04011 Aprilia', 'lat' => '41.585953', 'lon' => '12.648319'],
 
-            ['address' => 'Via di Santa Maria, 52, Viterbo', 'lat' => '42.38818', 'lon' => '12.94864'],
+            ['address' => 'Via Nazionale 10, 02015 Cittaducale', 'lat' => '42.388145', 'lon' => '12.948665'],
 
-            ['address' => 'Via Aldo Moro, 11, Viterbo', 'lat' => '43.93043', 'lon' => '10.89907'],
+            ['address' => 'Via di Santa Maria Maggiore 52, 51100 Pistoia', 'lat' => '43.930428', 'lon' => '10.898981'],
 
-            ['address' => 'Via Aldo Moro, 93, Latina', 'lat' => '42.28883', 'lon' => '12.20855'],
+            ['address' => 'Via Aldo Moro 11, 01037 Ronciglione', 'lat' => '42.288776', 'lon' => '12.208602'],
 
-            ['address' => 'Via Roma, 60, Viterbo', 'lat' => '41.4029', 'lon' => '13.04891'],
+            ['address' => 'Via Aldo Moro 93, 04014 Pontinia', 'lat' => '41.402950', 'lon' => '13.048837'],
 
-            ['address' => 'Corso Cavour, 20, Frosinone', 'lat' => '42.34537', 'lon' => '12.35479'],
+            ['address' => 'Via Roma 60, 01030 Corchiano', 'lat' => '42.345337', 'lon' => '12.354790'],
 
-            ['address' => 'Piazza di Spagna, 10, Roma', 'lat' => '41.72608', 'lon' => '13.34408'],
+            ['address' => 'Corso Cavour 20, 03011 Alatri', 'lat' => '41.726089', 'lon' => '13.344074'],
 
-            ['address' => 'Via di Santa Maria, 5, Frosinone', 'lat' => '41.90671', 'lon' => '12.48186'],
+            ['address' => 'Piazza di Spagna 10, 00187 Roma', 'lat' => '41.906666', 'lon' => '12.481885'],
 
-            ['address' => 'Corso Cavour, 18, Latina', 'lat' => '41.4584', 'lon' => '13.66635'],
+            ['address' => 'Via Santa Maria di Porta 5, 03037 Pontecorvo', 'lat' => '41.458488', 'lon' => '13.666299'],
 
-            ['address' => 'Via di Santa Maria, 18, Roma', 'lat' => '41.21484', 'lon' => '13.56962'],
+            ['address' => 'Corso Cavour 18, 04024 Gaeta', 'lat' => '41.214779', 'lon' => '13.569647'],
 
-            ['address' => 'Corso Cavour, 46, Viterbo', 'lat' => '41.87374', 'lon' => '12.52902'],
+            ['address' => 'Via di Santa Maria Ausiliatrice 18, 00181 Roma', 'lat' => '41.873680', 'lon' => '12.529091'],
 
-            ['address' => 'Corso Cavour, 8, Viterbo', 'lat' => '42.53931', 'lon' => '12.03253'],
+            ['address' => 'Corso Cavour 54, 01027 Montefiascone', 'lat' => '42.539261', 'lon' => '12.032594'],
 
-            ['address' => 'Via Aldo Moro, 83, Frosinone', 'lat' => '42.64491', 'lon' => '11.98678'],
+            ['address' => 'Corso Cavour 8, 01023 Bolsena', 'lat' => '42.644890', 'lon' => '11.986775'],
 
-            ['address' => 'Via Aldo Moro, 23, Frosinone', 'lat' => '41.64543', 'lon' => '13.34794'],
+            ['address' => 'Via Aldo Moro 83, 03100 Frosinone', 'lat' => '41.645466', 'lon' => '13.347863'],
 
-            ['address' => 'Corso Cavour, 78, Viterbo', 'lat' => '41.64602', 'lon' => '13.34828'],
+            ['address' => 'Via Aldo Moro 23, 03100 Frosinone', 'lat' => '41.646053', 'lon' => '13.348166'],
 
-            ['address' => 'Via Roma, 34, Roma', 'lat' => '42.53877', 'lon' => '12.03186'],
+            ['address' => 'Corso Cavour 78, 01027 Montefiascone', 'lat' => '42.538750', 'lon' => '12.031882'],
 
-            ['address' => 'Piazza di Spagna, 12, Frosinone', 'lat' => '42.52889', 'lon' => '13.80148'],
+            ['address' => 'Via Roma 34, 64033 Bisenti', 'lat' => '42.528774', 'lon' => '13.801537'],
 
-            ['address' => 'Via Roma, 4, Viterbo', 'lat' => '41.90658', 'lon' => '12.48208'],
+            ['address' => 'Piazza di Spagna 12, 00187 Roma', 'lat' => '41.906555', 'lon' => '12.481985'],
 
-            ['address' => 'Via Nazionale, 46, Rieti', 'lat' => '42.41716', 'lon' => '12.10533'],
+            ['address' => 'Via Roma 4, 01100 Viterbo', 'lat' => '42.417145', 'lon' => '12.105371'],
 
-            ['address' => 'Via Nazionale, 72, Viterbo', 'lat' => '42.41916', 'lon' => '13.07994'],
+            ['address' => 'Via Nazionale 46, 02013 Antrodoco', 'lat' => '42.419136', 'lon' => '13.079911'],
 
-            ['address' => 'Via Nazionale, 37, Viterbo', 'lat' => '42.63612', 'lon' => '12.11336'],
+            ['address' => 'Via Nazionale 54, 01020 Lubriano', 'lat' => '42.636227', 'lon' => '12.113233'],
 
-            ['address' => 'Corso Cavour, 81, Rieti', 'lat' => '42.63637', 'lon' => '12.11236'],
+            ['address' => 'Via Nazionale 37, 01020 Lubriano', 'lat' => '42.636356', 'lon' => '12.112356'],
 
-            ['address' => 'Via Nazionale, 94, Rieti', 'lat' => '42.78057', 'lon' => '12.40781'],
+            ['address' => 'Corso Cavour 81, 06059 Todi', 'lat' => '42.780556', 'lon' => '12.407802'],
 
-            ['address' => 'Corso Cavour, 55, Viterbo', 'lat' => '42.42017', 'lon' => '13.07901'],
+            ['address' => 'Via Nazionale 153, 02013 Antrodoco', 'lat' => '42.420036', 'lon' => '13.079036'],
 
-            ['address' => 'Via Aldo Moro, 51, Latina', 'lat' => '42.6452', 'lon' => '11.98588'],
+            ['address' => 'Corso Cavour 54, 01023 Bolsena', 'lat' => '42.645195', 'lon' => '11.985881'],
 
-            ['address' => 'Via di Santa Maria, 53, Viterbo', 'lat' => '41.59198', 'lon' => '12.64385'],
+            ['address' => 'Via Aldo Moro 51, 04011 Aprilia', 'lat' => '41.591949', 'lon' => '12.643936'],
 
-            ['address' => 'Via Nazionale, 25, Viterbo', 'lat' => '43.93', 'lon' => '10.89898'],
+            ['address' => 'Via di Santa Maria Maggiore 53, 51100 Pistoia', 'lat' => '43.930000', 'lon' => '10.899020'],
 
-            ['address' => 'Corso Cavour, 21, Frosinone', 'lat' => '42.63642', 'lon' => '12.11198'],
+            ['address' => 'Via Nazionale 25, 01020 Lubriano', 'lat' => '42.636398', 'lon' => '12.111981'],
 
-            ['address' => 'Piazza di Spagna, 27, Rieti', 'lat' => '41.72613', 'lon' => '13.34404'],
+            ['address' => 'Corso Cavour 15, 03011 Alatri', 'lat' => '41.726082', 'lon' => '13.344015'],
 
-            ['address' => 'Via di Santa Maria, 16, Frosinone', 'lat' => '41.9057', 'lon' => '12.48255'],
+            ['address' => 'Piazza di Spagna 27, 00187 Roma', 'lat' => '41.905697', 'lon' => '12.482317'],
 
-            ['address' => 'Via Roma, 35, Viterbo', 'lat' => '41.4613', 'lon' => '13.8764'],
+            ['address' => 'Via Santa Maria di Trocchio 27, 03044 Cervaro', 'lat' => '41.461361', 'lon' => '13.875325'],
 
-            ['address' => 'Via Roma, 64, Frosinone', 'lat' => '42.41755', 'lon' => '12.10579'],
+            ['address' => 'Via Roma 35, 01100 Viterbo', 'lat' => '42.417580', 'lon' => '12.105741'],
 
-            ['address' => 'Corso Cavour, 85, Rieti', 'lat' => '41.61984', 'lon' => '13.83307'],
+            ['address' => 'Via Roma 64, 03040 Villa Latina', 'lat' => '41.619865', 'lon' => '13.832928'],
 
-            ['address' => 'Corso Cavour, 27, Roma', 'lat' => '42.71848', 'lon' => '12.11048'],
+            ['address' => 'Corso Cavour 85, 05018 Orvieto', 'lat' => '42.718449', 'lon' => '12.110478'],
 
-            ['address' => 'Via Nazionale, 86, Roma', 'lat' => '41.97495', 'lon' => '12.86739'],
+            ['address' => 'Vicolo del Mattatoio 6A, 00024 Castel Madama', 'lat' => '41.974903', 'lon' => '12.867366'],
 
-            ['address' => 'Piazza di Spagna, 83, Viterbo', 'lat' => '41.89866', 'lon' => '12.49036'],
+            ['address' => 'Via Nazionale 86, 00184 Roma', 'lat' => '41.898766', 'lon' => '12.490224'],
 
-            ['address' => 'Corso Cavour, 82, Viterbo', 'lat' => '41.90599', 'lon' => '12.48176'],
+            ['address' => 'Piazza di Spagna 83, 00187 Roma', 'lat' => '41.906036', 'lon' => '12.481824'],
 
-            ['address' => 'Corso Cavour, 31, Rieti', 'lat' => '42.53854', 'lon' => '12.03143'],
+            ['address' => 'Corso Cavour 82, 01027 Montefiascone', 'lat' => '42.538483', 'lon' => '12.031506'],
 
-            ['address' => 'Piazza di Spagna, 65, Viterbo', 'lat' => '41.94231', 'lon' => '14.63486'],
+            ['address' => 'Corso Cavour 31, 66050 Dogliola', 'lat' => '41.942429', 'lon' => '14.634944'],
 
-            ['address' => 'Piazza di Spagna, 38, Rieti', 'lat' => '41.90544', 'lon' => '12.4824'],
+            ['address' => 'Piazza di Spagna 65, 00187 Roma', 'lat' => '41.905468', 'lon' => '12.482452'],
 
-            ['address' => 'Via Nazionale, 52, Latina', 'lat' => '41.90525', 'lon' => '12.48289'],
+            ['address' => 'Piazza di Spagna 38, 00187 Roma', 'lat' => '41.905178', 'lon' => '12.482794'],
 
-            ['address' => 'Via Roma, 79, Roma', 'lat' => '41.58245', 'lon' => '12.97355'],
+            ['address' => 'Via Nazionale 97, 04010 Norma', 'lat' => '41.582432', 'lon' => '12.973495'],
 
-            ['address' => 'Via Nazionale, 95, Viterbo', 'lat' => '39.09533', 'lon' => '8.71281'],
+            ['address' => 'Via Roma 59, 09010 Santadi', 'lat' => '39.095364', 'lon' => '8.712840'],
 
-            ['address' => 'Via Nazionale, 12, Viterbo', 'lat' => '40.4757', 'lon' => '15.62468'],
+            ['address' => 'Via Nazionale 95, 85050 Brienza', 'lat' => '40.475784', 'lon' => '15.624751'],
 
-            ['address' => 'Via Roma, 20, Latina', 'lat' => '42.53847', 'lon' => '12.0298'],
+            ['address' => 'Via Nazionale 12, 01027 Montefiascone', 'lat' => '42.538528', 'lon' => '12.029819'],
 
-            ['address' => 'Via Roma, 72, Latina', 'lat' => '41.61907', 'lon' => '13.83058'],
+            ['address' => 'Via Roma 20, 03040 Villa Latina', 'lat' => '41.619160', 'lon' => '13.830870'],
 
-            ['address' => 'Via di Santa Maria, 9, Frosinone', 'lat' => '41.61991', 'lon' => '13.83367'],
+            ['address' => 'Via Roma 72, 03040 Villa Latina', 'lat' => '41.619946', 'lon' => '13.833667'],
 
-            ['address' => 'Corso Cavour, 46, Rieti', 'lat' => '41.45837', 'lon' => '13.666'],
+            ['address' => 'Via Santa Maria di Porta 9, 03037 Pontecorvo', 'lat' => '41.458408', 'lon' => '13.665993'],
 
-            ['address' => 'Corso Cavour, 18, Viterbo', 'lat' => '42.95459', 'lon' => '12.70542'],
+            ['address' => 'Corso Cavour 46, 06034 Foligno', 'lat' => '42.954605', 'lon' => '12.705452'],
 
-            ['address' => 'Piazza di Spagna, 13, Rieti', 'lat' => '42.53971', 'lon' => '12.03323'],
+            ['address' => 'Corso Cavour 18, 01027 Montefiascone', 'lat' => '42.539722', 'lon' => '12.033212'],
 
-            ['address' => 'Piazza di Spagna, 9, Latina', 'lat' => '37.18517', 'lon' => '13.77034'],
+            ['address' => 'Via Tito, 92020 Palma di Montechiaro', 'lat' => '37.185169', 'lon' => '13.770342'],
 
-            ['address' => 'Via Aldo Moro, 30, Latina', 'lat' => '43.07707', 'lon' => '11.67945'],
+            ['address' => 'Via Guglielmo Marconi 27, 53026 Pienza', 'lat' => '43.077099', 'lon' => '11.679328'],
 
-            ['address' => 'Piazza di Spagna, 17, Latina', 'lat' => '41.40205', 'lon' => '13.04752'],
+            ['address' => 'Via Aldo Moro 30, 04014 Pontinia', 'lat' => '41.402012', 'lon' => '13.047571'],
 
-            ['address' => 'Via Roma, 93, Rieti', 'lat' => '37.82137', 'lon' => '13.85651'],
+            ['address' => 'Piazza Madonna di Fatina 15, 90020 Sclafani Bagni', 'lat' => '37.821289', 'lon' => '13.856461'],
 
-            ['address' => 'Via Nazionale, 61, Roma', 'lat' => '42.40207', 'lon' => '12.8612'],
+            ['address' => 'Via Roma 102, 02100 Rieti', 'lat' => '42.402054', 'lon' => '12.861139'],
 
-            ['address' => 'Via di Santa Maria, 39, Frosinone', 'lat' => '41.89947', 'lon' => '12.49158'],
+            ['address' => 'Via Nazionale 61, 00184 Roma', 'lat' => '41.899570', 'lon' => '12.491462'],
 
-            ['address' => 'Corso Cavour, 92, Viterbo', 'lat' => '41.45832', 'lon' => '13.66533'],
+            ['address' => 'Via Santa Maria di Porta 39, 03037 Pontecorvo', 'lat' => '41.458439', 'lon' => '13.665382'],
 
-            ['address' => 'Corso Cavour, 53, Viterbo', 'lat' => '42.53834', 'lon' => '12.03135'],
+            ['address' => 'Corso Cavour 92, 01027 Montefiascone', 'lat' => '42.538357', 'lon' => '12.031328'],
 
-            ['address' => 'Via Nazionale, 12, Rieti', 'lat' => '42.64521', 'lon' => '11.98567'],
+            ['address' => 'Corso Cavour 53, 01023 Bolsena', 'lat' => '42.645264', 'lon' => '11.985708'],
 
-            ['address' => 'Via Aldo Moro, 13, Roma', 'lat' => '42.38816', 'lon' => '12.94861'],
+            ['address' => 'Via Nazionale 12, 02015 Cittaducale', 'lat' => '42.388130', 'lon' => '12.948635'],
 
-            ['address' => 'Via Nazionale, 55, Rieti', 'lat' => '42.11326', 'lon' => '12.36839'],
+            ['address' => 'Via Aldo Moro 13, 00063 Campagnano di Roma', 'lat' => '42.113087', 'lon' => '12.368459'],
 
-            ['address' => 'Corso Cavour, 27, Frosinone', 'lat' => '42.4189', 'lon' => '13.08001'],
+            ['address' => 'Via Nazionale 55, 02013 Antrodoco', 'lat' => '42.418964', 'lon' => '13.080101'],
 
-            ['address' => 'Via Roma, 64, Viterbo', 'lat' => '41.72613', 'lon' => '13.34425'],
+            ['address' => 'Corso Cavour 27, 03011 Alatri', 'lat' => '41.726116', 'lon' => '13.344258'],
 
-            ['address' => 'Piazza di Spagna, 13, Rieti', 'lat' => '42.54345', 'lon' => '11.75749'],
+            ['address' => 'Via Roma 64, 01010 Ischia di Castro', 'lat' => '42.543575', 'lon' => '11.757502'],
 
-            ['address' => 'Via Nazionale, 47, Viterbo', 'lat' => '37.18517', 'lon' => '13.77034'],
+            ['address' => 'Via Tito, 92020 Palma di Montechiaro', 'lat' => '37.185169', 'lon' => '13.770342'],
 
-            ['address' => 'Via di Santa Maria, 3, Latina', 'lat' => '42.63633', 'lon' => '12.11272'],
+            ['address' => 'Via Nazionale 47, 01020 Lubriano', 'lat' => '42.636311', 'lon' => '12.112717'],
 
-            ['address' => 'Via Aldo Moro, 12, Frosinone', 'lat' => '41.34609', 'lon' => '13.43779'],
+            ['address' => 'Via di Santa Maria della Rosa 1, 04022 Fondi', 'lat' => '41.346104', 'lon' => '13.438055'],
 
-            ['address' => 'Corso Cavour, 73, Frosinone', 'lat' => '41.6462', 'lon' => '13.34814'],
+            ['address' => 'Via Aldo Moro 12, 03100 Frosinone', 'lat' => '41.646179', 'lon' => '13.348220'],
 
-            ['address' => 'Via Nazionale, 98, Rieti', 'lat' => '41.72646', 'lon' => '13.34545'],
+            ['address' => 'Corso Cavour 73, 03011 Alatri', 'lat' => '41.726410', 'lon' => '13.345484'],
 
-            ['address' => 'Piazza di Spagna, 49, Roma', 'lat' => '42.4202', 'lon' => '13.07899'],
+            ['address' => 'Via Nazionale 153, 02013 Antrodoco', 'lat' => '42.420036', 'lon' => '13.079036'],
 
-            ['address' => 'Corso Cavour, 66, Rieti', 'lat' => '41.90464', 'lon' => '12.48293'],
+            ['address' => 'Via Frattina 152, 00187 Roma', 'lat' => '41.904591', 'lon' => '12.482899'],
 
-            ['address' => 'Via Roma, 44, Latina', 'lat' => '43.30142', 'lon' => '13.44377'],
+            ['address' => 'Via 24 Maggio 1, 62100 Macerata', 'lat' => '43.301376', 'lon' => '13.443976'],
 
-            ['address' => 'Via di Santa Maria, 6, Roma', 'lat' => '41.61968', 'lon' => '13.83221'],
+            ['address' => 'Via Roma 44, 03040 Villa Latina', 'lat' => '41.619781', 'lon' => '13.832187'],
 
-            ['address' => 'Via Aldo Moro, 93, Roma', 'lat' => '41.87388', 'lon' => '12.52925'],
+            ['address' => 'Via di Santa Maria Ausiliatrice 6, 00181 Roma', 'lat' => '41.873829', 'lon' => '12.529312'],
 
-            ['address' => 'Via di Santa Maria, 21, Frosinone', 'lat' => '42.16121', 'lon' => '11.90069'],
+            ['address' => 'Via Aldo Moro 93, 00051 Allumiere', 'lat' => '42.161312', 'lon' => '11.900584'],
 
-            ['address' => 'Via Aldo Moro, 82, Frosinone', 'lat' => '41.45835', 'lon' => '13.66574'],
+            ['address' => 'Via Santa Maria di Porta 21, 03037 Pontecorvo', 'lat' => '41.458401', 'lon' => '13.665744'],
 
-            ['address' => 'Piazza di Spagna, 82, Rieti', 'lat' => '41.64485', 'lon' => '13.34731'],
+            ['address' => 'Via Aldo Moro 82, 03100 Frosinone', 'lat' => '41.644833', 'lon' => '13.347347'],
 
-            ['address' => 'Via Roma, 82, Rieti', 'lat' => '41.90598', 'lon' => '12.48179'],
+            ['address' => 'Piazza di Spagna 82, 00187 Roma', 'lat' => '41.906021', 'lon' => '12.481848'],
 
-            ['address' => 'Via Aldo Moro, 77, Rieti', 'lat' => '42.40151', 'lon' => '12.86105'],
+            ['address' => 'Via Roma 82, 02100 Rieti', 'lat' => '42.401505', 'lon' => '12.861087'],
 
-            ['address' => 'Corso Cavour, 20, Rieti', 'lat' => '42.40843', 'lon' => '13.06622'],
+            ['address' => 'Via Aldo Moro 77B, 02013 Antrodoco', 'lat' => '42.408459', 'lon' => '13.066278'],
 
-            ['address' => 'Corso Cavour, 45, Roma', 'lat' => '45.37421', 'lon' => '11.13643'],
+            ['address' => 'Corso Cavour 12, 37059 Zevio', 'lat' => '45.374157', 'lon' => '11.136476'],
 
-            ['address' => 'Via di Santa Maria, 36, Viterbo', 'lat' => '44.14421', 'lon' => '12.25171'],
+            ['address' => 'Corso Roma 17, 47521 Cesena', 'lat' => '44.144474', 'lon' => '12.251719'],
 
-            ['address' => 'Via Aldo Moro, 23, Rieti', 'lat' => '43.92856', 'lon' => '10.89911'],
+            ['address' => 'Via di Santa Maria Maggiore 36, 51100 Pistoia', 'lat' => '43.928558', 'lon' => '10.899071'],
 
-            ['address' => 'Corso Cavour, 56, Latina', 'lat' => '42.19853', 'lon' => '12.99479'],
+            ['address' => 'Via Aldo Moro 23, 02020 Ascrea', 'lat' => '42.198513', 'lon' => '12.994712'],
 
-            ['address' => 'Via Roma, 98, Latina', 'lat' => '41.21442', 'lon' => '13.568'],
+            ['address' => 'Corso Cavour 56, 04024 Gaeta', 'lat' => '41.214348', 'lon' => '13.568019'],
 
-            ['address' => 'Via di Santa Maria, 100, Frosinone', 'lat' => '41.61998', 'lon' => '13.83543'],
+            ['address' => 'Viale Parco delle Rimembranze 21, 03040 Villa Latina', 'lat' => '41.619453', 'lon' => '13.835511'],
 
-            ['address' => 'Via Aldo Moro, 75, Viterbo', 'lat' => '41.70401', 'lon' => '13.80462'],
+            ['address' => 'Via Santa Maria 91, 03046 San Donato Val di Comino', 'lat' => '41.704521', 'lon' => '13.806519'],
 
-            ['address' => 'Via Aldo Moro, 43, Viterbo', 'lat' => '42.5609', 'lon' => '11.83316'],
+            ['address' => 'Via Aldo Moro 75, 01018 Valentano', 'lat' => '42.560989', 'lon' => '11.833084'],
 
-            ['address' => 'Via Nazionale, 59, Rieti', 'lat' => '42.38293', 'lon' => '12.2344'],
+            ['address' => 'Via Aldo Moro 43, 01030 Canepina', 'lat' => '42.382790', 'lon' => '12.234544'],
 
-            ['address' => 'Corso Cavour, 56, Frosinone', 'lat' => '42.41909', 'lon' => '13.07979'],
+            ['address' => 'Via Nazionale 59, 02013 Antrodoco', 'lat' => '42.419151', 'lon' => '13.079896'],
 
-            ['address' => 'Via di Santa Maria, 32, Frosinone', 'lat' => '41.72627', 'lon' => '13.34491'],
+            ['address' => 'Corso Cavour 56, 03011 Alatri', 'lat' => '41.726246', 'lon' => '13.344920'],
 
-            ['address' => 'Corso Cavour, 52, Frosinone', 'lat' => '41.46141', 'lon' => '13.87521'],
+            ['address' => 'Via Santa Maria di Trocchio 32, 03044 Cervaro', 'lat' => '41.461395', 'lon' => '13.875202'],
 
-            ['address' => 'Corso Cavour, 36, Viterbo', 'lat' => '41.72625', 'lon' => '13.34484'],
+            ['address' => 'Corso Cavour 52, 03011 Alatri', 'lat' => '41.726227', 'lon' => '13.344853'],
 
-            ['address' => 'Via Roma, 40, Latina', 'lat' => '42.64509', 'lon' => '11.9863'],
+            ['address' => 'Corso Cavour 36, 01023 Bolsena', 'lat' => '42.645054', 'lon' => '11.986285'],
 
-            ['address' => 'Corso Cavour, 21, Frosinone', 'lat' => '41.61963', 'lon' => '13.83188'],
+            ['address' => 'Via Roma 40, 03040 Villa Latina', 'lat' => '41.619740', 'lon' => '13.831855'],
 
-            ['address' => 'Via di Santa Maria, 94, Viterbo', 'lat' => '41.72613', 'lon' => '13.34404'],
+            ['address' => 'Corso Cavour 15, 03011 Alatri', 'lat' => '41.726082', 'lon' => '13.344015'],
 
-            ['address' => 'Via Aldo Moro, 57, Latina', 'lat' => '41.70488', 'lon' => '13.80727'],
+            ['address' => 'Via Santa Maria 94, 03046 San Donato Val di Comino', 'lat' => '41.704884', 'lon' => '13.807309'],
 
-            ['address' => 'Corso Cavour, 68, Rieti', 'lat' => '41.40578', 'lon' => '13.04951'],
+            ['address' => 'Via Aldo Moro 57, 04014 Pontinia', 'lat' => '41.405487', 'lon' => '13.049155'],
 
-            ['address' => 'Via di Santa Maria, 87, Latina', 'lat' => '43.30143', 'lon' => '13.44371'],
+            ['address' => 'Via 24 Maggio 1, 62100 Macerata', 'lat' => '43.301376', 'lon' => '13.443976'],
 
-            ['address' => 'Via Nazionale, 45, Latina', 'lat' => '41.87258', 'lon' => '12.52758'],
+            ['address' => 'Via di Santa Maria Ausiliatrice 87, 00181 Roma', 'lat' => '41.872669', 'lon' => '12.527471'],
 
-            ['address' => 'Via Aldo Moro, 53, Roma', 'lat' => '41.58299', 'lon' => '12.97344'],
+            ['address' => 'Via Nazionale 45, 04010 Norma', 'lat' => '41.582981', 'lon' => '12.973363'],
 
-            ['address' => 'Corso Cavour, 99, Frosinone', 'lat' => '41.86625', 'lon' => '12.82835'],
+            ['address' => 'Viale Aldo Moro 53, 00010 Gallicano nel Lazio', 'lat' => '41.866337', 'lon' => '12.828458'],
 
-            ['address' => 'Piazza di Spagna, 74, Frosinone', 'lat' => '42.95417', 'lon' => '12.70588'],
+            ['address' => 'Via Giuseppe Piermarini 2, 06034 Foligno', 'lat' => '42.954254', 'lon' => '12.705935'],
 
-            ['address' => 'Via di Santa Maria, 74, Rieti', 'lat' => '41.90566', 'lon' => '12.48218'],
+            ['address' => 'Piazza di Spagna 74, 00187 Roma', 'lat' => '41.905685', 'lon' => '12.482233'],
 
-            ['address' => 'Corso Cavour, 52, Roma', 'lat' => '41.87307', 'lon' => '12.52795'],
+            ['address' => 'Via di Santa Maria Ausiliatrice 74, 00181 Roma', 'lat' => '41.873024', 'lon' => '12.528010'],
 
-            ['address' => 'Via di Santa Maria, 70, Frosinone', 'lat' => '43.88375', 'lon' => '10.76968'],
+            ['address' => 'Corso Roma 15B, 51016 Montecatini-Terme', 'lat' => '43.883801', 'lon' => '10.769567'],
 
-            ['address' => 'Via Roma, 41, Frosinone', 'lat' => '41.46223', 'lon' => '13.88092'],
+            ['address' => 'Via Santa Maria di Trocchio 70, 03044 Cervaro', 'lat' => '41.462181', 'lon' => '13.880853'],
 
-            ['address' => 'Corso Cavour, 99, Latina', 'lat' => '41.64328', 'lon' => '13.35175'],
+            ['address' => 'Viale Roma 3, 03100 Frosinone', 'lat' => '41.642681', 'lon' => '13.351679'],
 
-            ['address' => 'Via Nazionale, 89, Rieti', 'lat' => '42.95417', 'lon' => '12.70588'],
+            ['address' => 'Via Giuseppe Piermarini 2, 06034 Foligno', 'lat' => '42.954254', 'lon' => '12.705935'],
 
-            ['address' => 'Via di Santa Maria, 26, Frosinone', 'lat' => '42.41942', 'lon' => '13.07941'],
+            ['address' => 'Via Nazionale 89, 02013 Antrodoco', 'lat' => '42.419491', 'lon' => '13.079527'],
 
-            ['address' => 'Piazza di Spagna, 46, Rieti', 'lat' => '41.46407', 'lon' => '13.87424'],
+            ['address' => 'Via Santa Maria di Trocchio 26, 03044 Cervaro', 'lat' => '41.464127', 'lon' => '13.874001'],
 
-            ['address' => 'Piazza di Spagna, 27, Rieti', 'lat' => '41.90475', 'lon' => '12.48346'],
+            ['address' => 'Piazza di Spagna 46, 00187 Roma', 'lat' => '41.904732', 'lon' => '12.483342'],
 
-            ['address' => 'Via di Santa Maria, 97, Latina', 'lat' => '41.9057', 'lon' => '12.48255'],
+            ['address' => 'Piazza di Spagna 27, 00187 Roma', 'lat' => '41.905697', 'lon' => '12.482317'],
 
-            ['address' => 'Corso Cavour, 11, Roma', 'lat' => '41.87242', 'lon' => '12.5273'],
+            ['address' => 'Via di Santa Maria Ausiliatrice 97, 00181 Roma', 'lat' => '41.872501', 'lon' => '12.527208'],
 
-            ['address' => 'Via Nazionale, 68, Latina', 'lat' => '41.97555', 'lon' => '12.86827'],
+            ['address' => 'Corso Cavour 11, 00024 Castel Madama', 'lat' => '41.975555', 'lon' => '12.868222'],
 
-            ['address' => 'Corso Cavour, 56, Rieti', 'lat' => '41.58234', 'lon' => '12.9736'],
+            ['address' => 'Via Nazionale 107, 04010 Norma', 'lat' => '41.582355', 'lon' => '12.973577'],
 
-            ['address' => 'Corso Cavour, 87, Roma', 'lat' => '42.71842', 'lon' => '12.11059'],
+            ['address' => 'Corso Cavour 56, 05018 Orvieto', 'lat' => '42.718452', 'lon' => '12.110584'],
 
-            ['address' => 'Piazza di Spagna, 40, Frosinone', 'lat' => '41.73914', 'lon' => '14.84673'],
+            ['address' => 'Corso Roma 87, 86043 Casacalenda', 'lat' => '41.739193', 'lon' => '14.846660'],
 
-            ['address' => 'Via Aldo Moro, 24, Frosinone', 'lat' => '41.63948', 'lon' => '13.34273'],
+            ['address' => 'Viale Giuseppe Mazzini 224, 03100 Frosinone', 'lat' => '41.639431', 'lon' => '13.342861'],
 
-            ['address' => 'Via Nazionale, 40, Roma', 'lat' => '41.64597', 'lon' => '13.34802'],
+            ['address' => 'Via Aldo Moro 24, 03100 Frosinone', 'lat' => '41.645943', 'lon' => '13.348119'],
 
-            ['address' => 'Corso Cavour, 15, Frosinone', 'lat' => '41.90029', 'lon' => '12.49283'],
+            ['address' => 'Via Nazionale 40, 00184 Roma', 'lat' => '41.900387', 'lon' => '12.492719'],
 
-            ['address' => 'Via Aldo Moro, 52, Roma', 'lat' => '41.72616', 'lon' => '13.34399'],
+            ['address' => 'Corso Cavour 15A, 03011 Alatri', 'lat' => '41.726082', 'lon' => '13.344010'],
 
-            ['address' => 'Via Roma, 38, Latina', 'lat' => '41.45846', 'lon' => '12.68314'],
+            ['address' => 'Via Aldo Moro 52, 00048 Nettuno', 'lat' => '41.458561', 'lon' => '12.683099'],
 
-            ['address' => 'Via di Santa Maria, 93, Roma', 'lat' => '41.61968', 'lon' => '13.83174'],
+            ['address' => 'Via Roma 38, 03040 Villa Latina', 'lat' => '41.619724', 'lon' => '13.831731'],
 
-            ['address' => 'Via Nazionale, 90, Frosinone', 'lat' => '41.87254', 'lon' => '12.52736'],
+            ['address' => 'Via Eurialo 51, 00181 Roma', 'lat' => '41.872456', 'lon' => '12.527410'],
 
-            ['address' => 'Via di Santa Maria, 90, Roma', 'lat' => '41.0533', 'lon' => '14.95439'],
+            ['address' => 'Frazione Calore 1, 83036 Mirabella Eclano', 'lat' => '41.053879', 'lon' => '14.951113'],
 
-            ['address' => 'Piazza di Spagna, 51, Viterbo', 'lat' => '41.87283', 'lon' => '12.52755'],
+            ['address' => 'Via di Santa Maria Ausiliatrice 90, 00181 Roma', 'lat' => '41.872768', 'lon' => '12.527620'],
 
-            ['address' => 'Via Nazionale, 23, Rieti', 'lat' => '41.90468', 'lon' => '12.4829'],
+            ['address' => 'Piazza di Spagna 50, 00187 Roma', 'lat' => '41.904682', 'lon' => '12.482971'],
 
-            ['address' => 'Via Aldo Moro, 49, Roma', 'lat' => '42.31164', 'lon' => '13.05642'],
+            ['address' => 'Via Nazionale 23, 02025 Petrella Salto', 'lat' => '42.311611', 'lon' => '13.056470'],
 
-            ['address' => 'Piazza di Spagna, 59, Viterbo', 'lat' => '42.171', 'lon' => '12.58993'],
+            ['address' => 'Via Aldo Moro 49, 00065 Fiano Romano', 'lat' => '42.171017', 'lon' => '12.589908'],
 
-            ['address' => 'Via Roma, 93, Viterbo', 'lat' => '41.90529', 'lon' => '12.48253'],
+            ['address' => 'Piazza di Spagna 59, 00187 Roma', 'lat' => '41.905308', 'lon' => '12.482575'],
 
-            ['address' => 'Piazza di Spagna, 41, Roma', 'lat' => '42.41981', 'lon' => '12.34705'],
+            ['address' => 'Via Roma 93, 01030 Vasanello', 'lat' => '42.419804', 'lon' => '12.347079'],
 
-            ['address' => 'Via di Santa Maria, 24, Frosinone', 'lat' => '41.90493', 'lon' => '12.48325'],
+            ['address' => 'Piazza di Spagna 41, 00187 Roma', 'lat' => '41.904873', 'lon' => '12.483175'],
 
-            ['address' => 'Via di Santa Maria, 61, Rieti', 'lat' => '41.4678', 'lon' => '13.87692'],
+            ['address' => 'Via Santa Maria di Trocchio 24, 03044 Cervaro', 'lat' => '41.467762', 'lon' => '13.876949'],
 
-            ['address' => 'Piazza di Spagna, 71, Rieti', 'lat' => '42.21811', 'lon' => '12.66597'],
+            ['address' => 'Via Santa Maria 61, 02034 Montopoli di Sabina', 'lat' => '42.218113', 'lon' => '12.666018'],
 
-            ['address' => 'Via Roma, 8, Viterbo', 'lat' => '41.90557', 'lon' => '12.48227'],
+            ['address' => 'Piazza di Spagna 71, 00187 Roma', 'lat' => '41.905598', 'lon' => '12.482322'],
 
-            ['address' => 'Via Nazionale, 67, Latina', 'lat' => '42.41725', 'lon' => '12.10541'],
+            ['address' => 'Via dei Magazzini 1, 01100 Viterbo', 'lat' => '42.417233', 'lon' => '12.105402'],
 
-            ['address' => 'Via Nazionale, 80, Frosinone', 'lat' => '41.58273', 'lon' => '12.97348'],
+            ['address' => 'Via dell\'Orso 2, 04010 Norma', 'lat' => '41.582767', 'lon' => '12.973537'],
 
-            ['address' => 'Via Nazionale, 80, Latina', 'lat' => '41.53829', 'lon' => '13.27994'],
+            ['address' => 'Via Nazionale 80, 03020 Giuliano di Roma', 'lat' => '41.538284', 'lon' => '13.279938'],
 
-            ['address' => 'Via Aldo Moro, 86, Latina', 'lat' => '41.58233', 'lon' => '12.97361'],
+            ['address' => 'Via Nazionale 107, 04010 Norma', 'lat' => '41.582355', 'lon' => '12.973577'],
 
-            ['address' => 'Via di Santa Maria, 23, Viterbo', 'lat' => '41.58714', 'lon' => '12.64746'],
+            ['address' => 'Via Aldo Moro 86, 04011 Aprilia', 'lat' => '41.586952', 'lon' => '12.647345'],
 
-            ['address' => 'Via Roma, 63, Frosinone', 'lat' => '43.92885', 'lon' => '10.89903'],
+            ['address' => 'Via di Santa Maria Maggiore 23, 51100 Pistoia', 'lat' => '43.928848', 'lon' => '10.899062'],
 
-            ['address' => 'Via Aldo Moro, 5, Latina', 'lat' => '41.64535', 'lon' => '13.35268'],
+            ['address' => 'Viale Roma 63, 03100 Frosinone', 'lat' => '41.645340', 'lon' => '13.352734'],
 
-            ['address' => 'Via di Santa Maria, 97, Roma', 'lat' => '41.60059', 'lon' => '12.84479'],
+            ['address' => 'Via Aldo Moro 5, 04012 Cisterna di Latina', 'lat' => '41.600735', 'lon' => '12.844916'],
 
-            ['address' => 'Corso Cavour, 92, Latina', 'lat' => '41.87242', 'lon' => '12.5273'],
+            ['address' => 'Via di Santa Maria Ausiliatrice 97, 00181 Roma', 'lat' => '41.872501', 'lon' => '12.527208'],
 
-            ['address' => 'Piazza di Spagna, 4, Rieti', 'lat' => '41.21437', 'lon' => '13.56694'],
+            ['address' => 'Corso Cavour 92, 04024 Gaeta', 'lat' => '41.214333', 'lon' => '13.566932'],
 
-            ['address' => 'Via Roma, 96, Frosinone', 'lat' => '42.95311', 'lon' => '12.00435'],
+            ['address' => 'Piazza di Spagna 4, 06062 Città della Pieve', 'lat' => '42.953121', 'lon' => '12.004337'],
 
-            ['address' => 'Via Roma, 69, Rieti', 'lat' => '41.5326', 'lon' => '13.69368'],
+            ['address' => 'Via Roma 96, 03030 Castrocielo', 'lat' => '41.532532', 'lon' => '13.693606'],
 
-            ['address' => 'Piazza di Spagna, 17, Roma', 'lat' => '42.40166', 'lon' => '12.86114'],
+            ['address' => 'Via Roma 69, 02100 Rieti', 'lat' => '42.401661', 'lon' => '12.861111'],
 
-            ['address' => 'Via di Santa Maria, 54, Latina', 'lat' => '41.90568', 'lon' => '12.48232'],
+            ['address' => 'Piazza di Spagna 28, 00187 Roma', 'lat' => '41.905678', 'lon' => '12.482317'],
 
-            ['address' => 'Via Roma, 41, Latina', 'lat' => '43.93049', 'lon' => '10.89917'],
+            ['address' => 'Via di Santa Maria Maggiore 54, 51100 Pistoia', 'lat' => '43.930485', 'lon' => '10.898976'],
 
-            ['address' => 'Via Roma, 39, Frosinone', 'lat' => '41.62047', 'lon' => '13.83471'],
+            ['address' => 'Via Roma 39, 03040 Villa Latina', 'lat' => '41.620693', 'lon' => '13.834278'],
 
-            ['address' => 'Via Roma, 23, Viterbo', 'lat' => '41.64326', 'lon' => '13.35229'],
+            ['address' => 'Viale Roma 20, 03100 Frosinone', 'lat' => '41.643318', 'lon' => '13.352082'],
 
-            ['address' => 'Via Roma, 98, Viterbo', 'lat' => '42.41742', 'lon' => '12.10566'],
+            ['address' => 'Via Roma 23, 01100 Viterbo', 'lat' => '42.417439', 'lon' => '12.105614'],
 
-            ['address' => 'Via di Santa Maria, 78, Frosinone', 'lat' => '42.54843', 'lon' => '11.91054'],
+            ['address' => 'Via Roma 98, 01010 Capodimonte', 'lat' => '42.548519', 'lon' => '11.910436'],
 
-            ['address' => 'Via Roma, 3, Rieti', 'lat' => '41.46792', 'lon' => '13.87794'],
+            ['address' => 'Via Santa Maria di Trocchio 78, 03044 Cervaro', 'lat' => '41.467888', 'lon' => '13.877952'],
 
-            ['address' => 'Piazza di Spagna, 22, Latina', 'lat' => '42.4002', 'lon' => '12.86092'],
+            ['address' => 'Via Roma 3, 02100 Rieti', 'lat' => '42.400211', 'lon' => '12.860888'],
 
-            ['address' => 'Via Nazionale, 60, Viterbo', 'lat' => '41.90612', 'lon' => '12.48233'],
+            ['address' => 'Piazza di Spagna 22, 00187 Roma', 'lat' => '41.906094', 'lon' => '12.482209'],
 
-            ['address' => 'Via Aldo Moro, 43, Roma', 'lat' => '42.63615', 'lon' => '12.11329'],
+            ['address' => 'Via Nazionale 54, 01020 Lubriano', 'lat' => '42.636227', 'lon' => '12.113233'],
 
-            ['address' => 'Piazza di Spagna, 28, Latina', 'lat' => '41.76274', 'lon' => '12.60926'],
+            ['address' => 'Via Aldo Moro 43, 00047 Marino', 'lat' => '41.762730', 'lon' => '12.609358'],
 
-            ['address' => 'Via Nazionale, 32, Frosinone', 'lat' => '41.90567', 'lon' => '12.48257'],
+            ['address' => 'Piazza di Spagna 28, 00187 Roma', 'lat' => '41.905678', 'lon' => '12.482317'],
 
-            ['address' => 'Piazza di Spagna, 45, Rieti', 'lat' => '41.67809', 'lon' => '13.57578'],
+            ['address' => 'Via Nazionale 32, 03036 Isola del Liri', 'lat' => '41.678085', 'lon' => '13.575752'],
 
         ];
+
 
         $user_ids = User::all()->pluck('id')->all();
         $service_ids = Service::all()->pluck('id')->all();
@@ -1033,68 +1034,70 @@ class ApartmentSeeder extends Seeder
         $slug_list = [];
         $pathImg = 'uploads/apartment/img_default/';
 
-        foreach ($arrAddress as $addresses) {
+        foreach ($arrAddress as $key => $addresses) {
 
-            $title = $faker->sentence(3);
-            $slug = $title;
-            $n = 0;
-            do {
-                if (in_array($slug, $slug_list)) {
-                    $n++;
-                    $slug = $title . '-' . $n;
-                }
-            } while (in_array($slug, $slug_list));
-
-            $slug_list[] = $slug;
-
-            $new_apartment = new Apartment();
-
-            $new_apartment->title = $title;
-            $new_apartment->slug = Str::slug($slug);
-            $new_apartment->description = $faker->sentence();
-            $new_apartment->price = $faker->randomFloat(2, 1, 9999);
-            $new_apartment->rooms_number = $faker->numberBetween(2, 10);
-            $new_apartment->beds_number = $faker->numberBetween(1, 5);
-            $new_apartment->baths_number = $faker->numberBetween(1, 3);
-            $new_apartment->mtq = $faker->numberBetween(10, 1000);
-            $new_apartment->address = $addresses['address'];
-            $new_apartment->latitude = $addresses['lat'];
-            $new_apartment->longitude = $addresses['lon'];
-            $new_apartment->image = $pathImg . rand(1, 26) . '.png,' . $pathImg . rand(1, 26) . '.png,' . $pathImg . rand(1, 26) . '.png';
-            $new_apartment->visible = $faker->boolean();
-            $new_apartment->user_id = $faker->randomElement($user_ids);
-            $new_apartment->category_id = $faker->randomElement($categories_ids);
-
-            $new_apartment->save();
-
-            $random_service_ids = $faker->randomElements($service_ids, null);
-            $new_apartment->services()->attach($random_service_ids);
-
-            $random_promotions_ids = $faker->randomElements($promotions_ids, null);
-
-            $promotions_with_timestamp = [];
-
-            foreach ($random_promotions_ids as $random_promotions_id) {
-
-                $start_date = $faker->dateTimeThisYear();
-                $hours = $promo_durations[$random_promotions_id];
-
-                //vedi se promotions with timestamps è vuoto o no
-                if (count($promotions_with_timestamp)) {
-
-                    while (checkPromoDate($start_date, $promotions_with_timestamp, $hours)[0]) {
-                        $start_date = (new Carbon(checkPromoDate($start_date, $promotions_with_timestamp, $hours)[1]))->addSecond();
+            if (checkEqual($arrAddress, $addresses['address'], $key)) {
+                $title = $faker->sentence(3);
+                $slug = $title;
+                $n = 0;
+                do {
+                    if (in_array($slug, $slug_list)) {
+                        $n++;
+                        $slug = $title . '-' . $n;
                     }
+                } while (in_array($slug, $slug_list));
+
+                $slug_list[] = $slug;
+
+                $new_apartment = new Apartment();
+
+                $new_apartment->title = $title;
+                $new_apartment->slug = Str::slug($slug);
+                $new_apartment->description = $faker->sentence();
+                $new_apartment->price = $faker->randomFloat(2, 1, 9999);
+                $new_apartment->rooms_number = $faker->numberBetween(2, 10);
+                $new_apartment->beds_number = $faker->numberBetween(1, 5);
+                $new_apartment->baths_number = $faker->numberBetween(1, 3);
+                $new_apartment->mtq = $faker->numberBetween(10, 1000);
+                $new_apartment->address = $addresses['address'];
+                $new_apartment->latitude = $addresses['lat'];
+                $new_apartment->longitude = $addresses['lon'];
+                $new_apartment->image = $pathImg . rand(1, 26) . '.png,' . $pathImg . rand(1, 26) . '.png,' . $pathImg . rand(1, 26) . '.png';
+                $new_apartment->visible = $faker->boolean();
+                $new_apartment->user_id = $faker->randomElement($user_ids);
+                $new_apartment->category_id = $faker->randomElement($categories_ids);
+
+                $new_apartment->save();
+
+                $random_service_ids = $faker->randomElements($service_ids, null);
+                $new_apartment->services()->attach($random_service_ids);
+
+                $random_promotions_ids = $faker->randomElements($promotions_ids, null);
+
+                $promotions_with_timestamp = [];
+
+                foreach ($random_promotions_ids as $random_promotions_id) {
+
+                    $start_date = $faker->dateTimeThisYear();
+                    $hours = $promo_durations[$random_promotions_id];
+
+                    //vedi se promotions with timestamps è vuoto o no
+                    if (count($promotions_with_timestamp)) {
+
+                        while (checkPromoDate($start_date, $promotions_with_timestamp, $hours)[0]) {
+                            $start_date = (new Carbon(checkPromoDate($start_date, $promotions_with_timestamp, $hours)[1]))->addSecond();
+                        }
+                    }
+
+                    $expiration_date = (new Carbon($start_date))->addHours($hours);
+                    $promotions_with_timestamp[$random_promotions_id] = [
+                        'start_date' => $start_date,
+                        'expiration_date' => $expiration_date
+                    ];
                 }
 
-                $expiration_date = (new Carbon($start_date))->addHours($hours);
-                $promotions_with_timestamp[$random_promotions_id] = [
-                    'start_date' => $start_date,
-                    'expiration_date' => $expiration_date
-                ];
+                $new_apartment->promotions()->attach($promotions_with_timestamp);
             }
-
-            $new_apartment->promotions()->attach($promotions_with_timestamp);
         };
     }
 }
@@ -1109,4 +1112,14 @@ function checkPromoDate($start_date, $promotions_with_timestamp, $hours)
         }
     }
     return [false, ''];
+}
+
+function checkEqual($arrAddress, $addressTocheck, $key)
+{
+    foreach ($arrAddress as $key2 => $address) {
+        if ($address['address'] === $addressTocheck && $key !== $key2) {
+            return false;
+        }
+    }
+    return true;
 }

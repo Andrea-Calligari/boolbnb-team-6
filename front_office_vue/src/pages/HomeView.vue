@@ -38,6 +38,8 @@
     </div>
   </div>
   <!-- <img :src="image ? 'http://localhost:8000/' + image : 'http://localhost:8000/uploads/apartment/null.png'" -->
+
+
 </template>
 
 <script>
