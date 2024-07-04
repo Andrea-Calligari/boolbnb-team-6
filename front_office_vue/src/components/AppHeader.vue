@@ -23,7 +23,7 @@
             <option v-for="position in store.address.listAddresses">{{ position.address.freeformAddress }}
             </option>
           </datalist>
-          <button class="btn btn-primary me-2">
+          <button class="btn btn-primary me-2" @click="store.search.getSearch()">
             <span class="material-symbols-rounded">
               search
             </span>

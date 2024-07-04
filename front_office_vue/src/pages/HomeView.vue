@@ -11,9 +11,14 @@
           <div class="carousel-inner">
             <div class="carousel-item" v-for="(apartment, i) in apartments" :key="apartment.id + 'img'"
               :class="i === 0 ? 'active' : ''">
-              <img :src="`http://localhost:8000/${apartment.image.split(',')[0]}`" class="d-block w-100 " style="height: 70vh;" alt="...">
+              <img :src="`http://localhost:8000/${apartment.image.split(',')[0]}`" class="d-block w-100 "
+                style="height: 70vh;" alt="...">
               <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50">
-                <h2>{{ apartment.title }}</h2>
+                <RouterLink :to="{ name: 'apartments.show', params: { slug: apartment.slug } }"
+                  class="btn btn-outline-light">
+                  <h2>{{ apartment.title }}</h2>
+                </RouterLink>
+
                 <p class="fs-4">{{ apartment.description }}</p>
               </div>
             </div>
@@ -32,7 +37,7 @@
       </div>
     </div>
   </div>
-<!-- <img :src="image ? 'http://localhost:8000/' + image : 'http://localhost:8000/uploads/apartment/null.png'" -->
+  <!-- <img :src="image ? 'http://localhost:8000/' + image : 'http://localhost:8000/uploads/apartment/null.png'" -->
 </template>
 
 <script>
