@@ -1,5 +1,38 @@
 <template>
-  
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div id="carouselExampleCaptions" class="carousel slide">
+          <div class="carousel-indicators">
+            <button type="button" v-for="(apartment, i) in apartments" :key="apartment.id + 'btn'"
+              data-bs-target="#carouselExampleCaptions" :data-bs-slide-to="i" :class="i === 0 ? 'active' : ''"
+              :aria-current="i === 0 ? 'true' : ''" :aria-label="'Slide ' + (i + 1)"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item" v-for="(apartment, i) in apartments" :key="apartment.id + 'img'"
+              :class="i === 0 ? 'active' : ''">
+              <img :src="`http://localhost:8000/${apartment.image.split(',')[0]}`" class="d-block w-100 " style="height: 70vh;" alt="...">
+              <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50">
+                <h2>{{ apartment.title }}</h2>
+                <p class="fs-4">{{ apartment.description }}</p>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- <img :src="image ? 'http://localhost:8000/' + image : 'http://localhost:8000/uploads/apartment/null.png'" -->
 </template>
 
 <script>
@@ -9,18 +42,19 @@ export default {
   data() {
     return {
       store,
+      apartments: []
     }
   },
   methods: {
-    fetchApartmentsHome(){
-      axios.get('http://localhost:8000/api/homepage').then((res)=> {
-        console.log(res)
-      })
-    }
+
   },
   computed: {
   },
   mounted() {
+    axios.get('http://localhost:8000/api/homepage').then((res) => {
+      console.log(res)
+      this.apartments = res.data.apartmentPivot
+    })
   }
 }
 </script>
