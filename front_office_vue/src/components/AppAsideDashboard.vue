@@ -1,4 +1,10 @@
 <template>
+
+  <RouterLink :to="{ name: 'apartments.create' }" class="btn btn-primary mb-3">
+    Aggiungi un nuovo appartamento
+  </RouterLink>
+
+
   <RouterLink :to="{ name: 'dashboard.userapartments' }" class="btn btn-primary mb-3">
     I miei appartamenti
   </RouterLink>

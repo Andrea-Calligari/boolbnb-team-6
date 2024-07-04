@@ -3,29 +3,37 @@
     <div class="container">
       <div class="row align-items-center">
         <div class="col">
-          <a href="./">
+          <RouterLink :to="{ name: 'home' }">
             <img src="/img/logo.png" class="logo" alt="Vue logo" />
-          </a>
+          </RouterLink>
         </div>
         <div class="col-auto">
 
-          <RouterLink :to="{ name: 'home' }" class="me-2" :class="$route.fullPath === '/' ? 'opacity-50' : ''">
-            <CmpBtnLoad content="Home" />
-          </RouterLink>
 
-          <RouterLink :to="{ name: 'categories.index' }" class="me-2">
+
+          <!-- <RouterLink :to="{ name: 'categories.index' }" class="me-2">
             <CmpBtnLoad content="Categories" />
-          </RouterLink>
+          </RouterLink> -->
 
-          <RouterLink :to="{ name: 'apartments.index' }" class="me-2"
+          <!-- <input type="text" placeholder="search" class="rounded px-1 me-2" style="width: 150px;"> -->
+
+          <input type="text" @keyup="search" class="form-control d-inline-block" style="width: 150px;" id="address"
+            name="address" v-model="store.search.address" placeholder="Inserisci indirizzo" list="position">
+          <datalist id="position">
+            <option v-for="position in store.address.listAddresses">{{ position.address.freeformAddress }}
+            </option>
+          </datalist>
+          <button class="btn btn-primary me-2">
+            <span class="material-symbols-rounded">
+              search
+            </span>
+          </button>
+
+          <RouterLink :to="{ name: 'apartments.search' }" class="me-2"
             :class="$route.fullPath === '/apartments' ? 'opacity-50' : ''">
             <CmpBtnLoad content="Apartments" />
           </RouterLink>
 
-          <RouterLink v-if="store.user.id" :to="{ name: 'apartments.create' }" class="me-2"
-            :class="$route.fullPath === '/apartments/create' ? 'opacity-50' : ''">
-            <CmpBtnLoad content="Create" />
-          </RouterLink>
 
           <RouterLink v-if="!store.user.id" :to="{ name: 'register' }" class="me-2"
             :class="$route.fullPath === '/register' ? 'opacity-50' : ''">
@@ -63,8 +71,17 @@ export default {
   data() {
     return {
       store,
+      address: 'Piazza di spagna, 31, Roma',
     }
   },
+  methods: {
+    search() {
+      if (this.$route.fullPath !== '/apartment/search') {
+        this.$router.push({ name: 'apartments.search' });
+      }
+      this.store.address.searchAddresses(this.store.search.address)
+    }
+  }
 }
 </script>
 
