@@ -80,8 +80,20 @@
                     </option>
                 </datalist>
                 <div v-if="store.validate.isV(isVaddress) === 'is-invalid'" class="mt-0 text-danger">
-                    Il campo indirizzo non può essere vuoto e non può superare i 254 caratteri
+                    Il campo indirizzo non può essere vuoto e non può superare i 254 caratteri e deve essere valido
                 </div>
+            </div>
+
+
+
+            <div v-for="(img, i) in image" class="position-relative d-inline-block mx-2">
+                <img class="" :src="'http://localhost:8000/' + img" width="100" alt="">
+                <span role="button"
+                    class="pointer position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger p-1 px-2"
+                    @click="removeImage(i)">
+                    x
+                    <span class="visually-hidden">unread messages</span>
+                </span>
             </div>
 
             <div class="mb-3">
@@ -97,8 +109,9 @@
 
                 </select>
             </div>
+        
 
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 mb-3">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 mb-3" :class="isVservices === false ? 'border border-danger rounded' : ''">
                 <div class="col" v-for="(serVice, i) in store.options.services " :key=serVice.id>
                     <input type="checkbox" :checked="serVice.id === services[i]" :id="serVice.name" :value="serVice.id"
                         v-model="services">
@@ -106,7 +119,8 @@
                 </div>
             </div>
 
-            <img v-for="(img,i) in image" :src="'http://localhost:8000/' + img" @click="removeImage(i)" width="50" alt="">
+            <div v-if="services.length === 0"> devi selezionare almeno 1 servizio</div>
+
 
 
             <div class="mb-3">
@@ -167,7 +181,7 @@ export default {
             category: 1,
             services: [],
             user_id: 0,
-
+            isVservices: null
         }
     },
     methods: {
@@ -183,6 +197,7 @@ export default {
             this.isVaddress = this.store.validate._string(this.address)
             // validate image 
             this.isVvisible = this.store.validate._boolean(this.visible)
+            this.isVservices = this.services.length != 0
 
             if (
                 this.isVtitle &&
@@ -193,7 +208,8 @@ export default {
                 this.isVbaths &&
                 this.isVmtq &&
                 this.isVaddress &&
-                this.isVvisible
+                this.isVvisible &&
+                this.isVservices
             ) {
                 return true
             } else {
@@ -206,53 +222,59 @@ export default {
                 this.position = await fetch(`https://api.tomtom.com/search/2/geocode/${encodeURI(this.address)}.json?key=orDHPznfE908Jeu45AKVaFSiSMAebYfQ`)
                     .then((response) => response.json())
                     .then((data) => { return data.results[0].position })
-                    .catch(function (error) {
-                        reject(error);
+                    .catch((error) => {
+                        console.log(error);
+                        window.scrollTo(0,0)
+                        this.isVaddress = false
+                        return false
                     });
+                if (this.position) {
 
-                console.log(this.position);
-              
-                await axios.post(`http://localhost:8000/api/apartments/${this.slug}`, {
-                    title: this.title,
-                    description: this.description,
-                    price: this.price,
-                    rooms_number: this.rooms,
-                    beds_number: this.beds,
-                    baths_number: this.baths,
-                    mtq: this.mtq,
-                    address: this.address,
-                    latitude: this.position.lat,
-                    longitude: this.position.lon,
-                    visible: this.visible,
-                    user_id: this.store.user.id,
-                    category_id: this.category,
-                    services_ids: this.services,
-                    image: e.target.elements["image"].files,
-                    oldImage: this.image.join(',')
 
-                }, {
-                    headers: {
-                        'Content-Type': 'multipart/form-data'
-                    }
-                }).then((res) => {
-                    console.log(res);
-                    const apartmentSlug = res.data.apartment.slug;
-                    this.$router.push({ name: 'apartments.show', params: { slug: apartmentSlug } });
-                }).catch((err) => {
-                    console.log(err.response.data.message);
-                });
+                    console.log(this.position);
+
+                    await axios.post(`http://localhost:8000/api/apartments/${this.slug}`, {
+                        title: this.title,
+                        description: this.description,
+                        price: this.price,
+                        rooms_number: this.rooms,
+                        beds_number: this.beds,
+                        baths_number: this.baths,
+                        mtq: this.mtq,
+                        address: this.address,
+                        latitude: this.position.lat,
+                        longitude: this.position.lon,
+                        visible: this.visible,
+                        user_id: this.store.user.id,
+                        category_id: this.category,
+                        services_ids: this.services,
+                        image: e.target.elements["image"].files,
+                        oldImage: this.image.join(',')
+
+                    }, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data'
+                        }
+                    }).then((res) => {
+                        console.log(res);
+                        const apartmentSlug = res.data.apartment.slug;
+                        this.$router.push({ name: 'apartments.show', params: { slug: apartmentSlug } });
+                    }).catch((err) => {
+                        console.log(err.response.data.message);
+                    });
+                }
             }
         },
 
-        removeImage(i){
+        removeImage(i) {
             // const ciao = [...this.image]
             // console.log(typeof(ciao))
             // const img2 = this.image.toSpliced(i,1)
             // console.log(img2)
-            this.image = this.image.toSpliced(i,1)
+            this.image = this.image.toSpliced(i, 1)
         }
 
-       
+
     },
     computed: {
     },
@@ -278,7 +300,10 @@ export default {
             this.beds = results.beds_number
             this.baths = results.baths_number
             this.visible = results.visible
-            this.image = results.image.split(',')
+            if(results.image != null){
+                this.image = results.image.split(',')
+            }
+            
             this.category = results.category_id
             for (let i = 0; i < results.services.length; i++) {
                 this.services.push(results.services[i].id)

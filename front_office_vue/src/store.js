@@ -76,7 +76,7 @@ export const store = reactive({
                     this.listAddresses = data.results
                 })
                 .catch(function (error) {
-                    reject(error);
+                    console.log(error);
                 });
 
         }
@@ -154,9 +154,10 @@ export const store = reactive({
                 text.length <= max &&
                 text.length >= min
             ) {
-                window.scrollTo(0, 0);
+                
                 return true;
             } else {
+                window.scrollTo(0, 0);
                 return false;
             }
         },
@@ -166,9 +167,10 @@ export const store = reactive({
                 number >= min &&
                 number % 1 == 0
             ) {
-                window.scrollTo(0, 0);
+                
                 return true;
             } else {
+                window.scrollTo(0, 0);
                 return false;
             }
         },
@@ -179,9 +181,10 @@ export const store = reactive({
                 bool == 0 ||
                 bool == 1
             ) {
-                window.scrollTo(0, 0);
+                
                 return true;
             } else {
+                window.scrollTo(0, 0);
                 return false;
             }
         },
@@ -190,9 +193,10 @@ export const store = reactive({
                 number <= max &&
                 number >= min
             ) {
-                window.scrollTo(0, 0);
+               
                 return true;
             } else {
+                window.scrollTo(0, 0);
                 return false;
             }
         },

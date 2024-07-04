@@ -83,7 +83,7 @@
                     </option>
                 </datalist>
                 <div v-if="store.validate.isV(isVaddress) === 'is-invalid'" class="mt-0 text-danger">
-                    Il campo indirizzo non può essere vuoto e non può superare i 254 caratteri
+                    Il campo indirizzo non può essere vuoto e non può superare i 254 caratteri e deve essere valido
                 </div>
             </div>
 
@@ -91,7 +91,7 @@
                 <label for="image" class="form-label">Immagini</label>
                 <input class="form-control" type="file" name="image" value="" id="image" multiple>
             </div>
-            
+
             <div class="mb-3">
                 <label for="category" class="form-label">categorie</label>
                 <select name="category" v-model="category" id="category">
@@ -99,14 +99,19 @@
                         cateGory.name }}</option>
 
                 </select>
+
             </div>
 
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 mb-3">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 mb-3"
+                :class="isVservices === false ? 'border border-danger rounded' : ''">
                 <div class="col" v-for="serVice in store.options.services">
                     <input type="checkbox" :id="serVice.name" :value="serVice.id" v-model="services">
                     <label :for="serVice.name">{{ serVice.name }}</label>
                 </div>
+
             </div>
+
+            <div v-if="services.length === 0"> devi selezionare almeno 1 servizio</div>
 
 
 
@@ -158,7 +163,9 @@ export default {
             image: [],
             isVimage: null,
             category: 1,
-            services: []
+            services: [],
+            isVservices: null
+
 
         }
     },
@@ -175,6 +182,7 @@ export default {
             this.isVaddress = this.store.validate._string(this.address)
             // validate image 
             this.isVvisible = this.store.validate._boolean(this.visible)
+            this.isVservices = this.services.length != 0
 
             if (
                 this.isVtitle &&
@@ -185,7 +193,9 @@ export default {
                 this.isVbaths &&
                 this.isVmtq &&
                 this.isVaddress &&
-                this.isVvisible
+                this.isVvisible &&
+                this.isVservices
+
             ) {
                 return true
             } else {
@@ -200,38 +210,43 @@ export default {
                 this.position = await fetch(`https://api.tomtom.com/search/2/geocode/${encodeURI(this.address)}.json?key=orDHPznfE908Jeu45AKVaFSiSMAebYfQ`)
                     .then((response) => response.json())
                     .then((data) => { return data.results[0].position })
-                    .catch(function (error) {
-                        reject(error);
+                    .catch((error) => {
+                        console.log(error);
+                        window.scrollTo(0, 0)
+                        this.isVaddress = false
+                        return false
                     });
 
-                console.log(this.position);
+                if (this.position) {
+                    console.log(this.position);
 
-                await axios.post("http://localhost:8000/api/apartments", {
-                    title: this.title,
-                    description: this.description,
-                    price: this.price,
-                    rooms_number: this.rooms,
-                    beds_number: this.beds,
-                    baths_number: this.baths,
-                    mtq: this.mtq,
-                    address: this.address,
-                    latitude: this.position.lat,
-                    longitude: this.position.lon,
-                    visible: this.visible,
-                    user_id: this.store.user.id,
-                    category_id: this.category,
-                    services_ids: this.services,
-                    image: e.target.elements["image"].files
-                }, {
-                    headers: {
-                        'Content-Type': 'multipart/form-data'
-                    }
-                }).then((res) => {
-                    const apartmentSlug = res.data.apartment.slug;
-                    this.$router.push({ name: 'apartments.show', params: { slug: apartmentSlug } });
-                }).catch((err) => {
-                    console.log(err.response.data.message);
-                });
+                    await axios.post("http://localhost:8000/api/apartments", {
+                        title: this.title,
+                        description: this.description,
+                        price: this.price,
+                        rooms_number: this.rooms,
+                        beds_number: this.beds,
+                        baths_number: this.baths,
+                        mtq: this.mtq,
+                        address: this.address,
+                        latitude: this.position.lat,
+                        longitude: this.position.lon,
+                        visible: this.visible,
+                        user_id: this.store.user.id,
+                        category_id: this.category,
+                        services_ids: this.services,
+                        image: e.target.elements["image"].files
+                    }, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data'
+                        }
+                    }).then((res) => {
+                        const apartmentSlug = res.data.apartment.slug;
+                        this.$router.push({ name: 'apartments.show', params: { slug: apartmentSlug } });
+                    }).catch((err) => {
+                        console.log(err.response.data.message);
+                    });
+                }
             }
         },
     },
