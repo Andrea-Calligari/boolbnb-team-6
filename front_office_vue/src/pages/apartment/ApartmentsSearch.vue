@@ -37,6 +37,7 @@
                             <h5 class="card-title">{{ apartment.title }}</h5>
                             <p class="card-text">{{ apartment.distance }}</p>
                             <p v-if="apartment.services.find((element) => element.id == 14)" class="card-text text-success bg-dark">{{ apartment.services.find((element) => element.id == 14).name }}</p>
+                            <p v-if="apartment.services.find((element) => element.id == 16)" class="card-text text-success bg-dark">{{ apartment.services.find((element) => element.id == 16).name }}</p>
                             <p class="card-text">{{ apartment.description }}</p>
                             <RouterLink :to="{ name: 'apartments.show', params: { slug: apartment.slug } }"
                                 class="btn btn-primary">
@@ -76,8 +77,8 @@ export default {
                     reject(error);
                 });
 
-            console.log(position);
-
+            // console.log(position);
+            // console.log(this.service_ids);
             await axios.get(`http://localhost:8000/api/apartments/search?lat=${position.lat}&lon=${position.lon}&radius=${this.radius}&rooms_number=${this.rooms_number}&beds_number=${this.beds_number}&service_ids=${this.service_ids}`).then((res) => {
                 console.log(res);
                 this.apartments = res.data.apartments

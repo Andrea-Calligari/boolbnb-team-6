@@ -176,7 +176,9 @@ class ApartmentController extends Controller
             $radius = intval($form_data['radius']);
             $rooms_number = intval($form_data['rooms_number']);
             $beds_number = intval($form_data['beds_number']);
-            $service_ids = $form_data['service_ids'];
+            $service_ids = explode(',', $form_data['service_ids']);
+
+
             $apartments = Apartment::where('latitude', '<', $lat1 + (0.008995 * $radius))
                 ->where('latitude', '>', $lat1 - (0.008995 * $radius))
                 ->where('longitude', '<', $lon1 + (0.011690 * $radius))
@@ -187,40 +189,20 @@ class ApartmentController extends Controller
 
                 ->get();
 
+            $apartments = sortApartments($apartments, $lat1, $lon1);
 
-            $apartments = filterApartments($apartments, 14);
-            // $apartments = sortApartments($apartments, $lat1, $lon1);
+            if ($form_data['service_ids'] !== null) {
+                $apartments = filterApartments($apartments, $service_ids);
+            }
+
 
             return response()->json(compact('apartments'));
+            // return response()->json(['msg' => $service_ids]);
         } else {
             return response()->json(['msg' => 'bad request']);
         }
     }
 }
-
-
-function filterApartments($apartments, $services)
-{
-    $apartmentFitered = [];
-    foreach ($apartments as $apartment) {
-        if (checkServices($apartment['services'], $services) ) {
-            $apartmentFitered[] = $apartment;
-        }
-    };
-
-    return $apartmentFitered;
-}
-function checkServices($services, $serviceToCheck)
-{
-    foreach ($services as $service) {
-        if ($service['id'] === $serviceToCheck) {
-            return true;
-        }
-    };
-    return false;
-}
-
-
 
 function sortApartments($apartments, $lat1, $lon1)
 {
@@ -239,6 +221,37 @@ function sortApartments($apartments, $lat1, $lon1)
     };
 
     return $sortedApartments;
+}
+
+
+function filterApartments($apartments, $services)
+{
+    $apartmentFitered = [];
+    foreach ($apartments as $apartment) {
+        if (checkServices($apartment['services'], $services)) {
+            $apartmentFitered[] = $apartment;
+        }
+    };
+
+    return $apartmentFitered;
+}
+
+function checkServices($apartmentServices, $serviceToCheck)
+{
+    $returnX = 0;
+    for ($i = 0; $i < count($apartmentServices); $i++) {
+        for ($x = 0; $x < count($serviceToCheck); $x++) {
+            if ($apartmentServices[$i]['id'] == $serviceToCheck[$x]) {
+                $returnX++;
+            }
+        }
+    }
+
+    if ($returnX === count($serviceToCheck)) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 function getDistance($lat1, $lon1, $lat2, $lon2)
