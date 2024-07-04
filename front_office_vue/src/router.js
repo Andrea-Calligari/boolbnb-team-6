@@ -14,6 +14,7 @@ import UserApartments from './pages/dashboard/UserApartments.vue'
 import CategoriesIndex from './pages/category/CategoriesIndex.vue'
 import CategoriesCreate from './pages/category/CategoriesCreate.vue'
 import CategoriesEdit from './pages/category/CategoriesEdit.vue'
+import ApartmentsSearch from './pages/apartment/ApartmentsSearch.vue'
 
 
 export default createRouter({
@@ -26,6 +27,7 @@ export default createRouter({
     { path: '/login', name: 'login', component: LoginView },
     // ---- apartments
     { path: '/apartment', name: 'apartments.index', component: ApartmentsIndex },
+    { path: '/apartment/search', name: 'apartments.search', component: ApartmentsSearch },
     { path: '/apartment/:slug', name: 'apartments.show', component: ApartmentsShow, props: true },
 
     // ####################################

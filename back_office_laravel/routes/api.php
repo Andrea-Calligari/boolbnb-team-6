@@ -39,6 +39,8 @@ Route::get('/options', [OptionsController::class, 'index'])->name('options.index
 //Rotte crud appartamenti
 Route::get('/apartments', [ApartmentController::class, 'index'])->name('apartments.index');
 
+Route::get('/apartments/search', [ApartmentController::class, 'search']);
+
 Route::get('/apartments/{slug}', [ApartmentController::class, 'show'])->name('apartments.show');
 
 Route::post('/messages', [MessageApiController::class, 'store'])->name('messages.store');
