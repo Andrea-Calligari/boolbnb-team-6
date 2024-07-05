@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\ApartmentController;
+use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+// Route::get('/payment/process',[PaymentsController::class, 'process'])->name('payment.process');
 Route::get('/', function () {
     return view('welcome');
 });
