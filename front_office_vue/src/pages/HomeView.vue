@@ -58,9 +58,11 @@ export default {
   computed: {
   },
   mounted() {
+    this.store.loading.on();
     axios.get('http://localhost:8000/api/homepage').then((res) => {
       console.log(res)
       this.apartments = res.data.apartmentPivot
+      this.store.loading.off();
     })
   }
 }
