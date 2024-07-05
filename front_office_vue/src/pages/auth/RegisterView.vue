@@ -57,7 +57,7 @@
                               :class="store.validate.isV(isVpassword)" required autocomplete="new-password">
 
                            <div v-if="store.validate.isV(isVpassword) === 'is-invalid'" class="mt-0 text-danger">
-                              Il campo non può essere vuoto e non deve superare i 254 caratteri
+                              Il campo deve avere almeno 8 caratteri e non può superare i 254 caratteri
                            </div>
                         </div>
                      </div>
@@ -73,7 +73,7 @@
 
                            <div v-if="store.validate.isV(isVpassword_confirmation) === 'is-invalid'"
                               class="mt-0 text-danger">
-                              Il campo Password e Confirm Password non devono essere uguali
+                              Il campo Password e Confirm Password devono essere uguali
                            </div>
                         </div>
                      </div>
