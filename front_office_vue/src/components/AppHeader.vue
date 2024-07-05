@@ -8,30 +8,28 @@
           </RouterLink>
         </div>
         <div class="col d-flex">
-          <input type="text" @keyup="search" @keyup.enter="submitSearch" class="form-control d-inline-block"
-            id="address" name="address" v-model="store.search.address" placeholder="Inserisci indirizzo"
-            list="position">
-          <datalist id="position">
-            <option v-for="position in store.address.listAddresses">{{ position.address.freeformAddress }}
-            </option>
-          </datalist>
-          <button class="btn btn-primary me-2" @click="submitSearch">
-            <span class="material-symbols-rounded">
-              search
-            </span>
-          </button>
+          <div class="input-group mb-3">
+            <input type="text" @keyup="search" @keyup.enter="submitSearch" class="form-control"
+              aria-label="Recipient's username" aria-describedby="button-addon2" id="address" name="address"
+              v-model="store.search.address" placeholder="Inserisci indirizzo" list="position">
+            <datalist id="position">
+              <option v-for="position in store.address.listAddresses">{{ position.address.freeformAddress }}
+              </option>
+            </datalist>
+            <button class="btn btn-outline-secondary" @click="submitSearch" type="button" id="button-addon2">
+              <span class="material-symbols-rounded" style="padding-top: 4px;">
+                search
+              </span>
+            </button>
+          </div>
         </div>
         <div class="col-auto">
-
-
-
+          
           <!-- <RouterLink :to="{ name: 'categories.index' }" class="me-2">
             <CmpBtnLoad content="Categories" />
           </RouterLink> -->
 
           <!-- <input type="text" placeholder="search" class="rounded px-1 me-2" style="width: 150px;"> -->
-
-
 
           <RouterLink :to="{ name: 'apartments.search' }" class="me-2"
             :class="$route.fullPath === '/apartments' ? 'opacity-50' : ''">

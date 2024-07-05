@@ -1,9 +1,13 @@
 <template>
-    <main class="d-flex align-items-center justify-content-center">
-        <div class="py-5">
-            <img src="../../public/img/not_found.svg" alt="404 error not found">
-        </div>
-    </main>
+    <div class="text-center">
+        <img src="../../public/img/not_found.svg" alt="404 error not found">
+        <br>
+        <RouterLink :to="{ name: 'home' }" class="btn btn-success btn-lg mb-5">
+            Torna alla Home
+        </RouterLink>
+    </div>
+
+
 </template>
 
 <script>
@@ -18,4 +22,10 @@ export default {
 
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+img {
+    width: 100vmin;
+    padding: 50px;
+    padding-bottom: 0;
+}
+</style>
