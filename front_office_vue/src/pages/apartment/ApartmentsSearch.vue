@@ -117,7 +117,9 @@ export default {
 
     },
     mounted() {
-        this.store.search.getAll()
+        if ( !this.store.search.apartments.length) {
+            this.store.search.getAll();
+        }
     }
 }
 </script>
