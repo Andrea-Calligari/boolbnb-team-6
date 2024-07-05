@@ -35,7 +35,9 @@
                 </div>
 
                 <div class="card-body">
-                    <h2 class="card-title mb-0">{{ apartment.title }}</h2>
+                    <h2 class="card-title mb-0">{{ apartment.title }} </h2>
+                    <span class="badge text-bg-warning ms-2 " v-for="promotion in apartment.promotions">{{
+                        promotion.title }}</span>
                     <p class="card-text"><small class="text-body-secondary">{{ apartment.category.name }}</small>
                     </p>
                     <p class="card-text mb-0">Servizi: </p>
