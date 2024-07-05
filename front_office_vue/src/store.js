@@ -139,26 +139,33 @@ export const store = reactive({
         address: '',
         apartments: [],
         radius: 20,
+        isVradius: null,
         rooms_number: 1,
+        isVroomsNum: null,
         beds_number: 1,
+        isVbedsNum: null,
         service_ids: [],
+
         async getSearch() {
-            store.loading.on();
-            const position = await fetch(`https://api.tomtom.com/search/2/geocode/${encodeURI(this.address)}.json?key=orDHPznfE908Jeu45AKVaFSiSMAebYfQ`)
-                .then((response) => response.json())
-                .then((data) => { return data.results[0].position })
-                .catch(function (error) {
+            if (this.isFormValidated()) {
+                store.loading.on();
+                const position = await fetch(`https://api.tomtom.com/search/2/geocode/${encodeURI(this.address)}.json?key=orDHPznfE908Jeu45AKVaFSiSMAebYfQ`)
+                    .then((response) => response.json())
+                    .then((data) => { return data.results[0].position })
+                    .catch(function (error) {
+                        store.loading.off();
+                        console.log(error);
+                    });
+                await axios.get(`http://localhost:8000/api/apartments/search?lat=${position.lat}&lon=${position.lon}&radius=${this.radius}&rooms_number=${this.rooms_number}&beds_number=${this.beds_number}&service_ids=${this.service_ids}`).then((res) => {
+                    console.log(res);
+                    this.apartments = res.data.apartments
+                    store.loading.off();
+                }).catch(function (error) {
                     store.loading.off();
                     console.log(error);
                 });
-            await axios.get(`http://localhost:8000/api/apartments/search?lat=${position.lat}&lon=${position.lon}&radius=${this.radius}&rooms_number=${this.rooms_number}&beds_number=${this.beds_number}&service_ids=${this.service_ids}`).then((res) => {
-                console.log(res);
-                this.apartments = res.data.apartments
-                store.loading.off();
-            }).catch(function (error) {
-                store.loading.off();
-                console.log(error);
-            });
+            }
+
         },
         getAll() {
             store.apartment.getAll().then((res) => {
@@ -170,7 +177,25 @@ export const store = reactive({
             this.rooms_number = 1
             this.beds_number = 1
             this.service_ids = []
-        }
+        },
+        isFormValidated() {
+
+            this.isVradius = store.validate._integer(this.radius, 1, 100)
+            this.isVroomsNum = store.validate._integer(this.rooms_number, 1, 15)
+            this.isVbedsNum = store.validate._integer(this.beds_number, 1, 15)
+
+
+            if (
+                this.isVradius &&
+                this.isVroomsNum &&
+                this.isVbedsNum
+
+            ) {
+                return true
+            } else {
+                return false
+            }
+        },
 
 
     },

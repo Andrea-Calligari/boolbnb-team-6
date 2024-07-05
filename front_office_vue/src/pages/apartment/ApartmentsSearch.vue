@@ -14,29 +14,46 @@
                         </h2>
                         <div id="fullSerch1" class="accordion-collapse collapse" data-bs-parent="#fullSerch">
                             <div class="accordion-body">
-                                <label for="address" class="mb-0">Indirizzo</label>
+                                <!-- <label for="address" class="mb-0">Indirizzo</label>
                                 <input type="text" id="address" class="form-control mb-3"
-                                    v-model="store.search.address">
+                                    v-model="store.search.address"> -->
 
                                 <label for="radius" class="form-label">Distanza in Km: <input
-                                        v-model="store.search.radius" type="text" class="raunded" style="width: 32px;">
+                                        v-model="store.search.radius"
+                                        :class="store.validate.isV(store.search.isVradius)" type="text" class="raunded"
+                                        style="width: 32px;">
                                 </label>
+                                <div v-if="store.validate.isV(store.search.isVradius) === 'is-invalid'"
+                                    class="mt-0 text-danger">
+                                    La distanza non può superare i 100 Km.
+                                </div>
                                 <input type="range" class="form-range mb-3" min="1" max="100" step="1" id="radius"
                                     v-model="store.search.radius">
 
 
+
                                 <label for="rooms_number" class="form-label">N˚ stanze <input
-                                        v-model="store.search.rooms_number" type="text" class="raunded"
-                                        style="width: 32px;">
+                                        v-model="store.search.rooms_number"
+                                        :class="store.validate.isV(store.search.isVroomsNum)" type="text"
+                                        class="raunded" style="width: 32px;">
                                 </label>
+                                <div v-if="store.validate.isV(store.search.isVroomsNum) === 'is-invalid'"
+                                    class="mt-0 text-danger">
+                                    Il numero di stanze non può essere maggiore di 15.
+                                </div>
                                 <input type="range" class="form-range mb-3" min="1" max="15" step="1" id="rooms_number"
                                     v-model="store.search.rooms_number">
 
 
                                 <label for="beds_number" class="form-label">N˚ letti <input
-                                        v-model="store.search.beds_number" type="text" class="raunded"
+                                        v-model="store.search.beds_number"
+                                        :class="store.validate.isV(store.search.isVbedsNum)" type="text" class="raunded"
                                         style="width: 32px;">
                                 </label>
+                                <div v-if="store.validate.isV(store.search.isVbedsNum) === 'is-invalid'"
+                                    class="mt-0 text-danger">
+                                    Il numero di letti non può essere maggiore di 15.
+                                </div>
                                 <input type="range" class="form-range mb-3" min="1" max="15" step="1" id="beds_number"
                                     v-model="store.search.beds_number">
 
@@ -110,6 +127,7 @@ export default {
     data() {
         return {
             store,
+
         }
     },
 
@@ -117,7 +135,7 @@ export default {
 
     },
     mounted() {
-        if ( !this.store.search.apartments.length) {
+        if (!this.store.search.apartments.length) {
             this.store.search.getAll();
         }
     }

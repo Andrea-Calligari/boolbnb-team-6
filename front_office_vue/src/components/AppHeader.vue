@@ -2,10 +2,24 @@
   <header class="header">
     <div class="container">
       <div class="row align-items-center">
-        <div class="col">
+        <div class="col-2">
           <RouterLink :to="{ name: 'home' }">
             <img src="/img/logo.png" class="logo" alt="Vue logo" />
           </RouterLink>
+        </div>
+        <div class="col d-flex">
+          <input type="text" @keyup="search" @keyup.enter="submitSearch" class="form-control d-inline-block"
+            id="address" name="address" v-model="store.search.address" placeholder="Inserisci indirizzo"
+            list="position">
+          <datalist id="position">
+            <option v-for="position in store.address.listAddresses">{{ position.address.freeformAddress }}
+            </option>
+          </datalist>
+          <button class="btn btn-primary me-2" @click="submitSearch">
+            <span class="material-symbols-rounded">
+              search
+            </span>
+          </button>
         </div>
         <div class="col-auto">
 
@@ -17,18 +31,7 @@
 
           <!-- <input type="text" placeholder="search" class="rounded px-1 me-2" style="width: 150px;"> -->
 
-          <input type="text" @keyup="search" @keyup.enter="submitSearch" class="form-control d-inline-block"
-            style="width: 150px;" id="address" name="address" v-model="store.search.address"
-            placeholder="Inserisci indirizzo" list="position">
-          <datalist id="position">
-            <option v-for="position in store.address.listAddresses">{{ position.address.freeformAddress }}
-            </option>
-          </datalist>
-          <button class="btn btn-primary me-2" @click="submitSearch">
-            <span class="material-symbols-rounded">
-              search
-            </span>
-          </button>
+
 
           <RouterLink :to="{ name: 'apartments.search' }" class="me-2"
             :class="$route.fullPath === '/apartments' ? 'opacity-50' : ''">

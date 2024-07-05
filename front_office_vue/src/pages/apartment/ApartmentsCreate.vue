@@ -3,7 +3,7 @@
         <form @submit.prevent="onCreate" enctype="multipart/form-data">
 
             <div class="mb-3">
-                <label for="title" class="form-label">titolo</label>
+                <label for="title" class="form-label">titolo *</label>
                 <input type="text" class="form-control" :class="store.validate.isV(isVtitle)" id="title" name="title"
                     v-model="title" placeholder="Inserisci titolo">
                 <div v-if="store.validate.isV(isVtitle) === 'is-invalid'" class="mt-0 text-danger">
@@ -23,7 +23,7 @@
             </div>
 
             <div class="mb-3">
-                <label for="price" class="form-label">Prezzo</label>
+                <label for="price" class="form-label">Prezzo *</label>
                 <input type="number" class="form-control" v-model="price" :class="store.validate.isV(isVprice)"
                     step="0.01" id="price" name="price" placeholder="Inserisci Prezzo">
                 <div v-if="store.validate.isV(isVprice) === 'is-invalid'" class="mt-0 text-danger">
@@ -33,7 +33,7 @@
             </div>
 
             <div class="mb-3">
-                <label for="rooms_number" class="form-label">N° Stanze</label>
+                <label for="rooms_number" class="form-label">N° Stanze *</label>
                 <input type="number" class="form-control" v-model="rooms" :class="store.validate.isV(isVrooms)"
                     id="rooms_number" name="rooms_number" placeholder="Inserisci N° Stanze">
                 <div v-if="store.validate.isV(isVrooms) === 'is-invalid'" class="mt-0 text-danger">
@@ -42,7 +42,7 @@
             </div>
 
             <div class="mb-3">
-                <label for="beds_number" class="form-label">N° letti</label>
+                <label for="beds_number" class="form-label">N° letti *</label>
                 <input type="number" class="form-control" v-model="beds" :class="store.validate.isV(isVbeds)"
                     id="beds_number" name="beds_number" placeholder="Inserisci N° letti">
                 <div v-if="store.validate.isV(isVbeds) === 'is-invalid'" class="mt-0 text-danger">
@@ -52,7 +52,7 @@
             </div>
 
             <div class="mb-3">
-                <label for="baths_number" class="form-label">N˚ bagni</label>
+                <label for="baths_number" class="form-label">N˚ bagni *</label>
                 <input type="number" class="form-control" v-model="baths" :class="store.validate.isV(isVbaths)"
                     id="baths_number" name="baths_number" placeholder="Inserisci N˚ bagni">
                 <div v-if="store.validate.isV(isVbaths) === 'is-invalid'" class="mt-0 text-danger">
@@ -61,7 +61,7 @@
             </div>
 
             <div class="mb-3">
-                <label for="mtq" class="form-label">Metri quadri</label>
+                <label for="mtq" class="form-label">Metri quadri *</label>
                 <input type="number" class="form-control" :class="store.validate.isV(isVmtq)" id="mtq" name="mtq"
                     v-model="mtq" placeholder="Inserisci Metri quadri" list="position">
                 <datalist id="position">
@@ -74,7 +74,7 @@
             </div>
 
             <div class="mb-3">
-                <label for="address" class="form-label">indirizzo</label>
+                <label for="address" class="form-label">indirizzo *</label>
                 <input type="text" @keyup="store.address.searchAddresses(address)" class="form-control"
                     :class="store.validate.isV(isVaddress)" id="address" name="address" v-model="address"
                     placeholder="Inserisci indirizzo" list="position">
@@ -93,7 +93,7 @@
             </div>
 
             <div class="mb-3">
-                <label for="category" class="form-label">categorie</label>
+                <label for="category" class="form-label">categorie *</label>
                 <select name="category" v-model="category" id="category">
                     <option v-for="cateGory in store.options.categories" :key="cateGory.id" :value="cateGory.id">{{
                         cateGory.name }}</option>

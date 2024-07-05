@@ -22,6 +22,11 @@
                     </div>
                 </div>
             </template>
+            <template v-else>
+                <div class="py-5">
+                    <h2>Non hai appartamenti al momento.</h2>
+                </div>
+            </template>
         </div>
     </div>
 </template>
