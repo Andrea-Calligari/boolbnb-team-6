@@ -17,13 +17,14 @@
 
           <!-- <input type="text" placeholder="search" class="rounded px-1 me-2" style="width: 150px;"> -->
 
-          <input type="text" @keyup="search" class="form-control d-inline-block" style="width: 150px;" id="address"
-            name="address" v-model="store.search.address" placeholder="Inserisci indirizzo" list="position">
+          <input type="text" @keyup="search" @keyup.enter="submitSearch" class="form-control d-inline-block"
+            style="width: 150px;" id="address" name="address" v-model="store.search.address"
+            placeholder="Inserisci indirizzo" list="position">
           <datalist id="position">
             <option v-for="position in store.address.listAddresses">{{ position.address.freeformAddress }}
             </option>
           </datalist>
-          <button class="btn btn-primary me-2" @click="store.search.getSearch()">
+          <button class="btn btn-primary me-2" @click="submitSearch">
             <span class="material-symbols-rounded">
               search
             </span>
@@ -80,6 +81,12 @@ export default {
         this.$router.push({ name: 'apartments.search' });
       }
       this.store.address.searchAddresses(this.store.search.address)
+    },
+    submitSearch() {
+      if (this.$route.fullPath !== '/apartment/search') {
+        this.$router.push({ name: 'apartments.search' });
+      }
+      this.store.search.getSearch();
     }
   }
 }
