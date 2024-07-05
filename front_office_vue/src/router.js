@@ -15,6 +15,7 @@ import CategoriesIndex from './pages/category/CategoriesIndex.vue'
 import CategoriesCreate from './pages/category/CategoriesCreate.vue'
 import CategoriesEdit from './pages/category/CategoriesEdit.vue'
 import ApartmentsSearch from './pages/apartment/ApartmentsSearch.vue'
+import ApartmentsPromotion from './pages/apartment/ApartmentsPromotion.vue'
 
 
 export default createRouter({
@@ -40,6 +41,7 @@ export default createRouter({
     // ---- apartments
     { path: '/apartments/create', name: 'apartments.create', component: ApartmentsCreate },
     { path: '/apartments/:slug/edit', name: 'apartments.edit', component: ApatmentsEdit, props: true },
+    { path: '/apartments/:slug/promotion', name: 'apartments.promotion', component: ApartmentsPromotion, props: true  },
     // ---- categories
     { path: '/categories', name: 'categories.index', component: CategoriesIndex },
     { path: '/categories/create', name: 'categories.create', component: CategoriesCreate },

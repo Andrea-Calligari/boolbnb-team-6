@@ -18,6 +18,10 @@
                                 class="btn btn-primary">
                                 Mostra più dettagli
                             </RouterLink>
+                            <RouterLink :to="{ name: 'apartments.promotion', params: { slug: apartment.slug } }"
+                                class="btn btn-primary ms-2">
+                                apartments.promotion
+                            </RouterLink>
                         </div>
                     </div>
                 </div>
