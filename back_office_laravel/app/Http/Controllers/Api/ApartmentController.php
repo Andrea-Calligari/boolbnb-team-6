@@ -193,7 +193,7 @@ class ApartmentController extends Controller
 
                 ->get();
 
-            $apartments = sortApartments($apartments, $lat1, $lon1);
+            $apartments = sortApartments($apartments, $lat1, $lon1,$radius);
 
             if ($form_data['service_ids'] !== null) {
                 $apartments = filterApartments($apartments, $service_ids);
@@ -244,7 +244,7 @@ class ApartmentController extends Controller
     }
 }
 
-function sortApartments($apartments, $lat1, $lon1)
+function sortApartments($apartments, $lat1, $lon1,$radius)
 {
     foreach ($apartments as &$apartment) {
         $apartment['distance'] = getDistance($lat1, $lon1, $apartment['latitude'], $apartment['longitude']);
@@ -257,7 +257,9 @@ function sortApartments($apartments, $lat1, $lon1)
     asort($toSortApartments);
     $sortedApartments = [];
     foreach ($toSortApartments as $i => $apartment) {
-        $sortedApartments[] = $apartments[$i];
+        if ($apartments[$i]['distance'] <= $radius  ) {
+            $sortedApartments[] = $apartments[$i];
+        }
     };
 
     return $sortedApartments;
