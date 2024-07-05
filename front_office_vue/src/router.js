@@ -15,6 +15,7 @@ import CategoriesIndex from './pages/category/CategoriesIndex.vue'
 import CategoriesCreate from './pages/category/CategoriesCreate.vue'
 import CategoriesEdit from './pages/category/CategoriesEdit.vue'
 import ApartmentsSearch from './pages/apartment/ApartmentsSearch.vue'
+import NotFoundPage from './pages/NotFoundPage.vue'
 
 
 export default createRouter({
@@ -23,6 +24,7 @@ export default createRouter({
     // ####################################
     // rotte per tutti 
     { path: '/', name: 'home', component: HomeView },
+    { path: '/:pathMatch(.*)*', name: 'not-found', component: NotFoundPage },
     // ---- auth
     { path: '/login', name: 'login', component: LoginView },
     // ---- apartments
