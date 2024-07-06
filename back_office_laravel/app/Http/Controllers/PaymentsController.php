@@ -28,15 +28,39 @@ class PaymentsController extends Controller
         if ($status) {
             $apartment = Apartment::where('slug', $payload['apartmentSlug'])->first();
             $promo_durations = Promotion::all()->pluck('hours', 'id')->all();
-            $hours = $promo_durations[$payload['promotionSelected']];
-
             $start_date = Carbon::now();
-            $expiration_date = $start_date->addHours($hours);
+
+            $promotions_with_timestamp = [];
+
+            foreach ($apartment['promotions'] as $promotion) {
+                $promotions_with_timestamp[$promotion['id']] = [
+                    'start_date' => $promotion['pivot']['start_date'],
+                    'expiration_date' => $promotion['pivot']['expiration_date']
+                ];
+            }
+
+
+            do {
+                $okCount = 0;
+                foreach ($promotions_with_timestamp as $key => $promotion) {
+                    if ($start_date->between($promotion['start_date'], $promotion['expiration_date'])) {
+                        $start_date = (new Carbon($promotion['expiration_date']))->addSecond();
+                    } else {
+                        $okCount++;
+                    }
+                }
+            } while (!($okCount === count($promotions_with_timestamp)));
+
+            $hours = $promo_durations[$payload['promotionSelected']];
+            $expiration_date = (new Carbon($start_date))->addHours($hours);
+
             $promotions_with_timestamp[$payload['promotionSelected']] = [
                 'start_date' => $start_date,
-                'expiration_date' => $expiration_date 
+                'expiration_date' => $expiration_date
             ];
-            $apartment->promotions()->attach($promotions_with_timestamp);
+
+
+            $apartment->promotions()->sync($promotions_with_timestamp);
         }
 
         return response()->json($status);

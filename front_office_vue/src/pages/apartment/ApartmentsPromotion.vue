@@ -5,9 +5,9 @@
                 <div class="form-check ps-0" v-for="(promotion, i) in store.options.promotions"
                     :key="promotion.id + 'prom'">
                     <input class="btn-check" type="radio" v-model="promotionSelected" :value="promotion.id"
-                        name="radioPromotion" :id="'flexRadioDefault' + i">
+                        name="radioPromotion" :id="'flexRadioDefault' + i" disabled>
                     <label class="btn w-100 text-start d-flex"
-                        :class="promotion.id === promotionSelected ? 'btn-outline-success' : 'btn-outline-secondary'"
+                        :class="promotion.id === promotionSelected ? 'btn-outline-success' : 'btn-outline-dark'"
                         :for="'flexRadioDefault' + i">
                         <div class="flex-grow-1">
                             <h2>{{ promotion.title }}</h2>
@@ -42,7 +42,8 @@
 
                                 <div v-else>
                                     <div id="dropin-container"></div>
-                                    <button @click="sendPayment" class="btn btn-outline-success">Request payment method</button>
+                                    <button @click="sendPayment" class="btn btn-outline-success">Request payment
+                                        method</button>
                                 </div>
                             </div>
                         </div>
@@ -73,7 +74,8 @@ export default {
             store,
             instance: null,
             payStatus: null,
-            promotionSelected: null
+            promotionSelected: null,
+            promotions: []
         }
     },
     methods: {
@@ -101,6 +103,21 @@ export default {
     computed: {
     },
     mounted() {
+        axios.get(`http://127.0.0.1:8000/api/apartments/${this.slug}`).then((res) => {
+            console.log(res.data.results[0].promotions);
+            res.data.results[0].promotions.forEach(promotion => {
+                this.promotions.push({
+                    id: promotion.id,
+                    expiration_date: promotion.pivot.expiration_date,
+                    start_date: promotion.pivot.start_date,
+                })
+            });
+
+            console.log(this.promotions);
+        }).catch((err) => {
+            console.log(err)
+        })
+
         axios.get('http://127.0.0.1:8000/api/payment/generate')
             .then((response) => {
                 braintree.dropin.create({
