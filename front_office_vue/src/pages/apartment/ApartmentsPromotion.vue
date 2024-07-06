@@ -5,7 +5,7 @@
                 <div class="form-check ps-0" v-for="(promotion, i) in store.options.promotions"
                     :key="promotion.id + 'prom'">
                     <input class="btn-check" type="radio" v-model="promotionSelected" :value="promotion.id"
-                        name="radioPromotion" :id="'flexRadioDefault' + i" disabled>
+                        name="radioPromotion" :id="'flexRadioDefault' + i" :disabled="promotions[i]">
                     <label class="btn w-100 text-start d-flex"
                         :class="promotion.id === promotionSelected ? 'btn-outline-success' : 'btn-outline-dark'"
                         :for="'flexRadioDefault' + i">
@@ -120,12 +120,14 @@ export default {
 
         axios.get('http://127.0.0.1:8000/api/payment/generate')
             .then((response) => {
-                braintree.dropin.create({
-                    authorization: response.data,
-                    container: '#dropin-container'
-                }, (createErr, instance) => {
-                    this.instance = instance
-                });
+
+                console.log(response.data)
+                // braintree.dropin.create({
+                //     authorization: response,
+                //     container: '#dropin-container'
+                // }, (createErr, instance) => {
+                //     this.instance = instance
+                // });
             })
     }
 }
