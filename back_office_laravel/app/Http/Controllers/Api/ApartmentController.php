@@ -187,6 +187,7 @@ class ApartmentController extends Controller
 
 
             $apartments = Apartment::where('latitude', '<', $lat1 + (0.008995 * $radius))->with('promotions')
+                ->where('visible', 1)
                 ->where('latitude', '>', $lat1 - (0.008995 * $radius))
                 ->where('longitude', '<', $lon1 + (0.011690 * $radius))
                 ->where('longitude', '>', $lon1 - (0.011690 * $radius))
