@@ -89,9 +89,9 @@ export default {
                         console.log(res);
                         if (res.success) {
                             this.payStatus = res.success
-                            setTimeout(() => {
-                                this.$router.push({ name: 'apartments.show', params: { slug: this.slug } });
-                            }, 3000);
+                            // setTimeout(() => {
+                            //     this.$router.push({ name: 'apartments.show', params: { slug: this.slug } });
+                            // }, 3000);
                         } else {
                             this.payStatus = res.success
                         }
@@ -115,6 +115,7 @@ export default {
     computed: {
     },
     mounted() {
+        this.store.loading.on()
         axios.get(`http://127.0.0.1:8000/api/apartments/${this.slug}`).then((res) => {
             console.log(res.data.results[0].promotions);
             res.data.results[0].promotions.forEach(promotion => {
@@ -126,21 +127,28 @@ export default {
             });
 
             console.log(this.ApartmentPromotions);
+
+            axios.get('http://127.0.0.1:8000/api/payment/generate')
+                .then((response) => {
+
+                    console.log(response.data)
+                    braintree.dropin.create({
+                        authorization: response.data,
+                        container: '#dropin-container'
+                    }, (createErr, instance) => {
+                        this.instance = instance
+                    });
+                    this.store.loading.off()
+
+                }).catch((err) => {
+                    console.log(err)
+                    this.store.loading.off()
+                })
+
         }).catch((err) => {
             console.log(err)
+            this.store.loading.off()
         })
-
-        axios.get('http://127.0.0.1:8000/api/payment/generate')
-            .then((response) => {
-
-                console.log(response.data)
-                braintree.dropin.create({
-                    authorization: response.data,
-                    container: '#dropin-container'
-                }, (createErr, instance) => {
-                    this.instance = instance
-                });
-            }).cat
     }
 }
 </script>
