@@ -156,6 +156,8 @@ export const store = reactive({
         beds_number: 1,
         isVbedsNum: null,
         service_ids: [],
+        currentPage: 3,
+        lastPage:null,
 
         async getSearch() {
             if (this.isFormValidated()) {
@@ -167,9 +169,11 @@ export const store = reactive({
                         store.loading.off();
                         console.log(error);
                     });
-                await axios.get(`http://localhost:8000/api/apartments/search?lat=${position.lat}&lon=${position.lon}&radius=${this.radius}&rooms_number=${this.rooms_number}&beds_number=${this.beds_number}&service_ids=${this.service_ids}`).then((res) => {
+                await axios.get(`http://localhost:8000/api/apartments/search?lat=${position.lat}&lon=${position.lon}&radius=${this.radius}&rooms_number=${this.rooms_number}&beds_number=${this.beds_number}&service_ids=${this.service_ids}&current_page=${this.currentPage}`).then((res) => {
                     console.log(res);
                     this.apartments = res.data.apartments
+                    this.currentPage = res.data.current_page
+                    this.lastPage = res.data.last_page
                     store.loading.off();
                 }).catch(function (error) {
                     store.loading.off();

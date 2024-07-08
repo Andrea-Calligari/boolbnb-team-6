@@ -192,6 +192,7 @@ class ApartmentController extends Controller
             $beds_number = intval($form_data['beds_number']);
             $service_ids = explode(',', $form_data['service_ids']);
 
+            $current_page = $form_data['current_page'];
 
             $apartments = Apartment::where('latitude', '<', $lat1 + (0.008995 * $radius))->with('promotions')
                 ->where('visible', 1)
@@ -202,7 +203,7 @@ class ApartmentController extends Controller
                 ->where('beds_number', '>=', $beds_number)
 
                 ->with('services')
-
+                
                 ->get();
 
             $apartments = sortApartments($apartments, $lat1, $lon1, $radius);
@@ -213,7 +214,26 @@ class ApartmentController extends Controller
 
             $apartments = sortedApartmentsWithProm($apartments);
 
-            return response()->json(compact('apartments'));
+            $last_page = 0;
+
+            $paginated_apartments = [];
+
+            if(count($apartments) % 15){
+                $last_page = floor(count($apartments) / 15) + 1;
+            }else{
+                $last_page = floor(count($apartments) / 15);
+            }
+
+            for($i = ($current_page - 1)*15 ; $i < (15 * $current_page); $i++ ){
+                if(count($apartments) > $i ){
+                    $paginated_apartments[] = $apartments[$i];
+                }
+                
+            }
+
+            $apartments = $paginated_apartments;
+
+            return response()->json(compact('apartments','last_page','current_page'));
             // return response()->json(['msg' => $service_ids]);
         } else {
             return response()->json(['msg' => 'bad request']);
