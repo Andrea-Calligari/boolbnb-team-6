@@ -82,6 +82,7 @@ export default {
         this.$router.push({ name: 'apartments.search' });
       }
       this.store.address.searchAddresses(this.store.search.address)
+      this.store.search.resetDefaultSearch()
     },
     submitSearch() {
       if (this.$route.fullPath !== '/apartment/search') {

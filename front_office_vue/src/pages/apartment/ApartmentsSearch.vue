@@ -133,8 +133,13 @@
 
                 </template>
             </template>
+            
+            
         </div>
     </div>
+    <div class="d-flex justify-content-center">
+                <button @click="store.search.setPage(n)" class="btn btn-primary m-4" v-for="n in store.search.lastPage">{{ n }}</button>
+            </div>
 
 </template>
 
@@ -153,7 +158,7 @@ export default {
     },
     mounted() {
         if (!this.store.search.apartments.length) {
-            this.store.search.getAll();
+            this.store.search.getAll()
 
         }
 

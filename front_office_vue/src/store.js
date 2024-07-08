@@ -156,7 +156,7 @@ export const store = reactive({
         beds_number: 1,
         isVbedsNum: null,
         service_ids: [],
-        currentPage: 3,
+        currentPage: 1,
         lastPage:null,
 
         async getSearch() {
@@ -171,9 +171,9 @@ export const store = reactive({
                     });
                 await axios.get(`http://localhost:8000/api/apartments/search?lat=${position.lat}&lon=${position.lon}&radius=${this.radius}&rooms_number=${this.rooms_number}&beds_number=${this.beds_number}&service_ids=${this.service_ids}&current_page=${this.currentPage}`).then((res) => {
                     console.log(res);
-                    this.apartments = res.data.apartments
-                    this.currentPage = res.data.current_page
-                    this.lastPage = res.data.last_page
+                    this.apartments = res.data.paginated.apartments
+                    this.currentPage = res.data.paginated.current_page
+                    this.lastPage = res.data.paginated.last_page
                     store.loading.off();
                 }).catch(function (error) {
                     store.loading.off();
@@ -181,6 +181,13 @@ export const store = reactive({
                 });
             }
 
+        },
+
+        setPage(n){
+            if(n === this.currentPage) return
+            this.currentPage = n
+
+            this.getSearch()
         },
         getAll() {
             store.apartment.getAll().then((res) => {
@@ -192,6 +199,7 @@ export const store = reactive({
             this.rooms_number = 1
             this.beds_number = 1
             this.service_ids = []
+            this.currentPage = 1
         },
         isFormValidated() {
 
