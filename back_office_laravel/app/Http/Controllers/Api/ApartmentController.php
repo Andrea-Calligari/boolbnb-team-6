@@ -19,7 +19,9 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        $apartments = Apartment::all();
+        $apartments = Apartment::all()->load('promotions');
+
+        $apartments = sortedApartmentsWithProm($apartments);
 
         return response()->json(compact('apartments'));
     }
@@ -184,12 +186,13 @@ class ApartmentController extends Controller
             $service_ids = explode(',', $form_data['service_ids']);
 
 
-            $apartments = Apartment::where('latitude', '<', $lat1 + (0.008995 * $radius))
+            $apartments = Apartment::where('latitude', '<', $lat1 + (0.008995 * $radius))->with('promotions')
                 ->where('latitude', '>', $lat1 - (0.008995 * $radius))
                 ->where('longitude', '<', $lon1 + (0.011690 * $radius))
                 ->where('longitude', '>', $lon1 - (0.011690 * $radius))
                 ->where('rooms_number', '>=', $rooms_number)
                 ->where('beds_number', '>=', $beds_number)
+
                 ->with('services')
 
                 ->get();
@@ -200,6 +203,7 @@ class ApartmentController extends Controller
                 $apartments = filterApartments($apartments, $service_ids);
             }
 
+            $apartments = sortedApartmentsWithProm($apartments);
 
             return response()->json(compact('apartments'));
             // return response()->json(['msg' => $service_ids]);
@@ -223,9 +227,8 @@ class ApartmentController extends Controller
             foreach ($apartment['promotions'] as $promotion) {
                 $start_date =  $promotion['pivot']['start_date'];
                 $expiration_date = $promotion['pivot']['expiration_date'];
-                if ($now->between($start_date, $expiration_date)) {
+                if ($now->between($start_date, $expiration_date))
                     $apartmentPivot[] = $apartment;
-                }
             }
         }
 
@@ -245,6 +248,38 @@ class ApartmentController extends Controller
         // filtrare appartamenti per le promotions ancora in corso
         // response in json 
     }
+}
+
+function sortedApartmentsWithProm($apartments)
+{
+    $nowDate = Carbon::now();
+
+    $apartmentsWithProm = [];
+    foreach ($apartments as $apartment) {
+        foreach ($apartment['promotions'] as $promotion) {
+            if ($nowDate->between($promotion['pivot']['start_date'], $promotion['pivot']['expiration_date'])) {
+                $apartmentsWithProm[] = $apartment;
+            }
+        }
+    }
+
+    foreach ($apartments as $apartment) {
+        $returnPromotion = 0;
+        foreach ($apartment['promotions'] as $promotion) {
+            if (!($nowDate->between($promotion['pivot']['start_date'], $promotion['pivot']['expiration_date']))) {
+                $returnPromotion++;
+                //$apartmentsWithProm[] = $apartment;
+            }
+        }
+
+        if($returnPromotion === count($apartment['promotions'])){
+            $apartmentsWithProm[] = $apartment;
+        }
+
+    }
+
+
+    return $apartmentsWithProm;
 }
 
 function sortApartments($apartments, $lat1, $lon1, $radius)
