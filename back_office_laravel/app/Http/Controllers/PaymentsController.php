@@ -15,17 +15,17 @@ class PaymentsController extends Controller
     {
         $payload = $request->input('payload', false);
         $nonce = $payload['nonce'];
+        $promo_selected = Promotion::where('id', $payload['promotionSelected'])->first();
 
         $status = Braintree_Transaction::sale([
-            'amount' => '10.00',
+            'amount' => $promo_selected['price'],
             'paymentMethodNonce' => $nonce,
             'options' => [
                 'submitForSettlement' => True
             ]
         ]);
 
-
-        if ($status) {
+        if ($status->success) {
             $apartment = Apartment::where('slug', $payload['apartmentSlug'])->first();
             $promo_durations = Promotion::all()->pluck('hours', 'id')->all();
             $start_date = Carbon::now();
