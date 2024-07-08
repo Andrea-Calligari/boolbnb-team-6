@@ -203,7 +203,7 @@ class ApartmentController extends Controller
                 ->where('beds_number', '>=', $beds_number)
 
                 ->with('services')
-                
+
                 ->get();
 
             $apartments = sortApartments($apartments, $lat1, $lon1, $radius);
