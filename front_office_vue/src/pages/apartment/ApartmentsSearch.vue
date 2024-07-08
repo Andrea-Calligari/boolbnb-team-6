@@ -92,7 +92,8 @@
                 <template v-for="apartment in store.search.apartments" :key="apartment.id" :slug="apartment.slug">
 
                     <div class="col">
-                        <div class="card mb-3" :class="store.apartment.isSponsored(apartment) ? 'border  border-4 border-warning' : ''">
+                        <div class="card mb-3 h-100"
+                            :class="store.apartment.isSponsored(apartment) ? 'border  border-4 border-warning' : ''">
                             <template v-if="apartment.image !== null">
                                 <div v-for="(image, i) in apartment.image.split(',')" :key="'image' + apartment.id">
                                     <img v-if="i === 0"
@@ -105,12 +106,18 @@
                                     v-if="apartment.visible === 1">Visibile</span>
                                 <span class="badge rounded-pill bg-secondary mb-2" v-else>Non Visibile</span>
                                 <h5 class="card-title">{{ apartment.title }}</h5>
+
                                 <p class="card-text" v-if="apartment.distance === 0">Distanza: 0Km</p>
                                 <p class="card-text" v-if="apartment.distance">Distanza: {{
                                     apartment.distance.toFixed(2)
-                                    }}Km</p>
+                                }}Km</p>
+
 
                                 <p class="card-text" v-else>{{ apartment.description }}</p>
+                                <p class="card-text mb-0">Servizi: </p>
+                                <span class="badge text-bg-light me-2 " v-for="service in apartment.services">{{
+                                    service.name
+                                    }}</span>
                                 <p class="card-text">{{ apartment.address }}</p>
                                 <RouterLink :to="{ name: 'apartments.show', params: { slug: apartment.slug } }"
                                     class="btn btn-primary">

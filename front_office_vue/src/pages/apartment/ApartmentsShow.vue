@@ -63,8 +63,14 @@
 
 
                 <RouterLink v-if="apartment.user_id === store.user.id"
-                    :to="{ name: 'apartments.edit', params: { slug: apartment.slug } }" class="btn btn-primary">
+                    :to="{ name: 'apartments.edit', params: { slug: apartment.slug } }" class="btn btn-primary me-2">
                     Modifica
+                </RouterLink>
+
+                <RouterLink v-if="apartment.user_id === store.user.id"
+                    :to="{ name: 'apartments.promotion', params: { slug: apartment.slug } }"
+                    class="btn btn-warning me-2">
+                    Sponsorizza
                 </RouterLink>
 
 

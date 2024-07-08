@@ -4,7 +4,7 @@
             <template v-if="store.user.apartments.length !== 0">
                 <div class="col" v-for="apartment in store.user.apartments" :key="apartment.id" :slug="apartment.slug">
                     <div class="card mb-3"
-                        :class="store.apartment.isSponsored(apartment) ? 'border  border-4 border-warning' : ''">
+                        :class="store.apartment.isSponsored(apartment) ? 'border border-4 border-warning' : ''">
                         <template v-if="apartment.image !== null">
                             <template v-for="(image, i) in apartment.image.split(',')" :key="'image'+ apartment.id">
                                 <img v-if="i === 0"
@@ -23,8 +23,8 @@
                                 Mostra più dettagli
                             </RouterLink>
                             <RouterLink :to="{ name: 'apartments.promotion', params: { slug: apartment.slug } }"
-                                class="btn btn-primary ms-2">
-                                apartments.promotion
+                                class="btn btn-warning ms-2">
+                                Sponsorizza
                             </RouterLink>
                         </div>
                     </div>
