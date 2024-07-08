@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Api;
+
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
 use App\Models\Apartment;
@@ -124,10 +125,10 @@ class ApartmentController extends Controller
                     //aggiungi il file all'array
                     $form_data['image'] = $form_data['image'] . $path . $filename . ',';
                 }
-                if($form_data['oldImage'] !== null){
+                if ($form_data['oldImage'] !== null) {
                     $form_data['image'] = $form_data['oldImage'] . ',' . $form_data['image'];
                 }
-                
+
                 $form_data['image'] = rtrim($form_data['image'], ",");
             } else {
                 $form_data['image'] = $form_data['oldImage'];
@@ -193,7 +194,7 @@ class ApartmentController extends Controller
 
                 ->get();
 
-            $apartments = sortApartments($apartments, $lat1, $lon1,$radius);
+            $apartments = sortApartments($apartments, $lat1, $lon1, $radius);
 
             if ($form_data['service_ids'] !== null) {
                 $apartments = filterApartments($apartments, $service_ids);
@@ -206,45 +207,47 @@ class ApartmentController extends Controller
             return response()->json(['msg' => 'bad request']);
         }
     }
-   public function homePage(){
-    // prenderci tutti gli appartamenti con promozioni visible = 1
-    $now = Carbon::now();
-    $apartments = Apartment::with('promotions')->where('visible', 1)->get();
-    $apartmentPivot = [];
+    public function homePage()
+    {
+        // prenderci tutti gli appartamenti con promozioni visible = 1
+        $now = Carbon::now();
+        $apartments = Apartment::with('promotions')->where('visible', 1)->get();
+        $apartmentPivot = [];
 
-    // $resultPivot = $apartments[0]['promotions'][0]['pivot']; 
-    // $start_date = $apartments[0]['promotions'][0]['pivot']['start_date'];
-    // $expiration_date = $apartments[0]['promotions'][0]['pivot']['expiration_date'];
-    // $isCurrent = $now->between($start_date, $expiration_date);
-    
-    foreach($apartments as $apartment){
-        foreach($apartment['promotions'] as $promotion){
-           $start_date =  $promotion['pivot']['start_date'];
-           $expiration_date = $promotion['pivot']['expiration_date'];
-           if($now->between($start_date, $expiration_date))
-             $apartmentPivot[] = $apartment;
+        // $resultPivot = $apartments[0]['promotions'][0]['pivot']; 
+        // $start_date = $apartments[0]['promotions'][0]['pivot']['start_date'];
+        // $expiration_date = $apartments[0]['promotions'][0]['pivot']['expiration_date'];
+        // $isCurrent = $now->between($start_date, $expiration_date);
+
+        foreach ($apartments as $apartment) {
+            foreach ($apartment['promotions'] as $promotion) {
+                $start_date =  $promotion['pivot']['start_date'];
+                $expiration_date = $promotion['pivot']['expiration_date'];
+                if ($now->between($start_date, $expiration_date)) {
+                    $apartmentPivot[] = $apartment;
+                }
+            }
         }
-    }
-    
-        
-    
-    
-    //filtrare tutti gli appartamenti dove la data di inizio e fine sono coerenti 
-  
-    
-    
-    // $apartment['promotions']['pivot']['start_date'];
 
-    
-    
-    return response()->json(compact('apartmentPivot'));
 
-    // filtrare appartamenti per le promotions ancora in corso
-    // response in json 
+
+
+        //filtrare tutti gli appartamenti dove la data di inizio e fine sono coerenti 
+
+
+
+        // $apartment['promotions']['pivot']['start_date'];
+
+
+
+        return response()->json(compact('apartmentPivot'));
+
+        // filtrare appartamenti per le promotions ancora in corso
+        // response in json 
     }
 }
 
-function sortApartments($apartments, $lat1, $lon1,$radius)
+function sortApartments($apartments, $lat1, $lon1, $radius)
 {
     foreach ($apartments as &$apartment) {
         $apartment['distance'] = getDistance($lat1, $lon1, $apartment['latitude'], $apartment['longitude']);
@@ -257,7 +260,7 @@ function sortApartments($apartments, $lat1, $lon1,$radius)
     asort($toSortApartments);
     $sortedApartments = [];
     foreach ($toSortApartments as $i => $apartment) {
-        if ($apartments[$i]['distance'] <= $radius  ) {
+        if ($apartments[$i]['distance'] <= $radius) {
             $sortedApartments[] = $apartments[$i];
         }
     };
@@ -318,4 +321,3 @@ function getDistance($lat1, $lon1, $lat2, $lon2)
     $distanza = $R * $c;
     return $distanza;
 }
-

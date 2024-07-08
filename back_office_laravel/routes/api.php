@@ -15,7 +15,7 @@ use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
-
+use App\Http\Controllers\PaymentsController;
 use App\Models\Apartment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -36,6 +36,8 @@ use Illuminate\Support\Facades\Route;
 //Rotta Options Database
 Route::get('/options', [OptionsController::class, 'index'])->name('options.index');
 Route::get('/homepage',[ApartmentController::class, 'homePage'])->name('apartments.homepage');
+Route::get('/payment/process',[PaymentsController::class, 'process'])->name('payment.process');
+Route::get('/payment/generate',[PaymentsController::class, 'generate'])->name('payment.generate');
 
 //Rotte crud appartamenti
 Route::get('/apartments', [ApartmentController::class, 'index'])->name('apartments.index');
