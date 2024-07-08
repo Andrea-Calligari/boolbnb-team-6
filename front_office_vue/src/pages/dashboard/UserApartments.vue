@@ -12,6 +12,9 @@
                             </template>
                         </template>
                         <div class="card-body">
+                            <span class="badge rounded-pill bg-success mb-2"
+                                v-if="apartment.visible === 1">Visibile</span>
+                            <span class="badge rounded-pill bg-secondary mb-2" v-else>Non Visibile</span>
                             <h5 class="card-title">{{ apartment.title }}</h5>
                             <p class="card-text">{{ apartment.description }}</p>
                             <RouterLink :to="{ name: 'apartments.show', params: { slug: apartment.slug } }"

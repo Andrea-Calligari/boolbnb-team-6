@@ -90,38 +90,41 @@
 
             <template v-if="store.search.apartments.length !== 0">
                 <template v-for="apartment in store.search.apartments" :key="apartment.id" :slug="apartment.slug">
-                    
-                        <div class="col">
-                            <div class="card mb-3">
-                                <template v-if="apartment.image !== null">
-                                    <div v-for="(image, i) in apartment.image.split(',')" :key="'image' + apartment.id">
-                                        <img v-if="i === 0"
-                                            :src="image ? 'http://localhost:8000/' + image : 'http://localhost:8000/uploads/apartment/img_default/null.png'"
-                                            height="300" class="card-img-top" alt="...">
-                                    </div>
-                                </template>
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ apartment.title }}</h5>
-                                    <p class="card-text" v-if="apartment.distance === 0">Distanza: 0Km</p>
-                                    <p class="card-text" v-if="apartment.distance">Distanza: {{
-                                        apartment.distance.toFixed(2)
-                                        }}Km</p>
 
-                                    <p class="card-text" v-else>{{ apartment.description }}</p>
-                                    <p class="card-text" v-if="isSponsored(apartment)">SPONSORIZZATA</p>
-                                    <p class="card-text">{{ apartment.address }}</p>
-                                    <RouterLink :to="{ name: 'apartments.show', params: { slug: apartment.slug } }"
-                                        class="btn btn-primary">
-                                        Mostra più dettagli
-                                    </RouterLink>
+                    <div class="col">
+                        <div class="card mb-3">
+                            <template v-if="apartment.image !== null">
+                                <div v-for="(image, i) in apartment.image.split(',')" :key="'image' + apartment.id">
+                                    <img v-if="i === 0"
+                                        :src="image ? 'http://localhost:8000/' + image : 'http://localhost:8000/uploads/apartment/img_default/null.png'"
+                                        height="300" class="card-img-top" alt="...">
                                 </div>
+                            </template>
+                            <div class="card-body">
+                                <span class="badge rounded-pill bg-success mb-2"
+                                    v-if="apartment.visible === 1">Visibile</span>
+                                <span class="badge rounded-pill bg-secondary mb-2" v-else>Non Visibile</span>
+                                <h5 class="card-title">{{ apartment.title }}</h5>
+                                <p class="card-text" v-if="apartment.distance === 0">Distanza: 0Km</p>
+                                <p class="card-text" v-if="apartment.distance">Distanza: {{
+                                    apartment.distance.toFixed(2)
+                                }}Km</p>
+
+                                <p class="card-text" v-else>{{ apartment.description }}</p>
+                                <p class="card-text" v-if="isSponsored(apartment)">SPONSORIZZATA</p>
+                                <p class="card-text">{{ apartment.address }}</p>
+                                <RouterLink :to="{ name: 'apartments.show', params: { slug: apartment.slug } }"
+                                    class="btn btn-primary">
+                                    Mostra più dettagli
+                                </RouterLink>
                             </div>
                         </div>
-                    
-                
-                
-                    
-                    
+                    </div>
+
+
+
+
+
                 </template>
             </template>
         </div>
@@ -141,17 +144,17 @@ export default {
     },
 
     methods: {
-        isSponsored(apartment){
+        isSponsored(apartment) {
             const nowDate = new Date();
-            for(let i = 0; i< apartment.promotions.length;i++){
+            for (let i = 0; i < apartment.promotions.length; i++) {
                 const startDate = new Date(apartment.promotions[i].pivot.start_date);
                 const expirationDate = new Date(apartment.promotions[i].pivot.expiration_date)
-                if(startDate < nowDate && expirationDate > nowDate ){
+                if (startDate < nowDate && expirationDate > nowDate) {
                     return true
                 }
             }
             return false
-            
+
             //console.log(apartment)
             //return true
         }
