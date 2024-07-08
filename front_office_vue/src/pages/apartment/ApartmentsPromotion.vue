@@ -5,7 +5,7 @@
                 <div class="form-check ps-0" v-for="(promotion, i) in store.options.promotions"
                     :key="promotion.id + 'prom'">
                     <input class="btn-check" type="radio" v-model="promotionSelected" :value="promotion.id"
-                        name="radioPromotion" :id="'flexRadioDefault' + i" :disabled="promotions[i]">
+                        name="radioPromotion" :id="'flexRadioDefault' + i" >
                     <label class="btn w-100 text-start d-flex"
                         :class="promotion.id === promotionSelected ? 'btn-outline-success' : 'btn-outline-dark'"
                         :for="'flexRadioDefault' + i">
@@ -122,13 +122,13 @@ export default {
             .then((response) => {
 
                 console.log(response.data)
-                // braintree.dropin.create({
-                //     authorization: response,
-                //     container: '#dropin-container'
-                // }, (createErr, instance) => {
-                //     this.instance = instance
-                // });
-            })
+                braintree.dropin.create({
+                    authorization: response.data,
+                    container: '#dropin-container'
+                }, (createErr, instance) => {
+                    this.instance = instance
+                });
+            }).cat
     }
 }
 </script>
