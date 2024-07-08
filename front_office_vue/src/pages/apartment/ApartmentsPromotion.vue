@@ -5,9 +5,10 @@
                 <div class="form-check ps-0" v-for="(promotion, i) in store.options.promotions"
                     :key="promotion.id + 'prom'">
                     <input class="btn-check" type="radio" v-model="promotionSelected" :value="promotion.id"
-                        name="radioPromotion" :id="'flexRadioDefault' + i" >
+                        name="radioPromotion" :id="'flexRadioDefault' + i"
+                        :disabled="isSponsored(ApartmentPromotions, promotion.id)">
                     <label class="btn w-100 text-start d-flex"
-                        :class="promotion.id === promotionSelected ? 'btn-outline-success' : 'btn-outline-dark'"
+                        :class="promotion.id === promotionSelected ? 'btn-outline-success' : isSponsored(ApartmentPromotions, promotion.id) ? 'btn-outline-danger' : 'btn-outline-dark'"
                         :for="'flexRadioDefault' + i">
                         <div class="flex-grow-1">
                             <h2>{{ promotion.title }}</h2>
@@ -75,7 +76,7 @@ export default {
             instance: null,
             payStatus: null,
             promotionSelected: null,
-            promotions: []
+            ApartmentPromotions: []
         }
     },
     methods: {
@@ -97,7 +98,18 @@ export default {
                     }, 'json');
                 });
             }
-
+        },
+        isSponsored(ApartmentPromotions, promotionIdToCheck) {
+            const promotion = ApartmentPromotions.find((p) => p.id === promotionIdToCheck)
+            if (promotion) {
+                const nowDate = new Date();
+                const startDate = new Date(promotion.start_date);
+                const expirationDate = new Date(promotion.expiration_date);
+                if (startDate < nowDate && expirationDate > nowDate || startDate > nowDate) {
+                    return true
+                }
+            }
+            return false
         }
     },
     computed: {
@@ -106,14 +118,14 @@ export default {
         axios.get(`http://127.0.0.1:8000/api/apartments/${this.slug}`).then((res) => {
             console.log(res.data.results[0].promotions);
             res.data.results[0].promotions.forEach(promotion => {
-                this.promotions.push({
+                this.ApartmentPromotions.push({
                     id: promotion.id,
                     expiration_date: promotion.pivot.expiration_date,
                     start_date: promotion.pivot.start_date,
                 })
             });
 
-            console.log(this.promotions);
+            console.log(this.ApartmentPromotions);
         }).catch((err) => {
             console.log(err)
         })
