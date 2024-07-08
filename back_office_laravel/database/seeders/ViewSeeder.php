@@ -17,7 +17,7 @@ class ViewSeeder extends Seeder
     {
         $apartments_ids = Apartment::pluck('id')->all();
 
-        for ($i = 0; $i < 50; $i++) {
+        for ($i = 0; $i < 2000; $i++) {
             $view = new View();
             $view->apartment_id = $faker->randomElement($apartments_ids);
             $view->ip_address = $faker->ipv4();

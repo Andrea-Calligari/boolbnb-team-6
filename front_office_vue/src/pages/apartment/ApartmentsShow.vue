@@ -239,8 +239,9 @@ export default {
     mounted() {
         console.log(this.$route.params.slug);
         axios.get(`http://127.0.0.1:8000/api/apartments/${this.slug}`).then((res) => {
-            console.log(res.data.results[0]);
-            this.apartment = res.data.results[0];
+            console.log(res,'consol log res');
+            // console.log(res.data.results[0]);
+            this.apartment = res.data.apartment;
         }).catch((err) => {
             console.log(err)
         })

@@ -6,6 +6,7 @@ use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
 use App\Models\Apartment;
 use App\Models\Service;
+use App\Models\View;
 use Illuminate\Database\Eloquent\Relations\Pivot;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -77,14 +78,20 @@ class ApartmentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $slug)
+    public function show(Request $request, string $slug)
     {
-        $apartment = Apartment::where('slug', $slug)->get();
+        $apartment = Apartment::where('slug', $slug)->first();
+        $ip_address = $request->ip();
+        $apartment_id = $apartment['id'];
         //dump($apartment);
+
+        $new_view = new View();
+        $new_view->apartment_id = $apartment_id;
+        $new_view->ip_address = $ip_address;
+        $new_view->save();
+
         $apartment->load('user', 'category', 'promotions', 'services');
-        return response()->json([
-            'results' => $apartment
-        ]);
+        return response()->json(compact('apartment'));
     }
 
     /**
@@ -357,3 +364,4 @@ function getDistance($lat1, $lon1, $lat2, $lon2)
     $distanza = $R * $c;
     return $distanza;
 }
+
