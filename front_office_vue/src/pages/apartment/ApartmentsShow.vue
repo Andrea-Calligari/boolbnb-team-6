@@ -36,8 +36,7 @@
 
                 <div class="card-body">
                     <h2 class="card-title mb-0">{{ apartment.title }} </h2>
-                    <span class="badge text-bg-warning ms-2 " v-for="promotion in apartment.promotions">{{
-                        promotion.title }}</span>
+                    <p class="text-end">{{ expDate }}</p>
                     <p class="card-text"><small class="text-body-secondary">{{ apartment.category.name }}</small>
                     </p>
                     <p class="card-text mb-0">Servizi: </p>
@@ -187,6 +186,10 @@ export default {
             store,
             text: '',
             isVtext: null,
+
+            timeinterval: null,
+            apartmentExpirationPromo: null,
+            expDate: null
         }
     },
 
@@ -234,14 +237,69 @@ export default {
                 })
             }
         },
+        expirationPromotion(apartment) {
+            const nowDate = new Date();
+            let apartmentExpirationPromo = false;
+            apartment.promotions.forEach(promotion => {
+                const startDate = new Date(promotion.pivot.start_date);
+                const expirationDate = new Date(promotion.pivot.expiration_date)
+                if (startDate < nowDate && expirationDate > nowDate) {
+                    apartmentExpirationPromo = expirationDate
+                }
+            });
+            if (apartmentExpirationPromo) {
+                let oldExpirationDate = null;
+                do {
+                    oldExpirationDate = apartmentExpirationPromo;
+                    apartment.promotions.forEach(promotion => {
+                        const startDate = new Date(promotion.pivot.start_date);
+                        const expirationDate = new Date(promotion.pivot.expiration_date)
+                        const newDate = new Date(apartmentExpirationPromo.getTime() + 2000);
+                        if (startDate < newDate && expirationDate > newDate) {
+                            apartmentExpirationPromo = expirationDate
+                        }
+                    });
+                } while (apartmentExpirationPromo !== oldExpirationDate);
+            }
+            if (apartmentExpirationPromo) {
+                this.apartmentExpirationPromo = apartmentExpirationPromo
+                this.timeinterval = setInterval(this.countdown, 1000);
+            }
+
+        },
+        countdown() {
+            if (this.apartmentExpirationPromo === null) {
+                this.expirationPromotion(this.apartment);
+            }
+            if (this.apartmentExpirationPromo) {
+                const t = Date.parse(this.apartmentExpirationPromo) - Date.parse(new Date());
+                const seconds = Math.floor((t / 1000) % 60);
+                const minutes = Math.floor((t / 1000 / 60) % 60);
+                const hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+                const days = Math.floor(t / (1000 * 60 * 60 * 24));
+
+                if (days>0) {
+                    this.expDate = `Promozione scade tra ${days}g - ${hours}h:${minutes}m:${seconds}s`
+                }else {
+                    this.expDate = `Promozione scade tra ${hours}h:${minutes}m:${seconds}s`
+                }
+
+                if (t <= 0) {
+                    clearInterval(this.timeinterval);
+                }
+            }
+        }
 
     },
     mounted() {
         console.log(this.$route.params.slug);
         axios.get(`http://127.0.0.1:8000/api/apartments/${this.slug}`).then((res) => {
-            console.log(res,'consol log res');
+            console.log(res, 'consol log res');
             // console.log(res.data.results[0]);
             this.apartment = res.data.apartment;
+
+            this.countdown();
+
         }).catch((err) => {
             console.log(err)
         })

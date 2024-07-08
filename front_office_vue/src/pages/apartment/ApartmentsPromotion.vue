@@ -116,8 +116,8 @@ export default {
     },
     mounted() {
         axios.get(`http://127.0.0.1:8000/api/apartments/${this.slug}`).then((res) => {
-            console.log(res.data.results[0].promotions);
-            res.data.results[0].promotions.forEach(promotion => {
+            console.log(res.data);
+            res.data.apartment.promotions.forEach(promotion => {
                 this.ApartmentPromotions.push({
                     id: promotion.id,
                     expiration_date: promotion.pivot.expiration_date,
@@ -133,7 +133,7 @@ export default {
         axios.get('http://127.0.0.1:8000/api/payment/generate')
             .then((response) => {
 
-                console.log(response.data)
+                // console.log(response.data)
                 braintree.dropin.create({
                     authorization: response.data,
                     container: '#dropin-container'
