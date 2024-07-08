@@ -19,7 +19,7 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        $apartments = Apartment::all()->load('promotions');
+        $apartments = Apartment::where('visible', 1)->with('promotions')->get();
 
         $apartments = sortedApartmentsWithProm($apartments);
 
@@ -187,6 +187,7 @@ class ApartmentController extends Controller
 
 
             $apartments = Apartment::where('latitude', '<', $lat1 + (0.008995 * $radius))->with('promotions')
+                ->where('visible', 1)
                 ->where('latitude', '>', $lat1 - (0.008995 * $radius))
                 ->where('longitude', '<', $lon1 + (0.011690 * $radius))
                 ->where('longitude', '>', $lon1 - (0.011690 * $radius))
