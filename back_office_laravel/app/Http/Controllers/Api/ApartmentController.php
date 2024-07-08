@@ -19,7 +19,7 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        $apartments = Apartment::all()->load('promotions');
+        $apartments = Apartment::where('visible', 1)->with('promotions')->get();
 
         $apartments = sortedApartmentsWithProm($apartments);
 
