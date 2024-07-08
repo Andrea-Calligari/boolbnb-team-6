@@ -98,6 +98,17 @@ export const store = reactive({
                     console.log(err.response.data);
                     return err.response.data
                 })
+        },
+        isSponsored(apartment) {
+            const nowDate = new Date();
+            for (let i = 0; i < apartment.promotions.length; i++) {
+                const startDate = new Date(apartment.promotions[i].pivot.start_date);
+                const expirationDate = new Date(apartment.promotions[i].pivot.expiration_date)
+                if (startDate < nowDate && expirationDate > nowDate) {
+                    return true
+                }
+            }
+            return false
         }
     },
 

@@ -92,7 +92,7 @@
                 <template v-for="apartment in store.search.apartments" :key="apartment.id" :slug="apartment.slug">
 
                     <div class="col">
-                        <div class="card mb-3">
+                        <div class="card mb-3" :class="store.apartment.isSponsored(apartment) ? 'border  border-4 border-warning' : ''">
                             <template v-if="apartment.image !== null">
                                 <div v-for="(image, i) in apartment.image.split(',')" :key="'image' + apartment.id">
                                     <img v-if="i === 0"
@@ -108,10 +108,9 @@
                                 <p class="card-text" v-if="apartment.distance === 0">Distanza: 0Km</p>
                                 <p class="card-text" v-if="apartment.distance">Distanza: {{
                                     apartment.distance.toFixed(2)
-                                }}Km</p>
+                                    }}Km</p>
 
                                 <p class="card-text" v-else>{{ apartment.description }}</p>
-                                <p class="card-text" v-if="isSponsored(apartment)">SPONSORIZZATA</p>
                                 <p class="card-text">{{ apartment.address }}</p>
                                 <RouterLink :to="{ name: 'apartments.show', params: { slug: apartment.slug } }"
                                     class="btn btn-primary">
@@ -144,21 +143,6 @@ export default {
     },
 
     methods: {
-        isSponsored(apartment) {
-            const nowDate = new Date();
-            for (let i = 0; i < apartment.promotions.length; i++) {
-                const startDate = new Date(apartment.promotions[i].pivot.start_date);
-                const expirationDate = new Date(apartment.promotions[i].pivot.expiration_date)
-                if (startDate < nowDate && expirationDate > nowDate) {
-                    return true
-                }
-            }
-            return false
-
-            //console.log(apartment)
-            //return true
-        }
-
     },
     mounted() {
         if (!this.store.search.apartments.length) {
