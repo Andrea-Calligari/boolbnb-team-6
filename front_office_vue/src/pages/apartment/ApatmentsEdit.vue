@@ -285,7 +285,7 @@ export default {
             if (this.store.user.id === results.user_id) {
                 this.user_id = results.user_id
             } else {
-                this.$router.push({ name: 'home' });
+                this.$router.push({ name: 'not-found' });
             }
             this.title = results.title
             this.address = results.address
