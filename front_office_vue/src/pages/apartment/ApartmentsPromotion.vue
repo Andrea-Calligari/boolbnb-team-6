@@ -89,9 +89,9 @@ export default {
                         console.log(res);
                         if (res.success) {
                             this.payStatus = res.success
-                            // setTimeout(() => {
-                            //     this.$router.push({ name: 'apartments.show', params: { slug: this.slug } });
-                            // }, 3000);
+                            setTimeout(() => {
+                                this.$router.push({ name: 'apartments.show', params: { slug: this.slug } });
+                            }, 3000);
                         } else {
                             this.payStatus = res.success
                         }
@@ -130,8 +130,7 @@ export default {
 
             axios.get('http://127.0.0.1:8000/api/payment/generate')
                 .then((response) => {
-
-                    console.log(response.data)
+                    // console.log(response.data)
                     braintree.dropin.create({
                         authorization: response.data,
                         container: '#dropin-container'
