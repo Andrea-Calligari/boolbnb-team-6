@@ -301,6 +301,7 @@ export default {
             this.countdown();
 
         }).catch((err) => {
+            this.$router.push({ name: 'not-found' });
             console.log(err)
         })
 

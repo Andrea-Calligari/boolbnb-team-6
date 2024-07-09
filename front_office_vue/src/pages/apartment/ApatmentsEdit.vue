@@ -281,7 +281,7 @@ export default {
     mounted() {
         axios.get(`http://127.0.0.1:8000/api/apartments/${this.slug}`).then((res) => {
 
-            let results = res.data.results[0]
+            let results = res.data.apartment
             if (this.store.user.id === results.user_id) {
                 this.user_id = results.user_id
             } else {

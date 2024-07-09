@@ -1,7 +1,7 @@
 <template>
 
 
-    <div class="accordion" id="accordionExample">
+    <div class="accordion" id="accordionExample" v-if="messages.length > 0">
 
         <div class="accordion-item" v-for="(message, i) in messages">
             <h2 class="accordion-header">
@@ -22,6 +22,9 @@
             </div>
         </div>
 
+    </div>
+    <div class="p-3" v-else>
+        <h2>Non hai messaggi.</h2>
     </div>
 
 </template>
