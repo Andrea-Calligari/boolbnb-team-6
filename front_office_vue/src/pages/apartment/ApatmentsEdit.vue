@@ -233,7 +233,7 @@ export default {
 
                     console.log(this.position);
 
-                    await axios.post(`http://localhost:8000/api/apartments/${this.slug}`, {
+                    await axios.post(`http://localhost:8000/api/apartments/${this.slug}/data`, {
                         title: this.title,
                         description: this.description,
                         price: this.price,

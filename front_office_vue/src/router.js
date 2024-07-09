@@ -17,6 +17,7 @@ import CategoriesEdit from './pages/category/CategoriesEdit.vue'
 import ApartmentsSearch from './pages/apartment/ApartmentsSearch.vue'
 import ApartmentsPromotion from './pages/apartment/ApartmentsPromotion.vue'
 import NotFoundPage from './pages/NotFoundPage.vue'
+import DashboardStatistic from './pages/dashboard/DashboardStatistic.vue'
 
 
 export default createRouter({
@@ -53,5 +54,6 @@ export default createRouter({
     { path: '/dashboard/userapartments', name: 'dashboard.userapartments', component: UserApartments },
     { path: '/dashboard/profileupdate', name: 'dashboard.profileupdate', component: ProfileUpdate },
     { path: '/dashboard/receivedmessages', name: 'dashboard.receivedmessages', component: ReceivedMessages },
+    { path: '/dashboard/:slug/statistic', name: 'dashboard.statistic', component: DashboardStatistic, props: true }
   ],
 })

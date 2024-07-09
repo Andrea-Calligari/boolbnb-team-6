@@ -116,6 +116,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('userapartments', [AuthenticatedSessionApiController::class, 'getApartments']);
 
+    Route::get('/apartments/{slug}/data', [ApartmentController::class, 'apartmentData']);
+
     //Rotte crud messaggi
 
     Route::get('/messages', [MessageApiController::class, 'index'])->name('messages.index');

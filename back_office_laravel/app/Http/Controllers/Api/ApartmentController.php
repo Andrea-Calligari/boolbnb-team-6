@@ -106,7 +106,7 @@ class ApartmentController extends Controller
             $new_view->save();
         }
 
-        $apartment->load('user', 'category', 'promotions', 'services');
+        $apartment->load('user', 'category', 'promotions', 'services','views');
         return response()->json(compact('apartment'));
     }
 
@@ -274,6 +274,16 @@ class ApartmentController extends Controller
 
         // filtrare appartamenti per le promotions ancora in corso
         // response in json 
+    }
+
+    public function apartmentData(Request $request, string $slug){
+        
+        $apartment = Apartment::where('slug', $slug)->first();
+
+        $apartment->load('user', 'category', 'promotions', 'services','views');
+        
+        return response()->json(compact('apartment'));
+
     }
 }
 

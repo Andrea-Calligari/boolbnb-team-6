@@ -26,6 +26,9 @@
                                 class="btn btn-warning ms-2">
                                 Sponsorizza
                             </RouterLink>
+                            <RouterLink :to="{ name: 'dashboard.statistic', params: { slug: apartment.slug } }" class="btn btn-primary ms-2">
+                                Statistiche
+                            </RouterLink>
                         </div>
                     </div>
                 </div>
