@@ -87,12 +87,21 @@ class ApartmentController extends Controller
 
         //prendere ultima visualizzazione con stesso apartment_id e ip_address
         $last_view = View::where('apartment_id', $apartment_id)->where('ip_address', $ip_address)->get()->last();
-        $last_view_date = Carbon::parse($last_view->viewed_at);
-        
-        //controllare che sia negli ultimi 5 minuti
-        
-        //se non esiste o se non è negli ultimi 5 minuti, creare nuova view
-        if (!$last_view || !(Carbon::now()->between($last_view_date, $last_view_date->addMinutes(1)))){
+
+        //se  esiste 
+        if($last_view) {
+
+            $last_view_date = Carbon::parse($last_view->viewed_at);
+
+            if(!(Carbon::now()->between($last_view_date, $last_view_date->addMinutes(1)))){
+                $new_view = new View();
+                $new_view->apartment_id = $apartment_id;
+                $new_view->ip_address = $ip_address;
+                $new_view->viewed_at = Carbon::now();
+                $new_view->save();
+            }
+        } else {
+
             $new_view = new View();
             $new_view->apartment_id = $apartment_id;
             $new_view->ip_address = $ip_address;
