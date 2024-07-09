@@ -1,6 +1,10 @@
 <template>
     <div class="container">
-        <div class="row">
+        <div class="row align-items-center">
+            <div class="col-auto" v-if="apartment">
+                <h1>{{ apartment.title }}</h1>
+                <p class="text-secondary">{{ apartment.address }}</p>
+            </div>
             <div class="col">
                 <div class="text-end">
                     <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
@@ -29,6 +33,7 @@
 <script>
 import Chart from 'chart.js/auto';
 import axios from 'axios';
+import { store } from '../../store.js'
 export default {
     props: {
         slug: {
@@ -38,7 +43,8 @@ export default {
     },
     data() {
         return {
-            //apartment:null,
+            store,
+            apartment: null,
             views: [],
             data: [],
             totalViews: []
@@ -70,7 +76,7 @@ export default {
 
             const grafics = document.getElementById('grafics');
 
-            grafics.innerHTML = '<canvas id="acquisitions" width="5000"></canvas>'
+            grafics.innerHTML = '<canvas id="acquisitions"></canvas>'
 
             const typeStatics = {
                 '10': {
@@ -130,15 +136,14 @@ export default {
     },
 
     mounted() {
-
-
-
+        this.store.loading.on();
         axios.get(`http://localhost:8000/api/apartments/${this.slug}/data`).then((res) => {
-            this.views = res.data.apartment.views
-
-            this.parseViews()
-
+            this.apartment = res.data.apartment;
+            this.views = this.apartment.views;
+            this.parseViews();
+            this.store.loading.off();
         }).catch((err) => {
+            this.store.loading.off();
             this.$router.push({ name: 'not-found' });
             console.log(err)
         })
