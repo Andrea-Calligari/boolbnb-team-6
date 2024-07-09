@@ -26,30 +26,22 @@ class PaymentsController extends Controller
         ]);
 
         if ($status->success) {
-            $apartment = Apartment::where('slug', $payload['apartmentSlug'])->first();
+            $apartment = Apartment::where('slug', $payload['apartmentSlug'])->with('promotions')->first();
             $promo_durations = Promotion::all()->pluck('hours', 'id')->all();
             $start_date = Carbon::now();
 
             $promotions_with_timestamp = [];
-
-            foreach ($apartment['promotions'] as $promotion) {
-                $promotions_with_timestamp[$promotion['id']] = [
-                    'start_date' => $promotion['pivot']['start_date'],
-                    'expiration_date' => $promotion['pivot']['expiration_date']
-                ];
-            }
-
-
+            $old_start_date = $start_date;
             do {
-                $okCount = 0;
-                foreach ($promotions_with_timestamp as $key => $promotion) {
-                    if ($start_date->between($promotion['start_date'], $promotion['expiration_date'])) {
-                        $start_date = (new Carbon($promotion['expiration_date']))->addSecond();
-                    } else {
-                        $okCount++;
+                $old_start_date = $start_date;
+                foreach ($apartment['promotions'] as $promotion) {
+                    if ($start_date->between($promotion['pivot']['start_date'], $promotion['pivot']['expiration_date'])) {
+
+                        $start_date = (new Carbon($promotion['pivot']['expiration_date']))->addSecond();
                     }
                 }
-            } while (!($okCount === count($promotions_with_timestamp)));
+
+            } while($old_start_date !== $start_date);
 
             $hours = $promo_durations[$payload['promotionSelected']];
             $expiration_date = (new Carbon($start_date))->addHours($hours);
@@ -60,13 +52,13 @@ class PaymentsController extends Controller
             ];
 
 
-            $apartment->promotions()->sync($promotions_with_timestamp);
+            $apartment->promotions()->attach($promotions_with_timestamp);
         }
 
         return response()->json($status);
     }
     public function generate()
     {
-        return  Braintree_ClientToken::generate();
+        return Braintree_ClientToken::generate();
     }
 }

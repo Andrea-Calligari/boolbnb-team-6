@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('apartment_promotion', function (Blueprint $table) {
             
+            $table->id();
             $table->unsignedBigInteger('apartment_id');
             $table->foreign('apartment_id')->references('id')->on('apartments')->onDelete('cascade');
 
@@ -22,7 +23,7 @@ return new class extends Migration
             $table->dateTime('start_date');
             $table->dateTime('expiration_date');
 
-            $table->primary(['apartment_id','promotion_id']);
+            // $table->primary(['apartment_id','promotion_id']);
 
         });
     }

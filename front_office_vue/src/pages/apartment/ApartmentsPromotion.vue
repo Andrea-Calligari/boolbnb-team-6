@@ -6,7 +6,7 @@
                     :key="promotion.id + 'prom'">
                     <input class="btn-check" type="radio" v-model="promotionSelected" :value="promotion.id"
                         name="radioPromotion" :id="'flexRadioDefault' + i"
-                        :disabled="isSponsored(ApartmentPromotions, promotion.id)">
+                        >
                     <label class="btn w-100 text-start d-flex"
                         :class="promotion.id === promotionSelected ? 'btn-outline-success' : isSponsored(ApartmentPromotions, promotion.id) ? 'btn-outline-danger' : 'btn-outline-dark'"
                         :for="'flexRadioDefault' + i">
