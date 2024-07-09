@@ -81,14 +81,15 @@ class ApartmentController extends Controller
     public function show(Request $request, string $slug)
     {
         $apartment = Apartment::where('slug', $slug)->first();
-        $ip_address = $request->ip();
-        $apartment_id = $apartment['id'];
-        //dump($apartment);
+        // $ip_address = $request->ip();
+        // $apartment_id = $apartment['id'];
+        // //dump($apartment);
 
-        $new_view = new View();
-        $new_view->apartment_id = $apartment_id;
-        $new_view->ip_address = $ip_address;
-        $new_view->save();
+        // $new_view = new View();
+        // $new_view->apartment_id = $apartment_id;
+        // $new_view->ip_address = $ip_address;
+        // $new_view->viewed_at = Carbon::now();
+        // $new_view->save();
 
         $apartment->load('user', 'category', 'promotions', 'services');
         return response()->json(compact('apartment'));
