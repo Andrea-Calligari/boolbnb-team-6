@@ -17,10 +17,11 @@ class ViewSeeder extends Seeder
     {
         $apartments_ids = Apartment::pluck('id')->all();
 
-        for ($i = 0; $i < 2000; $i++) {
+        for ($i = 0; $i < 10000; $i++) {
             $view = new View();
             $view->apartment_id = $faker->randomElement($apartments_ids);
             $view->ip_address = $faker->ipv4();
+            $view->viewed_at = $faker->dateTimeThisYear();
             $view->save();
         }
     }

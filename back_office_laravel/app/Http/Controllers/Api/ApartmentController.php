@@ -85,10 +85,26 @@ class ApartmentController extends Controller
         $apartment_id = $apartment['id'];
         //dump($apartment);
 
-        $new_view = new View();
-        $new_view->apartment_id = $apartment_id;
-        $new_view->ip_address = $ip_address;
-        $new_view->save();
+        //prendere ultima visualizzazione con stesso apartment_id e ip_address
+        $last_view = View::where('apartment_id', $apartment_id)->where('ip_address', $ip_address)->get()->last();
+        $nowDate = Carbon::now();
+        //se  esiste 
+        if ($last_view) {
+            $last_view_plus_1 = (new Carbon($last_view->viewed_at))->addMinutes(1);
+            if (!($nowDate->between($last_view->viewed_at, $last_view_plus_1))) {
+                $new_view = new View();
+                $new_view->apartment_id = $apartment_id;
+                $new_view->ip_address = $ip_address;
+                $new_view->viewed_at = $nowDate;
+                $new_view->save();
+            }
+        } else {
+            $new_view = new View();
+            $new_view->apartment_id = $apartment_id;
+            $new_view->ip_address = $ip_address;
+            $new_view->viewed_at = $nowDate;
+            $new_view->save();
+        }
 
         $apartment->load('user', 'category', 'promotions', 'services');
         return response()->json(compact('apartment'));
@@ -192,7 +208,7 @@ class ApartmentController extends Controller
             $beds_number = intval($form_data['beds_number']);
             $service_ids = explode(',', $form_data['service_ids']);
 
-            
+
 
             $apartments = Apartment::where('latitude', '<', $lat1 + (0.008995 * $radius))->with('promotions')
                 ->where('visible', 1)
@@ -214,7 +230,7 @@ class ApartmentController extends Controller
 
             $apartments = sortedApartmentsWithProm($apartments);
 
-            $paginated = ms_paginate($apartments,$form_data['current_page']);
+            $paginated = ms_paginate($apartments, $form_data['current_page']);
 
             return response()->json(compact('paginated'));
             // return response()->json(['msg' => $service_ids]);
@@ -261,7 +277,7 @@ class ApartmentController extends Controller
     }
 }
 
-function ms_paginate($apartments,$current_page)
+function ms_paginate($apartments, $current_page)
 {
 
     $last_page = 0;
@@ -288,8 +304,8 @@ function ms_paginate($apartments,$current_page)
 
     ];
 
-    
-    
+
+
 
     return $paginated;
 }
@@ -399,4 +415,3 @@ function getDistance($lat1, $lon1, $lat2, $lon2)
     $distanza = $R * $c;
     return $distanza;
 }
-
