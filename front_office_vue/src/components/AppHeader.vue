@@ -4,7 +4,7 @@
       <div class="row align-items-center">
         <div class="col-2">
           <RouterLink :to="{ name: 'home' }">
-            <img src="/img/logo.png" class="logo" alt="Vue logo" />
+            <img src="/img/logo.svg" class="logo" alt="Vue logo" />
           </RouterLink>
         </div>
         <div class="col d-flex">

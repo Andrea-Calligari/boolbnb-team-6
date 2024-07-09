@@ -7,3 +7,6 @@ Il sito in questione è stato progettato per replicare la struttura di Airbnb, i
  - (RT3) Sistema di Pagamento 
  - (RT4) Il sito è responsive 
  - (RT5) La ricerca degli appartamenti nella pagina dedicata e l’applicazione dei filtri avvengono senza il refresh della pagina.
+
+ ## Palette
+ https://coolors.co/0081af-00abe7-2dc7ff-ead2ac-eaba6b
