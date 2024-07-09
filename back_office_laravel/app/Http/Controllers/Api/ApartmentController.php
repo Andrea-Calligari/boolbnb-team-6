@@ -81,15 +81,24 @@ class ApartmentController extends Controller
     public function show(Request $request, string $slug)
     {
         $apartment = Apartment::where('slug', $slug)->first();
-        // $ip_address = $request->ip();
-        // $apartment_id = $apartment['id'];
-        // //dump($apartment);
+        $ip_address = $request->ip();
+        $apartment_id = $apartment['id'];
+        //dump($apartment);
 
-        // $new_view = new View();
-        // $new_view->apartment_id = $apartment_id;
-        // $new_view->ip_address = $ip_address;
-        // $new_view->viewed_at = Carbon::now();
-        // $new_view->save();
+        //prendere ultima visualizzazione con stesso apartment_id e ip_address
+        $last_view = View::where('apartment_id', $apartment_id)->where('ip_address', $ip_address)->get()->last();
+        $last_view_date = Carbon::parse($last_view->viewed_at);
+        
+        //controllare che sia negli ultimi 5 minuti
+        
+        //se non esiste o se non è negli ultimi 5 minuti, creare nuova view
+        if (!$last_view || !(Carbon::now()->between($last_view_date, $last_view_date->addMinutes(1)))){
+            $new_view = new View();
+            $new_view->apartment_id = $apartment_id;
+            $new_view->ip_address = $ip_address;
+            $new_view->viewed_at = Carbon::now();
+            $new_view->save();
+        }
 
         $apartment->load('user', 'category', 'promotions', 'services');
         return response()->json(compact('apartment'));
