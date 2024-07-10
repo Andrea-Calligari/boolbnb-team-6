@@ -36,6 +36,9 @@
         </div>
       </div>
     </div>
+    <div class="row">
+      <ApartmentCard v-for="apartment in apartments" :key="apartment.id" :apartment="apartment" />
+    </div>
   </div>
   <!-- <img :src="image ? 'http://localhost:8000/' + image : 'http://localhost:8000/uploads/apartment/null.png'" -->
 
@@ -45,7 +48,11 @@
 <script>
 import { store } from '../store.js';
 import axios from 'axios';
+import ApartmentCard from '../components/ApartmentCard.vue'
 export default {
+  components: {
+    ApartmentCard
+  },
   data() {
     return {
       store,
