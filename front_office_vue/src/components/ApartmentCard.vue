@@ -1,18 +1,45 @@
 <template>
-    <div class="col-4 col-md-6 col-sm-12 py-3">
-        <div class="card apartment-card rounded-0 h-100">
-            <img :src="apartmentImageUrl" class="card-img-top rounded-0" alt="...">
-            <div class="card-body">
-                <div class="d-flex mb-2 text-muted">
-                    <div class="card-subtitle ">Stanze: {{ apartment.rooms_number }}</div>
-                    <div class="card-subtitle"><span class="material-symbols-rounded">
-                            bed</span> {{ apartment.beds_number }}</div>
-                    <div class="card-subtitle">Bagni: {{ apartment.beds_number }}</div>
+    <div class="col-lg-3 col-md-6 col-sm-12 py-4 d-flex justify-content-center">
+        <div class="card apartment-card rounded-0 h-100 d-flex flex-column">
+            <img :src="apartmentImageUrl" class="card-img-top card-image rounded-0" alt="...">
+            <div class="card-body d-flex flex-column flex-grow-1">
+                <div class="d-flex mb-2 text-muted gap-3 text-small">
+                    <div class="d-flex align-items-center gap-1">
+                        <span class="material-symbols-sharp pb-0">
+                            home
+                        </span>
+                        <span>{{ apartment.rooms_number }}</span>
+                    </div>
+                    <div class="d-flex align-items-center gap-1">
+                        <span class="material-symbols-sharp pb-0">
+                            bed
+                        </span>
+                        <span>{{ apartment.beds_number }}</span>
+                    </div>
+                    <div class="mb-0 d-flex align-items-center gap-1">
+                        <span class="material-symbols-sharp pb-0">
+                            bathtub
+                        </span>
+                        <span>{{ apartment.baths_number }}</span>
+                    </div>
                 </div>
-                <h5 class="card-title">{{ apartment.title }}</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <h4 class="card-title mb-2">{{ apartment.title }}</h4>
+                <div class="">
+                    <span class="badge text-bg-light me-1" v-for="(service, i) in services" :key="i">{{
+                        service.name
+                        }}</span>
+                    <button @click="toggleServices" class="badge services-toggle mb-2" v-if="services.length <= 3"><span
+                            class="material-symbols-sharp">
+                            more_horiz
+                        </span></button>
+                    <button @click="toggleServices" class="badge services-toggle mb-2" v-else><span
+                            class="material-symbols-sharp">
+                            keyboard_arrow_up
+                        </span></button>
+                </div>
+                <div class="price-banner mt-auto py-3">
+                    <h5 class="fw-bold ms-4 mb-0">&euro; {{ apartment.price }}</h5>
+                </div>
             </div>
         </div>
     </div>
@@ -27,17 +54,75 @@ export default {
         }
     },
     data() {
+        return {
+            services: [],
+        }
 
+    },
+    methods: {
+        toggleServices() {
+            if (this.services.length > 3) {
+                this.services = apartment.services.slice(0, 3)
+            } else {
+                this.services = apartment.services
+            }
+            console.log(this.services);
+        }
     },
     computed: {
 
         apartmentImageUrl() {
             return `http://localhost:8000/${this.apartment.image.split(',')[0]}`
         }
-    }
+    },
+
 }
 </script>
 
 <style lang="scss" scoped>
-@use '../assets/scss/partials/variables.scss';
+@use '../assets/scss/partials/variables.scss' as *;
+
+.apartment-card {
+
+
+
+    .card-image {
+        width: 100%;
+        aspect-ratio: 1/1;
+        box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.2);
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    .price-banner {
+        background: $light-yellow;
+        background: linear-gradient(180deg, $light-yellow 40%, $dark-yellow 100%);
+        margin: 0px -25px;
+        box-shadow: 0 5px 4px -2px rgba(0, 0, 0, 0.2);
+    }
+}
+
+.apartment-card:hover .card-title {
+    color: $dark-yellow;
+}
+
+.services-toggle {
+    background: none;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    color: black;
+
+    span {
+        font-size: 15px;
+        padding: none;
+    }
+
+    &:hover {
+        background-color: #F8F9FA;
+        border-radius: 5px;
+    }
+}
 </style>

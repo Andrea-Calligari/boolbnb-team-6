@@ -242,7 +242,7 @@ class ApartmentController extends Controller
     {
         // prenderci tutti gli appartamenti con promozioni visible = 1
         $now = Carbon::now();
-        $apartments = Apartment::with('promotions')->where('visible', 1)->get();
+        $apartments = Apartment::with(['category', 'promotions', 'services'])->where('visible', 1)->get();
         $apartmentPivot = [];
 
         // $resultPivot = $apartments[0]['promotions'][0]['pivot']; 
