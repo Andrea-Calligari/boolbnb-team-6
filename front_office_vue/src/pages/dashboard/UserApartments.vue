@@ -26,18 +26,17 @@
                                 class="btn btn-warning ms-2">
                                 Sponsorizza
                             </RouterLink>
-                            <RouterLink :to="{ name: 'dashboard.statistic', params: { slug: apartment.slug } }" class="btn btn-primary ms-2">
+                            <RouterLink :to="{ name: 'dashboard.statistic', params: { slug: apartment.slug } }"
+                                class="btn btn-primary ms-2">
                                 Statistiche
                             </RouterLink>
                         </div>
                     </div>
                 </div>
             </template>
-            <template v-else>
-                <div class="py-5">
-                    <h2>Non hai appartamenti al momento.</h2>
-                </div>
-            </template>
+            <div class="p-3" v-else>
+                <h2>Non hai appartamenti al momento.</h2>
+            </div>
         </div>
     </div>
 </template>
