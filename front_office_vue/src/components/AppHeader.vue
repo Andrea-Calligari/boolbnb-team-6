@@ -54,7 +54,7 @@
           </RouterLink>
 
           <button @click="store.user.logout()" v-if="store.user.id" class="btn btn-outline-danger p-1 ms-2 mb-2">
-            <span class="material-symbols-rounded">
+            <span class="material-symbols-sharp">
               logout
             </span>
           </button>
