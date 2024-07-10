@@ -4,8 +4,14 @@
       <div class="col-12">
         <h2 class="pt-3">Migliori appartamenti</h2>
       </div>
-      <div class="col-12" v-if="bestApartments.length > 0">
-        <div v-for="(apartment, i) in bestApartments">{{ i + 1 }}: {{ apartment.title }}</div>
+      <div class="col" v-if="bestApartments.length > 0" v-for="(apartment, i) in bestApartments">
+        <div class="ms_card">
+          <div class="content">
+            <h2>{{ i + 1 }}</h2>
+            <p>{{ apartment.title }}</p>
+          </div>
+        </div>
+
       </div>
       <div class="col-12" v-else>
         <h4>Non hai appartamenti.</h4>
@@ -85,63 +91,66 @@ export default {
   methods: {
     parseViews(sliceNumber = 10) {
 
-      let ArrLabels = [];
+
       let ArrViews = [];
+      let ArrLabels = [];
+      let ArrSumViews = [];
 
       if (sliceNumber < 10) {
         let parsedViews = {};
         for (const key in this.views) {
-          const data = key.slice(0, sliceNumber);
-          if (parsedViews[data]) {
-            parsedViews[data] = parsedViews[data] + 1
+          const newData = key.slice(0, sliceNumber);
+          if (parsedViews[newData]) {
+            parsedViews[newData] = parsedViews[newData] + this.views[key];
           } else {
-            parsedViews[data] = 1
+            parsedViews[newData] = this.views[key];
           }
         }
         for (const key in parsedViews) {
-          ArrLabels.push(parsedViews[key]);
-          ArrViews.push(key);
+          ArrViews.push([key, parsedViews[key]]);
         }
       } else {
         for (const key in this.views) {
-          ArrLabels.push(this.views[key]);
-          ArrViews.push(key);
+          ArrViews.push([key, this.views[key]]);
         }
       }
 
+      ArrViews.sort();
+      ArrViews.forEach(e => {
+        const fullY = e[0].slice(0, 4)
+        const y = e[0].slice(2, 4)
+        const m = e[0].slice(5, 7)
+        const d = e[0].slice(8, 10)
 
+        if (sliceNumber === 7) {
+          const months = {
+            '01': 'gennaio',
+            '02': 'febbraio',
+            '03': 'marzo',
+            '04': 'aprile',
+            '05': 'maggio',
+            '06': 'giugno',
+            '07': 'luglio',
+            '08': 'agosto',
+            '09': 'settembre',
+            '10': 'ottobre',
+            '11': 'novembre',
+            '12': 'dicembre'
+          }
+          ArrLabels.push(`${months[m]} - ${y}`);
+        } else if (sliceNumber === 4) {
+          ArrLabels.push(fullY);
+        } else {
+          ArrLabels.push(`${d}/${m}/${y}`);
+        }
+        ArrSumViews.push(e[1]);
+      });
 
-      // let labData = [];
-      // let totalViews = [];
-
-      // let parsedViews = {};
-      // this.views.forEach(view => {
-      //   const data = view.viewed_at.slice(0, sliceNumber);
-      //   if (parsedViews[data]) {
-      //     parsedViews[data] = parsedViews[data] + 1
-      //   } else {
-      //     parsedViews[data] = 1
-      //   }
+      // let dataParsed = []
+      // labData.forEach(dataX => {
+      //   dataParsed.push(months[dataX.slice(5)])
       // });
-
-      // console.log(parsedViews);
-
-      // for (let i = 0; i < this.views.length; i++) {
-      //   const day = this.views[i].viewed_at.slice(0, sliceNumber)
-      //   if (!labData.includes(day)) {
-      //     labData.push(day)
-      //   }
-      // }
-      // labData.sort()
-      // for (let i = 0; i < labData.length; i++) {
-      //   let count = 0
-      //   for (let y = 0; y < this.views.length; y++) {
-      //     if (labData[i] === this.views[y].viewed_at.slice(0, sliceNumber)) {
-      //       count++
-      //     }
-      //   }
-      //   totalViews.push(count);
-      // }
+      // labData = dataParsed;
 
       const grafics = document.getElementById('grafics');
       grafics.innerHTML = '<canvas id="acquisitions"></canvas>'
@@ -150,37 +159,16 @@ export default {
         '7': 'polarArea',
         '4': 'doughnut',
       }
-      if (sliceNumber === 7) {
-        const months = {
-          '01': 'gennaio',
-          '02': 'febbraio',
-          '03': 'marzo',
-          '04': 'aprile',
-          '05': 'maggio',
-          '06': 'giugno',
-          '07': 'luglio',
-          '08': 'agosto',
-          '09': 'settembre',
-          '10': 'ottobre',
-          '11': 'novembre',
-          '12': 'dicembre'
-        }
-        // let dataParsed = []
-        // labData.forEach(dataX => {
-        //   dataParsed.push(months[dataX.slice(5)])
-        // });
-        // labData = dataParsed;
-      }
       new Chart(
         document.getElementById('acquisitions'),
         {
           type: typeStatics[sliceNumber],
           data: {
-            labels: ArrViews,
+            labels: ArrLabels,
             datasets: [
               {
                 label: 'Views',
-                data: ArrLabels
+                data: ArrSumViews
               }
             ]
           }
@@ -231,7 +219,7 @@ export default {
           }
         });
       });
-      console.log(this.views);
+      // console.log(this.views);
       this.parseViews();
 
       this.store.loading.off()
@@ -245,4 +233,60 @@ export default {
 </script>
 
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.ms_card {
+  width: 190px;
+  height: 254px;
+  background: #07182E;
+  position: relative;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 20px;
+
+  color: white;
+
+  .content {
+    padding: 15px;
+    ;
+    z-index: 1;
+    text-align: center;
+  }
+}
+
+
+.ms_card::before {
+  content: '';
+  position: absolute;
+  width: 100px;
+  background-image: linear-gradient(180deg, rgb(0, 183, 255), rgb(255, 48, 255));
+  height: 130%;
+  animation: rotBGimg 3s linear infinite;
+  transition: all 0.2s linear;
+}
+
+@keyframes rotBGimg {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.ms_card::after {
+  content: '';
+  position: absolute;
+  background: #07182E;
+  ;
+  inset: 5px;
+  border-radius: 15px;
+}
+
+/* .card:hover:before {
+  background-image: linear-gradient(180deg, rgb(81, 255, 0), purple);
+  animation: rotBGimg 3.5s linear infinite;
+} */
+</style>
