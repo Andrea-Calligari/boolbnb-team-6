@@ -25,8 +25,7 @@
                 </div>
                 <h4 class="card-title mb-2">{{ apartment.title }}</h4>
                 <div class="">
-                    <span class="badge text-bg-light me-1" v-for="(service, i) in services" :key="i">{{
-                        service.name
+                    <span class="badge text-bg-light me-1" v-for="(service, i) in services" :key="i">{{ service.name
                         }}</span>
                     <button @click="toggleServices" class="badge services-toggle mb-2" v-if="services.length <= 3"><span
                             class="material-symbols-sharp">
@@ -55,27 +54,27 @@ export default {
     },
     data() {
         return {
-            services: [],
+            services: []
         }
 
     },
     methods: {
         toggleServices() {
             if (this.services.length > 3) {
-                this.services = apartment.services.slice(0, 3)
+                this.services = this.apartment.services.slice(0, 3)
             } else {
-                this.services = apartment.services
+                this.services = this.apartment.services
             }
-            console.log(this.services);
         }
     },
     computed: {
-
         apartmentImageUrl() {
             return `http://localhost:8000/${this.apartment.image.split(',')[0]}`
         }
     },
-
+    mounted() {
+        this.services = this.apartment.services.slice(0, 3);
+    }
 }
 </script>
 
@@ -83,7 +82,6 @@ export default {
 @use '../assets/scss/partials/variables.scss' as *;
 
 .apartment-card {
-
 
 
     .card-image {
