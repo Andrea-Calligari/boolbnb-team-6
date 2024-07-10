@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthenticatedSessionApiController extends Controller
 {
-
+    // Login
     public function store(LoginRequest $request)
     {
         $request->authenticate();
@@ -24,11 +24,10 @@ class AuthenticatedSessionApiController extends Controller
         return response()->json(compact('user', 'apartments'));
     }
 
+    // All user apartments
     public function getApartments()
     {
-        
-        
-        $apartments = Apartment::where('user_id', Auth::id())->with('messages', 'category', 'promotions', 'services')->get();
+        $apartments = Apartment::where('user_id', Auth::id())->with('messages', 'category', 'promotions', 'services', 'views')->get();
 
         return response()->json(compact('apartments'));
     }

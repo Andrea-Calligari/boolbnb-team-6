@@ -79,18 +79,9 @@ export default {
             grafics.innerHTML = '<canvas id="acquisitions"></canvas>'
 
             const typeStatics = {
-                '10': {
-                    type: 'line',
-                    label: 'Giorni',
-                },
-                '7': {
-                    type: 'polarArea',
-                    label: 'Mesi',
-                },
-                '4': {
-                    type: 'doughnut',
-                    label: 'Anni',
-                },
+                '10': 'line',
+                '7': 'polarArea',
+                '4': 'doughnut',
             }
             if (sliceNumber === 7) {
                 const months = {
@@ -118,12 +109,12 @@ export default {
             new Chart(
                 document.getElementById('acquisitions'),
                 {
-                    type: typeStatics[sliceNumber].type,
+                    type: typeStatics[sliceNumber],
                     data: {
                         labels: this.data,
                         datasets: [
                             {
-                                label: typeStatics[sliceNumber].label,
+                                label: 'Views',
                                 data: this.totalViews
                             }
                         ]
