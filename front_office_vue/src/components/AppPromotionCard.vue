@@ -24,12 +24,16 @@
 </script>
 
 <style lang="scss" scoped>
+@use '../assets/scss/partials/_variables.scss' as *;
+
+
 .flip-card {
   background-color: transparent;
   width: 190px;
   height: 254px;
   perspective: 1000px;
-  font-family: sans-serif;
+//   font-family: sans-serif;
+    cursor: pointer;
 }
 
 .title {
@@ -67,15 +71,13 @@
 }
 
 .flip-card-front {
-  background: linear-gradient(120deg, bisque 60%, rgb(255, 87, 27) 88%,
-     rgb(255, 211, 195) 40%, rgba(255, 127, 80, 0.603) 48%);
-  color: coral;
+ background: $light-blue;
+    background: radial-gradient(circle, $light-blue 0%, $light-yellow 81%);
 }
 
 .flip-card-back {
-  background: linear-gradient(120deg, rgb(255, 174, 145) 30%, coral 88%,
-     bisque 40%, rgb(255, 185, 160) 78%);
-  color: white;
+  background:$light-blue;
+background: radial-gradient(circle, $light-blue 0%, $light-yellow 81%);
   transform: rotateY(180deg);
 }
 </style>

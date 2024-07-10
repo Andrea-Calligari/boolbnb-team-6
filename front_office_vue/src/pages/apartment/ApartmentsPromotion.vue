@@ -1,7 +1,10 @@
 <template>
     <div class="container">
         <div class="row">
-            <AppPromotionCard  v-for="promotion in store.options.promotions" :key="promotion.id + 'prom'"  :promotion="promotion"/>
+            <div class="col-12 ">
+            <AppPromotionCard @click="sendPayment" v-for="promotion in store.options.promotions" :key="promotion.id + 'prom'"  :promotion="promotion"/>
+
+            </div>
             <div class="col-12">
                 <p v-if="!promotionSelected">* Seleziona una promozione per pagare</p>
             </div>
