@@ -86,7 +86,8 @@
                     aria-labelledby="offcanvasExampleLabel">
                     <div class="offcanvas-header">
                         <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"
+                            id="close"></button>
                     </div>
                     <div class="offcanvas-body">
                         <form @submit.prevent="onSend">
@@ -151,6 +152,7 @@
                                     </button>
                                 </div>
                             </div>
+                            <div class="mb-4 row" v-if="send === true">messaggio inviato</div>
                         </form>
                     </div>
                 </div>
@@ -186,7 +188,7 @@ export default {
             store,
             text: '',
             isVtext: null,
-
+            send: false,
             timeinterval: null,
             apartmentExpirationPromo: null,
             expDate: null
@@ -233,7 +235,12 @@ export default {
                     text: this.text
 
                 }).then((res) => {
-                    console.log(res)
+                    //console.log(res)
+                    this.send = true
+                    
+                    setTimeout(function () {
+                        document.getElementById('close').click()
+                    }, 2000);
                 })
             }
         },
@@ -278,9 +285,9 @@ export default {
                 const hours = Math.floor((t / (1000 * 60 * 60)) % 24);
                 const days = Math.floor(t / (1000 * 60 * 60 * 24));
 
-                if (days>0) {
+                if (days > 0) {
                     this.expDate = `Promozione scade tra ${days}g - ${hours}h:${minutes}m:${seconds}s`
-                }else {
+                } else {
                     this.expDate = `Promozione scade tra ${hours}h:${minutes}m:${seconds}s`
                 }
 
