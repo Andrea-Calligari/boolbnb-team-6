@@ -1,24 +1,7 @@
 <template>
     <div class="container">
         <div class="row">
-            <div class="col-12 my-3">
-                <div class="form-check ps-0" v-for="(promotion, i) in store.options.promotions"
-                    :key="promotion.id + 'prom'">
-                    <input class="btn-check" type="radio" v-model="promotionSelected" :value="promotion.id"
-                        name="radioPromotion" :id="'flexRadioDefault' + i"
-                        >
-                    <label class="btn w-100 text-start d-flex"
-                        :class="promotion.id === promotionSelected ? 'btn-outline-success' : isSponsored(ApartmentPromotions, promotion.id) ? 'btn-outline-danger' : 'btn-outline-dark'"
-                        :for="'flexRadioDefault' + i">
-                        <div class="flex-grow-1">
-                            <h2>{{ promotion.title }}</h2>
-                            <p>{{ promotion.description }}</p>
-                        </div>
-                        <p>{{ promotion.price }}</p>
-
-                    </label>
-                </div>
-            </div>
+            <AppPromotionCard  v-for="promotion in store.options.promotions" :key="promotion.id + 'prom'"  :promotion="promotion"/>
             <div class="col-12">
                 <p v-if="!promotionSelected">* Seleziona una promozione per pagare</p>
             </div>
@@ -61,9 +44,13 @@
 
 
 <script>
+import AppPromotionCard from '../../components/AppPromotionCard.vue';
 import { store } from '../../store.js';
 import axios from 'axios';
 export default {
+    components:{
+        AppPromotionCard
+    },
     props: {
         slug: {
             type: String,
