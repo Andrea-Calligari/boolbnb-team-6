@@ -1,20 +1,23 @@
 <template>
-    <div class="container">
+    <div class="container-md container-sm mt-3">
         <div class="row">
-            <div class="col-12 ">
-            <AppPromotionCard @click="sendPayment" v-for="promotion in store.options.promotions" :key="promotion.id + 'prom'"  :promotion="promotion"/>
+            <div v-for="promotion in store.options.promotions" :key="promotion.id + 'prom'"
+                class="col-md-6 col-lg-4 d-flex justify-content-center ">
+
+                <AppPromotionCard :class="promotionSelected === promotion.id ? 'rotate' : ''"
+                    @click="promotionSelected = promotion.id" :promotion="promotion" />
 
             </div>
             <div class="col-12">
-                <p v-if="!promotionSelected">* Seleziona una promozione per pagare</p>
-            </div>
-            <div class="col-12">
                 <div class="accordion" id="accordionPanelsStayOpenExample">
+                    <p v-if="!promotionSelected">* Seleziona una promozione per pagare</p>
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button">
                                 PAGAMENTO
                             </button>
+                            <p class="pay" v-if="promotionSelected"> Stai per effettura una transazione per il
+                                {{ store.options.promotions[promotionSelected - 1].title }}</p>
                         </h2>
                         <div class="accordion-collapse collapse" :class="promotionSelected ? 'show' : ''">
                             <div class="accordion-body">
@@ -51,7 +54,7 @@ import AppPromotionCard from '../../components/AppPromotionCard.vue';
 import { store } from '../../store.js';
 import axios from 'axios';
 export default {
-    components:{
+    components: {
         AppPromotionCard
     },
     props: {
@@ -143,4 +146,15 @@ export default {
 </script>
 
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.row {
+    .col-12 {
+        margin-bottom: 24px;
+    }
+}
+
+.pay {
+    font-size: 24px;
+    padding-left: 18px;
+}
+</style>
