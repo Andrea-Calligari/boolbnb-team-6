@@ -26,7 +26,8 @@
         </div>
         <div class="col col-md-4 drop-menu  ">
           <div class="dropdown">
-            <button class="btn btn-info dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="border-0 bg-transparent dropdown-toggle" type="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
               <img v-if="store.user.id" class="avatar" :src="'http://localhost:8000/' + store.user.image"
                 alt="User-Avatar">
               <span v-else class="material-symbols-sharp">
