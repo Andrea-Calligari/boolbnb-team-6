@@ -71,9 +71,7 @@ export default {
    computed: {
    },
    mounted() {
-      if(this.store.user.id === 0){
-         this.$router.push({ name: 'dashboard' });
-      }
+     
    }
 }
 </script>

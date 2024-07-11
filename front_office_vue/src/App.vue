@@ -38,6 +38,10 @@ export default {
         if (this.$route.fullPath === '/register') {
           this.$router.push({ name: 'dashboard' });
         }
+        if (this.$route.fullPath === '/login') {
+          this.$router.push({ name: 'dashboard' });
+        }
+        
       } else {
         const ArrPath = this.$route.fullPath.split("/");
         

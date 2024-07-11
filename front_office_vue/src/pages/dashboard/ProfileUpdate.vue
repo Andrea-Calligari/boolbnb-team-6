@@ -225,7 +225,7 @@ export default {
         async onDelete() {
             if (this.isFormValidated()) {
                 this.store.loading.on();
-                this.store.user.id = 0;
+                //this.store.user.id = 0;
                 await axios.get("http://localhost:8000/sanctum/csrf-cookie");
                 await axios.post("http://localhost:8000/api/profile/delete", {
                     password: this.password
@@ -234,7 +234,7 @@ export default {
                     this.store.user.id = 0;
                     this.store.loading.off();
                     this.$router.push('/');
-                    console.log(res.data)
+                    console.log(res)
                 }).catch((err) => {
                     this.store.loading.off();
                     this.message = err.response.data.message
