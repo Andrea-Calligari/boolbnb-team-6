@@ -15,32 +15,16 @@ class CategorySeeder extends Seeder
     public function run(Faker $faker): void
     {
         $categories = [
-            'Casa',
-            'Casetta',
             'Villa',
             'Villetta',
             'Casa Indipendente',
             'Casa Semi-indipendente',
             'Casa/villetta A Schiera',
-            'Casa Unifamiliare',
-            'Appartamento',
+            'Monolocale',
+            'Bilocale',
+            'Trilocale',
             'Attico',
-            'Fattoria',
-            'Cascina',
-            'Masseria',
-            'Casale',
-            'Baita',
-            'Palazzo',
-            'Palazzina',
-            'Condominio',
-            'Grattacielo',
-            'Castello',
-            'Trullo',
-            'Capanna',
-            'Tenda',
-            'Iglù/igloo',
-            'Camper',
-            'Roulotte'
+            'Palazzina'
         ];
         foreach($categories as $category){
 

@@ -1,85 +1,128 @@
 <template>
+
+    <!-- titolo e carosello -->
+    <section class="carousel-section py-3">
+        <div class="container" v-if="apartment">
+            <div class="row">
+                <div class="col-6">
+                    <h2 class="apartment-title">{{ apartment.title }} </h2>
+                    <p class="text-muted">{{ apartment.address }}</p>
+                    <div class="d-flex mb-2 text-muted gap-3 text-small">
+                        <div>{{ apartment.mtq }} mq</div>
+                        <div class="d-flex align-items-center gap-1">
+                            <span class="material-symbols-sharp pb-0">
+                                home
+                            </span>
+                            <span>{{ apartment.rooms_number }}</span>
+                        </div>
+                        <div class="d-flex align-items-center gap-1">
+                            <span class="material-symbols-sharp pb-0">
+                                bed
+                            </span>
+                            <span>{{ apartment.beds_number }}</span>
+                        </div>
+                        <div class="mb-0 d-flex align-items-center gap-1">
+                            <span class="material-symbols-sharp pb-0">
+                                bathtub
+                            </span>
+                            <span>{{ apartment.baths_number }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 d-flex flex-column justify-content-between align-items-end">
+                    <div class="simple-card d-flex gap-1 p-2">
+                        <h3 class="mb-0 align-self-center">&euro;{{ apartment.price }}</h3><span class="align-self-end">
+                            a notte</span>
+                    </div>
+                    <p class="text-end">{{ expDate }}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div id="carouselExampleIndicators" class="carousel slide">
+                        <div class="carousel-indicators">
+                            <template v-if="apartment.image !== null">
+                                <button v-for="(image, i) in apartment.image.split(',')" type="button"
+                                    data-bs-target="#carouselExampleIndicators" :data-bs-slide-to="i" class="active"
+                                    :aria-current="i === 0" :aria-label="'Slide ' + i"></button>
+                            </template>
+                        </div>
+                        <div class="carousel-inner">
+                            <template v-if="apartment.image !== null">
+                                <div v-for="(image, i) in apartment.image.split(',')" class="carousel-item"
+                                    :class="i === 0 ? 'active' : ''">
+                                    <img :src="image ? 'http://localhost:8000/' + image : 'http://localhost:8000/uploads/apartment/null.png'"
+                                        class="d-block w-100" :alt="apartment.title + ' img ' + i">
+                                </div>
+                            </template>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- info appartamento -->
+    <section class="info-section pb-3">
+        <div class="container" v-if="apartment">
+            <div class="row">
+                <div class="col">
+                    <div class="d-flex justify-content-between">
+                        <p>{{ apartment.category.name }} di proprietà di <span class="fw-bold dark-blue-font">{{
+                            apartment.user.name }} {{
+                                    apartment.user.surname
+                                }}</span>
+                        </p>
+                        <div>
+                            <RouterLink v-if="apartment.user_id === store.user.id"
+                                :to="{ name: 'apartments.edit', params: { slug: apartment.slug } }"
+                                class="btn dark-blue-bg text-white me-2">
+                                Modifica
+                            </RouterLink>
+
+                            <RouterLink v-if="apartment.user_id === store.user.id"
+                                :to="{ name: 'apartments.promotion', params: { slug: apartment.slug } }"
+                                class="btn dark-blue-bg text-white me-2">
+                                Sponsorizza
+                            </RouterLink>
+
+
+                            <button v-if="apartment.user_id === store.user.id" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop" class="btn dark-blue-bg text-white">Elimina</button>
+
+                            <a v-if="apartment.user_id !== store.user.id" class="btn dark-blue-bg text-white"
+                                data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
+                                aria-controls="offcanvasExample">
+                                Chiedi Informazioni
+                            </a>
+                        </div>
+                    </div>
+                    <p class="card-text">{{ apartment.description }}</p>
+                    <div class="d-flex"></div>
+                    <span class="simple-card me-3 mt-2" v-for="service in apartment.services">
+                        {{ service.name
+                        }}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- buttons + offcanvas -->
     <div class="container" v-if="apartment">
         <div class="row">
             <div class="col">
 
-                <div id="carouselExampleIndicators" class="carousel slide">
-
-                    <div class="carousel-indicators">
-                        <template v-if="apartment.image !== null">
-                            <button v-for="(image, i) in apartment.image.split(',')" type="button"
-                                data-bs-target="#carouselExampleIndicators" :data-bs-slide-to="i" class="active"
-                                :aria-current="i === 0" :aria-label="'Slide ' + i"></button>
-                        </template>
-                    </div>
-                    <div class="carousel-inner">
-                        <template v-if="apartment.image !== null">
-                            <div v-for="(image, i) in apartment.image.split(',')" class="carousel-item"
-                                :class="i === 0 ? 'active' : ''">
-                                <img :src="image ? 'http://localhost:8000/' + image : 'http://localhost:8000/uploads/apartment/null.png'"
-                                    class="d-block w-100" :alt="apartment.title + ' img ' + i">
-                            </div>
-                        </template>
-
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                </div>
-
-                <div class="card-body">
-                    <h2 class="card-title mb-0">{{ apartment.title }} </h2>
-                    <p class="text-end">{{ expDate }}</p>
-                    <p class="card-text"><small class="text-body-secondary">{{ apartment.category.name }}</small>
-                    </p>
-                    <p class="card-text mb-0">Servizi: </p>
-                    <span class="badge text-bg-light me-2 " v-for="service in apartment.services">{{ service.name
-                        }}</span>
-                    <p class="card-text mt-3 mb-0">Descrizione: </p>
-                    <p class="card-text">{{ apartment.description }}</p>
-                    <p class="card-text">{{ 'Stanze: ' + apartment.rooms_number }}</p>
-                    <p class="card-text">{{ 'Bagni: ' + apartment.baths_number }}</p>
-                    <p class="card-text">{{ 'Posti letto: ' + apartment.beds_number }}</p>
-                    <p class="card-text">{{ `Propietario: ${apartment.user.name} ${apartment.user.surname}` }}</p>
-                    <p class="card-text text-end"><small class="text-body-secondary">{{ apartment.address }}</small>
-                    </p>
-
-                    <div class="m-3">
-                        <iframe style="width: 100%; height: 500px;" frameborder="0" scrolling="no" marginheight="0"
-                            marginwidth="0"
-                            :src="`https://maps.google.com/maps?q=${apartment.latitude},${apartment.longitude}&hl=it&z=14&amp;output=embed`">
-                        </iframe>
-                    </div>
-                </div>
-
-
-
-                <RouterLink v-if="apartment.user_id === store.user.id"
-                    :to="{ name: 'apartments.edit', params: { slug: apartment.slug } }" class="btn btn-primary me-2">
-                    Modifica
-                </RouterLink>
-
-                <RouterLink v-if="apartment.user_id === store.user.id"
-                    :to="{ name: 'apartments.promotion', params: { slug: apartment.slug } }"
-                    class="btn btn-warning me-2">
-                    Sponsorizza
-                </RouterLink>
-
-
-                <button v-if="apartment.user_id === store.user.id" data-bs-toggle="modal"
-                    data-bs-target="#staticBackdrop"  class="btn btn-danger">Delete</button>
-
-                <a v-if="apartment.user_id !== store.user.id" class="btn btn-primary" data-bs-toggle="offcanvas"
-                    href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-                    Chiedi Informazioni
-                </a>
 
 
                 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
@@ -156,13 +199,25 @@
                         </form>
                     </div>
                 </div>
-
             </div>
         </div>
-
     </div>
 
-
+    <!-- mappa google -->
+    <section class="map-section">
+        <div class="container" v-if="apartment">
+            <div class="row">
+                <div class="col">
+                    <div class="m-3">
+                        <iframe style="width: 100%; height: 500px;" frameborder="0" scrolling="no" marginheight="0"
+                            marginwidth="0"
+                            :src="`https://maps.google.com/maps?q=${apartment.latitude},${apartment.longitude}&hl=it&z=14&amp;output=embed`">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Modal -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -178,14 +233,52 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-                    <button type="button" @click="onDelete()" class="btn btn-primary" data-bs-dismiss="modal">Si</button>
+                    <button type="button" @click="onDelete()" class="btn btn-primary"
+                        data-bs-dismiss="modal">Si</button>
                 </div>
             </div>
         </div>
     </div>
-
-
 </template>
+
+<style lang="scss" scoped>
+@use '../../assets/scss/partials/variables.scss' as *;
+
+.simple-card {
+
+    box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 6px;
+    border-radius: 5px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: baseline;
+    background-color: $light-yellow;
+}
+
+.apartment-title {
+    color: $dark-yellow
+}
+
+.dark-yellow-bg {
+    background-color: $dark-yellow;
+}
+
+.dark-blue-bg {
+    background-color: $dark-blue;
+}
+
+.dark-blue-font {
+    color: $dark-blue;
+}
+
+// .info-section {
+//     background-color: $light-yellow;
+// }
+
+@media (min-width: 768px) {}
+
+@media (min-width: 576px) {}
+</style>
 
 <script>
 import { store } from '../../store';
@@ -343,5 +436,3 @@ export default {
     }
 }
 </script>
-
-<style lang="scss" scoped></style>
