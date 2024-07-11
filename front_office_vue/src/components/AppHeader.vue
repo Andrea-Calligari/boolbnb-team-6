@@ -1,13 +1,13 @@
 <template>
   <header class="header">
-    <div class="container">
+    <div class="container-lg container-sm">
       <div class="row align-items-center">
-        <div class="col-4">
+        <div class="col img  col-md-3 col-sm-2 ">
           <RouterLink :to="{ name: 'home' }">
             <img src="/img/logo.svg" class="logo" alt="Vue logo" />
           </RouterLink>
         </div>
-        <div class="col">
+        <div class="col col-md-5  ">
           <div class="input-group ">
             <input type="text" @keyup="search" @keyup.enter="submitSearch" class="form-control"
               aria-label="Recipient's username" aria-describedby="button-addon2" id="address" name="address"
@@ -17,71 +17,53 @@
               </option>
             </datalist>
             <button class="btn btn-outline-secondary" @click="submitSearch" type="button" id="button-addon2">
-              <span class="material-symbols-rounded" style="padding-top: 4px;">
+              <span class="material-symbols-sharp" style="padding-top: 4px;">
                 search
               </span>
             </button>
           </div>
         </div>
-
-        <div class="col ">
-          <div class="dropdown ">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              {{store.user.name + ' ' + store.user.surname}}
+        <div class="col col-md-4 drop-menu  ">
+          <div class="dropdown">
+            <button class="btn btn-info dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img v-if="store.user.id" class="avatar" :src="'http://localhost:8000/' + store.user.image"
+                alt="User-Avatar">
+              <span v-else class="material-symbols-sharp">
+                person
+              </span>
+              <span v-if="store.user.id">{{ store.user.name + ' ' + store.user.surname }}</span>
             </button>
-            <ul class="dropdown-menu  ">
-              <!-- <li><router-link :to="{name: 'home'}"class="dropdown-item">Home</router-link></li> -->
-              <li><router-link :to="{name: 'dashboard'}" class="dropdown-item">Dashboard</router-link></li>
-              <li><router-link :to="{name:'apartments.index'}"class="dropdown-item">I tuoi appartamenti </router-link></li>
-              <li><router-link :to="{name:'apartments.create'}"class="dropdown-item">Aggiungi un appartamento </router-link></li>
-              <li><router-link :to="{name:'dashboard.receivedmessages'}"class="dropdown-item">Messaggi ricevuti </router-link></li>
-              <li><router-link :to="{name:'dashboard.profileupdate'}"class="dropdown-item">Profilo </router-link></li>
-
+            <ul v-if="store.user.id" class="dropdown-menu ">
+              <li><router-link :to="{ name: 'dashboard' }" class="dropdown-item">Dashboard</router-link></li>
+              <li><router-link :to="{ name: 'dashboard.userapartments' }" class="dropdown-item">I tuoi appartamenti
+                </router-link>
+              </li>
+              <li><router-link :to="{ name: 'apartments.create' }" class="dropdown-item">Aggiungi un appartamento
+                </router-link></li>
+              <li><router-link :to="{ name: 'dashboard.receivedmessages' }" class="dropdown-item">Messaggi ricevuti
+                </router-link></li>
+              <li><router-link :to="{ name: 'dashboard.profileupdate' }" class="dropdown-item">Profilo </router-link>
+              </li>
               <li class="align-self-end p-2"><button @click="store.user.logout()" v-if="store.user.id"
                   class="btn btn-outline-danger p-1 ms-2 mb-2">
                   <span class="material-symbols-sharp">
                     logout
                   </span>
                 </button>
-              </li> 
+              </li>
+            </ul>
+            <ul v-else-if="!store.user.id" class="dropdown-menu ">
+              <li>
+                <RouterLink :to="{ name: 'login' }"  class="dropdown-item" :class="$route.fullPath === '/login' ? 'opacity-50' : ''">
+                  <span>Login</span>
+                </RouterLink>
+              </li>
+              <router-link :to="{ name: 'register' }" class="me-2 dropdown-item"
+                :class="$route.fullPath === '/register' ? 'opacity-50' : ''">
+                <span>Registrati</span>
+              </router-link>
             </ul>
           </div>
-
-          <!-- <RouterLink :to="{ name: 'categories.index' }" class="me-2">
-            <CmpBtnLoad content="Categories" />
-          </RouterLink> -->
-
-          <!-- <input type="text" placeholder="search" class="rounded px-1 me-2" style="width: 150px;"> -->
-
-          <!-- <RouterLink :to="{ name: 'apartments.search' }" class="me-2"
-            :class="$route.fullPath === '/apartments' ? 'opacity-50' : ''">
-            <CmpBtnLoad content="Apartments" />
-          </RouterLink> -->
-
-
-
-          <RouterLink v-if="!store.user.id" :to="{ name: 'register' }" class="me-2"
-            :class="$route.fullPath === '/register' ? 'opacity-50' : ''">
-            <CmpBtnLoad content="Register" />
-          </RouterLink>
-
-          <RouterLink v-if="store.user.id" :to="{ name: 'dashboard' }">
-            <CmpBtnLoad :content="store.user.name + ' ' + store.user.surname" :image="store.user.image" />
-          </RouterLink>
-
-          <RouterLink v-else :to="{ name: 'login' }" :class="$route.fullPath === '/login' ? 'opacity-50' : ''">
-
-            <CmpBtnLoad :content="store.user.id === 0 ? 'loading..' : 'Login'"
-              :class="store.user.id === 0 ? 'loading' : ''" />
-
-          </RouterLink>
-
-          <!-- <button @click="store.user.logout()" v-if="store.user.id" class="btn btn-outline-danger p-1 ms-2 mb-2">
-            <span class="material-symbols-sharp">
-              logout
-            </span>
-          </button> -->
         </div>
       </div>
     </div>
@@ -121,8 +103,8 @@ export default {
 
 <style lang="scss" scoped>
 .logo {
-  height: 6em;
-  padding: 1.5em;
+  height: 5em;
+  padding: 0.5em;
   will-change: filter;
   transition: filter 300ms;
 }
@@ -131,12 +113,32 @@ export default {
   filter: drop-shadow(0 0 2em #2C3E50);
 }
 
-@media screen and (max-width: 968px) {
-  .header {
-    background-color: lightgreen;
+.avatar {
+  max-width: 30px;
+  margin-right: 6px;
+}
+
+.anonimous {
+  max-width: 30px;
+
+}
+
+.drop-menu {
+  text-align: right;
+}
+
+
+//Media-Query
+@media screen and (max-width: 768px) {
+  .img {
+    max-width: 80px;
   }
-  .dropdown{
-    display: none;
+
+  .drop-menu {
+    width: 20px;
+
+
   }
+
 }
 </style>
