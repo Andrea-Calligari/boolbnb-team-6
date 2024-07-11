@@ -3,9 +3,7 @@
       <div class="row justify-content-center">
          <div class="col-md-8">
             <div class="card">
-               <!-- <div class="card-header">Register</div> -->
-
-               <!-- <div class="card-body"> -->
+               
 
 
 
@@ -142,90 +140,7 @@
                </form>
 
 
-               <!-- <form @submit.prevent="onRegister">
-
-                     <div class="mb-4 row">
-                        <label for="name" class="col-md-4 col-form-label text-md-right">Nome *</label>
-
-                        <div class="col-md-6">
-                           <input id="name" type="text" class="form-control" v-model="name"
-                              :class="store.validate.isV(isVname)" required autocomplete="name" autofocus>
-
-                           <div v-if="store.validate.isV(isVname) === 'is-invalid'" class="mt-0 text-danger">
-                              Il campo non può essere vuoto e non deve superare i 254 caratteri
-                           </div>
-
-                        </div>
-                     </div>
-
-                     <div class="mb-4 row">
-                        <label for="surname" class="col-md-4 col-form-label text-md-right">Cognome *</label>
-
-                        <div class="col-md-6">
-                           <input id="surname" type="text" class="form-control" v-model="surname"
-                              :class="store.validate.isV(isVsurname)" required autocomplete="surname" autofocus>
-                           <div v-if="store.validate.isV(isVsurname) === 'is-invalid'" class="mt-0 text-danger">
-                              Il campo non può essere vuoto e non deve superare i 254 caratteri
-                           </div>
-                        </div>
-                     </div>
-
-                     <div class="mb-4 row">
-                        <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address *</label>
-
-                        <div class="col-md-6">
-                           <input id="email" type="email" class="form-control" v-model="email"
-                              :class="store.validate.isV(isVemail)" required autocomplete="email">
-
-                           <div v-if="store.validate.isV(isVemail) === 'is-invalid'" class="mt-0 text-danger">
-                              Il campo non può essere vuoto e non deve superare i 254 caratteri
-                           </div>
-                        </div>
-                     </div>
-
-                     <div class="mb-4 row">
-                        <label for="password" class="col-md-4 col-form-label text-md-right">Password *</label>
-
-                        <div class="col-md-6">
-                           <input id="password" type="password" class="form-control" v-model="password"
-                              :class="store.validate.isV(isVpassword)" required autocomplete="new-password">
-
-                           <div v-if="store.validate.isV(isVpassword) === 'is-invalid'" class="mt-0 text-danger">
-                              Il campo deve avere almeno 8 caratteri e non può superare i 254 caratteri
-                           </div>
-                        </div>
-                     </div>
-
-                     <div class="mb-4 row">
-                        <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Confirm
-                           Password *</label>
-
-                        <div class="col-md-6">
-                           <input id="password-confirm" type="password" class="form-control"
-                              v-model="password_confirmation" :class="store.validate.isV(isVpassword_confirmation)"
-                              required autocomplete="new-password">
-
-                           <div v-if="store.validate.isV(isVpassword_confirmation) === 'is-invalid'"
-                              class="mt-0 text-danger">
-                              Il campo Password e Confirm Password devono essere uguali
-                           </div>
-                        </div>
-                     </div>
-
-                     <div class="mb-3">
-                        <label for="image" class="form-label">Immagini</label>
-                        <input class="form-control" type="file" name="image" value="" id="image">
-                     </div>
-
-                     <div class="mb-4 row mb-0">
-                        <div class="col-md-6 offset-md-4">
-                           <button type="submit" class="btn btn-primary">
-                              Register
-                           </button>
-                        </div>
-                     </div>
-                  </form> -->
-               <!-- </div> -->
+               
             </div>
          </div>
       </div>

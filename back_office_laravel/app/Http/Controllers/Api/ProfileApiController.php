@@ -61,10 +61,14 @@ class ProfileApiController extends Controller
      */
     public function destroy(Request $request)
     {
-        // $request->validateWithBag('userDeletion', [
-        //     'password' => ['required', 'current_password'],
-        // ]);
+        //$form_data = $request->all();
+        $request->validateWithBag('userDeletion', [
+            'password' => ['required', 'current_password'],
+        ]);
+         //if(Auth::hash($form_data['password'])){
 
+        
+        
         $user = $request->user();
 
         Auth::logout();
@@ -75,7 +79,13 @@ class ProfileApiController extends Controller
         $request->session()->regenerateToken();
 
         return response()->json(
-            compact('user')
+             compact('user')
+        //$form_data
         );
+        // }else{
+        //     return response()->json([
+        //         'msg' => 'la password non è corretta'
+        //     ]);
+        // }
     }
 }

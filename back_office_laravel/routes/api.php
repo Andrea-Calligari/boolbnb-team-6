@@ -124,7 +124,7 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/profile', [ProfileApiController::class, 'update'])->name('profile.update');
 
-    Route::delete('/profile', [ProfileApiController::class, 'destroy'])->name('profile.destroy');
+    Route::post('/profile/delete', [ProfileApiController::class, 'destroy'])->name('profile.destroy');
 });
 
 //rotte crud categories
