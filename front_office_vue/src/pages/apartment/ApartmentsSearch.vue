@@ -3,7 +3,6 @@
         <div class="row row-cols-2">
             <div class="col-12">
 
-
                 <div class="accordion mb-3" id="fullSerch">
                     <div class="accordion-item">
                         <h2 class="accordion-header">
@@ -14,9 +13,6 @@
                         </h2>
                         <div id="fullSerch1" class="accordion-collapse collapse" data-bs-parent="#fullSerch">
                             <div class="accordion-body">
-                                <!-- <label for="address" class="mb-0">Indirizzo</label>
-                                <input type="text" id="address" class="form-control mb-3"
-                                    v-model="store.search.address"> -->
 
                                 <label for="radius" class="form-label">Distanza in Km: <input
                                         v-model="store.search.radius"
@@ -30,8 +26,6 @@
                                 <input type="range" class="form-range mb-3" min="1" max="100" step="1" id="radius"
                                     v-model="store.search.radius">
 
-
-
                                 <label for="rooms_number" class="form-label">N˚ stanze <input
                                         v-model="store.search.rooms_number"
                                         :class="store.validate.isV(store.search.isVroomsNum)" type="text"
@@ -44,7 +38,6 @@
                                 <input type="range" class="form-range mb-3" min="1" max="15" step="1" id="rooms_number"
                                     v-model="store.search.rooms_number">
 
-
                                 <label for="beds_number" class="form-label">N˚ letti <input
                                         v-model="store.search.beds_number"
                                         :class="store.validate.isV(store.search.isVbedsNum)" type="text" class="raunded"
@@ -56,7 +49,6 @@
                                 </div>
                                 <input type="range" class="form-range mb-3" min="1" max="15" step="1" id="beds_number"
                                     v-model="store.search.beds_number">
-
 
                                 <div class="accordion-item">
                                     <h2 class="accordion-header">
@@ -89,80 +81,36 @@
             </div>
 
             <template v-if="store.search.apartments.length !== 0">
-                <template v-for="apartment in store.search.apartments" :key="apartment.id" :slug="apartment.slug">
-
-                    <div class="col">
-                        <div class="card mb-3 h-100"
-                            :class="store.apartment.isSponsored(apartment) ? 'border  border-4 border-warning' : ''">
-                            <template v-if="apartment.image !== null">
-                                <div v-for="(image, i) in apartment.image.split(',')" :key="'image' + apartment.id">
-                                    <img v-if="i === 0"
-                                        :src="image ? 'http://localhost:8000/' + image : 'http://localhost:8000/uploads/apartment/img_default/null.png'"
-                                        height="300" class="card-img-top" alt="...">
-                                </div>
-                            </template>
-                            <div class="card-body">
-                                <span class="badge rounded-pill bg-success mb-2"
-                                    v-if="apartment.visible === 1">Visibile</span>
-                                <span class="badge rounded-pill bg-secondary mb-2" v-else>Non Visibile</span>
-                                <h5 class="card-title">{{ apartment.title }}</h5>
-
-                                <p class="card-text" v-if="apartment.distance === 0">Distanza: 0Km</p>
-                                <p class="card-text" v-if="apartment.distance">Distanza: {{
-                                    apartment.distance.toFixed(2)
-                                }}Km</p>
-
-
-                                <p class="card-text" v-else>{{ apartment.description }}</p>
-                                <p class="card-text mb-0">Servizi: </p>
-                                <span class="badge text-bg-light me-2 " v-for="service in apartment.services">{{
-                                    service.name
-                                    }}</span>
-                                <p class="card-text">{{ apartment.address }}</p>
-                                <RouterLink :to="{ name: 'apartments.show', params: { slug: apartment.slug } }"
-                                    class="btn btn-primary">
-                                    Mostra più dettagli
-                                </RouterLink>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-
-
-                </template>
+                <ApartmentCard v-for="apartment in store.search.apartments" :key="apartment.id + '-Apartment'"
+                    :apartment="apartment" />
+                    
             </template>
-            
-            
         </div>
     </div>
     <div class="d-flex justify-content-center">
-                <button @click="store.search.setPage(n)" class="btn btn-primary m-4" v-for="n in store.search.lastPage">{{ n }}</button>
-            </div>
-
+        <button @click="store.search.setPage(n)" class="btn btn-primary m-4" v-for="n in store.search.lastPage">{{ n
+            }}</button>
+    </div>
 </template>
 
 <script>
-import axios from 'axios';
 import { store } from '../../store.js';
+import ApartmentCard from '../../components/ApartmentCard.vue'
 export default {
+    components: {
+        ApartmentCard
+    },
     data() {
         return {
             store,
-
         }
     },
-
     methods: {
     },
     mounted() {
         if (!this.store.search.apartments.length) {
             this.store.search.getAll()
-
         }
-
-
     }
 }
 </script>

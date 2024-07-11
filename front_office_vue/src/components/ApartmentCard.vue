@@ -1,7 +1,9 @@
 <template>
-    <div class="col-lg-3 col-md-6 col-sm-12 py-4 d-flex justify-content-center">
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3  py-4 d-flex justify-content-center">
         <div class="card apartment-card rounded-0 h-100 d-flex flex-column">
             <img :src="apartmentImageUrl" class="card-img-top card-image rounded-0" alt="...">
+            <img v-if="isSponsored(apartment)" src="/img/promotion.svg" class="promotion-tag" alt="promotion-tag">
+
             <div class="card-body d-flex flex-column flex-grow-1">
                 <div class="d-flex mb-2 text-muted gap-3 text-small">
                     <div class="d-flex align-items-center gap-1">
@@ -24,6 +26,10 @@
                     </div>
                 </div>
                 <h4 class="card-title mb-2">{{ apartment.title }}</h4>
+                <!-- Esempio distanza -->
+                <p class="card-text" v-if="apartment.distance">
+                    Distanza: {{ apartment.distance.toFixed(2) }}Km</p>
+                <!-- ---------------- -->
                 <div class="">
                     <span class="badge text-bg-light me-1" v-for="(service, i) in services" :key="i">{{ service.name
                         }}</span>
@@ -54,6 +60,7 @@ export default {
     },
     data() {
         return {
+            backOfficeUrl: 'http://localhost:8000/',
             services: []
         }
 
@@ -65,11 +72,22 @@ export default {
             } else {
                 this.services = this.apartment.services
             }
+        },
+        isSponsored(apartment) {
+            const nowDate = new Date();
+            for (let i = 0; i < apartment.promotions.length; i++) {
+                const startDate = new Date(apartment.promotions[i].pivot.start_date);
+                const expirationDate = new Date(apartment.promotions[i].pivot.expiration_date)
+                if (startDate < nowDate && expirationDate > nowDate) {
+                    return true
+                }
+            }
+            return false
         }
     },
     computed: {
         apartmentImageUrl() {
-            return `http://localhost:8000/${this.apartment.image.split(',')[0]}`
+            return this.backOfficeUrl + this.apartment.image.split(',')[0]
         }
     },
     mounted() {
@@ -99,6 +117,14 @@ export default {
         background: linear-gradient(180deg, $light-yellow 40%, $dark-yellow 100%);
         margin: 0px -25px;
         box-shadow: 0 5px 4px -2px rgba(0, 0, 0, 0.2);
+    }
+
+    .promotion-tag {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 40%;
+        transform: translate(12.5%, -12.5%);
     }
 }
 

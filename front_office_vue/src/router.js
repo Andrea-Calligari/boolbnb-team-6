@@ -2,7 +2,6 @@ import { createWebHistory, createRouter } from 'vue-router'
 
 import HomeView from './pages/HomeView.vue'
 import LoginView from './pages/auth/LoginView.vue'
-import ApartmentsIndex from './pages/apartment/ApartmentsIndex.vue'
 import ApartmentsShow from './pages/apartment/ApartmentsShow.vue'
 import ApartmentsCreate from './pages/apartment/ApartmentsCreate.vue'
 import ApatmentsEdit from './pages/apartment/ApatmentsEdit.vue'
@@ -30,8 +29,7 @@ export default createRouter({
     // ---- auth
     { path: '/login', name: 'login', component: LoginView },
     // ---- apartments
-    { path: '/apartment', name: 'apartments.index', component: ApartmentsIndex },
-    { path: '/apartment/search', name: 'apartments.search', component: ApartmentsSearch },
+    { path: '/apartment', name: 'apartments.search', component: ApartmentsSearch },
     { path: '/apartment/:slug', name: 'apartments.show', component: ApartmentsShow, props: true },
 
     // ####################################
