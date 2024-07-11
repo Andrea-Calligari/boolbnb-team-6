@@ -49,29 +49,7 @@ export default {
 
         }
       }
-
-
-
-
-
     });
-
-    // isDashboard() {
-    //   const ArrPath = this.$route.fullPath.split("/");
-    //   if (ArrPath[1]) {
-    //     if (ArrPath[1] === 'dashboard') {
-    //       return true
-    //     } else {
-    //       return false
-    //     }
-    //   } else {
-    //     return false
-    //   }
-
-    // }
-
-
-
     axios.get("http://localhost:8000/api/options")
       .then((res) => {
         this.store.options = res.data

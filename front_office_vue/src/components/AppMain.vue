@@ -41,4 +41,8 @@ export default {
 main {
     flex-grow: 1;
 }
+
+aside {
+    width: 150px;
+}
 </style>
