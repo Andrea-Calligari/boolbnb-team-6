@@ -80,11 +80,12 @@ export default {
 
 
 <style lang="scss" scoped>
-$dark-blue: #0081AF;
-$blue: #00ABE7;
-$light-blue: #2DC7FF;
-$light-yellow: #EAD2AC;
-$dark-yellow: #eaba6b;
+@import '../../assets/scss/partials/variables.scss';
+// $dark-blue: #0081AF;
+// $blue: #00ABE7;
+// $light-blue: #2DC7FF;
+// $light-yellow: #EAD2AC;
+// $dark-yellow: #eaba6b;
 
 .ms_container {
    min-height: 600px;
