@@ -24,8 +24,9 @@
           </div>
         </div>
         <div class="col col-md-4 drop-menu  ">
-          <div class="dropdown">
-            <button class="btn btn-info dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <!-- <div class="dropdown">
+            <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
               <img v-if="store.user.id" class="avatar" :src="'http://localhost:8000/' + store.user.image"
                 alt="User-Avatar">
               <span v-else class="material-symbols-sharp">
@@ -52,9 +53,10 @@
                 </button>
               </li>
             </ul>
-            <ul v-else-if="!store.user.id" class="dropdown-menu ">
+            <ul v-else-if="!store.user.id" class="dropdown-menu  ">
               <li>
-                <RouterLink :to="{ name: 'login' }"  class="dropdown-item" :class="$route.fullPath === '/login' ? 'opacity-50' : ''">
+                <RouterLink :to="{ name: 'login' }" class="dropdown-item"
+                  :class="$route.fullPath === '/login' ? 'opacity-50' : ''">
                   <span>Login</span>
                 </RouterLink>
               </li>
@@ -62,8 +64,50 @@
                 :class="$route.fullPath === '/register' ? 'opacity-50' : ''">
                 <span>Registrati</span>
               </router-link>
+            </ul> -->
+          <div class="dropdown ">
+            <button  @click="closeDropDown" class="dropbtn">
+            <img v-if="store.user.id" class="avatar" :src="'http://localhost:8000/' + store.user.image" alt="User-Avatar">
+            <span v-else class="material-symbols-sharp">
+              person
+            </span>
+              <span v-if="store.user.id">{{ store.user.name + ' ' + store.user.surname }}</span></button>
+              
+            <ul v-if="store.user.id" id="myDropdown" class="dropdown-content m-0 ">
+              
+              <li><router-link :to="{ name: 'dashboard' }" class="dropdown-item">Dashboard</router-link></li>
+              <li><router-link :to="{ name: 'dashboard.userapartments' }" class="dropdown-item">I tuoi
+                  appartamenti</router-link></li>
+              <li><router-link :to="{ name: 'apartments.create' }" class="dropdown-item">Aggiungi un
+                  appartamento</router-link></li>
+              <li><router-link :to="{ name: 'dashboard.receivedmessages' }" class="dropdown-item">Messaggi
+                  ricevuti</router-link></li>
+              <li><router-link :to="{ name: 'dashboard.profileupdate' }" class="dropdown-item">Profilo </router-link>
+              </li>
+              <li>
+                <button @click="store.user.logout()" v-if="store.user.id" class="btn btn-outline-danger p-1 ms-2 mb-2">
+                  <span class="material-symbols-sharp">
+                    logout
+                  </span>
+                </button>
+              </li>
+            </ul>
+            <ul v-else-if="!store.user.id" id="myDropdown" class="dropdown-content m-0">
+              <li>
+                <RouterLink :to="{ name: 'login' }" class="dropdown-item"
+                  :class="$route.fullPath === '/login' ? 'opacity-50' : ''">
+                  <span>Login</span>
+                </RouterLink>
+              </li>
+              <li>
+                <router-link :to="{ name: 'register' }" class="me-2 dropdown-item"
+                  :class="$route.fullPath === '/register' ? 'opacity-50' : ''">
+                  <span>Registrati</span>
+                </router-link>
+              </li>
             </ul>
           </div>
+      
         </div>
       </div>
     </div>
@@ -83,6 +127,21 @@ export default {
     }
   },
   methods: {
+    closeDropDown() {
+      document.getElementById("myDropdown").classList.toggle("show");
+      window.onclick = function (event) {
+        if (!event.target.matches('.dropbtn')) {
+          var dropdowns = document.getElementsByClassName("dropdown-content");
+          var i;
+          for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+              openDropdown.classList.remove('show');
+            }
+          }
+        }
+      }
+    },
     search() {
       if (this.$route.fullPath !== '/apartment/search') {
         this.$router.push({ name: 'apartments.search' });
@@ -102,6 +161,8 @@ export default {
 
 
 <style lang="scss" scoped>
+@use '../assets/scss/partials/_variables.scss' as *;
+
 .logo {
   height: 5em;
   padding: 0.5em;
@@ -127,6 +188,62 @@ export default {
   text-align: right;
 }
 
+/* Dropdown Button */
+.dropbtn {
+  background-color: $light-yellow;
+  color: white;
+  padding: 12px;
+  border:none;
+  font-size: 16px;
+  border-radius: 24px;
+  cursor: pointer;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover,
+.dropbtn:focus {
+  background-color: $dark-yellow;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  text-decoration: none;
+  text-align: left;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: $light-yellow;
+}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {
+  display: flex;
+  padding: 10px;
+  flex-direction: column;
+  // justify-content: flex-start;
+  align-items: start;
+  gap: 4px;
+  z-index: 999;
+}
 
 //Media-Query
 @media screen and (max-width: 768px) {
