@@ -83,8 +83,8 @@
       <div class="col-12">
         <h2 class="pt-3">Views appartamenti</h2>
       </div>
-      <div class="col-12" v-if="views">
-        <!-- <div class="col-12"> -->
+      <!-- <div class="col-12" v-if="views"> -->
+      <div class="col-12">
         <div class="text-end">
           <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
             <input type="radio" class="btn-check" name="radio-btn" id="giornaliero" autocomplete="off" checked>
@@ -99,12 +99,12 @@
         </div>
 
         <div class="scroll-container">
-          <div id="grafics" style="width: 2000px;"></div>
+          <div id="grafics" style="min-width: 1000px;" :class="sliceN !== 10 ? 'day-s' : ''"></div>
         </div>
       </div>
-      <div class="col-12" v-else>
+      <!-- <div class="col-12" v-else>
         <h4>Non hai Views.</h4>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -117,6 +117,7 @@ export default {
   data() {
     return {
       store,
+      sliceN: 10,
       bestApartments: [],
       lastMessages: [],
       views: null,
@@ -128,7 +129,10 @@ export default {
     }
   },
   methods: {
-    parseViews(sliceNumber = 10) {
+    parseViews(sliceNumber) {
+
+      this.sliceN = sliceNumber;
+      console.log(this.sliceN);
       let ArrViews = [];
       let ArrLabels = [];
       let ArrSumViews = [];
@@ -253,6 +257,8 @@ export default {
 
         });
       });
+      this.parseViews(10);
+      this.store.loading.on()
     }).catch((err) => {
       this.store.loading.off();
       this.$router.push({ name: 'home' });
@@ -260,7 +266,9 @@ export default {
     })
   },
   updated() {
-    this.parseViews();
+    if (this.sliceN === 10) {
+      this.parseViews(10);
+    }
     this.store.loading.off()
   }
 }
@@ -269,6 +277,11 @@ export default {
 
 <style lang="scss" scoped>
 @use '../../assets/scss/partials/_variables.scss' as *;
+
+.day-s {
+  min-width: 100% !important;
+}
+
 
 .ms_card {
   width: 100%;
@@ -353,15 +366,12 @@ export default {
       transform: translate(20%, -20%);
       width: 50%;
     }
-
-
   }
 
   &:hover {
     .content-border {
       background: hsla(0, 0%, 100%, 0.3);
       filter: blur(10px);
-
     }
   }
 
@@ -388,8 +398,8 @@ export default {
 }
 
 .scroll-container {
-  overflow: auto;
+  overflow-x: auto;
   white-space: nowrap;
-  width: calc(100vw - 170px);
+  width: calc(100vw - 200px);
 }
 </style>
