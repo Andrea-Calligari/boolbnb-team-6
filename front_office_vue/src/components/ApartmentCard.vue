@@ -1,9 +1,10 @@
 <template>
     <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3  py-4 d-flex justify-content-center">
         <div class="card apartment-card rounded-0 h-100 d-flex flex-column">
-            <img :src="apartmentImageUrl" class="card-img-top card-image rounded-0" alt="...">
-            <img v-if="isSponsored(apartment)" src="/img/promotion.svg" class="promotion-tag" alt="promotion-tag">
-
+            <RouterLink :to="{ name: 'apartments.show', params: { slug: apartment.slug } }">
+                <img :src="apartmentImageUrl" class="card-img-top card-image rounded-0" alt="...">
+                <img v-if="isSponsored(apartment)" src="/img/promotion.svg" class="promotion-tag" alt="promotion-tag">
+            </RouterLink>
             <div class="card-body d-flex flex-column flex-grow-1">
                 <div class="d-flex mb-2 text-muted gap-3 text-small">
                     <div class="d-flex align-items-center gap-1">
@@ -25,28 +26,36 @@
                         <span>{{ apartment.baths_number }}</span>
                     </div>
                 </div>
-                <h4 class="card-title mb-2">{{ apartment.title }}</h4>
-                <!-- Esempio distanza -->
-                <p class="card-text" v-if="apartment.distance">
-                    Distanza: {{ apartment.distance.toFixed(2) }}Km</p>
-                <!-- ---------------- -->
+                <RouterLink :to="{ name: 'apartments.show', params: { slug: apartment.slug } }">
+                    <h4 class="card-title mb-2">{{ apartment.title }}</h4>
+                </RouterLink>
+                <div v-if="apartment.distance" class="d-flex align-items-end gap-1 text-muted mb-2">
+                    <span class="material-symbols-sharp">
+                        location_on
+                    </span>
+                    <span class="small-text">
+                        a {{ apartment.distance.toFixed(2) }} Km</span>
+                </div>
                 <div class="">
                     <span class="badge text-bg-light me-1" v-for="(service, i) in services" :key="i">{{ service.name
                         }}</span>
-                    <button @click="toggleServices" class="badge services-toggle mb-2" v-if="services.length <= 3"><span
-                            class="material-symbols-sharp">
-                            more_horiz
-                        </span></button>
-                    <button @click="toggleServices" class="badge services-toggle mb-2" v-else><span
-                            class="material-symbols-sharp">
-                            keyboard_arrow_up
-                        </span></button>
+                    <template v-if="apartment.services.length > 3">
+                        <button @click="toggleServices" class="badge services-toggle mb-2"
+                            v-if="services.length <= 3"><span class="material-symbols-sharp">
+                                more_horiz
+                            </span></button>
+                        <button @click="toggleServices" class="badge services-toggle mb-2" v-else><span
+                                class="material-symbols-sharp">
+                                keyboard_arrow_up
+                            </span></button>
+                    </template>
                 </div>
                 <div class="price-banner mt-auto py-3">
                     <h5 class="fw-bold ms-4 mb-0">&euro; {{ apartment.price }}</h5>
                 </div>
             </div>
         </div>
+
     </div>
 </template>
 
@@ -101,6 +110,9 @@ export default {
 
 .apartment-card {
 
+    .small-text {
+        font-size: 15px;
+    }
 
     .card-image {
         width: 100%;
@@ -108,9 +120,9 @@ export default {
         box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.2);
     }
 
-    &:hover {
-        cursor: pointer;
-    }
+    // &:hover {
+    //     cursor: pointer;
+    // }
 
     .price-banner {
         background: $light-yellow;

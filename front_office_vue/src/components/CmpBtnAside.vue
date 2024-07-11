@@ -1,0 +1,69 @@
+<template>
+  <div class="scene">
+    <div class="cube">
+      <span class="side top" v-html="top"></span>
+      <span class="side front">
+        <span class="material-symbols-sharp">
+          {{ front }}
+        </span>
+      </span>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  props: ['top', 'front'],
+}
+</script>
+
+
+<style lang="scss" scoped>
+.scene {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.cube {
+  color: #ccc;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  transition: all 0.85s cubic-bezier(.17, .67, .14, .93);
+  transform-style: preserve-3d;
+  transform-origin: 100% 50%;
+  width: 100%;
+  height: 4em;
+}
+
+.cube:hover {
+  transform: rotateX(-90deg);
+}
+
+.side {
+  box-sizing: border-box;
+  position: absolute;
+  display: inline-block;
+  height: 4em;
+  width: 100%;
+  text-align: center;
+
+  font-weight: bold;
+}
+
+.top {
+  padding-top: 0.5em;
+  background: wheat;
+  color: #222229;
+  transform: rotateX(90deg) translate3d(0, 0, 2em);
+  box-shadow: inset 0 0 0 5px #fff;
+}
+
+.front {
+  padding-top: 1.3em;
+  background: #222229;
+  color: #fff;
+  box-shadow: inset 0 0 0 5px #fff;
+  transform: translate3d(0, 0, 2em);
+}
+</style>

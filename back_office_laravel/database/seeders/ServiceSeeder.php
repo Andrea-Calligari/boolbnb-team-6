@@ -18,13 +18,13 @@ class ServiceSeeder extends Seeder
     {
 
         $services = [
-            'Wifi', 'Parcheggio', 'Aria Condizionata', 'carta Igienica', 'Shampoo', 'Self-check-in',
-            'Cucina', 'Piscina', 'Vasca Idromassaggio', 'Lavatrice', 'Tv', 'Riscaldamento',
-            'Allarme antincendio', 'Camino', 'Kit di primo soccorso', 'Ascensore',
-            'Colazione', 'Lavastoviglie', 'Macchina del Caffe', 'Frigorifero', 'Freezer',
-            'Tostapane', 'Cassaforte', 'Porta Blindata', 'Microonde', 'Giochi da tavolo', 'Fasciatoio',
-            'Asciugacapelli', 'Asciugatrice', "Balcone", 'Giardino', 'Palestra', 'Barbeque', 'Rilevatore di monossido di carbonio', 'Scrivania',
-            'Stampante', ' Animali consentiti', 'Area Fumatori', 'Cuccia', 'Servizi di pulizia ', 'Servizi di manutenzione', 'Ingresso privato'
+            'Wifi', 'Parcheggio', 'Aria Condizionata', 'Self-check-in',
+            'Cucina', 'Piscina', 'Vasca Idromassaggio', 'Lavatrice', 'Riscaldamento',
+            'Allarme antincendio', 'Kit di primo soccorso', 'Ascensore',
+            'Colazione', 'Lavastoviglie', 'Macchina del Caffé', 'Frigorifero', 'Freezer', 'Cassaforte', 
+            'Microonde', 'Fasciatoio', 'Asciugatrice', 'Balcone', 'Giardino', 
+            'Palestra', 'Rilevatore di monossido di carbonio', ' Animali consentiti',
+            'Area Fumatori', 'Servizi di pulizia ', 'Servizi di manutenzione', 'Ingresso privato'
         ];
 
         foreach ($services as $service) {
