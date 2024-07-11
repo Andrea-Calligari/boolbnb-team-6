@@ -39,14 +39,16 @@
                 <div class="">
                     <span class="badge text-bg-light me-1" v-for="(service, i) in services" :key="i">{{ service.name
                         }}</span>
-                    <button @click="toggleServices" class="badge services-toggle mb-2" v-if="services.length <= 3"><span
-                            class="material-symbols-sharp">
-                            more_horiz
-                        </span></button>
-                    <button @click="toggleServices" class="badge services-toggle mb-2" v-else><span
-                            class="material-symbols-sharp">
-                            keyboard_arrow_up
-                        </span></button>
+                    <template v-if="apartment.services.length > 3">
+                        <button @click="toggleServices" class="badge services-toggle mb-2"
+                            v-if="services.length <= 3"><span class="material-symbols-sharp">
+                                more_horiz
+                            </span></button>
+                        <button @click="toggleServices" class="badge services-toggle mb-2" v-else><span
+                                class="material-symbols-sharp">
+                                keyboard_arrow_up
+                            </span></button>
+                    </template>
                 </div>
                 <div class="price-banner mt-auto py-3">
                     <h5 class="fw-bold ms-4 mb-0">&euro; {{ apartment.price }}</h5>
