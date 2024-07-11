@@ -171,6 +171,7 @@ export const store = reactive({
         service_ids: [],
         currentPage: 1,
         lastPage: null,
+        response:null,
 
         async getSearch() {
             if (this.isFormValidated()) {
@@ -187,6 +188,7 @@ export const store = reactive({
                     this.apartments = res.data.paginated.apartments
                     this.currentPage = res.data.paginated.current_page
                     this.lastPage = res.data.paginated.last_page
+                    this.response = res.request.responseText
                     store.loading.off();
                 }).catch(function (error) {
                     store.loading.off();

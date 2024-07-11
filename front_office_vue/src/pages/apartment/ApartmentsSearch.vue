@@ -85,6 +85,12 @@
                     :apartment="apartment" />
 
             </template>
+            <div v-else-if='store.search.response == `{"paginated":{"current_page":1,"last_page":0,"apartments":[]}}`'>
+                
+                <h1 class="text-center text-secondary p-3">
+                    la ricerca ha 0 risultati
+                </h1>
+            </div>
             <div v-else class="col-12">
                 <h1 class="text-center text-secondary p-3">
                     Effettua la ricerca
