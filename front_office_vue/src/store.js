@@ -52,7 +52,10 @@ export const store = reactive({
                     });
                 });
                 this.messages.sort((a, b) => -(a.id - b.id))
-                console.log(this.apartments)
+                // console.log(this.apartments)
+                if (this.apartments.length <= 0) {
+                    store.loading.off();
+                }
                 return { msg: 'loaded apartments' }
             }).catch((err) => {
                 console.log(err)

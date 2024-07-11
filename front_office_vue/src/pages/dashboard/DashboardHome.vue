@@ -224,33 +224,36 @@ export default {
         this.bestApartments.push(this.store.user.apartments[0]);
         this.store.user.apartments.sort((a, b) => -(a.services.length - b.services.length))
         this.bestApartments.push(this.store.user.apartments[0]);
-      }
-      this.store.user.apartments.sort((a, b) => -(a.id - b.id))
 
-      for (let index = 0; index < this.store.user.messages.length; index++) {
-        this.lastMessages.push(this.store.user.messages[index]);
-        if (index >= 2) {
-          index = this.store.user.messages.length;
-        }
-      }
-      this.store.user.apartments.forEach((apartment) => {
-        apartment.views.forEach(view => {
-          if (view) {
-            if (!this.views) {
-              this.views = {};
-            }
-            const data = view.viewed_at.slice(0, 10);
-            if (this.views[data]) {
-              this.views[data] = this.views[data] + 1
-            } else {
-              this.views[data] = 1
-            }
+        this.store.user.apartments.sort((a, b) => -(a.id - b.id))
+
+        for (let index = 0; index < this.store.user.messages.length; index++) {
+          this.lastMessages.push(this.store.user.messages[index]);
+          if (index >= 2) {
+            index = this.store.user.messages.length;
           }
+        }
+        this.store.user.apartments.forEach((apartment) => {
+          apartment.views.forEach(view => {
+            if (view) {
+              if (!this.views) {
+                this.views = {};
+              }
+              const data = view.viewed_at.slice(0, 10);
+              if (this.views[data]) {
+                this.views[data] = this.views[data] + 1
+              } else {
+                this.views[data] = 1
+              }
+            }
 
+          });
         });
-      });
-      this.parseViews(10);
-      this.store.loading.on()
+        this.parseViews(10);
+      } else {
+        this.store.loading.off()
+      }
+
     }).catch((err) => {
       this.store.loading.off();
       this.$router.push({ name: 'home' });
