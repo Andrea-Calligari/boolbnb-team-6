@@ -5,7 +5,7 @@
     </main>
 
     <main v-else class="main d-flex">
-        <aside class="text-white p-3 d-flex flex-column bg-dark bg-opacity-75">
+        <aside class="flex-shrink-0 d-flex flex-column">
             <AppAsideDashboard />
         </aside>
         <div class="main-dashbord flex-grow-1">
@@ -38,11 +38,22 @@ export default {
 
 
 <style lang="scss" scoped>
+@use '../assets/scss/partials/_variables.scss' as *;
+
 main {
     flex-grow: 1;
 }
 
 aside {
     width: 150px;
+    background-color: $dark-yellow;
+    padding: 16px;
+
+}
+
+@media screen and (max-width: 576px) {
+    aside {
+        display: none !important;
+    }
 }
 </style>
