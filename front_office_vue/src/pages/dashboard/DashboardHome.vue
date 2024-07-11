@@ -225,20 +225,12 @@ export default {
         this.store.user.apartments.sort((a, b) => -(a.services.length - b.services.length))
         this.bestApartments.push(this.store.user.apartments[0]);
       }
+      this.store.user.apartments.sort((a, b) => -(a.id - b.id))
 
-      let messages = []
-      this.store.user.apartments.forEach(apartment => {
-        apartment.messages.forEach(message => {
-          messages.push(message)
-        });
-      });
-      messages.sort((a, b) => -(a.id - b.id))
-
-      for (let index = 0; index < messages.length; index++) {
-        messages[index].titleApartment = store.user.apartments.find((e) => e.id === messages[index].apartment_id).title
-        this.lastMessages.push(messages[index]);
+      for (let index = 0; index < this.store.user.messages.length; index++) {
+        this.lastMessages.push(this.store.user.messages[index]);
         if (index >= 2) {
-          index = messages.length;
+          index = this.store.user.messages.length;
         }
       }
       this.store.user.apartments.forEach((apartment) => {

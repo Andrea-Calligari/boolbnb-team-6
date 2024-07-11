@@ -1,9 +1,9 @@
 <template>
 
 
-    <div class="accordion" id="accordionExample" v-if="messages.length > 0">
+    <div class="accordion" id="accordionExample" v-if="store.user.messages.length > 0">
 
-        <div class="accordion-item" v-for="(message, i) in messages">
+        <div class="accordion-item" v-for="(message, i) in store.user.messages">
             <h2 class="accordion-header">
                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
                     :data-bs-target="`#collapse${i}`" aria-expanded="true" :aria-controls="`collapse${i}`">
@@ -35,27 +35,17 @@ export default {
     data() {
         return {
             store,
-            messages: []
         }
     },
     methods: {
-        loadMessage() {
-            this.messages = [];
-            this.store.user.apartments.forEach(apartment => {
-                apartment.messages.forEach(message => {
-                    message.titleApartment = store.user.apartments.find((e) => e.id === message.apartment_id).title
-                    this.messages.push(message)
-                });
-            });
-        }
+
     },
     mounted() {
-        this.loadMessage();
-
-        this.store.user.getApartments().then((res) => {
-            console.log(res);
-            this.loadMessage()
-        })
+        this.store.user.getApartments()
+    }
+    ,
+    updated() {
+        this.store.loading.off()
     }
 
 }

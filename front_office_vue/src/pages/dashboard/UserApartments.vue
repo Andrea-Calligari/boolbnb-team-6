@@ -26,6 +26,9 @@ export default {
     },
     mounted() {
         this.store.user.getApartments();
+    },
+    updated() {
+        this.store.loading.off()
     }
 
 }

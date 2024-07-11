@@ -83,8 +83,14 @@
             <template v-if="store.search.apartments.length !== 0">
                 <ApartmentCard v-for="apartment in store.search.apartments" :key="apartment.id + '-Apartment'"
                     :apartment="apartment" />
-                    
+
             </template>
+            <div v-else class="col-12">
+                <h1 class="text-center text-secondary p-3">
+                    Effettua la ricerca
+                </h1>
+            </div>
+
         </div>
     </div>
     <div class="d-flex justify-content-center">
@@ -108,9 +114,9 @@ export default {
     methods: {
     },
     mounted() {
-        if (!this.store.search.apartments.length) {
-            this.store.search.getAll()
-        }
+        // if (!this.store.search.apartments.length) {
+        //     this.store.search.getAll()
+        // }
     }
 }
 </script>

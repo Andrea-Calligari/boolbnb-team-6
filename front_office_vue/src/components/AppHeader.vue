@@ -13,7 +13,8 @@
               aria-label="Recipient's username" aria-describedby="button-addon2" id="address" name="address"
               v-model="store.search.address" placeholder="Inserisci indirizzo" list="position">
             <datalist id="position">
-              <option v-for="position in store.address.listAddresses">{{ position.address.freeformAddress }}
+              <option v-for="position in store.address.listAddresses">{{
+                position.address.freeformAddress }}
               </option>
             </datalist>
             <button class="btn btn-outline-secondary" @click="submitSearch" type="button" id="button-addon2">
@@ -54,7 +55,8 @@
             </ul>
             <ul v-else-if="!store.user.id" class="dropdown-menu ">
               <li>
-                <RouterLink :to="{ name: 'login' }"  class="dropdown-item" :class="$route.fullPath === '/login' ? 'opacity-50' : ''">
+                <RouterLink :to="{ name: 'login' }" class="dropdown-item"
+                  :class="$route.fullPath === '/login' ? 'opacity-50' : ''">
                   <span>Login</span>
                 </RouterLink>
               </li>

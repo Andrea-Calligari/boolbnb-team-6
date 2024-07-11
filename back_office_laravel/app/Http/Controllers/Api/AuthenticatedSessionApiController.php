@@ -19,9 +19,9 @@ class AuthenticatedSessionApiController extends Controller
         $request->session()->regenerate();
 
         $user = Auth::user();
-        $apartments = Apartment::where('user_id', Auth::id())->with('messages', 'category', 'promotions', 'services')->get();
+        // $apartments = Apartment::where('user_id', Auth::id())->with('messages', 'category', 'promotions', 'services')->get();
 
-        return response()->json(compact('user', 'apartments'));
+        return response()->json(compact('user'));
     }
 
     // All user apartments

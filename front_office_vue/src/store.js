@@ -12,6 +12,7 @@ export const store = reactive({
     // -- Se id é 0 oppure null non é loggato
     user: {
         apartments: [],
+        messages: [],
         id: 0,
         async getUser() {
             this.id = 0;
@@ -36,17 +37,26 @@ export const store = reactive({
             this.image = data.user.image;
             this.email_verified_at = data.user.email_verified_at;
             this.admin = data.user.admin;
-
-            this.apartments = data.apartments;
             store.loading.off();
         },
         async getApartments() {
+            store.loading.on();
             return await axios.get(`${store.urlBackend}userapartments`).then((res) => {
                 this.apartments = res.data.apartments
+                this.apartments.sort((a, b) => -(a.id - b.id))
+                this.messages = [];
+                this.apartments.forEach(apartment => {
+                    apartment.messages.forEach(message => {
+                        message.titleApartment = this.apartments.find((e) => e.id === message.apartment_id).title
+                        this.messages.push(message)
+                    });
+                });
+                this.messages.sort((a, b) => -(a.id - b.id))
                 console.log(this.apartments)
                 return { msg: 'loaded apartments' }
             }).catch((err) => {
                 console.log(err)
+                store.loading.off();
             })
         },
         logout() {
@@ -157,7 +167,7 @@ export const store = reactive({
         isVbedsNum: null,
         service_ids: [],
         currentPage: 1,
-        lastPage:null,
+        lastPage: null,
 
         async getSearch() {
             if (this.isFormValidated()) {
@@ -183,8 +193,8 @@ export const store = reactive({
 
         },
 
-        setPage(n){
-            if(n === this.currentPage) return
+        setPage(n) {
+            if (n === this.currentPage) return
             this.currentPage = n
 
             this.getSearch()
