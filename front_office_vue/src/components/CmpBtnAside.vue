@@ -1,19 +1,21 @@
 <template>
   <div class="scene">
-    <div class="cube">
+    <div class="cube" :class="$route.fullPath === path ? 'just-top' : ''">
       <span class="side top" v-html="top"></span>
       <span class="side front">
         <span class="material-symbols-sharp">
           {{ front }}
         </span>
       </span>
+
+      <!-- :class="$route.fullPath === '/register' ? 'opacity-50' : ''" -->
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['top', 'front'],
+  props: ['top', 'front', 'path'],
 }
 </script>
 
@@ -37,6 +39,10 @@ export default {
 }
 
 .cube:hover {
+  transform: rotateX(-90deg);
+}
+
+.just-top {
   transform: rotateX(-90deg);
 }
 
