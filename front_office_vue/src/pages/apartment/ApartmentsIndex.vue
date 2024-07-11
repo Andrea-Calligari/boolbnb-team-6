@@ -1,8 +1,8 @@
 <template>
     <div class="container">
-        <div class="row row-cols-2">
+        <div class="row ">
             <template v-if="apartments.length !== 0">
-                <div class="col" v-for="apartment in apartments" :key="apartment.id" :slug="apartment.slug">
+                <div class="col-4" v-for="apartment in apartments" :key="apartment.id" :slug="apartment.slug">
                     <div class="card mb-3">
                         <template v-if="apartment.image !== null">
                             <div v-for="(image, i) in apartment.image.split(',')" :key="'image' + apartment.id">

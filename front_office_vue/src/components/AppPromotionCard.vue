@@ -6,7 +6,7 @@
       </div>
       <div class="flip-card-back">
         <p class="title">{{ promotion.description }}</p>
-        <p class="price">$ {{ promotion.price }}</p>
+        <p class="price">€ {{ promotion.price }}</p>
       </div>
     </div>
   </div>
@@ -21,11 +21,9 @@ export default {
     }
   },
   methods: {
-
   },
   data() {
     return {
-
     }
   }
 }
@@ -34,15 +32,12 @@ export default {
 <style lang="scss" scoped>
 @use '../assets/scss/partials/_variables.scss' as *;
 
-
 .flip-card {
   background-color: transparent;
   width: 190px;
   height: 254px;
   perspective: 1000px;
-  //   font-family: sans-serif;
   cursor: pointer;
-
 }
 
 .title {
@@ -50,12 +45,8 @@ export default {
   font-weight: 900;
   text-align: center;
   margin: 0;
-  
   padding: 6px;
-
 }
-
-
 
 .flip-card-inner {
   position: relative;
@@ -70,8 +61,6 @@ export default {
   transform: rotateY(180deg);
 
 }
-
-
 
 .flip-card-front,
 .flip-card-back {
@@ -100,12 +89,10 @@ export default {
       bisque 40%, rgb(255, 185, 160) 78%);
   color: white;
   transform: rotateY(180deg);
-  
-}
 
+}
 .price {
   font-weight: bold;
-
   font-size: 30px;
   margin-top: 20px;
 
