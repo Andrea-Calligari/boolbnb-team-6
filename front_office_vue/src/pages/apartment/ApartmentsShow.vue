@@ -73,8 +73,8 @@
                 </RouterLink>
 
 
-                <button v-if="apartment.user_id === store.user.id" @click="onDelete()"
-                    class="btn btn-danger">Delete</button>
+                <button v-if="apartment.user_id === store.user.id" data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop"  class="btn btn-danger">Delete</button>
 
                 <a v-if="apartment.user_id !== store.user.id" class="btn btn-primary" data-bs-toggle="offcanvas"
                     href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
@@ -162,6 +162,29 @@
 
     </div>
 
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Sei sicuro di voler eliminare l'annuncio?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                    <button type="button" @click="onDelete()" class="btn btn-primary" data-bs-dismiss="modal">Si</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </template>
 
 <script>
@@ -197,11 +220,16 @@ export default {
 
     methods: {
         async onDelete() {
+
+
             await axios.delete(`http://localhost:8000/api/apartments/${this.slug}`).then((res) => {
                 this.$router.push({ name: 'apartments.index' });
             }).catch((err) => {
                 console.log(err.response.data)
             })
+
+
+
 
 
         },
@@ -237,7 +265,7 @@ export default {
                 }).then((res) => {
                     //console.log(res)
                     this.send = true
-                    
+
                     setTimeout(function () {
                         document.getElementById('close').click()
                     }, 2000);
