@@ -1,0 +1,7 @@
+@mixin simple-badge {
+    box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 6px 12px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: baseline;
+}

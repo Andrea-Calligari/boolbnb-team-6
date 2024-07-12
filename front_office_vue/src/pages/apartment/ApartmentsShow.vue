@@ -30,8 +30,8 @@
                     </div>
                 </div>
                 <div class="col-6 d-flex flex-column justify-content-between align-items-end">
-                    <div class="simple-card d-flex gap-1 p-2">
-                        <h3 class="mb-0 align-self-center">&euro;{{ apartment.price }}</h3><span class="align-self-end">
+                    <div class="price-badge d-flex gap-1 p-2">
+                        <h4 class="mb-0 align-self-center">&euro;{{ apartment.price }}</h4><span class="align-self-end">
                             a notte</span>
                     </div>
                     <p class="text-end">{{ expDate }}</p>
@@ -86,21 +86,27 @@
                         <div>
                             <RouterLink v-if="apartment.user_id === store.user.id"
                                 :to="{ name: 'apartments.edit', params: { slug: apartment.slug } }"
-                                class="btn dark-blue-bg text-white me-2">
+                                class="btn dark-blue-bg text-white me-2 rounded-0">
                                 Modifica
                             </RouterLink>
 
                             <RouterLink v-if="apartment.user_id === store.user.id"
                                 :to="{ name: 'apartments.promotion', params: { slug: apartment.slug } }"
-                                class="btn dark-blue-bg text-white me-2">
+                                class="btn dark-blue-bg text-white me-2 rounded-0">
                                 Sponsorizza
                             </RouterLink>
 
+                            <RouterLink v-if="apartment.user_id === store.user.id"
+                                :to="{ name: 'dashboard.statistic', params: { slug: apartment.slug } }"
+                                class="btn dark-blue-bg text-white me-2 rounded-0">
+                                Statistiche
+                            </RouterLink>
 
                             <button v-if="apartment.user_id === store.user.id" data-bs-toggle="modal"
-                                data-bs-target="#staticBackdrop" class="btn dark-blue-bg text-white">Elimina</button>
+                                data-bs-target="#staticBackdrop"
+                                class="btn dark-blue-bg text-white rounded-0">Elimina</button>
 
-                            <a v-if="apartment.user_id !== store.user.id" class="btn dark-blue-bg text-white"
+                            <a v-if="apartment.user_id !== store.user.id" class="btn dark-blue-bg text-white rounded-0"
                                 data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
                                 aria-controls="offcanvasExample">
                                 Chiedi Informazioni
@@ -109,7 +115,7 @@
                     </div>
                     <p class="card-text">{{ apartment.description }}</p>
                     <div class="d-flex"></div>
-                    <span class="simple-card me-3 mt-2" v-for="service in apartment.services">
+                    <span class="service-badge me-3 mt-2" v-for="service in apartment.services">
                         {{ service.name
                         }}
                     </span>
@@ -243,36 +249,33 @@
 
 <style lang="scss" scoped>
 @use '../../assets/scss/partials/variables.scss' as *;
+@use '../../assets/scss/partials/mixins.scss' as *;
 
-.simple-card {
+.price-badge {
+    @include simple-badge;
+    background: $light-yellow;
+    background: linear-gradient(180deg, $light-yellow 40%, $dark-yellow 100%);
+}
 
-    box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 6px;
-    border-radius: 5px;
-    text-align: center;
-    display: inline-block;
-    vertical-align: baseline;
-    background-color: $light-yellow;
+.service-badge {
+    @include simple-badge;
+    background: #f4e5cc;
 }
 
 .apartment-title {
     color: $dark-yellow
 }
 
-.dark-yellow-bg {
-    background-color: $dark-yellow;
-}
+// .dark-yellow-bg {
+//     background-color: $dark-yellow;
+// }
 
-.dark-blue-bg {
-    background-color: $dark-blue;
-}
+// .dark-blue-bg {
+//     background-color: $dark-blue;
+// }
 
-.dark-blue-font {
-    color: $dark-blue;
-}
-
-// .info-section {
-//     background-color: $light-yellow;
+// .dark-blue-font {
+//     color: $dark-blue;
 // }
 
 @media (min-width: 768px) {}

@@ -1,2 +1,13 @@
 @use './variables' as *;
 
+.dark-yellow-bg {
+    background-color: $dark-yellow;
+}
+
+.dark-blue-bg {
+    background-color: $dark-blue;
+}
+
+.dark-blue-font {
+    color: $dark-blue;
+}
