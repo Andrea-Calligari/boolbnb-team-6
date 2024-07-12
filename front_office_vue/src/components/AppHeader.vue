@@ -66,7 +66,7 @@
               </router-link>
             </ul> -->
           <div class="dropdown ">
-            <button @click="openDropDown" class="dropbtn">
+            <button @click.self="openDropDown" class="dropbtn">
               <img @click.stop="openDropDown" v-if="store.user.id" class="avatar" :src="'http://localhost:8000/' + store.user.image"
                 alt="User-Avatar">
               <span v-else class="material-symbols-sharp">
