@@ -4,41 +4,7 @@
     <section class="carousel-section py-3">
         <div class="container" v-if="apartment">
             <div class="row">
-                <div class="col-6">
-                    <h2 class="apartment-title">{{ apartment.title }} </h2>
-                    <p class="text-muted">{{ apartment.address }}</p>
-                    <div class="d-flex mb-2 text-muted gap-3 text-small">
-                        <div>{{ apartment.mtq }} mq</div>
-                        <div class="d-flex align-items-center gap-1">
-                            <span class="material-symbols-sharp pb-0">
-                                home
-                            </span>
-                            <span>{{ apartment.rooms_number }}</span>
-                        </div>
-                        <div class="d-flex align-items-center gap-1">
-                            <span class="material-symbols-sharp pb-0">
-                                bed
-                            </span>
-                            <span>{{ apartment.beds_number }}</span>
-                        </div>
-                        <div class="mb-0 d-flex align-items-center gap-1">
-                            <span class="material-symbols-sharp pb-0">
-                                bathtub
-                            </span>
-                            <span>{{ apartment.baths_number }}</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 d-flex flex-column justify-content-between align-items-end">
-                    <div class="price-badge d-flex gap-1 p-2">
-                        <h4 class="mb-0 align-self-center">&euro;{{ apartment.price }}</h4><span class="align-self-end">
-                            a notte</span>
-                    </div>
-                    <p class="text-end">{{ expDate }}</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
+                <div class="carousel-col">
                     <div id="carouselExampleIndicators" class="carousel slide">
                         <div class="carousel-indicators">
                             <template v-if="apartment.image !== null">
@@ -68,6 +34,111 @@
                         </button>
                     </div>
                 </div>
+                <div class="title-price-col">
+                    <div class="title-price-section">
+                        <div>
+                            <h2 class="apartment-title">{{ apartment.title }} </h2>
+                            <p class="text-muted">{{ apartment.address }}</p>
+                            <div class="d-flex mb-2 text-muted gap-3 text-small">
+                                <div>{{ apartment.mtq }} mq</div>
+                                <div class="d-flex align-items-center gap-1">
+                                    <span class="material-symbols-sharp pb-0">
+                                        home
+                                    </span>
+                                    <span>{{ apartment.rooms_number }}</span>
+                                </div>
+                                <div class="d-flex align-items-center gap-1">
+                                    <span class="material-symbols-sharp pb-0">
+                                        bed
+                                    </span>
+                                    <span>{{ apartment.beds_number }}</span>
+                                </div>
+                                <div class="mb-0 d-flex align-items-center gap-1">
+                                    <span class="material-symbols-sharp pb-0">
+                                        bathtub
+                                    </span>
+                                    <span>{{ apartment.baths_number }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="price-section ">
+                            <div class="price-badge d-flex gap-1 p-2">
+                                <h4 class="mb-0 align-self-center">&euro;{{ apartment.price }}</h4><span
+                                    class="align-self-end">
+                                    a notte</span>
+                            </div>
+                            <p class="text-end mt-2 mb-4">{{ expDate }}</p>
+
+                            <form @submit.prevent="onSend" v-if="apartment.user_id !== store.user.id" class="
+                                message-form">
+                                <h5>Contatta il proprietario</h5>
+                                <div class="mb-2 d-flex">
+                                    <label for="name" class="col-md-4 col-form-label text-md-right">Nome</label>
+
+                                    <div class="">
+                                        <input id="name" type="text" class="form-control" v-model="name"
+                                            :class="store.validate.isV(isVname)" autocomplete="name" autofocus>
+
+                                        <div v-if="store.validate.isV(isVname) === 'is-invalid'"
+                                            class="mt-0 text-danger">
+                                            Il campo non può essere vuoto e non deve superare i 254 caratteri
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="mb-2 d-flex">
+                                    <label for="surname" class="col-md-4 col-form-label text-md-right">Cognome</label>
+
+                                    <div class="">
+                                        <input id="surname" type="text" class="form-control" v-model="surname"
+                                            :class="store.validate.isV(isVsurname)" autocomplete="surname" autofocus>
+
+
+                                        <div v-if="store.validate.isV(isVsurname) === 'is-invalid'"
+                                            class="mt-0 text-danger">
+                                            Il campo non può essere vuoto e non deve superare i 254 caratteri
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-2 d-flex">
+                                    <label for="email" class="col-md-4 col-form-label text-md-right">E-mail
+                                        *</label>
+
+                                    <div class="">
+                                        <input id="email" type="email" class="form-control" v-model="email"
+                                            :class="store.validate.isV(isVemail)" required autocomplete="email">
+
+                                        <div v-if="store.validate.isV(isVemail) === 'is-invalid'"
+                                            class="mt-0 text-danger">
+                                            Il campo non può essere vuoto e non deve superare i 254 caratteri
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="text" class="form-label">Testo messaggio *</label>
+                                    <textarea class="form-control" v-model="text" rows="3"
+                                        :class="store.validate.isV(isVtext)" id="text" name="text"
+                                        placeholder="Inserisci messaggio"></textarea>
+                                    <div v-if="store.validate.isV(isVtext) === 'is-invalid'" class="mt-0 text-danger">
+                                        Il testo non deve superare i 1000 caratteri
+                                    </div>
+                                </div>
+
+                                <div class="row mb-0">
+                                    <div class="">
+                                        <button type="submit" class="btn dark-blue-bg text-white rounded-0">
+                                            invia
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="mb-4 row" v-if="send === true">messaggio inviato</div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -77,7 +148,7 @@
         <div class="container" v-if="apartment">
             <div class="row">
                 <div class="col">
-                    <div class="d-flex justify-content-between">
+                    <div class="host-btns-section">
                         <p>{{ apartment.category.name }} di proprietà di <span class="fw-bold dark-blue-font">{{
                             apartment.user.name }} {{
                                     apartment.user.surname
@@ -106,14 +177,14 @@
                                 data-bs-target="#staticBackdrop"
                                 class="btn dark-blue-bg text-white rounded-0">Elimina</button>
 
-                            <a v-if="apartment.user_id !== store.user.id" class="btn dark-blue-bg text-white rounded-0"
-                                data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
-                                aria-controls="offcanvasExample">
+                            <a v-if="apartment.user_id !== store.user.id"
+                                class="btn ask-info-btn dark-blue-bg text-white rounded-0" data-bs-toggle="offcanvas"
+                                href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
                                 Chiedi Informazioni
                             </a>
                         </div>
                     </div>
-                    <p class="card-text">{{ apartment.description }}</p>
+                    <p class="card-text mt-2">{{ apartment.description }}</p>
                     <div class="d-flex"></div>
                     <span class="service-badge me-3 mt-2" v-for="service in apartment.services">
                         {{ service.name
@@ -124,17 +195,14 @@
         </div>
     </section>
 
-    <!-- buttons + offcanvas -->
+    <!--offcanvas -->
     <div class="container" v-if="apartment">
         <div class="row">
             <div class="col">
-
-
-
                 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
                     aria-labelledby="offcanvasExampleLabel">
                     <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+                        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Contatta il proprietario</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"
                             id="close"></button>
                     </div>
@@ -142,7 +210,7 @@
                         <form @submit.prevent="onSend">
 
                             <div class="mb-4 row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
+                                <label for="name" class="col-md-4 col-form-label text-md-right">Nome</label>
 
                                 <div class="col-md-6">
                                     <input id="name" type="text" class="form-control" v-model="name"
@@ -156,7 +224,7 @@
                             </div>
 
                             <div class="mb-4 row">
-                                <label for="surname" class="col-md-4 col-form-label text-md-right">Surname</label>
+                                <label for="surname" class="col-md-4 col-form-label text-md-right">Cognome</label>
 
                                 <div class="col-md-6">
                                     <input id="surname" type="text" class="form-control" v-model="surname"
@@ -171,8 +239,8 @@
                             </div>
 
                             <div class="mb-4 row">
-                                <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail
-                                    Address *</label>
+                                <label for="email" class="col-md-4 col-form-label text-md-right">E-mail
+                                    *</label>
 
                                 <div class="col-md-6">
                                     <input id="email" type="email" class="form-control" v-model="email"
@@ -266,21 +334,115 @@
     color: $dark-yellow
 }
 
-// .dark-yellow-bg {
-//     background-color: $dark-yellow;
-// }
+.title-price-col {
+    width: 50%;
+    order: 2
+}
 
-// .dark-blue-bg {
-//     background-color: $dark-blue;
-// }
+.carousel-col {
+    width: 50%;
+    order: 1
+}
 
-// .dark-blue-font {
-//     color: $dark-blue;
-// }
+.title-price-section {
+    display: flex;
+    flex-direction: column;
+}
 
-@media (min-width: 768px) {}
+.price-section {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
 
-@media (min-width: 576px) {}
+.message-form {
+    border: solid 2px rgb(239, 239, 239);
+    padding: 15px;
+    box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.ask-info-btn {
+    display: none
+}
+
+.host-btns-section {
+    display: flex;
+    justify-content: space-between;
+}
+
+@media (max-width: 992px) {
+
+    .title-price-section {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between
+    }
+
+    .price-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+
+    .message-form {
+        display: none
+    }
+
+    .title-price-col {
+        width: 100%;
+        order: 1
+    }
+
+    .carousel-col {
+        width: 100%;
+        order: 2
+    }
+
+    .ask-info-btn {
+        display: block
+    }
+}
+
+@media (max-width: 576px) {
+
+    .title-price-section {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .price-section {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .message-form {
+        display: none
+    }
+
+    .title-price-col {
+        width: 100%;
+        order: 1
+    }
+
+    .carousel-col {
+        width: 100%;
+        order: 2
+    }
+
+    .ask-info-btn {
+        display: block
+    }
+
+    .host-btns-section {
+        display: block;
+    }
+}
 </style>
 
 <script>
