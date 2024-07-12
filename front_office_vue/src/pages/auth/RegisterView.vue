@@ -1,14 +1,10 @@
 <template>
-   <div class="container mt-4">
+   <div class="container ms_container mt-4 d-flex flex-column justify-content-center">
       <div class="row justify-content-center">
          <div class="col-12 col-lg-8">
 
-
-
-
-
             <form @submit.prevent="onRegister" class="form_main">
-               <p class="heading">Register</p>
+               <p class="heading">Registrati</p>
                <div class="inputContainer">
                   <svg class="inputIcon" viewBox="0 0 18 18" version="1.1" width="16" height="16" fill="#2e2e2e"
                      xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

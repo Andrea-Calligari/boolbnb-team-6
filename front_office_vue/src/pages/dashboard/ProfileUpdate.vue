@@ -1,10 +1,10 @@
 <template>
-    <div class="container mt-4">
+    <div class="container ms_container mt-4 d-flex flex-column justify-content-center">
         <div class="row justify-content-center align-content-center flex-column">
             <div class="col-md-8">
 
                 <form @submit.prevent="onUpdate" class="form_main">
-                    <p class="heading">Register</p>
+                    <p class="heading">Aggiorna profilo</p>
                     <div class="inputContainer">
                         <svg class="inputIcon" viewBox="0 0 18 18" version="1.1" width="16" height="16" fill="#2e2e2e"
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -106,21 +106,32 @@
 
 
             </div>
-            <div class="col-md-8 d-flex flex-column justify-content-center align-items-center mt-4">
+            <div class="col-md-8 d-flex flex-column justify-content-center align-items-center mt-2">
 
-                <button class="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <div class="card w-25">
+                <div class="card-header bg-danger text-center">
+                    Elimina account
+                </div>
+                <div class="card-body d-flex justify-content-center">
+                
+                    <button class="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                     <svg viewBox="0 0 448 512" class="svgIcon">
                         <path
                             d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z">
                         </path>
                     </svg>
                 </button>
-
                 <div v-if="message" class="mt-4 text-danger">
                     Per eliminare l'account devi inserire la password corretta
                 </div>
+                </div>
             </div>
+
+                
+            </div>
+
             
+
         </div>
 
         <!-- Modal -->
@@ -272,11 +283,6 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../assets/scss/partials/variables.scss';
-// $dark-blue: #0081AF;
-// $blue: #00ABE7;
-// $light-blue: #2DC7FF;
-// $light-yellow: #EAD2AC;
-// $dark-yellow: #eaba6b;
 
 .form_main {
     width: 100%;
