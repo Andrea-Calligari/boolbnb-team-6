@@ -108,8 +108,8 @@
             </div>
             <div class="col-md-8 d-flex flex-column justify-content-center align-items-center mt-2">
 
-                <div class="card w-25">
-                <div class="card-header bg-danger text-center">
+                <div class="card w-25 rounded-0">
+                <div class="card-header bg-danger text-center rounded-0">
                     Elimina account
                 </div>
                 <div class="card-body d-flex justify-content-center">
