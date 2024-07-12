@@ -1,6 +1,6 @@
 <template>
     <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3  py-4 d-flex justify-content-center">
-        <div class="card apartment-card rounded-0 h-100 d-flex flex-column">
+        <div class="card apartment-card rounded-0 h-100 d-flex flex-column w-100">
             <RouterLink :to="{ name: 'apartments.show', params: { slug: apartment.slug } }">
                 <img :src="apartmentImageUrl" class="card-img-top card-image rounded-0" alt="...">
                 <img v-if="isSponsored(apartment)" src="/img/promotion.svg" class="promotion-tag" alt="promotion-tag">
@@ -96,7 +96,12 @@ export default {
     },
     computed: {
         apartmentImageUrl() {
-            return this.backOfficeUrl + this.apartment.image.split(',')[0]
+            if (this.apartment.image) {
+                return this.backOfficeUrl + this.apartment.image.split(',')[0]
+            } else {
+                return this.backOfficeUrl + 'uploads/apartment/img_default/null.png'
+            }
+
         }
     },
     mounted() {

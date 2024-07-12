@@ -6,6 +6,8 @@ axios.defaults.withXSRFToken = true;
 export const store = reactive({
     // url backend per le chiamate Api 
     urlBackend: "http://localhost:8000/api/",
+    urlBackendOrigin: "http://localhost:8000/",
+
 
     // contiene tutti i dati dell'user, 
     // compreso di appartamenti dell'utente loggato e i relativi messaggi
@@ -171,7 +173,7 @@ export const store = reactive({
         service_ids: [],
         currentPage: 1,
         lastPage: null,
-        response:null,
+        response: null,
 
         async getSearch() {
             if (this.isFormValidated()) {

@@ -1024,6 +1024,187 @@ class ApartmentSeeder extends Seeder
 
         ];
 
+        $apartments = array(
+            array(
+                "title" => "Accogliente Monolocale  hdegf67467hj in Centro",
+                "description" => "Monolocale luminoso con cucina attrezzata e bagno privato. A due passi dai principali luoghi di interesse."
+            ),
+            array(
+                "title" => "Appartamento hdegf67467hj Moderno con Vista Mare",
+                "description" => "Elegante appartamento con due camere da letto, soggiorno spazioso e terrazza con vista panoramica sul mare."
+            ),
+            array(
+                "title" => "Bilocale hdegf67467hj Ristrutturato in Zona Tranquilla",
+                "description" => "Bilocale recentemente ristrutturato, con finiture di pregio e giardino privato. Perfetto per coppie."
+            ),
+            array(
+                "title" => "Spazioso Trilocale hdegf67467hj con Parcheggio",
+                "description" => "Trilocale ampio e luminoso, con cucina abitabile, balcone e posto auto riservato. Ottimi collegamenti con i mezzi pubblici."
+            ),
+            array(
+                "title" => "Attico hdegf67467hj di Lusso in Centro Storico",
+                "description" => "Attico esclusivo con rifiniture di alta qualità, due terrazze panoramiche e vista sulla città. Disponibile con o senza arredamento."
+            ),
+            array(
+                "title" => "Monolocale hdegf67467hj Economico Vicino alla Metro",
+                "description" => "Monolocale funzionale e ben collegato, situato a pochi passi dalla stazione della metro. Ideale per studenti."
+            ),
+            array(
+                "title" => "Ampio Quadrilocale hdegf67467hj con Doppi Servizi",
+                "description" => "Quadrilocale spazioso con due bagni, cucina abitabile e tre camere da letto. Perfetto per famiglie numerose."
+            ),
+            array(
+                "title" => "Bilocale hdegf67467hj con Giardino Privato",
+                "description" => "Bilocale accogliente con accesso diretto a un giardino privato. Zona tranquilla e ben servita."
+            ),
+            array(
+                "title" => "Trilocale hdegf67467hj Arredato in Zona Residenziale",
+                "description" => "Trilocale arredato con gusto, situato in un'area residenziale verde e silenziosa. Ideale per giovani coppie."
+            ),
+            array(
+                "title" => "Monolocale hdegf67467hj di Design nel Cuore della Città",
+                "description" => "Monolocale moderno e di design, con arredi nuovi e tutti i comfort. Posizione centralissima."
+            ),
+            array(
+                "title" => "Appartamento hdegf67467hj Panoramico con Terrazza",
+                "description" => "Appartamento con vista mozzafiato, terrazza spaziosa e ambienti luminosi. Contesto signorile."
+            ),
+            array(
+                "title" => "Bilocale hdegf67467hj con Cucina a Vista",
+                "description" => "Bilocale con cucina a vista, soggiorno ampio e balcone. Ottime condizioni interne."
+            ),
+            array(
+                "title" => "Attico hdegf67467hj con Piscina Condominiale",
+                "description" => "Attico esclusivo con accesso a piscina condominiale e terrazza privata. Finiture di pregio."
+            ),
+            array(
+                "title" => "Trilocale hdegf67467hj con Camino e Giardino",
+                "description" => "Trilocale caratteristico con camino funzionante e giardino di proprietà. Ambiente rustico e accogliente."
+            ),
+            array(
+                "title" => "Quadrilocale hdegf67467hj con Garage Doppio",
+                "description" => "Quadrilocale ben disposto con garage doppio, cucina abitabile e tre camere da letto. Zona tranquilla."
+            ),
+            array(
+                "title" => "Appartamento hdegf67467hj di Charme in Villa Storica",
+                "description" => "Appartamento unico in villa storica ristrutturata, con soffitti affrescati e ampio parco condominiale."
+            ),
+            array(
+                "title" => "Bilocale hdegf67467hj con Vista Parco",
+                "description" => "Bilocale con splendida vista sul parco, soggiorno luminoso e cucina separata. Ideale per amanti della natura."
+            ),
+            array(
+                "title" => "Monolocale hdegf67467hj in Stabile di Pregio",
+                "description" => "Monolocale elegante e ben rifinito, situato in uno stabile di pregio con portineria. Ottima posizione."
+            ),
+            array(
+                "title" => "Trilocale hdegf67467hj Vicino al Mare",
+                "description" => "Trilocale a pochi passi dalla spiaggia, con due camere da letto e terrazza vista mare. Perfetto per vacanze."
+            ),
+            array(
+                "title" => "Ampio Bilocale hdegf67467hj con Soffitta",
+                "description" => "Bilocale di grandi dimensioni con soffitta abitabile, cucina separata e bagno finestrato. Zona servita."
+            ),
+            array(
+                "title" => "Attico hdegf67467hj con Vista Montagna",
+                "description" => "Attico con vista sulle montagne, ampie vetrate e terrazza abitabile. Contesto tranquillo e riservato."
+            ),
+            array(
+                "title" => "Monolocale hdegf67467hj con Angolo Cottura",
+                "description" => "Monolocale ben organizzato con angolo cottura e bagno privato. Vicino a tutti i servizi principali."
+            ),
+            array(
+                "title" => "Quadrilocale hdegf67467hj su Due Livelli",
+                "description" => "Quadrilocale disposto su due livelli, con scala interna, due bagni e giardino condominiale. Ideale per famiglie."
+            ),
+            array(
+                "title" => "Bilocale hdegf67467hj con Terrazza Abitabile",
+                "description" => "Bilocale moderno con ampia terrazza abitabile, soggiorno con angolo cottura e camera matrimoniale."
+            ),
+            array(
+                "title" => "Trilocale hdegf67467hj Ristrutturato con Balcone",
+                "description" => "Trilocale recentemente ristrutturato, con balcone, cucina abitabile e due camere da letto. Pronto da abitare."
+            ),
+            array(
+                "title" => "Monolocale hdegf67467hj Centralissimo",
+                "description" => "Monolocale in posizione centrale, a due passi dalle principali attrazioni turistiche. Ottimo investimento."
+            ),
+            array(
+                "title" => "Appartamento hdegf67467hj con Giardino Condominiale",
+                "description" => "Appartamento con affaccio su giardino condominiale, soggiorno ampio e cucina separata. Zona ben servita."
+            ),
+            array(
+                "title" => "Bilocale hdegf67467hj in Complesso Residenziale",
+                "description" => "Bilocale in complesso residenziale con piscina e area giochi per bambini. Ideale per famiglie giovani."
+            ),
+            array(
+                "title" => "Trilocale hdegf67467hj con Cantina e Garage",
+                "description" => "Trilocale con cantina e garage, cucina abitabile e ampio soggiorno. Zona tranquilla e ben collegata."
+            ),
+            array(
+                "title" => "Monolocale hdegf67467hj Vicino al Politecnico",
+                "description" => "Monolocale perfetto per studenti, situato vicino al Politecnico. Completamente arredato e pronto da abitare."
+            ),
+            array(
+                "title" => "Attico hdegf67467hj con Terrazza Panoramica",
+                "description" => "Attico con grande terrazza panoramica, tre camere da letto e doppi servizi. Finiture di lusso."
+            ),
+            array(
+                "title" => "Bilocale hdegf67467hj Economico in Periferia",
+                "description" => "Bilocale economico in periferia, ideale per chi cerca una soluzione conveniente. Ben collegato dai mezzi pubblici."
+            ),
+            array(
+                "title" => "Trilocale hdegf67467hj con Doppi Servizi",
+                "description" => "Trilocale con due bagni, soggiorno spazioso e cucina abitabile. Ottimo per famiglie numerose."
+            ),
+            array(
+                "title" => "Monolocale hdegf67467hj di Recente Costruzione",
+                "description" => "Monolocale in edificio di recente costruzione, con finiture moderne e spazi ben organizzati."
+            ),
+            array(
+                "title" => "Quadrilocale hdegf67467hj in Zona Centrale",
+                "description" => "Quadrilocale in posizione centrale, con tre camere da letto e doppi servizi. Ottimo investimento immobiliare."
+            ),
+            array(
+                "title" => "Bilocale hdegf67467hj con Posto Auto",
+                "description" => "Bilocale con posto auto riservato, soggiorno con angolo cottura e camera matrimoniale. Zona servita."
+            ),
+            array(
+                "title" => "Trilocale hdegf67467hj Arredato con Giardino",
+                "description" => "Trilocale completamente arredato con giardino privato, ideale per coppie o piccole famiglie."
+            ),
+            array(
+                "title" => "Monolocale hdegf67467hj in Zona Universitaria",
+                "description" => "Monolocale perfetto per studenti, situato in zona universitaria. Completamente arredato e vicino ai servizi."
+            ),
+            array(
+                "title" => "Appartamento hdegf67467hj con Piscina Privata",
+                "description" => "Appartamento di lusso con piscina privata, ampie vetrate e terrazza abitabile. Finiture di pregio e giardino privato. Perfetto per coppie."
+            ),
+            array(
+                "title" => "Accogliente Monolocale hdegf67467hj in Centro",
+                "description" => "Monolocale luminoso con cucina attrezzata e bagno privato. A due passi dai principali luoghi di interesse."
+            ),
+            array(
+                "title" => "Appartamento hdegf67467hj Moderno con Vista Mare",
+                "description" => "Elegante appartamento con due camere da letto, soggiorno spazioso e terrazza con vista panoramica sul mare."
+            ),
+            array(
+                "title" => "Bilocale hdegf67467hj Ristrutturato in Zona Tranquilla",
+                "description" => "Bilocale recentemente ristrutturato, con finiture di pregio e giardino privato. Perfetto per coppie."
+            ),
+            array(
+                "title" => "Spazioso Trilocale hdegf67467hj con Parcheggio",
+                "description" => "Trilocale ampio e luminoso, con cucina abitabile, balcone e posto auto riservato. Ottimi collegamenti con i mezzi pubblici."
+            ),
+            array(
+                "title" => "Attico hdegf67467hj di Lusso in Centro Storico",
+                "description" => "Attico esclusivo con rifiniture di alta qualità, due terrazze panoramiche e vista sulla città. Disponibile con o senza arredamento."
+            )
+        );
+
+
+
 
         $user_ids = User::all()->pluck('id')->all();
         $service_ids = Service::all()->pluck('id')->all();
@@ -1036,8 +1217,11 @@ class ApartmentSeeder extends Seeder
 
         foreach ($arrAddress as $key => $addresses) {
 
+            $name = $faker->firstName(null);
+            $apartment_tit_desc = $faker->randomElement($apartments);
+
             if (checkEqual($arrAddress, $addresses['address'], $key)) {
-                $title = $faker->sentence(3);
+                $title = str_replace("hdegf67467hj", $name, $apartment_tit_desc['title']);
                 $slug = $title;
                 $n = 0;
                 do {
@@ -1053,8 +1237,8 @@ class ApartmentSeeder extends Seeder
 
                 $new_apartment->title = $title;
                 $new_apartment->slug = Str::slug($slug);
-                $new_apartment->description = $faker->sentence();
-                $new_apartment->price = $faker->randomFloat(2, 1, 9999);
+                $new_apartment->description = $apartment_tit_desc['description'];
+                $new_apartment->price = $faker->randomFloat(2, 20, 1200);
                 $new_apartment->rooms_number = $faker->numberBetween(2, 10);
                 $new_apartment->beds_number = $faker->numberBetween(1, 5);
                 $new_apartment->baths_number = $faker->numberBetween(1, 3);

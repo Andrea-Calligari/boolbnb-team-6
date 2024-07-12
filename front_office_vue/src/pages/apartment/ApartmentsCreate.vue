@@ -92,14 +92,17 @@
                 <input class="form-control" type="file" name="image" value="" id="image" multiple>
             </div>
 
+
             <div class="mb-3">
-                <label for="category" class="form-label">categorie *</label>
+                <label for="category" class="form-label">Categorie</label>
                 <select name="category" v-model="category" id="category">
+                    <option :value="0">Seleziona una categoria</option>
                     <option v-for="cateGory in store.options.categories" :key="cateGory.id" :value="cateGory.id">{{
                         cateGory.name }}</option>
-
                 </select>
-
+                <div v-if="store.validate.isV(isVcategory) === 'is-invalid'" class="mt-0 text-danger">
+                    Devi selezionare almeno una categoria
+                </div>
             </div>
 
             <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 mb-3"
@@ -162,7 +165,8 @@ export default {
             isVvisible: null,
             image: [],
             isVimage: null,
-            category: 1,
+            category: 0,
+            isVcategory: 0,
             services: [],
             isVservices: null
 
@@ -180,7 +184,7 @@ export default {
             this.isVbaths = this.store.validate._integer(this.baths)
             this.isVmtq = this.store.validate._integer(this.mtq, 1, 99999)
             this.isVaddress = this.store.validate._string(this.address)
-            // validate image 
+            this.isVcategory = this.store.validate._integer(this.category, 1, store.options.categories.length)
             this.isVvisible = this.store.validate._boolean(this.visible)
             this.isVservices = this.services.length != 0
 
@@ -194,7 +198,8 @@ export default {
                 this.isVmtq &&
                 this.isVaddress &&
                 this.isVvisible &&
-                this.isVservices
+                this.isVservices &&
+                this.isVcategory
 
             ) {
                 return true
@@ -203,8 +208,6 @@ export default {
             }
         },
         async onCreate(e) {
-            // console.dir(e.target.elements["image"].value);
-
             if (this.isFormValidated()) {
 
                 this.position = await fetch(`https://api.tomtom.com/search/2/geocode/${encodeURI(this.address)}.json?key=orDHPznfE908Jeu45AKVaFSiSMAebYfQ`)

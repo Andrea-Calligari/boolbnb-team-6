@@ -17,16 +17,14 @@
       <div class="col-6 col-md-3 col-xl-2 mb-3" v-if="bestApartments.length > 0"
         v-for="(apartment, i) in bestApartments">
         <div class="ms_card">
-          <img class="bg-1"
-            :src="apartment.image.split(',')[0] ? 'http://localhost:8000/' + apartment.image.split(',')[0] : 'http://localhost:8000/uploads/apartment/img_default/null.png'">
+          <img class="bg-1" :src="apartmentImageUrl(apartment)">
           <div class="line-container">
             <div class="line-around"></div>
           </div>
 
           <RouterLink :to="{ name: 'apartments.show', params: { slug: apartment.slug } }" class="content">
 
-            <img class="bg-1 bg-inset"
-              :src="apartment.image.split(',')[0] ? 'http://localhost:8000/' + apartment.image.split(',')[0] : 'http://localhost:8000/uploads/apartment/img_default/null.png'">
+            <img class="bg-1 bg-inset" :src="apartmentImageUrl(apartment)">
 
             <img class="best-ico" :src="bestIco[i]" alt="">
             <p class="title mb-0">{{ apartment.title }}</p>
@@ -129,6 +127,14 @@ export default {
     }
   },
   methods: {
+    apartmentImageUrl(apartment) {
+      if (apartment.image) {
+        return this.store.urlBackendOrigin + apartment.image.split(',')[0]
+      } else {
+        return this.store.urlBackendOrigin + 'uploads/apartment/img_default/null.png'
+      }
+
+    },
     parseViews(sliceNumber) {
 
       this.sliceN = sliceNumber;
@@ -211,8 +217,6 @@ export default {
       );
     }
   },
-  computed: {
-  },
   mounted() {
     this.store.loading.on();
     this.store.user.getApartments().then((res) => {
@@ -265,7 +269,8 @@ export default {
       this.parseViews(10);
     }
     this.store.loading.off()
-  }
+  },
+
 }
 </script>
 

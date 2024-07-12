@@ -102,16 +102,20 @@
             </div>
 
             <div class="mb-3">
-                <label for="category" class="form-label">categorie</label>
+                <label for="category" class="form-label">Categorie</label>
                 <select name="category" v-model="category" id="category">
+                    <option :value="0">Seleziona una categoria</option>
                     <option v-for="cateGory in store.options.categories" :key="cateGory.id" :value="cateGory.id">{{
                         cateGory.name }}</option>
-
                 </select>
+                <div v-if="store.validate.isV(isVcategory) === 'is-invalid'" class="mt-0 text-danger">
+                    Devi selezionare almeno una categoria
+                </div>
             </div>
-        
 
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 mb-3" :class="isVservices === false ? 'border border-danger rounded' : ''">
+
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 mb-3"
+                :class="isVservices === false ? 'border border-danger rounded' : ''">
                 <div class="col" v-for="(serVice, i) in store.options.services " :key=serVice.id>
                     <input type="checkbox" :checked="serVice.id === services[i]" :id="serVice.name" :value="serVice.id"
                         v-model="services">
@@ -119,7 +123,7 @@
                 </div>
             </div>
 
-            <div v-if="services.length === 0"> devi selezionare almeno 1 servizio</div>
+            <div v-if="services.length === 0"> Devi selezionare almeno 1 servizio</div>
 
 
 
@@ -164,21 +168,22 @@ export default {
             position: null,
             description: '',
             isVdescription: null,
-            price: 1,
+            price: 0,
             isVprice: null,
-            rooms: 1,
+            rooms: 0,
             isVrooms: null,
-            beds: 1,
+            beds: 0,
             isVbeds: null,
-            baths: 1,
+            baths: 0,
             isVbaths: null,
-            mtq: 1,
+            mtq: 0,
             isVmtq: null,
             visible: '1',
             isVvisible: null,
             image: [],
             isVimage: null,
             category: 1,
+            isVcategory: 0,
             services: [],
             user_id: 0,
             isVservices: null
@@ -195,7 +200,7 @@ export default {
             this.isVbaths = this.store.validate._integer(this.baths)
             this.isVmtq = this.store.validate._integer(this.mtq, 1, 99999)
             this.isVaddress = this.store.validate._string(this.address)
-            // validate image 
+            this.isVcategory = this.store.validate._integer(this.category, 1, store.options.categories.length)
             this.isVvisible = this.store.validate._boolean(this.visible)
             this.isVservices = this.services.length != 0
 
@@ -209,7 +214,8 @@ export default {
                 this.isVmtq &&
                 this.isVaddress &&
                 this.isVvisible &&
-                this.isVservices
+                this.isVservices &&
+                this.isVcategory
             ) {
                 return true
             } else {
@@ -224,7 +230,7 @@ export default {
                     .then((data) => { return data.results[0].position })
                     .catch((error) => {
                         console.log(error);
-                        window.scrollTo(0,0)
+                        window.scrollTo(0, 0)
                         this.isVaddress = false
                         return false
                     });
@@ -233,7 +239,7 @@ export default {
 
                     console.log(this.position);
 
-                    await axios.post(`http://localhost:8000/api/apartments/${this.slug}/data`, {
+                    await axios.post(`http://localhost:8000/api/apartments/${this.slug}`, {
                         title: this.title,
                         description: this.description,
                         price: this.price,
@@ -267,10 +273,6 @@ export default {
         },
 
         removeImage(i) {
-            // const ciao = [...this.image]
-            // console.log(typeof(ciao))
-            // const img2 = this.image.toSpliced(i,1)
-            // console.log(img2)
             this.image = this.image.toSpliced(i, 1)
         }
 
@@ -279,7 +281,7 @@ export default {
     computed: {
     },
     mounted() {
-        axios.get(`http://127.0.0.1:8000/api/apartments/${this.slug}`).then((res) => {
+        axios.get(`http://localhost:8000/api/apartments/${this.slug}/data`).then((res) => {
 
             let results = res.data.apartment
             if (this.store.user.id === results.user_id) {
@@ -300,10 +302,10 @@ export default {
             this.beds = results.beds_number
             this.baths = results.baths_number
             this.visible = results.visible
-            if(results.image != null){
+            if (results.image != null) {
                 this.image = results.image.split(',')
             }
-            
+
             this.category = results.category_id
             for (let i = 0; i < results.services.length; i++) {
                 this.services.push(results.services[i].id)
