@@ -1,16 +1,16 @@
 <template>
   <header class="header">
-    <div class="container-lg container-sm">
-      <div class="row align-items-center">
-        <div class="col img  col-md-3 col-sm-2 ">
+    <div class="container-auto text-center">
+      <div class="row align-items-center justify-content-between m-0">
+        <div class="col img col-md-3 col-sm-2 ">
           <RouterLink :to="{ name: 'home' }">
             <img src="/img/logo.svg" class="logo" alt="Vue logo" />
           </RouterLink>
         </div>
-        <div class="col col-md-5  ">
+        <div class="col-6 col-md-4 col-sm-8 ">
           <!-- Searchbar -->
           <div class="input-group ">
-            <input type="text" @keyup="search" @keyup.enter="submitSearch" class="form-control"
+            <input type="text" @keyup="search" @keyup.enter="submitSearch" class="form-control rounded-0"
               aria-label="Recipient's username" aria-describedby="button-addon2" id="address" name="address"
               v-model="store.search.address" placeholder="Inserisci indirizzo" list="position">
             <datalist id="position">
@@ -19,7 +19,7 @@
               </option>
             </datalist>
             <!-- Button search -->
-            <button class="btn btn-outline-secondary" @click="submitSearch" type="button" id="button-addon2">
+            <button class="btn btn-outline-secondary rounded-0" @click="submitSearch" type="button" id="button-addon2">
               <span class="material-symbols-sharp" style="padding-top: 4px;">
                 search
               </span>
@@ -29,31 +29,33 @@
 
         <!-- User dropdown -->
 
-        <div class="col col-md-4 drop-menu  ">
+        <div class="col col-md-3 drop-menu  ">
           <div class="dropdown ">
-            <button @click.self="openDropDown" class="dropbtn">
+            <button @click.self="openDropDown" class="dropbtn ">
               <img @click.stop="openDropDown" v-if="store.user.id" class="avatar"
                 :src="'http://localhost:8000/' + store.user.image" alt="User-Avatar">
               <span @click.stop="openDropDown" v-else class="material-symbols-sharp">
                 person
               </span>
-              <span @click.stop="openDropDown" v-if="store.user.id">{{ store.user.name + ' ' + store.user.surname
+              <span class="user-name" @click.stop="openDropDown" v-if="store.user.id">{{ store.user.name + ' ' +
+                store.user.surname
                 }}</span>
             </button>
             <div v-if="store.user.id" id="myDropdown" class="dropdown-content  m-0 ">
               <div class="input">
                 <button class="value">
-                  <span class="material-symbols-sharp text-dark">
-                    dashboard
-                  </span>
-                  <router-link :to="{ name: 'dashboard' }" class="dropdown-item text-dark ">Dashboard</router-link>
+                  <router-link :to="{ name: 'dashboard' }" class="dropdown-item text-dark "><span
+                      class="material-symbols-sharp text-dark">
+                      dashboard
+                    </span>Dashboard</router-link>
                 </button>
                 <button class="value">
-                  <span class="material-symbols-sharp text-dark">
-                    apartment
-                  </span>
-                  <router-link :to="{ name: 'dashboard.userapartments' }" class="dropdown-item text-dark ">I tuoi
-                    appartamenti</router-link>
+                  <router-link :to="{ name: 'dashboard.userapartments' }" class="dropdown-item text-dark ">
+                    <span class="material-symbols-sharp text-dark">
+                      apartment
+                    </span>
+                    I tuoi appartamenti
+                  </router-link>
                 </button>
                 <button class="value">
                   <span class="material-symbols-sharp text-dark">
@@ -73,7 +75,7 @@
                   <span class="material-symbols-sharp text-danger">
                     logout
                   </span>
-                  <button @click="store.user.logout()" v-if="store.user.id" class=" dropdown-item text-dark  ">
+                  <button @click="store.user.logout()" v-if="store.user.id" class=" dropdown-item text-danger  ">
                     Logout
                   </button>
                 </button>
@@ -84,21 +86,18 @@
             <div v-else-if="!store.user.id" id="myDropdown" class="dropdown-content m-0">
               <div class="input ">
                 <button class="value text-start">
-                  <span class="material-symbols-sharp text-success">
-                    login
-                  </span>
-                  <router-link :to="{ name: 'login' }" class="dropdown-item text-success"
-                    :class="$route.fullPath === '/login' ? 'opacity-50' : ''">
+                  <router-link :to="{ name: 'login' }" class="dropdown-item text-success">
+                    <span class="material-symbols-sharp text-success">
+                      login
+                    </span>
                     <span>Login</span>
                   </router-link>
                 </button>
                 <button class="value text-start">
-
-                  <span class="material-symbols-sharp text-dark">
-                    app_registration
-                  </span>
-                  <router-link :to="{ name: 'register' }" class="me-2 dropdown-item text-dark"
-                    :class="$route.fullPath === '/register' ? 'opacity-50' : ''">
+                  <router-link :to="{ name: 'register' }" class="me-2 dropdown-item text-dark">
+                    <span class="material-symbols-sharp text-dark">
+                      app_registration
+                    </span>
                     <span>Registrati</span>
                   </router-link>
                 </button>
@@ -111,17 +110,10 @@
   </header>
 </template>
 
-
-
-
-
-
 <script>
 import { store } from '../store.js';
 import axios from 'axios';
-import CmpBtnLoad from './CmpBtnLoad.vue';
 export default {
-  components: { CmpBtnLoad },
   data() {
     return {
       store,
@@ -167,7 +159,9 @@ export default {
 @use '../assets/scss/partials/_variables.scss' as *;
 
 .header {
-  // background 
+  padding: 12px;
+  background-color: white;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 
 }
 
@@ -192,25 +186,24 @@ export default {
 
 }
 
-.drop-menu {
-  text-align: right;
+
+.material-symbols-sharp {
+  margin-right: 10px;
 }
 
 /* Dropdown Button */
 .dropbtn {
-  background-color: $light-yellow;
-  color: white;
+  color: black;
   padding: 12px;
   border: none;
   font-size: 16px;
-  border-radius: 24px;
   cursor: pointer;
 }
 
 /* Dropdown button on hover & focus */
 .dropbtn:hover,
 .dropbtn:focus {
-  background-color: $light-blue;
+  background-color: $light-yellow;
   cursor: pointer;
 
 }
@@ -258,7 +251,7 @@ export default {
 
 // Dropdown di prova
 .input {
-  background-color: #fafafa;
+  background-color: rgba($color: #fafafa, $alpha: 0.7);
   display: flex;
   flex-direction: column;
   width: 200px;
@@ -279,7 +272,7 @@ export default {
   position: relative;
   gap: 5px;
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: 4px;
   transition: 1s;
   box-sizing: border-box;
 }
@@ -294,7 +287,6 @@ export default {
 
 .value:focus,
 .value:active {
-  background-color: #fafafa;
   outline: none;
   margin-left: 17px;
 }
@@ -330,28 +322,79 @@ export default {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 //Media-Query
-@media screen and (max-width: 768px) {
-  .img {
-    max-width: 80px;
-  }
+@media screen  and (max-width: 768px) {
+.img {
+  max-width: 100px;
+}
+.drop-menu {
+  width: 20px;
+   padding-right: 60px;
+  
+}
 
-  .drop-menu {
-    width: 20px;
+.user-name{
+  display: none;
+}
+.dropdown-content {
+  background-color: transparent;
+  position: absolute;
+  right: 40px;
+  max-width: 60px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+}
+.input {
+  background-color: rgba($color: #fafafa, $alpha: 0.7);
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  justify-content: center;
+  border-radius: 10px;
+  transition: 1s;
+  padding: 10px;
+  overflow: hidden;
+}
+.col.col-md-5{
+  width: 80%;
+}
 
+}
 
-  }
-
+@media screen and (max-width: 568px){
+.dropdown-content {
+  background-color: transparent;
+  position: absolute;
+  right: 50px;
+  max-width: 60px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+}
+.drop-menu{
+  width: 20px;
+ padding-right: 60px;
+}
+.dropbtn {
+  color: black;
+  padding: 12px;
+  border: none;
+  font-size: 16px;
+  margin-right: 12px;
+  cursor: pointer;
+}
+.input {
+  background-color: rgba($color: #fafafa, $alpha: 0.7);
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  justify-content: center;
+  border-radius: 10px;
+  transition: 1s;
+  padding: 10px;
+  overflow: hidden;
+}
+.col.col-md-5{
+  width: 80%;
+}
 }
 </style>
