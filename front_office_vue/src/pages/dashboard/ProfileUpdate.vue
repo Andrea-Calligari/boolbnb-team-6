@@ -1,5 +1,5 @@
 <template>
-    <div class="container ms_container mt-4 d-flex flex-column justify-content-center">
+    <div class="container  mt-4 d-flex flex-column justify-content-center">
         <div class="row justify-content-center align-content-center flex-column">
             <div class="col-md-8">
 
@@ -283,6 +283,9 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../assets/scss/partials/variables.scss';
+// .ms_container_update{
+//     max-height: 90vh;
+// }
 
 .form_main {
     width: 100%;
