@@ -67,12 +67,12 @@
             </ul> -->
           <div class="dropdown ">
             <button @click="openDropDown" class="dropbtn">
-              <img v-if="store.user.id" class="avatar" :src="'http://localhost:8000/' + store.user.image"
+              <img @click.stop="openDropDown" v-if="store.user.id" class="avatar" :src="'http://localhost:8000/' + store.user.image"
                 alt="User-Avatar">
               <span v-else class="material-symbols-sharp">
                 person
               </span>
-              <span v-if="store.user.id">{{ store.user.name + ' ' + store.user.surname }}</span>
+              <span @click.stop="openDropDown" v-if="store.user.id">{{ store.user.name + ' ' + store.user.surname }}</span>
             </button>
             <div v-if="store.user.id" id="myDropdown" class="dropdown-content  m-0 ">
               <div class="input ">
@@ -82,7 +82,7 @@
                       d="m1.5 13v1a.5.5 0 0 0 .3379.4731 18.9718 18.9718 0 0 0 6.1621 1.0269 18.9629 18.9629 0 0 0 6.1621-1.0269.5.5 0 0 0 .3379-.4731v-1a6.5083 6.5083 0 0 0 -4.461-6.1676 3.5 3.5 0 1 0 -4.078 0 6.5083 6.5083 0 0 0 -4.461 6.1676zm4-9a2.5 2.5 0 1 1 2.5 2.5 2.5026 2.5026 0 0 1 -2.5-2.5zm2.5 3.5a5.5066 5.5066 0 0 1 5.5 5.5v.6392a18.08 18.08 0 0 1 -11 0v-.6392a5.5066 5.5066 0 0 1 5.5-5.5z"
                       fill="#7D8590"></path>
                   </svg>
-                  <router-link :to="{ name: 'dashboard' }" class="dropdown-item  text-light">Dashboard</router-link>
+                  <router-link :to="{ name: 'dashboard' }" class="dropdown-item text-light ">Dashboard</router-link>
                 </button>
                 <button class="value">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" id="Line">
@@ -93,7 +93,7 @@
                       d="m16 23c-3.859 0-7-3.141-7-7s3.141-7 7-7 7 3.141 7 7-3.141 7-7 7zm0-12c-2.757 0-5 2.243-5 5s2.243 5 5 5 5-2.243 5-5-2.243-5-5-5z"
                       fill="#7D8590" id="XMLID_1645_"></path>
                   </svg>
-                  <router-link :to="{ name: 'dashboard.userapartments' }" class="dropdown-item text-light">I tuoi
+                  <router-link :to="{ name: 'dashboard.userapartments' }" class="dropdown-item text-light ">I tuoi
                     appartamenti</router-link>
                 </button>
                 <button class="value">
@@ -123,6 +123,7 @@
                   Notifications
                 </button>
               </div>
+
 
               <!-- <li><router-link :to="{ name: 'dashboard' }" class="dropdown-item">Dashboard</router-link></li>
               <li><router-link :to="{ name: 'dashboard.userapartments' }" class="dropdown-item">I tuoi
@@ -188,15 +189,15 @@ export default {
       document.getElementById("myDropdown").classList.toggle("show");
       window.onclick = function (event) {
         if (!event.target.matches('.dropbtn')) {
-          var dropdowns = document.getElementsByClassName("dropdown-content");
-          var i;
-          for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
+          const dropdowns = document.getElementsByClassName("dropdown-content");
+          for (let i = 0; i < dropdowns.length; i++) {
+            const openDropdown = dropdowns[i];
             if (openDropdown.classList.contains('show')) {
               openDropdown.classList.remove('show');
             }
           }
         }
+        console.log('click')
       }
 
     },
@@ -373,7 +374,7 @@ export default {
 
 .input:hover> :not(.value:hover) {
   transition: 300ms;
-  filter: blur(1.5px);
+  filter: blur(0.7px);
   transform: scale(0.95, 0.95);
 }
 
