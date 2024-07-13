@@ -34,7 +34,7 @@
             <button @click.self="openDropDown" class="dropbtn ">
               <img @click.stop="openDropDown" v-if="store.user.id" class="avatar"
                 :src="'http://localhost:8000/' + store.user.image" alt="User-Avatar">
-              <span @click.stop="openDropDown" v-else class="material-symbols-sharp">
+              <span @click.stop="openDropDown" v-else class="material-symbols-sharp m-0">
                 person
               </span>
               <span class="user-name" @click.stop="openDropDown" v-if="store.user.id">{{ store.user.name + ' ' +
@@ -44,7 +44,8 @@
             <div v-if="store.user.id" id="myDropdown" class="dropdown-content  m-0 ">
               <div class="input">
                 <button class="value">
-                  <router-link :to="{ name: 'dashboard' }" class="dropdown-item text-dark "><span
+                  <router-link :to="{ name: 'dashboard' }" class="dropdown-item text-dark ">
+                    <span
                       class="material-symbols-sharp text-dark">
                       dashboard
                     </span>Dashboard</router-link>
@@ -65,17 +66,20 @@
                     ricevuti</router-link>
                 </button>
                 <button class="value">
-                  <span class="material-symbols-sharp text-dark">
+                  
+                  <router-link :to="{ name: 'dashboard.profileupdate' }" class="dropdown-item text-dark ">
+                    <span class="material-symbols-sharp text-dark">
                     person
                   </span>
-                  <router-link :to="{ name: 'dashboard.profileupdate' }" class="dropdown-item text-dark ">Profilo
+                    Profilo
                   </router-link>
                 </button>
                 <button class="value text-start">
-                  <span class="material-symbols-sharp text-danger">
-                    logout
-                  </span>
+                 
                   <button @click="store.user.logout()" v-if="store.user.id" class=" dropdown-item text-danger  ">
+                     <span class="material-symbols-sharp text-danger">
+                      logout
+                    </span>
                     Logout
                   </button>
                 </button>
