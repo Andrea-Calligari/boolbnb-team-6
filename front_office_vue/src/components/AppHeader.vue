@@ -9,7 +9,7 @@
         </div>
         <div class="col-6 col-md-4 col-sm-8 ">
           <!-- Searchbar -->
-          <div class="input-group ">
+          <div class="input-group justify-content-end">
             <input type="text" @keyup="search" @keyup.enter="submitSearch" class="form-control rounded-0 responsive"
               aria-label="Recipient's username" aria-describedby="button-addon2" id="address" name="address"
               v-model="store.search.address" placeholder="Inserisci indirizzo" list="position">
@@ -19,8 +19,8 @@
               </option>
             </datalist>
             <!-- Button search -->
-            <button class="btn btn-outline-secondary rounded-0" @click="submitSearch" type="button" id="button-addon2">
-              <span class="material-symbols-sharp" style="padding-top: 4px;">
+            <button class="btn btn-outline-secondary rounded-0  text-center" @click="submitSearch" type="button" id="button-addon2">
+              <span class="material-symbols-sharp mx-0" style="padding-top: 4px;">
                 search
               </span>
             </button>
@@ -29,9 +29,9 @@
 
         <!-- User dropdown -->
 
-        <div class="col col-md-3 drop-menu  ">
-          <div class="dropdown ">
-            <button @click.self="openDropDown" class="dropbtn ">
+        <div class="col col-md-3 drop-menu login_button px-0">
+          <div class="dropdown mx-0">
+            <button @click.self="openDropDown" class="dropbtn mx-0">
               <img @click.stop="openDropDown" v-if="store.user.id" class="avatar"
                 :src="'http://localhost:8000/' + store.user.image" alt="User-Avatar">
               <span @click.stop="openDropDown" v-else class="material-symbols-sharp m-0">
@@ -371,6 +371,12 @@ export default {
 @media screen and (max-width: 568px){
 .responsive{
   display: none;
+}
+
+.login_button{
+  display: flex;
+
+  justify-content: end;
 }
 
 .dropdown-content {
