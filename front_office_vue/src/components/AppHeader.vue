@@ -58,14 +58,14 @@
                   </router-link>
                 </button>
                 <button class="value">
-                  <span class="material-symbols-sharp text-dark">
+                  <router-link :to="{ name: 'dashboard.receivedmessages' }" class="dropdown-item text-dark ">
+                    <span class="material-symbols-sharp text-dark">
                     mail
                   </span>
-                  <router-link :to="{ name: 'dashboard.receivedmessages' }" class="dropdown-item text-dark ">Messaggi
+                    Messaggi
                     ricevuti</router-link>
                 </button>
                 <button class="value">
-
                   <router-link :to="{ name: 'dashboard.profileupdate' }" class="dropdown-item text-dark ">
                     <span class="material-symbols-sharp text-dark">
                       person
@@ -74,7 +74,6 @@
                   </router-link>
                 </button>
                 <button class="value text-start">
-
                   <button @click="store.user.logout()" v-if="store.user.id" class=" dropdown-item text-danger  ">
                     <span class="material-symbols-sharp text-danger">
                       logout
@@ -163,8 +162,11 @@ export default {
 
 .header {
   padding: 12px;
-  background-color: white;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  background-image: url('../../public/img/wood-bg.svg');
+  
+  box-shadow: 0px 8px 16px 0px rgba(255, 254, 254, 0.993);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 
 }
 
