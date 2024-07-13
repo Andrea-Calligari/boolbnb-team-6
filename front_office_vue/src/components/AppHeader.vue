@@ -9,7 +9,7 @@
         </div>
         <div class="col-6 col-md-4 col-sm-8 ">
           <!-- Searchbar -->
-          <div class="input-group justify-content-end">
+          <div class="input-group justify-content-center">
             <input type="text" @keyup="search" @keyup.enter="submitSearch" class="form-control rounded-0 responsive"
               aria-label="Recipient's username" aria-describedby="button-addon2" id="address" name="address"
               v-model="store.search.address" placeholder="Inserisci indirizzo" list="position">
