@@ -34,7 +34,7 @@
             <button @click.self="openDropDown" class="dropbtn ">
               <img @click.stop="openDropDown" v-if="store.user.id" class="avatar"
                 :src="'http://localhost:8000/' + store.user.image" alt="User-Avatar">
-              <span @click.stop="openDropDown" v-else class="material-symbols-sharp">
+              <span @click.stop="openDropDown" v-else class="material-symbols-sharp me-0">
                 person
               </span>
               <span class="user-name" @click.stop="openDropDown" v-if="store.user.id">{{ store.user.name + ' ' +
@@ -323,78 +323,86 @@ export default {
 
 
 //Media-Query
-@media screen  and (max-width: 768px) {
-.img {
-  max-width: 100px;
-}
-.drop-menu {
-  width: 20px;
-   padding-right: 60px;
-  
+@media screen and (max-width: 768px) {
+  .img {
+    max-width: 100px;
+  }
+
+  .drop-menu {
+    width: 20px;
+    padding-right: 60px;
+
+  }
+
+  .user-name {
+    display: none;
+  }
+
+  .dropdown-content {
+    background-color: transparent;
+    position: absolute;
+    right: 40px;
+    max-width: 60px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+  }
+
+  .input {
+    background-color: rgba($color: #fafafa, $alpha: 0.7);
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    justify-content: center;
+    border-radius: 10px;
+    transition: 1s;
+    padding: 10px;
+    overflow: hidden;
+  }
+
+  .col.col-md-5 {
+    width: 80%;
+  }
+
 }
 
-.user-name{
-  display: none;
-}
-.dropdown-content {
-  background-color: transparent;
-  position: absolute;
-  right: 40px;
-  max-width: 60px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 999;
-}
-.input {
-  background-color: rgba($color: #fafafa, $alpha: 0.7);
-  display: flex;
-  flex-direction: column;
-  width: 200px;
-  justify-content: center;
-  border-radius: 10px;
-  transition: 1s;
-  padding: 10px;
-  overflow: hidden;
-}
-.col.col-md-5{
-  width: 80%;
-}
+@media screen and (max-width: 568px) {
+  .dropdown-content {
+    background-color: transparent;
+    position: absolute;
+    right: 50px;
+    max-width: 60px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+  }
 
-}
+  .drop-menu {
+    width: 20px;
+    padding-right: 60px;
+  }
 
-@media screen and (max-width: 568px){
-.dropdown-content {
-  background-color: transparent;
-  position: absolute;
-  right: 50px;
-  max-width: 60px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 999;
-}
-.drop-menu{
-  width: 20px;
- padding-right: 60px;
-}
-.dropbtn {
-  color: black;
-  padding: 12px;
-  border: none;
-  font-size: 16px;
-  margin-right: 12px;
-  cursor: pointer;
-}
-.input {
-  background-color: rgba($color: #fafafa, $alpha: 0.7);
-  display: flex;
-  flex-direction: column;
-  width: 200px;
-  justify-content: center;
-  border-radius: 10px;
-  transition: 1s;
-  padding: 10px;
-  overflow: hidden;
-}
-.col.col-md-5{
-  width: 80%;
-}
+  .dropbtn {
+    color: black;
+    padding: 12px;
+    border: none;
+    font-size: 16px;
+    margin-right: 12px;
+    cursor: pointer;
+  }
+
+  .input {
+    background-color: rgba($color: #fafafa, $alpha: 0.7);
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    justify-content: center;
+    border-radius: 10px;
+    transition: 1s;
+    padding: 10px;
+    overflow: hidden;
+  }
+
+  .col.col-md-5 {
+    width: 80%;
+  }
 }
 </style>
