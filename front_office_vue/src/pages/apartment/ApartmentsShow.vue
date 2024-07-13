@@ -1,7 +1,7 @@
 <template>
 
     <!-- titolo e carosello -->
-    <section class="carousel-section py-3">
+    <section class="carousel-section py-4">
         <div class="container" v-if="apartment">
             <div class="row">
                 <div class="carousel-col">
@@ -67,10 +67,10 @@
                                     class="align-self-end">
                                     a notte</span>
                             </div>
-                            <p class="text-end mt-2 mb-4">{{ expDate }}</p>
+                            <p v-if="apartment.user_id === store.user.id" class="text-end mt-2">{{ expDate }}</p>
 
                             <form @submit.prevent="onSend" v-if="apartment.user_id !== store.user.id" class="
-                                message-form">
+                                message-form mt-4">
                                 <h5>Contatta il proprietario</h5>
                                 <div class="mb-2 d-flex">
                                     <label for="name" class="col-md-4 col-form-label text-md-right">Nome</label>

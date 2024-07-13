@@ -116,60 +116,57 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- info appartamento -->
-        <section class="info-section pb-3">
-            <div class="container">
-                <div class=" row">
-                    <div class="col">
-                        <div class="host-btns-section">
-                            <div class="my-3">
-                                <label for="category" class="form-label me-2">Categorie</label>
-                                <select class="" name="category" v-model="category" id="category">
-                                    <option :value="0">Seleziona una categoria</option>
-                                    <option v-for="cateGory in store.options.categories" :key="cateGory.id"
-                                        :value="cateGory.id">{{
-                                            cateGory.name }}</option>
-                                </select>
-                                <div v-if="store.validate.isV(isVcategory) === 'is-invalid'" class="mt-0 text-danger">
-                                    Devi selezionare almeno una categoria
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="description" class="form-label">Descrizione</label>
-                            <textarea class="form-control" v-model="description" rows="3"
-                                :class="store.validate.isV(isVdescription)" id="description" name="description"
-                                placeholder="Inserisci Descrizione"></textarea>
-                            <div v-if="store.validate.isV(isVdescription) === 'is-invalid'" class="mt-0 text-danger">
-                                Il testo non deve superare i 1000 caratteri
-                            </div>
-                        </div>
-                        <p for="description" class="form-label">Servizi:</p>
-                        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 mb-3"
-                            :class="isVservices === false ? 'border border-danger rounded' : ''">
-                            <div class="col" v-for="(serVice, i) in store.options.services " :key=serVice.id>
-                                <input type="checkbox" class="btn-check checkbox-input"
-                                    :checked="serVice.id === services[i]" :id="serVice.name" :value="serVice.id"
-                                    v-model="services">
-                                <label class="btn border-light-subtle service-badge m-1" :for="serVice.name">{{
-                                    serVice.name
-                                    }}</label>
-                            </div>
-                        </div>
-                        <div v-if="services.length === 0"> Devi selezionare almeno 1 servizio</div>
-                        <div class="mb-3">
-                            <label for="visible" class="form-label me-2">Visibile</label>
-                            <select name="visible" v-model="visible" id="visible">
-                                <option selected value="1">si</option>
-                                <option value="0">no</option>
+
+            <!-- info appartamento -->
+            <div class=" row">
+                <div class="col">
+                    <div class="host-btns-section">
+                        <div class="my-3">
+                            <label for="category" class="form-label me-2">Categorie</label>
+                            <select class="" name="category" v-model="category" id="category">
+                                <option :value="0">Seleziona una categoria</option>
+                                <option v-for="cateGory in store.options.categories" :key="cateGory.id"
+                                    :value="cateGory.id">{{
+                                        cateGory.name }}</option>
                             </select>
+                            <div v-if="store.validate.isV(isVcategory) === 'is-invalid'" class="mt-0 text-danger">
+                                Devi selezionare almeno una categoria
+                            </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn dark-blue-bg text-white rounded-0">Submit</button>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Descrizione</label>
+                        <textarea class="form-control" v-model="description" rows="3"
+                            :class="store.validate.isV(isVdescription)" id="description" name="description"
+                            placeholder="Inserisci Descrizione"></textarea>
+                        <div v-if="store.validate.isV(isVdescription) === 'is-invalid'" class="mt-0 text-danger">
+                            Il testo non deve superare i 1000 caratteri
+                        </div>
+                    </div>
+                    <p for="description" class="form-label">Servizi:</p>
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 mb-3"
+                        :class="isVservices === false ? 'border border-danger rounded' : ''">
+                        <div class="col" v-for="(serVice, i) in store.options.services " :key=serVice.id>
+                            <input type="checkbox" class="btn-check checkbox-input"
+                                :checked="serVice.id === services[i]" :id="serVice.name" :value="serVice.id"
+                                v-model="services">
+                            <label class="btn border-light-subtle service-badge m-1" :for="serVice.name">{{
+                                serVice.name
+                                }}</label>
+                        </div>
+                    </div>
+                    <div v-if="services.length === 0"> Devi selezionare almeno 1 servizio</div>
+                    <div class="mb-3">
+                        <label for="visible" class="form-label me-2">Visibile</label>
+                        <select name="visible" v-model="visible" id="visible">
+                            <option selected value="1">si</option>
+                            <option value="0">no</option>
+                        </select>
+                    </div>
                 </div>
+                <button type="submit" class="btn dark-blue-bg text-white rounded-0">Submit</button>
             </div>
-        </section>
+        </div>
     </form>
 
 </template>
