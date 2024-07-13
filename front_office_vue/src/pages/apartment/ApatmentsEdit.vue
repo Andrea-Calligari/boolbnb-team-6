@@ -1,149 +1,234 @@
 <template>
-    <!-- <RouterLink  :to="{ name: 'home' }"  id="redirect"/> -->
-    <div class="container">
-        <form @submit.prevent="onEdit">
+    <form @submit.prevent="onEdit">
+        <!-- titolo indirizzo e numero -->
+        <div class="container my-5">
+            <div class="row">
+                <div class="col-12 mb-4">
+                    <h2>Modifica Inserzione</h2>
+                </div>
+                <div class="carousel-col">
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Immagini</label>
+                        <input class="form-control" type="file" name="image" value="" id="image" multiple>
+                    </div>
+                    <div v-for="(img, i) in image" class="position-relative d-inline-block mx-2">
+                        <img class="" :src="'http://localhost:8000/' + img" width="100" alt="">
+                        <span role="button"
+                            class="pointer position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger p-1 px-2"
+                            @click="removeImage(i)">
+                            x
+                            <span class="visually-hidden">unread messages</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="title-price-col">
+                    <div class="title-price-section">
+                        <div>
+                            <div class="mb-3">
+                                <label for="title" class="form-label">Titolo</label>
+                                <input type="text" class="form-control" :class="store.validate.isV(isVtitle)" id="title"
+                                    name="title" v-model="title" placeholder="Inserisci titolo">
+                                <div v-if="store.validate.isV(isVtitle) === 'is-invalid'" class="mt-0 text-danger">
+                                    Il campo non può essere vuoto e non deve superare i 254 caratteri
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="address" class="form-label">Indirizzo</label>
+                                <input type="text" @keyup="store.address.searchAddresses(address)" class="form-control"
+                                    :class="store.validate.isV(isVaddress)" id="address" name="address"
+                                    v-model="address" placeholder="Inserisci indirizzo" list="position">
+                                <datalist id="position">
+                                    <option v-for="position in store.address.listAddresses">{{
+                                        position.address.freeformAddress }}
+                                    </option>
+                                </datalist>
+                                <div v-if="store.validate.isV(isVaddress) === 'is-invalid'" class="mt-0 text-danger">
+                                    Il campo indirizzo non può essere vuoto e non può superare i 254 caratteri e deve
+                                    essere valido
+                                </div>
+                            </div>
+                            <div class="d-flex mb-2 gap-3 text-small">
+                                <div>
+                                    <label for="mtq" class="form-label">Metri quadri</label>
+                                    <input type="number" class="form-control" :class="store.validate.isV(isVmtq)"
+                                        id="mtq" name="mtq" v-model="mtq" placeholder="Inserisci Metri quadri">
+                                    <div v-if="store.validate.isV(isVmtq) === 'is-invalid'" class="mt-0 text-danger">
+                                        l'inserzione deve avere come metratura minima 3mtq
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="d-flex align-items-center gap-1 mb-2">
+                                        <span class="material-symbols-sharp pb-0">
+                                            home
+                                        </span>
+                                        <label for="rooms_number">Stanze</label>
+                                    </div>
+                                    <input type="number" class="form-control" v-model="rooms"
+                                        :class="store.validate.isV(isVrooms)" id="rooms_number" name="rooms_number"
+                                        placeholder="Inserisci N° Stanze">
+                                    <div v-if="store.validate.isV(isVrooms) === 'is-invalid'" class="mt-0 text-danger">
+                                        l'inserzione deve avere almeno una stanza
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="d-flex align-items-center gap-1 mb-2">
+                                        <span class="material-symbols-sharp pb-0">
+                                            bed
+                                        </span>
+                                        <label for="beds_number">Letti</label>
+                                    </div>
+                                    <input type="number" class="form-control" v-model="beds"
+                                        :class="store.validate.isV(isVbeds)" id="beds_number" name="beds_number"
+                                        placeholder="Inserisci N° letti">
+                                    <div v-if="store.validate.isV(isVbeds) === 'is-invalid'" class="mt-0 text-danger">
+                                        l'inserzione deve avere almeno un posto letto
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="mb-0 d-flex align-items-center gap-1 mb-2">
+                                        <span class="material-symbols-sharp pb-0">
+                                            bathtub
+                                        </span>
+                                        <label for="baths_number">Bagni</label>
+                                    </div>
+                                    <input type="number" class="form-control" v-model="baths"
+                                        :class="store.validate.isV(isVbaths)" id="baths_number" name="baths_number"
+                                        placeholder="Inserisci N˚ bagni">
+                                    <div v-if="store.validate.isV(isVbaths) === 'is-invalid'" class="mt-0 text-danger">
+                                        l'inserzione deve avere almeno un bagno
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="price-section ">
+                            <div class="mb-3">
+                                <label for="price" class="form-label">Prezzo a notte
 
-            <div class="mb-3">
-                <label for="title" class="form-label">titolo</label>
-                <input type="text" class="form-control" :class="store.validate.isV(isVtitle)" id="title" name="title"
-                    v-model="title" placeholder="Inserisci titolo">
-                <div v-if="store.validate.isV(isVtitle) === 'is-invalid'" class="mt-0 text-danger">
-                    Il campo non può essere vuoto e non deve superare i 254 caratteri
+                                </label>
+                                <input type="number" class="form-control" v-model="price"
+                                    :class="store.validate.isV(isVprice)" step="0.01" id="price" name="price"
+                                    placeholder="Inserisci Prezzo">
+                                <div v-if="store.validate.isV(isVprice) === 'is-invalid'" class="mt-0 text-danger">
+                                    Il prezzo massimo è di 1200 e non può essere vuoto
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-
-            <div class="mb-3">
-                <label for="description" class="form-label">Descrizione</label>
-                <textarea class="form-control" v-model="description" rows="3"
-                    :class="store.validate.isV(isVdescription)" id="description" name="description"
-                    placeholder="Inserisci Descrizione"></textarea>
-                <div v-if="store.validate.isV(isVdescription) === 'is-invalid'" class="mt-0 text-danger">
-                    Il testo non deve superare i 1000 caratteri
+        </div>
+        <!-- info appartamento -->
+        <section class="info-section pb-3">
+            <div class="container">
+                <div class=" row">
+                    <div class="col">
+                        <div class="host-btns-section">
+                            <div class="my-3">
+                                <label for="category" class="form-label me-2">Categorie</label>
+                                <select class="" name="category" v-model="category" id="category">
+                                    <option :value="0">Seleziona una categoria</option>
+                                    <option v-for="cateGory in store.options.categories" :key="cateGory.id"
+                                        :value="cateGory.id">{{
+                                            cateGory.name }}</option>
+                                </select>
+                                <div v-if="store.validate.isV(isVcategory) === 'is-invalid'" class="mt-0 text-danger">
+                                    Devi selezionare almeno una categoria
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Descrizione</label>
+                            <textarea class="form-control" v-model="description" rows="3"
+                                :class="store.validate.isV(isVdescription)" id="description" name="description"
+                                placeholder="Inserisci Descrizione"></textarea>
+                            <div v-if="store.validate.isV(isVdescription) === 'is-invalid'" class="mt-0 text-danger">
+                                Il testo non deve superare i 1000 caratteri
+                            </div>
+                        </div>
+                        <p for="description" class="form-label">Servizi:</p>
+                        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 mb-3"
+                            :class="isVservices === false ? 'border border-danger rounded' : ''">
+                            <div class="col" v-for="(serVice, i) in store.options.services " :key=serVice.id>
+                                <input type="checkbox" class="btn-check checkbox-input"
+                                    :checked="serVice.id === services[i]" :id="serVice.name" :value="serVice.id"
+                                    v-model="services">
+                                <label class="btn border-light-subtle service-badge m-1" :for="serVice.name">{{
+                                    serVice.name
+                                    }}</label>
+                            </div>
+                        </div>
+                        <div v-if="services.length === 0"> Devi selezionare almeno 1 servizio</div>
+                        <div class="mb-3">
+                            <label for="visible" class="form-label me-2">Visibile</label>
+                            <select name="visible" v-model="visible" id="visible">
+                                <option selected value="1">si</option>
+                                <option value="0">no</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn dark-blue-bg text-white rounded-0">Submit</button>
                 </div>
             </div>
-
-            <div class="mb-3">
-                <label for="price" class="form-label">Prezzo</label>
-                <input type="number" class="form-control" v-model="price" :class="store.validate.isV(isVprice)"
-                    step="0.01" id="price" name="price" placeholder="Inserisci Prezzo">
-                <div v-if="store.validate.isV(isVprice) === 'is-invalid'" class="mt-0 text-danger">
-                    Il prezzo massimo è di 9999,99 e non può essere vuoto
-                </div>
-
-            </div>
-
-            <div class="mb-3">
-                <label for="rooms_number" class="form-label">N° Stanze</label>
-                <input type="number" class="form-control" v-model="rooms" :class="store.validate.isV(isVrooms)"
-                    id="rooms_number" name="rooms_number" placeholder="Inserisci N° Stanze">
-                <div v-if="store.validate.isV(isVrooms) === 'is-invalid'" class="mt-0 text-danger">
-                    l'inserzione deve avere almeno una stanza
-                </div>
-            </div>
-
-            <div class="mb-3">
-                <label for="beds_number" class="form-label">N° letti</label>
-                <input type="number" class="form-control" v-model="beds" :class="store.validate.isV(isVbeds)"
-                    id="beds_number" name="beds_number" placeholder="Inserisci N° letti">
-                <div v-if="store.validate.isV(isVbeds) === 'is-invalid'" class="mt-0 text-danger">
-                    l'inserzione deve avere almeno un posto letto
-                </div>
-
-            </div>
-
-            <div class="mb-3">
-                <label for="baths_number" class="form-label">N˚ bagni</label>
-                <input type="number" class="form-control" v-model="baths" :class="store.validate.isV(isVbaths)"
-                    id="baths_number" name="baths_number" placeholder="Inserisci N˚ bagni">
-                <div v-if="store.validate.isV(isVbaths) === 'is-invalid'" class="mt-0 text-danger">
-                    l'inserzione deve avere almeno un bagno
-                </div>
-            </div>
-
-            <div class="mb-3">
-                <label for="mtq" class="form-label">Metri quadri</label>
-                <input type="number" class="form-control" :class="store.validate.isV(isVmtq)" id="mtq" name="mtq"
-                    v-model="mtq" placeholder="Inserisci Metri quadri">
-                <div v-if="store.validate.isV(isVmtq) === 'is-invalid'" class="mt-0 text-danger">
-                    l'inserzione deve avere come metratura minima 3mtq
-                </div>
-            </div>
-
-            <div class="mb-3">
-                <label for="address" class="form-label">indirizzo</label>
-                <input type="text" @keyup="store.address.searchAddresses(address)" class="form-control"
-                    :class="store.validate.isV(isVaddress)" id="address" name="address" v-model="address"
-                    placeholder="Inserisci indirizzo" list="position">
-                <datalist id="position">
-                    <option v-for="position in store.address.listAddresses">{{ position.address.freeformAddress }}
-                    </option>
-                </datalist>
-                <div v-if="store.validate.isV(isVaddress) === 'is-invalid'" class="mt-0 text-danger">
-                    Il campo indirizzo non può essere vuoto e non può superare i 254 caratteri e deve essere valido
-                </div>
-            </div>
-
-
-
-            <div v-for="(img, i) in image" class="position-relative d-inline-block mx-2">
-                <img class="" :src="'http://localhost:8000/' + img" width="100" alt="">
-                <span role="button"
-                    class="pointer position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger p-1 px-2"
-                    @click="removeImage(i)">
-                    x
-                    <span class="visually-hidden">unread messages</span>
-                </span>
-            </div>
-
-            <div class="mb-3">
-                <label for="image" class="form-label">Immagini</label>
-                <input class="form-control" type="file" name="image" value="" id="image" multiple>
-            </div>
-
-            <div class="mb-3">
-                <label for="category" class="form-label">Categorie</label>
-                <select name="category" v-model="category" id="category">
-                    <option :value="0">Seleziona una categoria</option>
-                    <option v-for="cateGory in store.options.categories" :key="cateGory.id" :value="cateGory.id">{{
-                        cateGory.name }}</option>
-                </select>
-                <div v-if="store.validate.isV(isVcategory) === 'is-invalid'" class="mt-0 text-danger">
-                    Devi selezionare almeno una categoria
-                </div>
-            </div>
-
-
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 mb-3"
-                :class="isVservices === false ? 'border border-danger rounded' : ''">
-                <div class="col" v-for="(serVice, i) in store.options.services " :key=serVice.id>
-                    <input type="checkbox" :checked="serVice.id === services[i]" :id="serVice.name" :value="serVice.id"
-                        v-model="services">
-                    <label :for="serVice.name">{{ serVice.name }}</label>
-                </div>
-            </div>
-
-            <div v-if="services.length === 0"> Devi selezionare almeno 1 servizio</div>
-
-
-
-            <div class="mb-3">
-                <label for="visible" class="form-label">Visibile</label>
-                <select name="visible" v-model="visible" id="visible">
-                    <option selected value="1">si</option>
-                    <option value="0">no</option>
-                </select>
-            </div>
-
-
-
-            <button type="submit" class="btn btn-primary">Submit</button>
-
-        </form>
-    </div>
-
+        </section>
+    </form>
 
 </template>
+
+<style lang="scss" scoped>
+@use '../../assets/scss/partials/variables.scss' as *;
+@use '../../assets/scss/partials/mixins.scss' as *;
+
+.price-badge {
+    @include simple-badge;
+    background: $light-yellow;
+    background: linear-gradient(180deg, $light-yellow 40%, $dark-yellow 100%);
+}
+
+.service-badge {
+    @include simple-badge;
+    border: solid 1px rgb(202, 202, 202);
+
+    &:hover {
+        background: #f4e5cc;
+    }
+}
+
+.checkbox-input:checked+.service-badge {
+    background-color: #f4e5cc;
+}
+
+.apartment-title {
+    color: $dark-yellow
+}
+
+.host-btns-section {
+    display: flex;
+    justify-content: space-between;
+}
+
+.title-price-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.price-section {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.title-price-col {
+    width: 100%;
+    order: 1
+}
+
+.carousel-col {
+    width: 100%;
+    order: 2
+}
+</style>
 
 <script>
 import { store } from '../../store.js';
@@ -319,5 +404,3 @@ export default {
 
 }
 </script>
-
-<style lang="scss" scoped></style>
