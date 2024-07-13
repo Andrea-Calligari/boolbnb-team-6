@@ -1,6 +1,9 @@
 <template>
     <div class="container py-5">
-        <h1 class="text-center py-4">
+        <!-- Background-Video -->
+        <video class="bg-video" src="../../../public/video/video-loop-create.mp4" autoplay muted loop playsinline
+        alt="video bg"></video>
+        <h1 class="text-center text-light py-4">
             Aggiungi il tuo appartamento!
         </h1>
         <div class="sign-up-modal">
@@ -140,7 +143,7 @@
                         <option value="0">no</option>
                     </select>
                 </div>
-                <button type="submit" class="btn button">Crea</button>
+                <button type="submit" class="btn  service-badge ">Crea</button>
                
 
 
@@ -278,7 +281,16 @@ export default {
 <style lang="scss" scoped>
 @use '../../assets/scss/partials/_variables.scss' as *;
 @use '../../assets/scss/partials/_mixins.scss' as *;
+.bg-video{
+width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
 
+  z-index: -1;
+  top: 0;
+  left: 0;
+}
 .service-badge {
     @include simple-badge;
     border: solid 1px rgb(202, 202, 202);
@@ -325,10 +337,12 @@ export default {
 .sign-up-modal {
 	font-family: "Roboto", arial, sans-serif;
 	color: #fefefe;
-	border-style: solid;
-	border-width: 2px;
+	// border-style: solid;
+	// border-width: 2px;
 	border-radius: 8px;
-    background-image:url('https://th.bing.com/th/id/R.b5d50511a9209053396cba3208e44ea0?rik=QMMvmdUCiQStTg&pid=ImgRaw&r=0');
+    background-color: rgba(231, 215, 215, 0.2);
+    ;
+    // background-image:url('https://th.bing.com/th/id/R.b5d50511a9209053396cba3208e44ea0?rik=QMMvmdUCiQStTg&pid=ImgRaw&r=0');
     width: 100%;
 	margin: 0 auto;
 	padding: 25px;
