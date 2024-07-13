@@ -124,8 +124,8 @@
                     <div class="col">
                         <div class="host-btns-section">
                             <div class="my-3">
-                                <label for="category" class="form-label">Categorie</label>
-                                <select name="category" v-model="category" id="category">
+                                <label for="category" class="form-label me-2">Categorie</label>
+                                <select class="" name="category" v-model="category" id="category">
                                     <option :value="0">Seleziona una categoria</option>
                                     <option v-for="cateGory in store.options.categories" :key="cateGory.id"
                                         :value="cateGory.id">{{
@@ -145,6 +145,7 @@
                                 Il testo non deve superare i 1000 caratteri
                             </div>
                         </div>
+                        <p for="description" class="form-label">Servizi:</p>
                         <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 mb-3"
                             :class="isVservices === false ? 'border border-danger rounded' : ''">
                             <div class="col" v-for="(serVice, i) in store.options.services " :key=serVice.id>
@@ -158,14 +159,14 @@
                         </div>
                         <div v-if="services.length === 0"> Devi selezionare almeno 1 servizio</div>
                         <div class="mb-3">
-                            <label for="visible" class="form-label">Visibile</label>
+                            <label for="visible" class="form-label me-2">Visibile</label>
                             <select name="visible" v-model="visible" id="visible">
                                 <option selected value="1">si</option>
                                 <option value="0">no</option>
                             </select>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn dark-blue-bg text-white rounded-0">Submit</button>
                 </div>
             </div>
         </section>
