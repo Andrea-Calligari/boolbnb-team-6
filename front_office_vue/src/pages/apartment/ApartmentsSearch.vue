@@ -6,13 +6,23 @@
                 <div class="accordion mt-5 mb-3" id="fullSerch">
                     <div class="accordion-item rounded-0">
                         <h2 class="accordion-header rounded-0">
-                            <button class="accordion-button rounded-0 bg-brand font-brand collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#fullSerch1" aria-expanded="false" aria-controls="fullSerch1">
+                            <button class="accordion-button rounded-0 bg-brand font-brand collapsed" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#fullSerch1" aria-expanded="false"
+                                aria-controls="fullSerch1">
                                 Ricerca avanzata
                             </button>
                         </h2>
-                        <div id="fullSerch1" class="accordion-collapse collapse" data-bs-parent="#fullSerch">
+                        <div id="fullSerch1" class="accordion-collapse collapse ms_show" data-bs-parent="#fullSerch">
                             <div class="accordion-body">
+                                <input type="text" @keyup="search" @keyup.enter="submitSearch"
+                                    class="form-control rounded-0 responsive-md" aria-label="Recipient's username"
+                                    aria-describedby="button-addon2" id="address" name="address"
+                                    v-model="store.search.address" placeholder="Inserisci indirizzo" list="position">
+                                <datalist id="position">
+                                    <option v-for="position in store.address.listAddresses">{{
+                                        position.address.freeformAddress }}
+                                    </option>
+                                </datalist>
 
                                 <label for="radius" class="form-label ">Distanza in Km: <input
                                         v-model="store.search.radius"
@@ -23,8 +33,8 @@
                                     class="mt-0 text-danger">
                                     La distanza non può superare i 100 Km.
                                 </div>
-                                <input type="range" class="form-range custom-range mb-3" min="1" max="100" step="1" id="radius"
-                                    v-model="store.search.radius">
+                                <input type="range" class="form-range custom-range mb-3" min="1" max="100" step="1"
+                                    id="radius" v-model="store.search.radius">
 
                                 <label for="rooms_number" class="form-label">N˚ stanze <input
                                         v-model="store.search.rooms_number"
@@ -52,9 +62,9 @@
 
                                 <div class="accordion-item rounded-0">
                                     <h2 class="accordion-header rounded-0">
-                                        <button class="accordion-button bg-brand font-brand rounded-0 collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#fullSerch2" aria-expanded="false"
-                                            aria-controls="fullSerch2">
+                                        <button class="accordion-button bg-brand font-brand rounded-0 collapsed"
+                                            type="button" data-bs-toggle="collapse" data-bs-target="#fullSerch2"
+                                            aria-expanded="false" aria-controls="fullSerch2">
                                             Servizi
                                         </button>
                                     </h2>
@@ -65,8 +75,9 @@
                                                 <input type="checkbox" class="btn-check font-brand" :id="serVice.name"
                                                     :value="serVice.id" v-model="store.search.service_ids"
                                                     autocomplete="off">
-                                                <label class="btn btn-outline-warning font-brand rounded-0 bg-brand m-1" :for="serVice.name">{{
-                                                    serVice.name }}</label>
+                                                <label class="btn btn-outline-warning font-brand rounded-0 bg-brand m-1"
+                                                    :for="serVice.name">{{
+                                                        serVice.name }}</label>
                                             </template>
                                         </div>
                                     </div>
@@ -119,6 +130,13 @@ export default {
         }
     },
     methods: {
+        search() {
+      if (this.$route.fullPath !== '/apartment/search') {
+        this.$router.push({ name: 'apartments.search' });
+      }
+      this.store.address.searchAddresses(this.store.search.address)
+      this.store.search.resetDefaultSearch()
+    }
     },
     mounted() {
         // if (!this.store.search.apartments.length) {
@@ -131,20 +149,21 @@ export default {
 <style lang="scss" scoped>
 @import '../../assets/scss/partials/variables.scss';
 
-.bg-brand{
-background-color: $light-yellow ;
+.bg-brand {
+    background-color: $light-yellow ;
 }
 
-.font-brand{
-    color:$dark-blue;
+.font-brand {
+    color: $dark-blue;
 }
 
 input[type="range"] {
-    -webkit-appearance: none;
+    //-webkit-appearance: none;
     background-color: $blue;
-    height:3px;
+    height: 3px;
     width: 100%;
 }
+
 input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     background-color: $dark-blue;
@@ -160,12 +179,33 @@ input[type="range"]::-moz-range-thumb {
     height: 18px;
     opacity: 0.6;
     width: 20px;
-    
+
 }
+
 input[type="range"]::-moz-range-track {
     background: $blue;
     opacity: 0.7;
     border: none;
 }
 
+@media screen and (min-width: 768px){
+.responsive-md{
+    display: none;
+}
+}
+@media screen and (min-width: 576px){
+.responsive-md{
+    display: none;
+}
+}
+@media screen and (max-width: 568px){
+.responsive-md{
+    display: inline;
+}
+
+.ms_show{
+    display: block;
+}
+
+}
 </style>

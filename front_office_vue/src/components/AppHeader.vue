@@ -10,7 +10,7 @@
         <div class="col-6 col-md-4 col-sm-8 ">
           <!-- Searchbar -->
           <div class="input-group ">
-            <input type="text" @keyup="search" @keyup.enter="submitSearch" class="form-control rounded-0"
+            <input type="text" @keyup="search" @keyup.enter="submitSearch" class="form-control rounded-0 responsive"
               aria-label="Recipient's username" aria-describedby="button-addon2" id="address" name="address"
               v-model="store.search.address" placeholder="Inserisci indirizzo" list="position">
             <datalist id="position">
@@ -368,44 +368,44 @@ export default {
 
 }
 
-@media screen and (max-width: 568px) {
-  .dropdown-content {
-    background-color: transparent;
-    position: absolute;
-    right: 50px;
-    max-width: 60px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 999;
-  }
+@media screen and (max-width: 568px){
+.responsive{
+  display: none;
+}
 
-  .drop-menu {
-    width: 20px;
-    padding-right: 60px;
-  }
-
-  .dropbtn {
-    color: black;
-    padding: 12px;
-    border: none;
-    font-size: 16px;
-    margin-right: 12px;
-    cursor: pointer;
-  }
-
-  .input {
-    background-color: rgba($color: #fafafa, $alpha: 0.7);
-    display: flex;
-    flex-direction: column;
-    width: 200px;
-    justify-content: center;
-    border-radius: 10px;
-    transition: 1s;
-    padding: 10px;
-    overflow: hidden;
-  }
-
-  .col.col-md-5 {
-    width: 80%;
-  }
+.dropdown-content {
+  background-color: transparent;
+  position: absolute;
+  right: 50px;
+  max-width: 60px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+}
+.drop-menu{
+  width: 20px;
+ padding-right: 60px;
+}
+.dropbtn {
+  color: black;
+  padding: 12px;
+  border: none;
+  font-size: 16px;
+  margin-right: 12px;
+  cursor: pointer;
+}
+.input {
+  background-color: rgba($color: #fafafa, $alpha: 0.7);
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  justify-content: center;
+  border-radius: 10px;
+  transition: 1s;
+  padding: 10px;
+  overflow: hidden;
+}
+.col.col-md-5{
+  width: 80%;
+}
 }
 </style>
