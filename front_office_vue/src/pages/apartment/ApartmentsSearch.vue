@@ -3,10 +3,10 @@
         <div class="row row-cols-2">
             <div class="col-12">
 
-                <div class="accordion mb-3" id="fullSerch">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                <div class="accordion mt-5 mb-3" id="fullSerch">
+                    <div class="accordion-item rounded-0">
+                        <h2 class="accordion-header rounded-0">
+                            <button class="accordion-button rounded-0 bg-brand font-brand collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#fullSerch1" aria-expanded="false" aria-controls="fullSerch1">
                                 Ricerca avanzata
                             </button>
@@ -14,7 +14,7 @@
                         <div id="fullSerch1" class="accordion-collapse collapse" data-bs-parent="#fullSerch">
                             <div class="accordion-body">
 
-                                <label for="radius" class="form-label">Distanza in Km: <input
+                                <label for="radius" class="form-label ">Distanza in Km: <input
                                         v-model="store.search.radius"
                                         :class="store.validate.isV(store.search.isVradius)" type="text" class="raunded"
                                         style="width: 32px;">
@@ -23,7 +23,7 @@
                                     class="mt-0 text-danger">
                                     La distanza non può superare i 100 Km.
                                 </div>
-                                <input type="range" class="form-range mb-3" min="1" max="100" step="1" id="radius"
+                                <input type="range" class="form-range custom-range mb-3" min="1" max="100" step="1" id="radius"
                                     v-model="store.search.radius">
 
                                 <label for="rooms_number" class="form-label">N˚ stanze <input
@@ -35,7 +35,7 @@
                                     class="mt-0 text-danger">
                                     Il numero di stanze non può essere maggiore di 15.
                                 </div>
-                                <input type="range" class="form-range mb-3" min="1" max="15" step="1" id="rooms_number"
+                                <input type="range" class="form-range mb-3 " min="1" max="15" step="1" id="rooms_number"
                                     v-model="store.search.rooms_number">
 
                                 <label for="beds_number" class="form-label">N˚ letti <input
@@ -50,9 +50,9 @@
                                 <input type="range" class="form-range mb-3" min="1" max="15" step="1" id="beds_number"
                                     v-model="store.search.beds_number">
 
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button collapsed" type="button"
+                                <div class="accordion-item rounded-0">
+                                    <h2 class="accordion-header rounded-0">
+                                        <button class="accordion-button bg-brand font-brand rounded-0 collapsed" type="button"
                                             data-bs-toggle="collapse" data-bs-target="#fullSerch2" aria-expanded="false"
                                             aria-controls="fullSerch2">
                                             Servizi
@@ -62,17 +62,17 @@
                                         data-bs-parent="#fullSerchA">
                                         <div class="accordion-body">
                                             <template v-for="serVice in store.options.services">
-                                                <input type="checkbox" class="btn-check" :id="serVice.name"
+                                                <input type="checkbox" class="btn-check font-brand" :id="serVice.name"
                                                     :value="serVice.id" v-model="store.search.service_ids"
                                                     autocomplete="off">
-                                                <label class="btn btn-outline-primary m-1" :for="serVice.name">{{
+                                                <label class="btn btn-outline-warning font-brand rounded-0 bg-brand m-1" :for="serVice.name">{{
                                                     serVice.name }}</label>
                                             </template>
                                         </div>
                                     </div>
                                 </div>
                                 <button @click="store.search.getSearch()"
-                                    class="btn btn-outline-dark mt-3">Cerca</button>
+                                    class="btn btn-outline-dark mt-3 rounded-0">Cerca</button>
                             </div>
                         </div>
                     </div>
@@ -128,4 +128,44 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@import '../../assets/scss/partials/variables.scss';
+
+.bg-brand{
+background-color: $light-yellow ;
+}
+
+.font-brand{
+    color:$dark-blue;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    background-color: $blue;
+    height:3px;
+    width: 100%;
+}
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background-color: $dark-blue;
+    height: 38px;
+    opacity: 0.6;
+    width: 20px;
+}
+
+input[type="range"]::-moz-range-thumb {
+    background-color: $dark-yellow;
+    border-radius: 0;
+    border: none;
+    height: 18px;
+    opacity: 0.6;
+    width: 20px;
+    
+}
+input[type="range"]::-moz-range-track {
+    background: $blue;
+    opacity: 0.7;
+    border: none;
+}
+
+</style>
