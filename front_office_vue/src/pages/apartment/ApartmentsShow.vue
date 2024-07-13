@@ -157,29 +157,28 @@
                         <div>
                             <RouterLink v-if="apartment.user_id === store.user.id"
                                 :to="{ name: 'apartments.edit', params: { slug: apartment.slug } }"
-                                class="btn dark-blue-bg text-white me-2 rounded-0">
+                                class="btn btn-blue me-2 rounded-0">
                                 Modifica
                             </RouterLink>
 
                             <RouterLink v-if="apartment.user_id === store.user.id"
                                 :to="{ name: 'apartments.promotion', params: { slug: apartment.slug } }"
-                                class="btn dark-blue-bg text-white me-2 rounded-0">
+                                class="btn btn-blue me-2 rounded-0">
                                 Sponsorizza
                             </RouterLink>
 
                             <RouterLink v-if="apartment.user_id === store.user.id"
                                 :to="{ name: 'dashboard.statistic', params: { slug: apartment.slug } }"
-                                class="btn dark-blue-bg text-white me-2 rounded-0">
+                                class="btn btn-blue me-2 rounded-0">
                                 Statistiche
                             </RouterLink>
 
                             <button v-if="apartment.user_id === store.user.id" data-bs-toggle="modal"
-                                data-bs-target="#staticBackdrop"
-                                class="btn dark-blue-bg text-white rounded-0">Elimina</button>
+                                data-bs-target="#staticBackdrop" class="btn btn-blue rounded-0">Elimina</button>
 
-                            <a v-if="apartment.user_id !== store.user.id"
-                                class="btn ask-info-btn dark-blue-bg text-white rounded-0" data-bs-toggle="offcanvas"
-                                href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                            <a v-if="apartment.user_id !== store.user.id" class="btn ask-info-btn btn-blue rounded-0"
+                                data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
+                                aria-controls="offcanvasExample">
                                 Chiedi Informazioni
                             </a>
                         </div>
@@ -365,6 +364,15 @@
 
 .ask-info-btn {
     display: none
+}
+
+.btn-blue {
+    background-color: $dark-blue;
+    color: white;
+
+    &:hover {
+        background-color: $blue;
+    }
 }
 
 .host-btns-section {
