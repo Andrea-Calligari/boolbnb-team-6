@@ -107,13 +107,13 @@
                         </div>
                         <div class="card-body d-flex justify-content-center">
 
-                            <button class="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <a href="#" class="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                 <svg viewBox="0 0 448 512" class="svgIcon">
                                     <path
                                         d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z">
                                     </path>
                                 </svg>
-                            </button>
+                            </a>
                             <div v-if="message" class="mt-4 text-danger">
                                 Per eliminare l'account devi inserire la password corretta
                             </div>
@@ -143,7 +143,8 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Sei sicuro di voler eliminare l'account?</h1>
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Sei sicuro di voler eliminare l'account?
+                        </h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -163,7 +164,7 @@
             </div>
         </div>
     </form>
-    
+
 
 
 
