@@ -269,7 +269,7 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="mb-4 row" v-if="send === true">messaggio inviato</div>
+                            <div class="mb-4 text-center text-success fs-3" v-if="send === true">Messaggio inviato con successo!</div>
                         </form>
                     </div>
                 </div>
