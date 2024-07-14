@@ -2,6 +2,7 @@
   <div class="container mt-5">
     <video class="bg-video" src="../../../public/video/home-loop-video.mp4" autoplay muted loop playsinline
       alt="video bg"></video>
+      <!-- Carousel-Apartment-in-Promotion -->
     <div class="row">
       <div class="col-12">
         <div id="carouselExampleCaptions" class="carousel slide">
@@ -38,11 +39,11 @@
         </div>
       </div>
     </div>
+    <!-- Card-Apartments-in-Promotion -->
     <div class="row">
       <ApartmentCard v-for="apartment in apartments" :key="apartment.id" :apartment="apartment" />
     </div>
   </div>
-  <!-- <img :src="image ? 'http://localhost:8000/' + image : 'http://localhost:8000/uploads/apartment/null.png'" -->
 
 
 </template>

@@ -19,7 +19,7 @@
                     <label for="title" class="form-label">titolo *</label>
                     <input type="text" class="form-control" :class="store.validate.isV(isVtitle)" id="title"
                         name="title" v-model="title" placeholder="Inserisci titolo">
-                    <div v-if="store.validate.isV(isVtitle) === 'is-invalid'" class="mt-0 text-danger">
+                    <div v-if="store.validate.isV(isVtitle) === 'is-invalid'" class="mt-0 text-danger fs-5">
                         Il campo non può essere vuoto e non deve superare i 254 caratteri
                     </div>
                 </div>
@@ -30,7 +30,7 @@
                     <textarea class="form-control" v-model="description" rows="3"
                         :class="store.validate.isV(isVdescription)" id="description" name="description"
                         placeholder="Inserisci Descrizione"></textarea>
-                    <div v-if="store.validate.isV(isVdescription) === 'is-invalid'" class="mt-0 text-danger">
+                    <div v-if="store.validate.isV(isVdescription) === 'is-invalid'" class="mt-0 text-danger fs-5">
                         Il testo non deve superare i 1000 caratteri
                     </div>
                 </div>
@@ -40,7 +40,7 @@
                     <label for="price" class="form-label">Prezzo *</label>
                     <input type="number" class="form-control" v-model="price" :class="store.validate.isV(isVprice)"
                         step="0.01" id="price" name="price" placeholder="Inserisci Prezzo">
-                    <div v-if="store.validate.isV(isVprice) === 'is-invalid'" class="mt-0 text-danger">
+                    <div v-if="store.validate.isV(isVprice) === 'is-invalid'" class="mt-0 text-danger fs-5">
                         Il prezzo massimo è di 9999,99 e non può essere vuoto
                     </div>
 
@@ -51,8 +51,8 @@
                     <label for="rooms_number" class="form-label">N° Stanze *</label>
                     <input type="number" class="form-control" v-model="rooms" :class="store.validate.isV(isVrooms)"
                         id="rooms_number" name="rooms_number" placeholder="Inserisci N° Stanze">
-                    <div v-if="store.validate.isV(isVrooms) === 'is-invalid'" class="mt-0 text-danger">
-                        l'inserzione deve avere almeno una stanza
+                    <div v-if="store.validate.isV(isVrooms) === 'is-invalid'" class="mt-0 text-danger fs-5">
+                        l'inserzione deve avere almeno una stanza e non piu' di 15
                     </div>
                 </div>
 
@@ -61,8 +61,8 @@
                     <label for="beds_number" class="form-label">N° letti *</label>
                     <input type="number" class="form-control" v-model="beds" :class="store.validate.isV(isVbeds)"
                         id="beds_number" name="beds_number" placeholder="Inserisci N° letti">
-                    <div v-if="store.validate.isV(isVbeds) === 'is-invalid'" class="mt-0 text-danger">
-                        l'inserzione deve avere almeno un posto letto
+                    <div v-if="store.validate.isV(isVbeds) === 'is-invalid'" class="mt-0 text-danger fs-5">
+                        l'inserzione deve avere almeno un posto letto e non piu' di 15
                     </div>
 
                 </div>
@@ -72,8 +72,8 @@
                     <label for="baths_number" class="form-label">N˚ bagni *</label>
                     <input type="number" class="form-control" v-model="baths" :class="store.validate.isV(isVbaths)"
                         id="baths_number" name="baths_number" placeholder="Inserisci N˚ bagni">
-                    <div v-if="store.validate.isV(isVbaths) === 'is-invalid'" class="mt-0 text-danger">
-                        l'inserzione deve avere almeno un bagno
+                    <div v-if="store.validate.isV(isVbaths) === 'is-invalid'" class="mt-0 text-danger fs-5">
+                        l'inserzione deve avere almeno un bagno e non piu' di 15
                     </div>
                 </div>
 
@@ -86,7 +86,7 @@
                         <option v-for="position in store.address.listAddresses">{{ position.address.freeformAddress }}
                         </option>
                     </datalist>
-                    <div v-if="store.validate.isV(isVmtq) === 'is-invalid'" class="mt-0 text-danger">
+                    <div v-if="store.validate.isV(isVmtq) === 'is-invalid'" class="mt-0 text-danger fs-5">
                         l'inserzione deve avere come metratura minima 3mtq
                     </div>
                 </div>
@@ -101,7 +101,7 @@
                         <option v-for="position in store.address.listAddresses">{{ position.address.freeformAddress }}
                         </option>
                     </datalist>
-                    <div v-if="store.validate.isV(isVaddress) === 'is-invalid'" class="mt-0 text-danger">
+                    <div v-if="store.validate.isV(isVaddress) === 'is-invalid'" class="mt-0 text-danger fs-5">
                         Il campo indirizzo non può essere vuoto e non può superare i 254 caratteri e deve essere valido
                     </div>
                 </div>
@@ -115,12 +115,12 @@
                 <!-- Category -->
                 <div class="mb-3">
                     <label for="category" class="form-label">Categorie</label>
-                    <select name="category" v-model="category" id="category">
+                    <select name="category" class="form-control" v-model="category" id="category">
                         <option :value="0">Seleziona una categoria</option>
                         <option v-for="cateGory in store.options.categories" :key="cateGory.id" :value="cateGory.id">{{
                             cateGory.name }}</option>
                     </select>
-                    <div v-if="store.validate.isV(isVcategory) === 'is-invalid'" class="mt-0 text-danger">
+                    <div v-if="store.validate.isV(isVcategory) === 'is-invalid'" class="mt-0 text-danger fs-5">
                         Devi selezionare almeno una categoria
                     </div>
                 </div>
@@ -197,9 +197,9 @@ export default {
             this.isVtitle = this.store.validate._string(this.title)
             this.isVdescription = this.store.validate._string(this.description, 0, 1000)
             this.isVprice = this.store.validate._decimal(this.price)
-            this.isVrooms = this.store.validate._integer(this.rooms)
-            this.isVbeds = this.store.validate._integer(this.beds)
-            this.isVbaths = this.store.validate._integer(this.baths)
+            this.isVrooms = this.store.validate._integer(this.rooms, 1 ,15)
+            this.isVbeds = this.store.validate._integer(this.beds, 1 , 15)
+            this.isVbaths = this.store.validate._integer(this.baths, 1 ,15)
             this.isVmtq = this.store.validate._integer(this.mtq, 1, 99999)
             this.isVaddress = this.store.validate._string(this.address)
             this.isVcategory = this.store.validate._integer(this.category, 1, store.options.categories.length)

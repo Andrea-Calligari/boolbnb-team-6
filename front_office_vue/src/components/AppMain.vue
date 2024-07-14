@@ -47,14 +47,10 @@ main {
 aside {
     width: 150px;
     background-image: url('../../public/img/bg-prova.png');
-    // box-shadow: 0px 10px 10px 10px rgba(122, 120, 120, 0.993);
-
     background-position: top;
     background-repeat: no-repeat;
     background-size: cover;
     padding: 16px;
-
-
 }
 
 @media screen and (max-width: 576px) {

@@ -4,7 +4,7 @@
       <div class="col-12">
         <h2 class="pt-3">Appartamenti</h2>
       </div>
-
+      <!-- New-Apartment -->
       <div class="col-6 col-md-3 col-xl-2 mb-3">
         <div class="ms_card">
           <RouterLink :to="{ name: 'apartments.create' }" class="content">
@@ -13,7 +13,7 @@
           </RouterLink>
         </div>
       </div>
-
+        <!-- Best-Apartmet -->
       <div class="col-6 col-md-3 col-xl-2 mb-3" v-if="bestApartments.length > 0"
         v-for="(apartment, i) in bestApartments">
         <div class="ms_card">
@@ -32,17 +32,19 @@
           </RouterLink>
         </div>
       </div>
+      <!-- If-No-Best-Apartment -->
       <div class="col-12" v-else>
         <h4>Non hai appartamenti.</h4>
       </div>
     </div>
+    <!-- Last-Messages -->
     <div class="row">
       <div class="col-12">
         <h2 class="pt-3">Ultimi messaggi</h2>
       </div>
       <div class="col-12" v-if="lastMessages.length > 0">
         <div class="accordion" id="accordionExample">
-
+          <!-- Accordion-Last-Messages -->
           <div class="accordion-item" v-for="(message, i) in lastMessages">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -70,7 +72,7 @@
               </div>
             </div>
           </div>
-
+        <!-- If-there'snot-Last-Message -->
         </div>
       </div>
       <div class="col-12" v-else>
@@ -81,7 +83,7 @@
       <div class="col-12">
         <h2 class="pt-3">Views appartamenti</h2>
       </div>
-      <!-- <div class="col-12" v-if="views"> -->
+      <!-- Statistic-Apartments -->
       <div class="col-12">
         <div class="text-end">
           <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
@@ -95,14 +97,10 @@
             <label class="btn btn-outline-warning" @click="parseViews(4)" for="annuale">Anni</label>
           </div>
         </div>
-
         <div class="scroll-container">
           <div id="grafics" style="min-width: 1000px;" :class="sliceN !== 10 ? 'day-s' : ''"></div>
         </div>
       </div>
-      <!-- <div class="col-12" v-else>
-        <h4>Non hai Views.</h4>
-      </div> -->
     </div>
   </div>
 </template>

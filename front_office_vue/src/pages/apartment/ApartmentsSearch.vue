@@ -4,7 +4,7 @@
             alt="video bg"></video>
         <div class="row row-cols-2">
             <div class="col-12">
-
+                            <!-- Advanced-Search -->
                 <div class="accordion mt-5 mb-3" id="fullSerch">
                     <div class="accordion-item rounded-0">
                         <h2 class="accordion-header rounded-0">
@@ -25,7 +25,7 @@
                                         position.address.freeformAddress }}
                                     </option>
                                 </datalist>
-
+                                <!-- Km-distance -->
                                 <label for="radius" class="form-label ">Distanza in Km: <input
                                         v-model="store.search.radius"
                                         :class="store.validate.isV(store.search.isVradius)" type="text" class="raunded"
@@ -37,7 +37,7 @@
                                 </div>
                                 <input type="range" class="form-range custom-range mb-3" min="1" max="100" step="1"
                                     id="radius" v-model="store.search.radius">
-
+                                    <!-- Rooms-Number -->
                                 <label for="rooms_number" class="form-label">N˚ stanze <input
                                         v-model="store.search.rooms_number"
                                         :class="store.validate.isV(store.search.isVroomsNum)" type="text"
@@ -49,7 +49,7 @@
                                 </div>
                                 <input type="range" class="form-range mb-3 " min="1" max="15" step="1" id="rooms_number"
                                     v-model="store.search.rooms_number">
-
+                                        <!-- Beds-Number -->
                                 <label for="beds_number" class="form-label">N˚ letti <input
                                         v-model="store.search.beds_number"
                                         :class="store.validate.isV(store.search.isVbedsNum)" type="text" class="raunded"
@@ -61,7 +61,7 @@
                                 </div>
                                 <input type="range" class="form-range mb-3" min="1" max="15" step="1" id="beds_number"
                                     v-model="store.search.beds_number">
-
+                                        <!--Accordion-Services -->
                                 <div class="accordion-item rounded-0 mt-4">
                                     <h2 class="accordion-header rounded-0">
                                         <button class="accordion-button bg-brand font-brand rounded-0 collapsed"
@@ -70,6 +70,8 @@
                                             Servizi
                                         </button>
                                     </h2>
+                                        <!--Accordion-Body-Services -->
+
                                     <div id="fullSerch2" class="accordion-collapse collapse"
                                         data-bs-parent="#fullSerchA">
                                         <div class="accordion-body">
@@ -92,7 +94,7 @@
 
                 </div>
             </div>
-
+                <!-- If-No-Result -->
             <template v-if="store.search.apartments.length !== 0">
                 <ApartmentCard v-for="apartment in store.search.apartments" :key="apartment.id + '-Apartment'"
                     :apartment="apartment" />
@@ -155,7 +157,6 @@ export default {
   height: 100vh;
   object-fit: cover;
   position: fixed;
-
   z-index: -1;
   top: 0;
   left: 0;

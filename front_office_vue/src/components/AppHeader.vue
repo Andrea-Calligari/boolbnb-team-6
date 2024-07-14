@@ -162,13 +162,9 @@ export default {
 
 .header {
   padding: 12px;
-  // background-image: url('../../public/img/wood-bg.svg');
-  // background-image: url('../../public/img/bg-prova.png');
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
-  
-  // box-shadow: 0px 8px 16px 0px rgba(122, 120, 120, 0.993);
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
  
