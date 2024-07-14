@@ -116,7 +116,7 @@
         </div>
     </div>
     <div class="d-flex justify-content-center">
-        <button @click="store.search.setPage(n)" class="btn btn-primary m-4" v-for="n in store.search.lastPage">{{ n
+        <button @click="store.search.setPage(n)" class="btn bg-brand font-brand m-4 rounded-0" v-for="n in store.search.lastPage">{{ n
             }}</button>
     </div>
 </template>

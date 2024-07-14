@@ -3,9 +3,9 @@
 
     <div class="accordion" id="accordionExample" v-if="store.user.messages.length > 0">
 
-        <div class="accordion-item" v-for="(message, i) in store.user.messages">
-            <h2 class="accordion-header">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+        <div class="accordion-item rounded-0" v-for="(message, i) in store.user.messages">
+            <h2 class="accordion-header rounded-0">
+                <button class="accordion-button rounded-0 bg-brand font-brand" type="button" data-bs-toggle="collapse"
                     :data-bs-target="`#collapse${i}`" aria-expanded="true" :aria-controls="`collapse${i}`">
                     Da: {{ message.name ? message.name : message.sender_email}} {{ message.surname }} per l'annuncio {{ message.titleApartment }}
 
@@ -17,7 +17,7 @@
                     <p>email: {{ message.sender_email }}</p>
                     <p>messaggio: {{ message.text }}</p>
                 </div>
-                <a :href="`mailto:${message.sender_email}`" class="btn btn-primary">Rispondi a {{ message.name
+                <a :href="`mailto:${message.sender_email}`" class="btn btn-blue rounded-0">Rispondi a {{ message.name
                     }}</a>
             </div>
         </div>
@@ -52,4 +52,24 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@import '../../assets/scss/partials/variables.scss';
+.bg-brand {
+    background-color: $light-yellow ;
+}
+
+.font-brand {
+    color: $dark-blue;
+}
+
+.btn-blue {
+    background-color: $dark-blue;
+    color: white;
+
+    &:hover {
+        background-color: $blue;
+    }
+}
+
+</style>
+
