@@ -27,8 +27,8 @@
                         </g>
                      </g>
                   </svg>
-                  <input id="name" type="text" class="inputField fs-3" v-model="name" :class="store.validate.isV(isVname)"
-                     required autocomplete="name" autofocus placeholder="Nome">
+                  <input id="name" type="text" class="inputField fs-3" v-model="name"
+                     :class="store.validate.isV(isVname)" required autocomplete="name" autofocus placeholder="Nome">
 
 
                </div>
@@ -132,7 +132,9 @@
                </div>
 
                <button id="button">Submit</button>
-
+               <div v-if="error" class="fs-3 text-danger mt-3">
+                  Email già esistente
+               </div>
             </form>
 
 
@@ -164,7 +166,8 @@ export default {
          password_confirmation: '',
          isVpassword_confirmation: null,
          store,
-         image: null
+         image: null,
+         error: null
       }
    },
    methods: {
@@ -208,6 +211,7 @@ export default {
                this.$router.push({ name: 'dashboard' });
             }).catch((err) => {
                this.store.loading.off();
+               this.error = err.response.data.message
                console.log(err.response.data);
             });
          }

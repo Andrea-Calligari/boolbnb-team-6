@@ -28,12 +28,14 @@
 
 
             <button id="button">Submit</button>
+            <div v-if="error" class="fs-3 text-danger mt-3">
+               Email o Password non corrette
+            </div>
 
          </form>
+
       </div>
-      <div v-if="error" class="fs-3 text-danger mt-3">
-         Email o Password non corrette
-      </div>
+
 
    </div>
 </template>
@@ -49,7 +51,7 @@ export default {
          email: 'test@example.com',
          password: 'password',
          store,
-         error:null
+         error: null
       }
    },
    methods: {
@@ -69,7 +71,7 @@ export default {
             this.$router.push({ name: 'dashboard' });
          }).catch((err) => {
             this.store.loading.off();
-            this.error = err.response.data.message 
+            this.error = err.response.data.message
             console.log(err.response.data.message);
          });
       },
