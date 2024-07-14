@@ -19,8 +19,8 @@
               </option>
             </datalist>
             <!-- Button search -->
-            <button class="btn btn-outline-secondary rounded-0  text-center" @click="submitSearch" type="button" id="button-addon2">
-              <span class="material-symbols-sharp mx-0" style="padding-top: 4px;">
+            <button class="btn btn-outline-secondary rounded-0  text-center bg-light" @click="submitSearch" type="button" id="button-addon2">
+              <span class="material-symbols-sharp mx-0 " style="padding-top: 4px;">
                 search
               </span>
             </button>
@@ -162,16 +162,21 @@ export default {
 
 .header {
   padding: 12px;
-  background-image: url('../../public/img/wood-bg.svg');
+  // background-image: url('../../public/img/wood-bg.svg');
+  // background-image: url('../../public/img/bg-prova.png');
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
   
-  box-shadow: 0px 8px 16px 0px rgba(255, 254, 254, 0.993);
+  // box-shadow: 0px 8px 16px 0px rgba(122, 120, 120, 0.993);
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
+ 
 
 }
 
 .logo {
-  height: 5em;
+  height: 7em;
   padding: 0.5em;
   will-change: filter;
   transition: filter 300ms;

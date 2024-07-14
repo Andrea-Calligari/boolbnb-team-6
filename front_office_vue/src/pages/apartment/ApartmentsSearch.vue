@@ -1,5 +1,7 @@
 <template>
     <div class="container">
+        <video class="bg-video" src="../../../public/video/video-sky-loop.mp4" autoplay muted loop playsinline
+            alt="video bg"></video>
         <div class="row row-cols-2">
             <div class="col-12">
 
@@ -60,7 +62,7 @@
                                 <input type="range" class="form-range mb-3" min="1" max="15" step="1" id="beds_number"
                                     v-model="store.search.beds_number">
 
-                                <div class="accordion-item rounded-0">
+                                <div class="accordion-item rounded-0 mt-4">
                                     <h2 class="accordion-header rounded-0">
                                         <button class="accordion-button bg-brand font-brand rounded-0 collapsed"
                                             type="button" data-bs-toggle="collapse" data-bs-target="#fullSerch2"
@@ -99,7 +101,7 @@
             <template
                 v-else-if='store.search.response == `{"paginated":{"current_page":1,"last_page":0,"apartments":[]}}`'>
 
-                <h1 class="text-center text-secondary p-3 w-100">
+                <h1 class="text-center text-dark p-3 w-100">
                     Non sono stati trovati appartamenti per "{{ store.search.address }}"
                 </h1>
             </template>
@@ -131,12 +133,12 @@ export default {
     },
     methods: {
         search() {
-      if (this.$route.fullPath !== '/apartment/search') {
-        this.$router.push({ name: 'apartments.search' });
-      }
-      this.store.address.searchAddresses(this.store.search.address)
-      this.store.search.resetDefaultSearch()
-    }
+            if (this.$route.fullPath !== '/apartment/search') {
+                this.$router.push({ name: 'apartments.search' });
+            }
+            this.store.address.searchAddresses(this.store.search.address)
+            this.store.search.resetDefaultSearch()
+        }
     },
     mounted() {
         // if (!this.store.search.apartments.length) {
@@ -148,7 +150,16 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../assets/scss/partials/variables.scss';
+.bg-video {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
 
+  z-index: -1;
+  top: 0;
+  left: 0;
+}
 .bg-brand {
     background-color: $light-yellow ;
 }
@@ -188,24 +199,26 @@ input[type="range"]::-moz-range-track {
     border: none;
 }
 
-@media screen and (min-width: 768px){
-.responsive-md{
-    display: none;
-}
-}
-@media screen and (min-width: 576px){
-.responsive-md{
-    display: none;
-}
-}
-@media screen and (max-width: 568px){
-.responsive-md{
-    display: inline;
+@media screen and (min-width: 768px) {
+    .responsive-md {
+        display: none;
+    }
 }
 
-.ms_show{
-    display: block;
+@media screen and (min-width: 576px) {
+    .responsive-md {
+        display: none;
+    }
 }
+
+@media screen and (max-width: 568px) {
+    .responsive-md {
+        display: inline;
+    }
+
+    .ms_show {
+        display: block;
+    }
 
 }
 </style>
