@@ -2,18 +2,13 @@
     <div class="container py-5">
         <!-- Background-Video -->
         <video class="bg-video" src="../../../public/video/video-loop-create.mp4" autoplay muted loop playsinline
-        alt="video bg"></video>
-        <h1 class="text-center text-light py-4">
-            Aggiungi il tuo appartamento!
-        </h1>
+            alt="video bg"></video>
         <div class="sign-up-modal">
-                <!-- Logo -->
-            <div class="text-center">
-            <img src="/img/logo.svg" class="logo" alt="Vue logo" />
-            </div>
-                <!-- Form -->
+            <h2 class="text-center text-black py-4">
+                Aggiungi il tuo appartamento!
+            </h2>
+            <!-- Form -->
             <form class="" @submit.prevent="onCreate" enctype="multipart/form-data">
-
                 <!-- Title -->
                 <div class="mb-3">
                     <label for="title" class="form-label">titolo *</label>
@@ -125,13 +120,16 @@
                     </div>
                 </div>
 
-                    <!-- Services -->
+                <!-- Services -->
                 <div v-if="services.length === 0" class="fs-4"> Seleziona almeno un servizio </div>
                 <div class="row row-cols-1 row-cols-sm-1 row-cols-lg-2 mb-3 "
-                    :class="isVservices === false ? 'border border-danger rounded' : ''">
+                    :class="isVservices === false ? 'border border-danger rounded-0' : ''">
                     <div class="col" v-for="serVice in store.options.services">
-                        <input type="checkbox" class="btn-check checkbox-input" :id="serVice.name" :value="serVice.id" v-model="services">
-                        <label class="btn border-light-subtle service-badge m-1" :for="serVice.name">{{ serVice.name }}</label>
+                        <input type="checkbox" class="btn-check checkbox-input" :id="serVice.name" :value="serVice.id"
+                            v-model="services">
+                        <label class="btn service-badge rounded-0 m-1" :for="serVice.name">{{
+                            serVice.name
+                        }}</label>
                     </div>
                 </div>
 
@@ -143,8 +141,8 @@
                         <option value="0">no</option>
                     </select>
                 </div>
-                <button type="submit" class="btn  service-badge ">Crea</button>
-               
+                <button type="submit" class="btn btn-blue rounded-0">Crea</button>
+
 
 
             </form>
@@ -197,9 +195,9 @@ export default {
             this.isVtitle = this.store.validate._string(this.title)
             this.isVdescription = this.store.validate._string(this.description, 0, 1000)
             this.isVprice = this.store.validate._decimal(this.price)
-            this.isVrooms = this.store.validate._integer(this.rooms, 1 ,15)
-            this.isVbeds = this.store.validate._integer(this.beds, 1 , 15)
-            this.isVbaths = this.store.validate._integer(this.baths, 1 ,15)
+            this.isVrooms = this.store.validate._integer(this.rooms, 1, 15)
+            this.isVbeds = this.store.validate._integer(this.beds, 1, 15)
+            this.isVbaths = this.store.validate._integer(this.baths, 1, 15)
             this.isVmtq = this.store.validate._integer(this.mtq, 1, 99999)
             this.isVaddress = this.store.validate._string(this.address)
             this.isVcategory = this.store.validate._integer(this.category, 1, store.options.categories.length)
@@ -281,19 +279,23 @@ export default {
 <style lang="scss" scoped>
 @use '../../assets/scss/partials/_variables.scss' as *;
 @use '../../assets/scss/partials/_mixins.scss' as *;
-.bg-video{
-width: 100%;
-  height: 100vh;
-  object-fit: cover;
-  position: fixed;
 
-  z-index: -1;
-  top: 0;
-  left: 0;
+.bg-video {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    position: fixed;
+
+    z-index: -1;
+    top: 0;
+    left: 0;
 }
+
 .service-badge {
     @include simple-badge;
     border: solid 1px rgb(202, 202, 202);
+    background-color: white;
+
     &:hover {
         background: #f4e5cc;
     }
@@ -305,56 +307,57 @@ width: 100%;
 }
 
 .logo {
-  width: 150px;
-  padding: 0.5em;
+    width: 150px;
+    padding: 0.5em;
 
 }
 
-.btn{
-    background-color: white;
+.btn-blue {
+    background-color: $dark-blue;
+    color: white;
+
+    &:hover {
+        background-color: $blue;
+    }
 }
 
-.btn:hover{
+.btn:hover {
     background-color: $light-yellow;
-}
-
-.button.btn{
-    background-color: green;
 }
 
 // Form 
 .sign-up-modal p,
-.sign-up-modal  {
-	font-size: 1em;
-	font-weight: 300;
+.sign-up-modal {
+    font-size: 1em;
+    font-weight: 300;
 }
 
 .sign-up-modal .form-checkbox label {
-	cursor: pointer;
+    cursor: pointer;
 }
 
 
 .sign-up-modal {
-	font-family: "Roboto", arial, sans-serif;
-	color: #fefefe;
-	// border-style: solid;
-	// border-width: 2px;
-	border-radius: 8px;
-    background-color: rgba(231, 215, 215, 0.2);
+    font-family: "Roboto", arial, sans-serif;
+    color: black;
+    // border-style: solid;
+    // border-width: 2px;
+    border-radius: none;
+    background-color: rgba(231, 215, 215, 0.7);
     ;
     // background-image:url('https://th.bing.com/th/id/R.b5d50511a9209053396cba3208e44ea0?rik=QMMvmdUCiQStTg&pid=ImgRaw&r=0');
     width: 100%;
-	margin: 0 auto;
-	padding: 25px;
+    margin: 0 auto;
+    padding: 25px;
 }
 
 .sign-up-modal form {
-	margin: 0 auto;
+    margin: 0 auto;
 
 }
 
 .sign-up-modal .input-container {
-	margin: 10px;
+    margin: 10px;
 }
 
 .sign-up-modal input[type="email"],
@@ -363,77 +366,81 @@ width: 100%;
 .sign-up-modal input[type="checkbox"]:focus,
 .sign-up-modal input[type="submit"]:focus {
 
-	outline: 0;
+    outline: 0;
 }
 
 .sign-up-modal input[type="email"],
 .sign-up-modal input[type="text"],
 .sign-up-modal input[type="password"] {
-		
-	font-size: 1.4em;
-	padding: 10px;
-	border-color: rgba(180, 178, 173, 0.623);
-	border-style: solid;
-		
+
+    font-size: 1.4em;
+    padding: 10px;
+    border-color: rgba(180, 178, 173, 0.623);
+    border-style: solid;
+
 }
 
 .sign-up-modal input[type="email"]:focus,
 .sign-up-modal input[type="text"]:focus,
 .sign-up-modal input[type="password"]:focus {
-		background: white;
-		transition: all 0.3s ease;
-	
+    background: white;
+    transition: all 0.3s ease;
+
 }
 
 .sign-up-modal a {
-		color: #fefefe;
-		text-decoration: underline;
+    color: #fefefe;
+    text-decoration: underline;
 }
 
 .sign-up-modal a:hover {
-		color: #d26960;
+    color: #d26960;
 }
 
 .sign-up-modal input[type="submit"] {
-		font-weight: 700;
-		font-size: 1.8em;
-		color: #111;
-		background: #fefefe;
-		box-shadow: 0px 4px 0px 0px #d26a60;
-		border-style: none;
-		padding: 10px 50px;
-		margin: 25px 0 15px 0;
-		position: relative;
-		display: inline-block;
-		transition: all .1s linear;
+    font-weight: 700;
+    font-size: 1.8em;
+    color: #111;
+    background: #fefefe;
+    box-shadow: 0px 4px 0px 0px #d26a60;
+    border-style: none;
+    padding: 10px 50px;
+    margin: 25px 0 15px 0;
+    position: relative;
+    display: inline-block;
+    transition: all .1s linear;
 }
 
 .sign-up-modal input[type="submit"]:active {
-		box-shadow: 0 2px 0 #d26a60;
-		transform: translateY(3px);
-		-webkit-transform: translateY(3px);
-		-ms-transform: translateY(3px);
+    box-shadow: 0 2px 0 #d26a60;
+    transform: translateY(3px);
+    -webkit-transform: translateY(3px);
+    -ms-transform: translateY(3px);
 }
 
 // MEDIA QUERY FORM
 
 @media only screen and (min-width: 768px) {
-		.sign-up-modal .form-checkbox {
-				text-align: left;
-		}
-		.sign-up-modal .password-input {
-				width: 47.5%;
-				margin-left: -11.5%;
-		}
-		.sign-up-modal .username-input {
-				width: 47.5%;
-		}
-		.sign-up-modal .email-input {
-				margin-bottom: 20px;
-				margin-top: 50px;
-		}
-		.sign-up-modal form {
-				width: 70%;
-		}
+    .sign-up-modal .form-checkbox {
+        text-align: left;
+    }
+
+    .sign-up-modal .password-input {
+        width: 47.5%;
+        margin-left: -11.5%;
+    }
+
+    .sign-up-modal .username-input {
+        width: 47.5%;
+    }
+
+    .sign-up-modal .email-input {
+        margin-bottom: 20px;
+        margin-top: 50px;
+    }
+
+    .sign-up-modal form {
+        width: 70%;
+    }
 }
 </style>
