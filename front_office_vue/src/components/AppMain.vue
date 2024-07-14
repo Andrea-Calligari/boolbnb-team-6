@@ -46,10 +46,15 @@ main {
 
 aside {
     width: 150px;
-    // background-image: url('https://th.bing.com/th/id/R.3f4d463ea85f19df7350b11bdf140132?rik=W4oOheJbg%2bGB9w&riu=http%3a%2f%2fwooddesignroma.com%2fwp-content%2fuploads%2f2017%2f11%2fciliegio-1.jpg&ehk=vt11%2fsB4id9zVnJ9hyTUKl286krNRUs%2bWJniPIiw9rU%3d&risl=&pid=ImgRaw&r=0');
+    background-image: url('../../public/img/bg-prova.png');
+    // box-shadow: 0px 10px 10px 10px rgba(122, 120, 120, 0.993);
+
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
     padding: 16px;
 
-    
+
 }
 
 @media screen and (max-width: 576px) {
