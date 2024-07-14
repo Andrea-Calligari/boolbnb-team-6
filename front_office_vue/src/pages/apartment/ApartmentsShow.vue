@@ -1,6 +1,6 @@
 <template>
 
-    <!-- titolo e carosello -->
+    <!-- Carousel and Title -->
     <section class="carousel-section py-4">
         <div class="container" v-if="apartment">
             <div class="row">
@@ -61,6 +61,7 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- Price section -->
                         <div class="price-section ">
                             <div class="price-badge d-flex gap-1 p-2">
                                 <h4 class="mb-0 align-self-center">&euro;{{ apartment.price }}</h4><span
@@ -68,7 +69,7 @@
                                     a notte</span>
                             </div>
                             <p v-if="apartment.user_id === store.user.id" class="text-end mt-2">{{ expDate }}</p>
-
+                            <!-- Contact-Form -->
                             <form @submit.prevent="onSend" v-if="apartment.user_id !== store.user.id" class="
                                 message-form mt-4">
                                 <h5>Contatta il proprietario</h5>
@@ -116,7 +117,7 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                
                                 <div class="mb-3">
                                     <label for="text" class="form-label">Testo messaggio *</label>
                                     <textarea class="form-control" v-model="text" rows="3"
@@ -134,7 +135,7 @@
                                         </button>
                                     </div>
                                 </div>
-                                <div class="mb-4 row" v-if="send === true">messaggio inviato</div>
+                                <div class="m-2  text-center text-success fs-3" v-if="send === true">Messaggio Inviato!</div>
                             </form>
                         </div>
                     </div>
@@ -317,7 +318,11 @@
 <style lang="scss" scoped>
 @use '../../assets/scss/partials/variables.scss' as *;
 @use '../../assets/scss/partials/mixins.scss' as *;
-
+section{
+    background-image: url('../../public/img/bg-marmo.png');
+    background-position: center;
+    background-repeat: no-repeat;
+}
 .price-badge {
     @include simple-badge;
     background: $light-yellow;
