@@ -31,6 +31,9 @@
 
          </form>
       </div>
+      <div v-if="error" class="fs-3 text-danger mt-3">
+         Email o Password non corrette
+      </div>
 
    </div>
 </template>
@@ -46,6 +49,7 @@ export default {
          email: 'test@example.com',
          password: 'password',
          store,
+         error:null
       }
    },
    methods: {
@@ -65,7 +69,8 @@ export default {
             this.$router.push({ name: 'dashboard' });
          }).catch((err) => {
             this.store.loading.off();
-            console.log(err.response.data);
+            this.error = err.response.data.message 
+            console.log(err.response.data.message);
          });
       },
    },
