@@ -3,7 +3,7 @@
     <video class="bg-video" src="../../../public/video/home-loop-video.mp4" autoplay muted loop playsinline
       alt="video bg"></video>
     <div class="row justify-content-center">
-      <div class="col-8">
+      <div class="col-12">
         <div class="hero-section text-center d-flex flex-column align-items-center">
           <h1 class="mb-6 dark-blue-font hero-title">BENVENUTO A CASA FUORI CASA.</h1>
           <p>StayHub è la vostra risorsa definitiva per trovare l'appartamento perfetto in affitto. Sia che stiate
@@ -16,13 +16,18 @@
           <router-link :to="{ name: 'apartments.search' }" class="btn-yellow mb-4">
             <span>Vai alla ricerca avanzata</span>
           </router-link>
-          <p>Inoltre, se avete un appartamento da mettere in affitto, registratevi gratuitamente e pubblicate il vostro
-            annuncio in pochi semplici passaggi. Unisciti alla nostra community di proprietari soddisfatti e trova
-            subito gli inquilini ideali!
-          </p>
-          <router-link :to="{ name: 'register' }" class="btn-yellow mb-4">
-            <span>Registrati</span>
-          </router-link>
+          <div v-if="store.user.id === null">
+            <p>Inoltre, se avete un appartamento da mettere in affitto, registratevi
+              gratuitamente e pubblicate il vostro
+              annuncio in pochi semplici passaggi. Unisciti alla nostra community di proprietari soddisfatti e trova
+              subito gli inquilini ideali!
+            </p>
+            <router-link :to="{ name: 'register' }" class="btn-yellow mb-4">
+              <span>Registrati</span>
+            </router-link>
+          </div>
+
+
         </div>
         <!-- <div id="carouselExampleCaptions" class="carousel slide">
           <div class="carousel-indicators">
