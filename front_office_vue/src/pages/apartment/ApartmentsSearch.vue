@@ -17,7 +17,7 @@
                         <div id="fullSerch1" class="accordion-collapse collapse ms_show" data-bs-parent="#fullSerch">
                             <div class="accordion-body">
                                 <input type="text" @keyup="search" @keyup.enter="submitSearch"
-                                    class="form-control rounded-0 responsive-md" aria-label="Recipient's username"
+                                    class="form-control mb-3 rounded-0 responsive-md" aria-label="Recipient's username"
                                     aria-describedby="button-addon2" id="address" name="address"
                                     v-model="store.search.address" placeholder="Inserisci indirizzo" list="position">
                                 <datalist id="position">
