@@ -1,7 +1,10 @@
 <template>
     <form @submit.prevent="onEdit">
-        <!-- titolo indirizzo e numero -->
+        <!-- titolo indirizzo e numero stanze/bagni ecc-->
         <div class="container my-5 ">
+            <!-- Background-Video -->
+            <video class="bg-video" src="../../../public/video/video-loop-edit.mp4" autoplay muted loop playsinline
+                alt="video bg"></video>
             <h2 class="text-center">Modifica Inserzione</h2>
             <div class="sign-up-modal">
                 <div class="row">
@@ -188,6 +191,17 @@
 <style lang="scss" scoped>
 @use '../../assets/scss/partials/variables.scss' as *;
 @use '../../assets/scss/partials/mixins.scss' as *;
+
+.bg-video {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    position: fixed;
+
+    z-index: -1;
+    top: 0;
+    left: 0;
+}
 
 .logo {
     width: 150px;
