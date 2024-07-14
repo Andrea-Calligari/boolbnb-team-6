@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 100);
-            $table->string('surname', 150);
+            $table->string('name', 100)->nullable();
+            $table->string('surname', 150)->nullable();
             $table->string('sender_email',255 );
             $table->text('text');
             $table->string('slug', 255);

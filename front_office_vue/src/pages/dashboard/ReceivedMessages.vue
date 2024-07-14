@@ -7,7 +7,7 @@
             <h2 class="accordion-header">
                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
                     :data-bs-target="`#collapse${i}`" aria-expanded="true" :aria-controls="`collapse${i}`">
-                    Da: {{ message.name }} {{ message.surname }} per l'annuncio {{ message.titleApartment }}
+                    Da: {{ message.name ? message.name : message.sender_email}} {{ message.surname }} per l'annuncio {{ message.titleApartment }}
 
                 </button>
             </h2>
@@ -42,6 +42,7 @@ export default {
     },
     mounted() {
         this.store.user.getApartments()
+        
     }
     ,
     updated() {

@@ -49,7 +49,7 @@
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                 :data-bs-target="`#collapse${i}`" aria-expanded="false" :aria-controls="`collapse${i}`">
-                Da: {{ message.name }} {{ message.surname }} per l'annuncio {{ message.titleApartment }}
+                Da: {{ message.name ? message.name : message.sender_email }} {{ message.surname }} per l'annuncio {{ message.titleApartment }}
               </button>
             </h2>
             <div :id="`collapse${i}`" class="accordion-collapse collapse" data-bs-parent="#accordionExample">

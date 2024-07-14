@@ -502,14 +502,14 @@ export default {
 
         isFormValidated() {
 
-            this.isVname = this.store.validate._string(this.name, 0)
-            this.isVsurname = this.store.validate._string(this.surname, 0)
+            //this.isVname = this.store.validate._string(this.name, 0)
+            //this.isVsurname = this.store.validate._string(this.surname, 0)
             this.isVemail = this.store.validate._string(this.email)
             this.isVtext = this.store.validate._string(this.text, 3, 1000)
 
             if (
-                this.isVname &&
-                this.isVsurname &&
+                //this.isVname &&
+                //this.isVsurname &&
                 this.isVemail &&
                 this.isVtext
             ) {
