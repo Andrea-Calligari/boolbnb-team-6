@@ -130,7 +130,7 @@
 
                                 <div class="row mb-0">
                                     <div class="">
-                                        <button type="submit" class="btn dark-blue-bg text-white rounded-0">
+                                        <button type="submit" class="btn btn-blue rounded-0">
                                             invia
                                         </button>
                                     </div>
@@ -264,7 +264,7 @@
 
                             <div class="mb-4 row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button type="submit" class="btn btn-blue">
                                         invia
                                     </button>
                                 </div>
