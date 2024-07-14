@@ -5,15 +5,9 @@
             <!-- Background-Video -->
             <video class="bg-video" src="../../../public/video/video-loop-edit.mp4" autoplay muted loop playsinline
                 alt="video bg"></video>
-            <h2 class="text-center">Modifica Inserzione</h2>
             <div class="sign-up-modal">
+                <h2 class="text-center py-4">Modifica Inserzione</h2>
                 <div class="row">
-                    <div class="col-12 mb-4">
-                        <!-- Logo -->
-                        <div class="text-center">
-                            <img src="/img/logo.svg" class="logo" alt="Vue logo" />
-                        </div>
-                    </div>
                     <div class="carousel-col">
                         <div class="mb-3">
                             <label for="image" class="form-label">Immagini</label>
@@ -133,7 +127,7 @@
                 </div>
 
                 <!-- info appartamento -->
-                <div class=" row">
+                <div class="">
                     <div class="col">
                         <div class="host-btns-section">
                             <div class="my-3">
@@ -221,12 +215,12 @@
     background-color: white;
 
     &:hover {
-        background: #f4e5cc;
+        background: #ebd7b4;
     }
 }
 
 .checkbox-input:checked+.service-badge {
-    background-color: #f4e5cc;
+    background-color: #ebd7b4;
 }
 
 .apartment-title {
@@ -241,6 +235,7 @@
 .btn-blue {
     background-color: $dark-blue;
     color: white;
+
 
     &:hover {
         background-color: $blue;
@@ -286,8 +281,8 @@
     font-family: "Roboto", arial, sans-serif;
     // border-style: solid;
     // border-width: 2px;
-    border-radius: 8px;
-    background-color: rgba(231, 215, 215, 0.2);
+    border-radius: none;
+    background-color: rgba(231, 215, 215, 0.7);
     //background: url('https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg') no-repeat 0 50%;
     background-size: cover;
     width: 100%;
