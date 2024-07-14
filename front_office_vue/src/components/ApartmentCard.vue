@@ -1,5 +1,5 @@
 <template>
-    <div class="col-sm-12 col-md-6 col-lg-4 padding-right col-xl-3 py-4 d-flex justify-content-center">
+    <div class="col-12 col-md-6 col-lg-4 padding-right col-xl-3 py-4 d-flex justify-content-center">
         <div class="card apartment-card rounded-0 h-100 d-flex flex-column w-100">
             <RouterLink :to="{ name: 'apartments.show', params: { slug: apartment.slug } }">
                 <img :src="apartmentImageUrl" class="card-img-top card-image rounded-0" alt="...">
