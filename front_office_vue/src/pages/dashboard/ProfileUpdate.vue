@@ -101,67 +101,69 @@
 
                     <input type="submit" id="button" value="Submit">
 
+                    <div class="card w-25 rounded-0 mt-3 z-2">
+                        <div class="card-header bg-danger text-center rounded-0">
+                            Elimina account
+                        </div>
+                        <div class="card-body d-flex justify-content-center">
+
+                            <button class="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                <svg viewBox="0 0 448 512" class="svgIcon">
+                                    <path
+                                        d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z">
+                                    </path>
+                                </svg>
+                            </button>
+                            <div v-if="message" class="mt-4 text-danger">
+                                Per eliminare l'account devi inserire la password corretta
+                            </div>
+                        </div>
+                    </div>
                 </form>
 
 
 
             </div>
-            <div class="col-md-8 d-flex flex-column justify-content-center align-items-center mt-2">
 
-                <div class="card w-25 rounded-0">
-                <div class="card-header bg-danger text-center rounded-0">
-                    Elimina account
-                </div>
-                <div class="card-body d-flex justify-content-center">
-                
-                    <button class="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                    <svg viewBox="0 0 448 512" class="svgIcon">
-                        <path
-                            d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z">
-                        </path>
-                    </svg>
-                </button>
-                <div v-if="message" class="mt-4 text-danger">
-                    Per eliminare l'account devi inserire la password corretta
-                </div>
-                </div>
-            </div>
 
-                
-            </div>
 
-            
+
+
 
         </div>
 
-        <!-- Modal -->
-        <form @submit.prevent="onDelete()">
-            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-                aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+
+    </div>
+
+    <!-- Modal -->
+    <form @submit.prevent="onDelete()">
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Sei sicuro di voler eliminare l'account?</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Per eliminare l'account inserisci la password
+                        <input id="password" type="password" class="inputField" v-model="password"
+                            :class="store.validate.isV(isVpassword)" required autocomplete="new-password"
+                            placeholder="Password">
+                        <div v-if="message" class="mt-0 text-danger">
+                            La password non è corretta
                         </div>
-                        <div class="modal-body">
-                            Per eliminare l'account inserisci la password
-                            <input id="password" type="password" class="inputField" v-model="password"
-                                :class="store.validate.isV(isVpassword)" required autocomplete="new-password"
-                                placeholder="Password">
-                            <div v-if="message" class="mt-0 text-danger">
-                                La password non è corretta
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-                            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Si</button>
-                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Si</button>
                     </div>
                 </div>
             </div>
-        </form>
-    </div>
+        </div>
+    </form>
+    
 
 
 
@@ -304,11 +306,11 @@ export default {
     opacity: 0.3;
     position: absolute;
     content: "";
-    width: 450px;
-    height: 515px;
+    width: 468px;
+    height: 554px;
     background-color: $light-blue;
     transform: rotate(45deg);
-    left: -155px;
+    left: -205px;
     bottom: -36px;
     z-index: 1;
     border-radius: 30px;
