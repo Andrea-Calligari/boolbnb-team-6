@@ -1,11 +1,9 @@
 <template>
     <div class="container">
-        <video class="bg-video" src="../../../public/video/video-sky-loop.mp4" autoplay muted loop playsinline
-            alt="video bg"></video>
         <div class="row row-cols-2">
             <div class="col-12">
-                            <!-- Advanced-Search -->
-                <div class="accordion mt-5 mb-3" id="fullSerch">
+                <!-- Advanced-Search -->
+                <div class="accordion mt-2 mb-3" id="fullSerch">
                     <div class="accordion-item rounded-0">
                         <h2 class="accordion-header rounded-0">
                             <button class="accordion-button rounded-0 bg-brand font-brand collapsed" type="button"
@@ -17,7 +15,7 @@
                         <div id="fullSerch1" class="accordion-collapse collapse ms_show" data-bs-parent="#fullSerch">
                             <div class="accordion-body">
                                 <input type="text" @keyup="search" @keyup.enter="submitSearch"
-                                    class="form-control mb-3 rounded-0 responsive-md" aria-label="Recipient's username"
+                                    class="form-control mb-4 rounded-0 responsive-md" aria-label="Recipient's username"
                                     aria-describedby="button-addon2" id="address" name="address"
                                     v-model="store.search.address" placeholder="Inserisci indirizzo" list="position">
                                 <datalist id="position">
@@ -26,7 +24,7 @@
                                     </option>
                                 </datalist>
                                 <!-- Km-distance -->
-                                <label for="radius" class="form-label ">Distanza in Km: <input
+                                <label for="radius" class="form-label  mb-0">Distanza in Km: <input
                                         v-model="store.search.radius"
                                         :class="store.validate.isV(store.search.isVradius)" type="text" class="raunded"
                                         style="width: 32px;">
@@ -35,10 +33,10 @@
                                     class="mt-0 text-danger">
                                     La distanza non può superare i 100 Km.
                                 </div>
-                                <input type="range" class="form-range custom-range mb-3" min="1" max="100" step="1"
+                                <input type="range" class="form-range custom-range mb-4" min="1" max="50" step="1"
                                     id="radius" v-model="store.search.radius">
-                                    <!-- Rooms-Number -->
-                                <label for="rooms_number" class="form-label">N˚ stanze <input
+                                <!-- Rooms-Number -->
+                                <label for="rooms_number" class="form-label mb-0">N˚ stanze <input
                                         v-model="store.search.rooms_number"
                                         :class="store.validate.isV(store.search.isVroomsNum)" type="text"
                                         class="raunded" style="width: 32px;">
@@ -47,10 +45,10 @@
                                     class="mt-0 text-danger">
                                     Il numero di stanze non può essere maggiore di 15.
                                 </div>
-                                <input type="range" class="form-range mb-3 " min="1" max="15" step="1" id="rooms_number"
+                                <input type="range" class="form-range mb-4 " min="1" max="15" step="1" id="rooms_number"
                                     v-model="store.search.rooms_number">
-                                        <!-- Beds-Number -->
-                                <label for="beds_number" class="form-label">N˚ letti <input
+                                <!-- Beds-Number -->
+                                <label for="beds_number" class="form-label mb-0">N˚ letti <input
                                         v-model="store.search.beds_number"
                                         :class="store.validate.isV(store.search.isVbedsNum)" type="text" class="raunded"
                                         style="width: 32px;">
@@ -61,7 +59,7 @@
                                 </div>
                                 <input type="range" class="form-range mb-3" min="1" max="15" step="1" id="beds_number"
                                     v-model="store.search.beds_number">
-                                        <!--Accordion-Services -->
+                                <!--Accordion-Services -->
                                 <div class="accordion-item rounded-0 mt-4">
                                     <h2 class="accordion-header rounded-0">
                                         <button class="accordion-button bg-brand font-brand rounded-0 collapsed"
@@ -70,7 +68,7 @@
                                             Servizi
                                         </button>
                                     </h2>
-                                        <!--Accordion-Body-Services -->
+                                    <!--Accordion-Body-Services -->
 
                                     <div id="fullSerch2" class="accordion-collapse collapse"
                                         data-bs-parent="#fullSerchA">
@@ -94,7 +92,7 @@
 
                 </div>
             </div>
-                <!-- If-No-Result -->
+            <!-- If-No-Result -->
             <template v-if="store.search.apartments.length !== 0">
                 <ApartmentCard v-for="apartment in store.search.apartments" :key="apartment.id + '-Apartment'"
                     :apartment="apartment" />
@@ -116,7 +114,8 @@
         </div>
     </div>
     <div class="d-flex justify-content-center">
-        <button @click="store.search.setPage(n)" class="btn bg-brand font-brand m-4 rounded-0" v-for="n in store.search.lastPage">{{ n
+        <button @click="store.search.setPage(n)" class="btn bg-brand font-brand m-4 rounded-0"
+            v-for="n in store.search.lastPage">{{ n
             }}</button>
     </div>
 </template>
@@ -141,26 +140,12 @@ export default {
             this.store.address.searchAddresses(this.store.search.address)
             this.store.search.resetDefaultSearch()
         }
-    },
-    mounted() {
-        // if (!this.store.search.apartments.length) {
-        //     this.store.search.getAll()
-        // }
     }
 }
 </script>
 
 <style lang="scss" scoped>
 @import '../../assets/scss/partials/variables.scss';
-.bg-video {
-  width: 100%;
-  height: 100vh;
-  object-fit: cover;
-  position: fixed;
-  z-index: -1;
-  top: 0;
-  left: 0;
-}
 .bg-brand {
     background-color: $light-yellow ;
 }
@@ -177,9 +162,10 @@ input[type="range"] {
 }
 
 input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    background-color: $dark-blue;
-    height: 38px;
+    background-color: $dark-yellow;
+    border-radius: 0;
+    border: none;
+    height: 18px;
     opacity: 0.6;
     width: 20px;
 }

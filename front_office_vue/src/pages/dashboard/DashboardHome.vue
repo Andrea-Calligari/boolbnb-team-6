@@ -13,7 +13,7 @@
           </RouterLink>
         </div>
       </div>
-        <!-- Best-Apartmet -->
+      <!-- Best-Apartmet -->
       <div class="col-6 col-md-3 col-xl-2 mb-3" v-if="bestApartments.length > 0"
         v-for="(apartment, i) in bestApartments">
         <div class="ms_card">
@@ -43,13 +43,15 @@
         <h2 class="pt-3">Ultimi messaggi</h2>
       </div>
       <div class="col-12" v-if="lastMessages.length > 0">
-        <div class="accordion" id="accordionExample">
+        <div class="accordion rounded-0" id="accordionExample">
           <!-- Accordion-Last-Messages -->
-          <div class="accordion-item" v-for="(message, i) in lastMessages">
-            <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                :data-bs-target="`#collapse${i}`" aria-expanded="false" :aria-controls="`collapse${i}`">
-                Da: {{ message.name ? message.name : message.sender_email }} {{ message.surname }} per l'annuncio {{ message.titleApartment }}
+          <div class="accordion-item  rounded-0" v-for="(message, i) in lastMessages">
+            <h2 class="accordion-header rounded-0">
+              <button class="accordion-button collapsed bg-brand font-brand  rounded-0" type="button"
+                data-bs-toggle="collapse" :data-bs-target="`#collapse${i}`" aria-expanded="false"
+                :aria-controls="`collapse${i}`">
+                Da: {{ message.name ? message.name : message.sender_email }} {{ message.surname }} per l'annuncio {{
+                  message.titleApartment }}
               </button>
             </h2>
             <div :id="`collapse${i}`" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
@@ -61,7 +63,7 @@
                     <p>messaggio: {{ message.text }}</p>
                   </div>
                   <div class="col-12 col-md-auto">
-                    <a :href="`mailto:${message.sender_email}`" class="btn btn-outline-dark">
+                    <a :href="`mailto:${message.sender_email}`" class="btn btn-outline-dark rounded-0">
                       <span class="material-symbols-sharp">
                         outgoing_mail
                       </span>
@@ -72,7 +74,7 @@
               </div>
             </div>
           </div>
-        <!-- If-there'snot-Last-Message -->
+          <!-- If-there'snot-Last-Message -->
         </div>
       </div>
       <div class="col-12" v-else>
@@ -88,13 +90,13 @@
         <div class="text-end">
           <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
             <input type="radio" class="btn-check" name="radio-btn" id="giornaliero" autocomplete="off" checked>
-            <label class="btn btn-outline-warning" @click="parseViews(10)" for="giornaliero">Giorni</label>
+            <label class="btn btn-outline-warning rounded-0" @click="parseViews(10)" for="giornaliero">Giorni</label>
 
             <input type="radio" class="btn-check" name="radio-btn" id="mensile" autocomplete="off">
-            <label class="btn btn-outline-warning" @click="parseViews(7)" for="mensile">Mesi</label>
+            <label class="btn btn-outline-warning rounded-0" @click="parseViews(7)" for="mensile">Mesi</label>
 
             <input type="radio" class="btn-check" name="radio-btn" id="annuale" autocomplete="off">
-            <label class="btn btn-outline-warning" @click="parseViews(4)" for="annuale">Anni</label>
+            <label class="btn btn-outline-warning rounded-0" @click="parseViews(4)" for="annuale">Anni</label>
           </div>
         </div>
         <div class="scroll-container">
@@ -399,5 +401,11 @@ export default {
   overflow-x: auto;
   white-space: nowrap;
   width: calc(100vw - 200px);
+}
+
+@media screen and (max-width: 576px) {
+  .scroll-container {
+    width: calc(100vw - 50px);
+  }
 }
 </style>

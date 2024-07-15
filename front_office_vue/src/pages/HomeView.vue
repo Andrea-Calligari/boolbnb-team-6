@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
       <div class="col-12">
         <div class="hero-section text-center d-flex flex-column align-items-center">
-          <h1 class="mb-6 dark-blue-font hero-title">BENVENUTO A CASA FUORI CASA.</h1>
+          <h1 class="mb-6 dark-blue-font hero-title">BENVENUTO A CASA, FUORI CASA.</h1>
           <p>StayHub è la vostra risorsa definitiva per trovare l'appartamento perfetto in affitto. Sia che stiate
             cercando un monolocale accogliente nel cuore della città o una spaziosa casa familiare in periferia, il
             nostro sito è progettato per rendere la ricerca facile e veloce. Con una vasta selezione di annunci
@@ -136,6 +136,6 @@ export default {
 
 .hero-section {
   padding: 25px;
-  background-color: rgba(231, 215, 215, 0.5);
+  background-color: rgba(231, 215, 215, 0.8);
 }
 </style>

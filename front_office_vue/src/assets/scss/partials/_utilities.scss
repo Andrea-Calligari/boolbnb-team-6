@@ -15,3 +15,25 @@
 .dark-yellow-font {
     color: $dark-yellow;
 }
+
+.blue-bg {
+    background: rgb(146, 195, 212);
+    background: linear-gradient(0deg, rgba(146, 195, 212, 0) 4%, rgba(243, 239, 234, 1) 100%);
+}
+
+.bg-brand {
+    background-color: #f3efea;
+}
+
+.font-brand {
+    color: $dark-blue;
+}
+
+.btn-blue {
+    background-color: $dark-blue;
+    color: white;
+
+    &:hover {
+        background-color: $blue;
+    }
+}

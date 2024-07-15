@@ -220,7 +220,7 @@ export const store = reactive({
         },
         isFormValidated() {
 
-            this.isVradius = store.validate._integer(this.radius, 1, 100)
+            this.isVradius = store.validate._integer(this.radius, 1, 50)
             this.isVroomsNum = store.validate._integer(this.rooms_number, 1, 15)
             this.isVbedsNum = store.validate._integer(this.beds_number, 1, 15)
 
