@@ -119,7 +119,7 @@
                   Il campo Password e Confirm Password devono essere uguali
                </div>
 
-               <div class="inputContainer">
+               <div class="inputContainer justify-content-start">
                   <svg class="inputIcon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                      fill="#2e2e2e">
                      <title />
@@ -128,7 +128,9 @@
                            d="M29,8H26V5a1,1,0,0,0-1-1H3A1,1,0,0,0,2,5V23a1,1,0,0,0,1,1H6v3a1,1,0,0,0,1,1H29a1,1,0,0,0,1-1V9A1,1,0,0,0,29,8ZM4,22V6H24V8H7A1,1,0,0,0,6,9V22Zm8-10a2,2,0,1,1-2,2A2,2,0,0,1,12,12ZM25.89,23.46A1,1,0,0,1,25,24H11a1,1,0,0,1-.89-.55,1,1,0,0,1,.09-1.05l3-4a1,1,0,0,1,1.25-.29l1.35.67,3.49-3.49a1,1,0,0,1,.79-.29,1,1,0,0,1,.73.42l5,7A1,1,0,0,1,25.89,23.46Z" />
                      </g>
                   </svg>
-                  <input class="inputField fs-6" type="file" name="image" value="" id="image">
+                  <label for="image" class="lab-img fs-4">Inserisci
+                     Immagine</label>
+                  <input class="inputField fs-6 d-none" type="file" name="image" value="" id="image">
                </div>
 
                <button id="button">Registrati</button>

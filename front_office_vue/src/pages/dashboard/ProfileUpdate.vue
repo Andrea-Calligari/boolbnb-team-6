@@ -1,6 +1,6 @@
 <template>
     <div class="container  mt-4 d-flex flex-column justify-content-center">
-        <div class="row justify-content-center align-content-center flex-column">
+        <div class="row justify-content-center align-items-center flex-column">
             <div class="col-md-8">
 
                 <form @submit.prevent="onUpdate" class="form_main">
@@ -87,7 +87,7 @@
                     </div>
 
 
-                    <div class="inputContainer">
+                    <div class="inputContainer justify-content-start">
                         <svg class="inputIcon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" width="16"
                             height="16" fill="#2e2e2e">
                             <title />
@@ -96,34 +96,50 @@
                                     d="M29,8H26V5a1,1,0,0,0-1-1H3A1,1,0,0,0,2,5V23a1,1,0,0,0,1,1H6v3a1,1,0,0,0,1,1H29a1,1,0,0,0,1-1V9A1,1,0,0,0,29,8ZM4,22V6H24V8H7A1,1,0,0,0,6,9V22Zm8-10a2,2,0,1,1-2,2A2,2,0,0,1,12,12ZM25.89,23.46A1,1,0,0,1,25,24H11a1,1,0,0,1-.89-.55,1,1,0,0,1,.09-1.05l3-4a1,1,0,0,1,1.25-.29l1.35.67,3.49-3.49a1,1,0,0,1,.79-.29,1,1,0,0,1,.73.42l5,7A1,1,0,0,1,25.89,23.46Z" />
                             </g>
                         </svg>
-                        <input class="inputField fs-6" type="file" name="image" value="" id="image">
+                        <!-- <label for="image" class="ms-4" style="width: 20px; height: 20px; ">
+                            <svg style="vertical-align: text-bottom;" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 337 337">
+                                <circle stroke-width="20" stroke="#6c6c6c" fill="none" r="158.5" cy="168.5" cx="168.5">
+                                </circle>
+                                <path stroke-linecap="round" stroke-width="25" stroke="#6c6c6c" d="M167.759 79V259">
+                                </path>
+                                <path stroke-linecap="round" stroke-width="25" stroke="#6c6c6c" d="M79 167.138H259">
+                                </path>
+                            </svg>
+                            <span class="tooltip">Add an image</span>
+                        </label> -->
+                        <label for="image" class="lab-img fs-4">Inserisci
+                            Immagine</label>
+                        <input class="inputField fs-6 ps-0 d-none" type="file" name="image" value="" id="image">
                     </div>
 
-                    <input type="submit" id="button" value="Submit">
+                    <input type="submit" id="button" value="Aggiorna">
 
-                    <div class="card w-25 rounded-0 mt-3 z-2">
-                        <div class="card-header bg-danger text-center rounded-0">
-                            Elimina account
-                        </div>
-                        <div class="card-body d-flex justify-content-center">
 
-                            <a href="#" class="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                <svg viewBox="0 0 448 512" class="svgIcon">
-                                    <path
-                                        d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z">
-                                    </path>
-                                </svg>
-                            </a>
-                            <div v-if="message" class="mt-4 text-danger">
-                                Per eliminare l'account devi inserire la password corretta
-                            </div>
-                        </div>
-                    </div>
                 </form>
-
-
-
             </div>
+
+            <div class="col-6 col-md-4 col-lg-3 ">
+                <div class="card w-100 rounded-0 mt-3 z-2">
+                    <div class="card-header bg-danger text-center rounded-0">
+                        Elimina account
+                    </div>
+                    <div class="card-body d-flex justify-content-center">
+
+                        <a href="#" class="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <svg viewBox="0 0 448 512" class="svgIcon">
+                                <path
+                                    d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z">
+                                </path>
+                            </svg>
+                        </a>
+                        <div v-if="message" class="mt-4 text-danger">
+                            Per eliminare l'account devi inserire la password corretta
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
 
 
