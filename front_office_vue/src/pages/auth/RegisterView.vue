@@ -28,7 +28,7 @@
                      </g>
                   </svg>
                   <input id="name" type="text" class="inputField fs-3" v-model="name"
-                     :class="store.validate.isV(isVname)" required autocomplete="name" autofocus placeholder="Nome">
+                     :class="store.validate.isV(isVname)" required autocomplete="name" autofocus placeholder="Nome*">
 
 
                </div>
@@ -60,7 +60,7 @@
                   </svg>
                   <input id="surname" type="text" class="inputField fs-3" v-model="surname"
                      :class="store.validate.isV(isVsurname)" required autocomplete="surname" autofocus
-                     placeholder="Cognome">
+                     placeholder="Cognome*">
 
                </div>
                <div v-if="store.validate.isV(isVsurname) === 'is-invalid'" class="mt-0 text-danger">
@@ -75,7 +75,7 @@
                      </path>
                   </svg>
                   <input id="email" type="email" class="inputField fs-3" v-model="email"
-                     :class="store.validate.isV(isVemail)" required autocomplete="email" placeholder="email">
+                     :class="store.validate.isV(isVemail)" required autocomplete="email" placeholder="email*">
 
 
                </div>
@@ -92,7 +92,7 @@
                   </svg>
                   <input id="password" type="password" class="inputField fs-3" v-model="password"
                      :class="store.validate.isV(isVpassword)" required autocomplete="new-password"
-                     placeholder="Password">
+                     placeholder="Password*">
 
 
                </div>
@@ -109,7 +109,7 @@
                   </svg>
                   <input id="password-confirm" type="password" class="inputField fs-3" v-model="password_confirmation"
                      :class="store.validate.isV(isVpassword_confirmation)" required autocomplete="new-password"
-                     placeholder="Ripeti Password">
+                     placeholder="Ripeti Password*">
 
 
 

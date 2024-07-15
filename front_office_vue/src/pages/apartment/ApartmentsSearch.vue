@@ -31,7 +31,7 @@
                                 </label>
                                 <div v-if="store.validate.isV(store.search.isVradius) === 'is-invalid'"
                                     class="mt-0 text-danger">
-                                    La distanza non può superare i 100 Km.
+                                    La distanza non può superare i 50 Km.
                                 </div>
                                 <input type="range" class="form-range custom-range mb-4" min="1" max="50" step="1"
                                     id="radius" v-model="store.search.radius">

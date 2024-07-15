@@ -448,6 +448,10 @@ export default {
             // console.log(res.data.results[0]);
             this.apartment = res.data.apartment;
 
+            if (this.apartment.image === null) {
+                this.apartment.image = 'uploads/apartment/img_default/null.png'
+            }
+
             this.countdown();
 
         }).catch((err) => {

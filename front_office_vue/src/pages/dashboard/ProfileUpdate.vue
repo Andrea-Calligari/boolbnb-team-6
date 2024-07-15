@@ -228,7 +228,6 @@ export default {
                 }).then((res) => {
                     this.store.user.getUser();
                     this.store.loading.off();
-                    this.$router.push('/');
                     console.log(res.data)
                 }).catch((err) => {
                     this.store.loading.off();

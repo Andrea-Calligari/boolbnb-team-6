@@ -27,7 +27,7 @@ class UserSeeder extends Seeder
         User::create([
             'name' => 'Ernesto',
             'surname' => 'Casagrande',
-            'email' => 'ernesto@bnb.com',
+            'email' => 'etest@example.com',
             //  'city' => 'rome',
             'password' => Hash::make('admin'),
             'image' => 'uploads/user/Netflix_avatar.png'
