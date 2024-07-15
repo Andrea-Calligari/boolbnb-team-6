@@ -32,8 +32,8 @@
 
                                 <div v-else>
                                     <div id="dropin-container"></div>
-                                    <button @click="sendPayment" class="btn btn-outline-success">Request payment
-                                        method</button>
+                                    <button @click="sendPayment" class="btn btn-outline-success">Effettua
+                                        pagamento</button>
                                 </div>
                             </div>
                         </div>

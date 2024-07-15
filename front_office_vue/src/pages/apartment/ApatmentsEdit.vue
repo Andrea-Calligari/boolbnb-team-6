@@ -174,7 +174,7 @@
                             </select>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-blue rounded-0">Submit</button>
+                    <button type="submit" class="btn btn-blue rounded-0">Modifica</button>
                 </div>
             </div>
         </div>

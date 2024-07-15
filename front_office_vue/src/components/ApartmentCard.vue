@@ -1,9 +1,11 @@
 <template>
-    <div class="col-12 col-md-6 col-lg-4 padding-right col-xl-3 py-4 d-flex justify-content-center">
+    <div class="col-12 col-md-6 col-lg-4 padding-right col-xl-3 py-4 d-flex justify-content-center"
+        v-if="isSponsored(apartment)">
         <div class="card apartment-card rounded-0 h-100 d-flex flex-column w-100">
             <RouterLink :to="{ name: 'apartments.show', params: { slug: apartment.slug } }">
                 <img :src="apartmentImageUrl" class="card-img-top card-image rounded-0" alt="...">
-                <img v-if="isSponsored(apartment)" src="/img/promotion.svg" class="promotion-tag" alt="promotion-tag">
+                <img v-if="isSponsoredLogo(apartment)" src="/img/promotion.svg" class="promotion-tag"
+                    alt="promotion-tag">
             </RouterLink>
             <div class="card-body d-flex flex-column flex-grow-1">
                 <div class="d-flex mb-2 text-muted gap-3 text-small">
@@ -82,7 +84,7 @@ export default {
                 this.services = this.apartment.services
             }
         },
-        isSponsored(apartment) {
+        isSponsoredLogo(apartment) {
             const nowDate = new Date();
             for (let i = 0; i < apartment.promotions.length; i++) {
                 const startDate = new Date(apartment.promotions[i].pivot.start_date);
@@ -92,6 +94,22 @@ export default {
                 }
             }
             return false
+        },
+        isSponsored(apartment) {
+            console.log('ciao ' + this.$route.fullPath);
+            if (this.$route.fullPath === '/') {
+                const nowDate = new Date();
+                for (let i = 0; i < apartment.promotions.length; i++) {
+                    const startDate = new Date(apartment.promotions[i].pivot.start_date);
+                    const expirationDate = new Date(apartment.promotions[i].pivot.expiration_date)
+                    if (startDate < nowDate && expirationDate > nowDate) {
+                        return true
+                    }
+                }
+                return false
+            } else {
+                return true
+            }
         }
     },
     computed: {
@@ -113,7 +131,7 @@ export default {
 <style lang="scss" scoped>
 @use '../assets/scss/partials/variables.scss' as *;
 
-.padding-right{
+.padding-right {
     padding-right: 20px;
 }
 
