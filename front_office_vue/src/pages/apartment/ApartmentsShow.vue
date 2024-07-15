@@ -603,3 +603,160 @@ section{
     }
 }
 </style>
+
+<script>
+import { store } from '../../store';
+import axios from 'axios';
+axios.defaults.withCredentials = true;
+axios.defaults.withXSRFToken = true;
+export default {
+    props: {
+        slug: {
+            type: String,
+            required: true
+        }
+    },
+    data() {
+        return {
+            apartment: null,
+            name: store.user.name,
+            isVname: null,
+            surname: store.user.surname,
+            isVsurname: null,
+            email: store.user.email,
+            isVemail: null,
+            store,
+            text: '',
+            isVtext: null,
+            send: false,
+            timeinterval: null,
+            apartmentExpirationPromo: null,
+            expDate: null
+        }
+    },
+
+    methods: {
+        async onDelete() {
+
+
+            await axios.delete(`http://localhost:8000/api/apartments/${this.slug}`).then((res) => {
+                this.$router.push({ name: 'apartments.index' });
+            }).catch((err) => {
+                console.log(err.response.data)
+            })
+
+
+
+
+
+        },
+
+        isFormValidated() {
+
+            //this.isVname = this.store.validate._string(this.name, 0)
+            //this.isVsurname = this.store.validate._string(this.surname, 0)
+            this.isVemail = this.store.validate._string(this.email)
+            this.isVtext = this.store.validate._string(this.text, 3, 1000)
+
+            if (
+                //this.isVname &&
+                //this.isVsurname &&
+                this.isVemail &&
+                this.isVtext
+            ) {
+                return true
+            } else {
+                return false
+            }
+        },
+
+        async onSend() {
+            if (this.isFormValidated()) {
+                await axios.post("http://localhost:8000/api/messages", {
+                    name: this.name,
+                    surname: this.surname,
+                    sender_email: this.email,
+                    apartment_id: this.apartment.id,
+                    text: this.text
+
+                }).then((res) => {
+                    //console.log(res)
+                    this.send = true
+
+                    setTimeout(function () {
+                        document.getElementById('close').click()
+                    }, 2000);
+                })
+            }
+        },
+        expirationPromotion(apartment) {
+            const nowDate = new Date();
+            let apartmentExpirationPromo = false;
+            apartment.promotions.forEach(promotion => {
+                const startDate = new Date(promotion.pivot.start_date);
+                const expirationDate = new Date(promotion.pivot.expiration_date)
+                if (startDate < nowDate && expirationDate > nowDate) {
+                    apartmentExpirationPromo = expirationDate
+                }
+            });
+            if (apartmentExpirationPromo) {
+                let oldExpirationDate = null;
+                do {
+                    oldExpirationDate = apartmentExpirationPromo;
+                    apartment.promotions.forEach(promotion => {
+                        const startDate = new Date(promotion.pivot.start_date);
+                        const expirationDate = new Date(promotion.pivot.expiration_date)
+                        const newDate = new Date(apartmentExpirationPromo.getTime() + 2000);
+                        if (startDate < newDate && expirationDate > newDate) {
+                            apartmentExpirationPromo = expirationDate
+                        }
+                    });
+                } while (apartmentExpirationPromo !== oldExpirationDate);
+            }
+            if (apartmentExpirationPromo) {
+                this.apartmentExpirationPromo = apartmentExpirationPromo
+                this.timeinterval = setInterval(this.countdown, 1000);
+            }
+
+        },
+        countdown() {
+            if (this.apartmentExpirationPromo === null) {
+                this.expirationPromotion(this.apartment);
+            }
+            if (this.apartmentExpirationPromo) {
+                const t = Date.parse(this.apartmentExpirationPromo) - Date.parse(new Date());
+                const seconds = Math.floor((t / 1000) % 60);
+                const minutes = Math.floor((t / 1000 / 60) % 60);
+                const hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+                const days = Math.floor(t / (1000 * 60 * 60 * 24));
+
+                if (days > 0) {
+                    this.expDate = `Promozione scade tra ${days}g - ${hours}h:${minutes}m:${seconds}s`
+                } else {
+                    this.expDate = `Promozione scade tra ${hours}h:${minutes}m:${seconds}s`
+                }
+
+                if (t <= 0) {
+                    clearInterval(this.timeinterval);
+                }
+            }
+        }
+
+    },
+    mounted() {
+        console.log(this.$route.params.slug);
+        axios.get(`http://127.0.0.1:8000/api/apartments/${this.slug}`).then((res) => {
+            console.log(res, 'consol log res');
+            // console.log(res.data.results[0]);
+            this.apartment = res.data.apartment;
+
+            this.countdown();
+
+        }).catch((err) => {
+            this.$router.push({ name: 'not-found' });
+            console.log(err)
+        })
+
+    }
+}
+</script>
