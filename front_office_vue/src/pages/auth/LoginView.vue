@@ -27,7 +27,7 @@
             </div>
 
 
-            <button id="button">Submit</button>
+            <button id="button">Entra</button>
             <div v-if="error" class="fs-3 text-danger mt-3">
                Email o Password non corrette
             </div>

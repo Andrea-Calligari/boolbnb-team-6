@@ -131,7 +131,7 @@
                   <input class="inputField fs-6" type="file" name="image" value="" id="image">
                </div>
 
-               <button id="button">Submit</button>
+               <button id="button">Registrati</button>
                <div v-if="error" class="fs-3 text-danger mt-3">
                   Email già esistente
                </div>
