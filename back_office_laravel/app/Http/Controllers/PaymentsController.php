@@ -40,8 +40,7 @@ class PaymentsController extends Controller
                         $start_date = (new Carbon($promotion['pivot']['expiration_date']))->addSecond();
                     }
                 }
-
-            } while($old_start_date !== $start_date);
+            } while ($old_start_date !== $start_date);
 
             $hours = $promo_durations[$payload['promotionSelected']];
             $expiration_date = (new Carbon($start_date))->addHours($hours);
@@ -53,6 +52,9 @@ class PaymentsController extends Controller
 
 
             $apartment->promotions()->attach($promotions_with_timestamp);
+
+            $apartment->visible = true;
+            $apartment->update();
         }
 
         return response()->json($status);
