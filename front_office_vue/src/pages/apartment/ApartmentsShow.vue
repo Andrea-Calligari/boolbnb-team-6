@@ -473,11 +473,11 @@ export default {
     data() {
         return {
             apartment: null,
-            name: '',
+            name: store.user.name,
             isVname: null,
-            surname: '',
+            surname: store.user.surname,
             isVsurname: null,
-            email: '',
+            email: store.user.email,
             isVemail: null,
             store,
             text: '',
