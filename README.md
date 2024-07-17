@@ -5,8 +5,6 @@ Il sito in questione è stato progettato per replicare la struttura di Airbnb, i
 ![alt text](https://github.com/Andrea-Calligari/boolbnb-team-6/blob/main/StayHub.mp4?raw=true)
 
  ### [Anteprima Video](https://github.com/Andrea-Calligari/boolbnb-team-6/blob/main/StayHub.mp4)
-
- ### [Anteprima Video2](https://github.com/Andrea-Calligari/boolbnb-team-6/main/StayHub.mp4)
  
 ## Requisiti Tecnici
  - (RT1) Client-side Validation 
@@ -16,4 +14,4 @@ Il sito in questione è stato progettato per replicare la struttura di Airbnb, i
  - (RT5) La ricerca degli appartamenti nella pagina dedicata e l’applicazione dei filtri avvengono senza il refresh della pagina.
 
 
- ### [Color Palette](https://github.com/user/repo/blob/branch/other_file.md)
+ ### [Color Palette](https://github.com/Andrea-Calligari/boolbnb-team-6/blob/main/palette.png)
