@@ -4,7 +4,7 @@ Il sito in questione è stato progettato per replicare la struttura di Airbnb, i
 <!-- [![alt text](https://github.com/Andrea-Calligari/boolbnb-team-6/blob/main/StayHub.png?raw=true)](https://pj-preview-video.netlify.app/stayhub)
  [" Clicca sull'immagine per vedere la preview del sito "](https://pj-preview-video.netlify.app/stayhub) -->
 <a href="https://pj-preview-video.netlify.app/stayhub" >
-  <img class="img-prev" src="https://github.com/Andrea-Calligari/boolbnb-team-6/blob/main/StayHub.png?raw=true" alt="alt text">
+  <img style="width:100%;" src="https://github.com/Andrea-Calligari/boolbnb-team-6/blob/main/StayHub.png?raw=true" alt="alt text">
 Clicca sull'immagine per vedere la preview del sito
 </a>
 
